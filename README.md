@@ -1,124 +1,87 @@
-# EvoluTrainer v6.3 PT-BR
+# EvoluTrainer 0.64.beta
 
-Aplicativo web de gestão de **clientes, treinos, biblioteca de exercícios, histórico, evolução corporal e cobranças**, preparado para publicação como site estático na **Vercel** e instalação como **PWA (Progressive Web App)**.
+Aplicativo de gestão de treinos, clientes e acompanhamento de evolução, desenvolvido como **SPA/PWA estática**. Compatível com publicação no **GitHub + Vercel** e uso offline após o carregamento e armazenamento dos recursos necessários.
 
-> **Versão:** v6.3 PT-BR — Este pacote não altera a numeração do aplicativo.
+> **Versão:** `0.64.beta` — versão de testes. Não considerar homologada para produção até concluir testes de ponta a ponta no navegador e em dispositivos reais.
 
 ## Funcionalidades
 
-- **Clientes:** cadastro e seleção de perfis, com treinos e registros individuais.
-- **Treinos:** criação de rotinas, importação de PDF, execução presencial, séries, cargas, repetições e descanso.
-- **Biblioteca:** catálogo de 1.230 exercícios com pesquisa e recursos visuais.
-- **Histórico e Evolução:** sessões realizadas, calendário, registros corporais e relatórios.
-- **Cobranças:** controle manual de serviços, valores e pagamentos; não processa pagamentos reais.
-- **Configurações:** aparência, modos de interface, backup/restauração e recursos offline.
-- **Modos Personal e Aluno:** interfaces diferentes; a seleção de modo **não é autenticação segura**.
+- **Treinos:** criação, edição e execução de rotinas, registro de séries, repetições, cargas e intervalos de descanso.
+- **Conclusão rigorosa:** o treino só pode ser concluído e salvo quando **todas as séries de todos os exercícios** estiverem marcadas como feitas. Enquanto houver séries pendentes, os botões de conclusão ficam desativados e mostram quantas faltam.
+- **Excluir série:** botão `×` em cada série na sessão. A exclusão de uma série já concluída exige confirmação. Pelo menos uma série é preservada por exercício.
+- **Concluir / trocar exercício:** botões com espaços próprios, sem sobreposição em telas pequenas; no celular ficam empilhados.
+- **Meus Programas:** modelos PPL, Full Body, Upper/Lower ou personalizados, editáveis e atribuíveis a clientes com cópias independentes.
+- **Biblioteca de exercícios:** catálogo de 1.230 exercícios com miniaturas e sequências ilustradas.
+- **Evolução de cargas:** comparação mês a mês ou a cada três meses, filtros e exportação CSV, a partir das séries efetivamente concluídas e salvas.
+- **Evolução corporal:** peso, composição, medidas, histórico e mapa anatômico.
+- **Clientes e Histórico:** registros separados por cliente no armazenamento local.
+- **Cobranças:** controle manual; o aplicativo **não processa pagamentos**.
+- **Importação/exportação:** recursos de treino em PDF e backup/restauração conforme a compatibilidade do navegador.
 
-## Publicação na Vercel
-
-1. Extraia **todo o ZIP**, preservando os diretórios.
-2. Acesse [vercel.com](https://vercel.com/) e crie um projeto para este site estático.
-3. Utilize a pasta que contém `index.html` e `vercel.json` como raiz do projeto.
-4. Se solicitado, selecione **Framework Preset: Other**; não configure um comando de build.
-5. Publique e acesse o endereço **HTTPS** gerado pela Vercel.
-6. Verifique se os módulos abrem e se as imagens dos exercícios são carregadas.
-
-**Importante:** não publique apenas `index.html`; envie também `assets/`, `data/`, `media/`, `sw.js`, `manifest.webmanifest` e `vercel.json`.
-
-## Estrutura dos arquivos
+## Organização dos arquivos
 
 ```text
-/
-├── index.html                # Entrada do aplicativo
-├── README.md                 # Este documento
-├── vercel.json               # Cabeçalhos e configuração de hospedagem
-├── manifest.webmanifest      # Manifesto do PWA
-├── sw.js                     # Service Worker e cache offline
-├── assets/
-│   ├── css/                  # 4 folhas de estilo
-│   ├── js/                   # 8 scripts organizados por responsabilidade
-│   ├── anatomia-corporal.svg # Referência para medidas corporais
-│   └── icon-*                # Ícones da aplicação
-├── data/
-│   └── exercises.json        # Catálogo dos exercícios
-├── media/
-│   ├── thumbs/               # Miniaturas
-│   └── steps/                # Imagens/animações dos movimentos
+index.html                   Página inicial do aplicativo
+README.md                    Documentação
+vercel.json                  Configurações para a Vercel
+manifest.webmanifest         Manifesto PWA
+sw.js                        Service Worker para o cache offline
+robots.txt                   Política de indexação
+assets/css/                  Estilos, incluindo layout responsivo
+assets/js/                   Lógica do app, programas, evolução, PDF e cobranças
+assets/icon-192.png          Ícone PWA de 192 px
+assets/icon-512.png          Ícone PWA de 512 px
+assets/anatomia-corporal.svg Mapa corporal
+media/thumbs/               Miniaturas da biblioteca
+media/steps/                Imagens dos exercícios
+data/exercises.json          Catálogo de exercícios
 ```
 
-Os scripts estão separados em arquivos, mas ainda compartilham parte do escopo JavaScript original. Essa organização **não equivale** a uma reescrita completa com `import`/`export` ES Modules.
+## Publicar na Vercel usando o GitHub
 
-## PWA e funcionamento offline
+1. Abra o repositório [dutrafg/Evolutrainer](https://github.com/dutrafg/Evolutrainer).
+2. Na Vercel, clique em **Add New → Project** e importe o repositório.
+3. Configure **Framework Preset: Other** e **Root Directory: `./`**.
+4. Não é necessário configurar comando de compilação; `index.html` deve permanecer na raiz.
+5. Publique e aguarde o status **Ready**. Abra a URL HTTPS gerada.
+6. Verifique o catálogo, as imagens, as rotinas e o registro do Service Worker.
 
-O projeto inclui manifesto, ícones e Service Worker:
+Se o repositório já estiver conectado à Vercel, alterações na branch `main` **normalmente** disparam uma nova implantação, desde que a integração e o deploy automático estejam ativos.
 
-- A interface principal e o catálogo são armazenados em cache para uso offline após o carregamento inicial.
-- As mídias podem ser armazenadas sob demanda.
-- Para preparar **todas as imagens e animações** para uso sem internet, acesse **Configurações → PWA e biblioteca offline → Baixar biblioteca completa para uso offline** e aguarde a conclusão.
-- O primeiro acesso e o preenchimento inicial do cache exigem conexão.
-- O funcionamento offline depende do armazenamento disponível; o navegador/sistema pode limpar o cache.
-- A instalação PWA requer **HTTPS** (ou `localhost` em ambiente de desenvolvimento). Abrir o arquivo por `file://` não oferece instalação de Service Worker.
+## Usar como PWA e offline
 
-## Como usar no PC e no celular
+O `manifest.webmanifest` e o `sw.js` permitem instalar a aplicação em navegadores compatíveis. O Service Worker armazena a interface, os scripts, os estilos e o catálogo em cache e adiciona imagens ao cache conforme o uso.
 
-1. Publique o aplicativo na Vercel.
-2. Abra a URL no navegador do computador ou do celular.
-3. No dispositivo, use a opção de instalação do navegador, quando oferecida.
-4. Antes de ficar offline, baixe a biblioteca completa de mídias no **próprio dispositivo**.
-5. Para continuar um acompanhamento iniciado em outro aparelho, **exporte o backup no aparelho antigo e restaure no novo**.
+Para usar **todas as imagens sem internet**, procure em Configurações a opção de baixar a biblioteca para uso offline e aguarde até terminar. O cache é próprio de cada dispositivo e pode ser removido pelo navegador/sistema; faça a primeira visita com internet. A instalação PWA requer HTTPS ou localhost, não basta abrir `index.html` por `file://`.
 
-### Armazenamento e segurança dos dados
+## Dados, backups e privacidade
 
-- A Vercel hospeda os arquivos estáticos; **não** há sincronização automática de clientes, histórico ou cobranças entre dispositivos.
-- Os registros permanecem no armazenamento local do navegador (IndexedDB) e, quando compatível e autorizado, em pasta local.
-- Ao migrar do HTML aberto no computador para o domínio HTTPS, **os dados do navegador antigo não são transferidos automaticamente**.
-- Faça **backups externos frequentes** e confira a restauração antes de apagar os dados de origem.
-- Os arquivos de backup JSON não são criptografados por padrão: armazene-os em local protegido.
-- O backup automático às 22h depende do aplicativo aberto; quando reaberto, o app verifica backups pendentes.
-- Não utilize a escolha entre Aluno e Personal como mecanismo de proteção de informações em dispositivos compartilhados.
+**Os dados dos clientes não são enviados automaticamente ao GitHub, à Vercel ou a um servidor.** Eles ficam no armazenamento local do navegador e, quando autorizado e suportado, em pasta de arquivos do dispositivo. A troca de navegador, dispositivo ou endereço do site não transfere esses dados automaticamente.
 
-## Desenvolvimento local
+- Exporte backups antes de atualizar, reinstalar ou trocar o dispositivo.
+- Confira o conteúdo restaurado **antes** de apagar a fonte anterior.
+- Proteja backups que contenham informações pessoais; o JSON exportado não é necessariamente criptografado.
+- Os modos **Aluno** e **Personal** personalizam a interface, mas **não são um sistema de autenticação seguro** para dados em computadores compartilhados.
+- O acesso offline e o armazenamento persistente dependem das permissões e capacidades do navegador.
 
-Para testar os arquivos sem publicar, execute um servidor HTTP local na raiz do projeto:
+## Testes recomendados antes da produção
 
-```bash
-python -m http.server 8000
-```
+1. Escolher um cliente de teste e criar uma rotina com dois exercícios de três séries.
+2. Iniciar o treino e confirmar que **Concluir e salvar** fica desativado com séries pendentes.
+3. Marcar cinco das seis séries; confirmar que ainda não é possível finalizar.
+4. Marcar a última série; confirmar que o botão de conclusão é habilitado.
+5. Desmarcar uma série; confirmar que o botão volta a ficar desativado.
+6. Marcar todas novamente, concluir e verificar os dados no Histórico e no relatório de cargas.
+7. Iniciar outra sessão, excluir uma série não concluída e conferir a renumeração; excluir série concluída deve pedir confirmação.
+8. Testar **Concluir exercício** e **Trocar exercício** em telas de 320, 375, 390, 768 e 1440 px.
+9. Testar recuperação após recarregar a página e troca de cliente, sem corromper a sessão ativa.
+10. Instalar PWA em HTTPS e verificar cache, offline, restauração de backup e armazenamento IndexedDB.
 
-Abra `http://localhost:8000`. Evite abrir `index.html` diretamente com `file://` para testes de PWA e armazenamento.
+**Situação:** as verificações de sintaxe e os testes automatizados isolados são executados antes da publicação. A validação em produção com IndexedDB real, PWA instalado e dispositivos Android/iOS precisa ser confirmada separadamente.
 
-## Checklist de validação após a publicação
+## Observações técnicas
 
-- [ ] Abrir o site por HTTPS, sem erros no console.
-- [ ] Entrar no modo Personal e escolher/restaurar um cliente.
-- [ ] Importar um treino por PDF; recarregar e confirmar a persistência.
-- [ ] Iniciar uma sessão, registrar séries, concluir e salvar.
-- [ ] Verificar Histórico, Evolução, mapa corporal e Cobranças.
-- [ ] Confirmar que as miniaturas e animações carregam.
-- [ ] Testar instalação do PWA em Android, iOS e desktop, quando compatível.
-- [ ] Executar o download da biblioteca offline e testar sem rede.
-- [ ] Testar backup e restauração entre computador e celular.
-- [ ] Verificar separação de dados entre clientes.
-
-**Situação dos testes:** a sintaxe dos scripts, referências de mídia e integridade do pacote foram verificadas na preparação da v6.3. A instalação PWA real, o IndexedDB em produção e os testes de ponta a ponta precisam ser confirmados no domínio publicado. Os detalhes da correção atual e as pendências estão descritos nesta seção do README.
-
-## Documentação complementar
-
-
-## Novidades v6.3
-
-- Meus Programas: modelos PPL, Full Body, Upper/Lower e personalizados, com atribuição por cliente.
-- Evolução de Cargas: agrupamento mês a mês e de três em três meses.
-- Calendários responsivos centralizados para Treinos, Clientes e Evolução.
-- Interface índigo/grafite, com ícones SVG de navegação e ajustes de contraste.
-- O armazenamento dos clientes permanece local no dispositivo.
-
-## Correção de séries — manutenção da v6.3
-
-- **Treino em andamento:** cada série agora tem um botão **×** para excluir aquela série, renumerando automaticamente as restantes.
-- Séries já concluídas exigem confirmação antes de excluir.
-- **Editar rotina:** utilize **− Série**, ou **×** nas metas individuais, e salve a rotina.
-- **Meus Programas:** utilize **− Série** para reduzir a quantidade antes de salvar.
-- Uma série mínima é preservada por exercício; o histórico de sessões finalizadas não é alterado.
-
-**QA:** todos os nove scripts passaram no verificador de sintaxe. Testes isolados cobriram confirmação, renumeração, último item, alteração de metas e persistência simulada. Verificação visual no Chromium em 320, 375, 390, 768 e 1440 px sem transbordamento das linhas. Testes end-to-end do aplicativo completo/IndexedDB permanecem pendentes porque a navegação a localhost foi bloqueada neste ambiente.
+- Front-end estático em HTML, CSS e JavaScript; **sem backend** e sem sincronização de contas.
+- `assets/js/nucleo-app.js` coordena a execução e o armazenamento dos treinos; `assets/js/meus-programas.js` controla os programas reutilizáveis.
+- O cache PWA usa versão `0.64.beta` para atualizar arquivos da interface, preservando o cache de mídia reutilizável quando possível.
+- O histórico de sessões concluídas não é alterado pelas novas regras de finalização de treinos em andamento.
