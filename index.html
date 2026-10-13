@@ -1410,18 +1410,15 @@ body.session-focus-mode #workout-active .et-md3-set-grid .set-check:checked,
 @media(max-width:360px){#page-evolution > .evo-segments > button{font-size:10px;letter-spacing:0;padding:11px 2px}}
 </style>
 <style id="et-square-soft-ui">
-/* 0.77.beta — cantos discretos em ambos os perfis; seletores com especificidade alta. */
+/* 0.77.beta: regra abrangente para componentes de aluno e personal.
+   A versão anterior usava :is(...) e deixava de fora cartões específicos. */
 :root,html,body,.app-shell{--radius:6px!important;--et-corner:6px!important}
-html body :is(button,.btn,.btn-primary,.btn-secondary,.btn-danger,.nav-btn,.etp-tabs button,.etp-day-tab,.etp-result,.evo-cta,.pill,.badge,.chip,.tag,.tab,[role="button"],[role="tab"],a.btn,summary),
-html body :is(input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),select,textarea),
-html body :is(.card,.filterbox,.modal,.toast,.etp-editor,.etp-tabs,.etp-panel,.evo-panel,.evo-kpi,.etp-chart,.etp-report-table,.etp-metrics>div,.client-calendar-wrap,.library-card,.client-list-item,.fin-service-card,.et41-settings-card,.empty,.inline-notice,.etp-empty,.etp-bar-track,.etp-bar-fill,.topbar,.bottom-nav,.et-role-panel,.et52-side-logo,.etp-program-card,.etp-workout-card,.etp-section-head,.et-md3-set-grid,.workout-card,.routine-card,.exercise-card,.student-card,.coach-card,.role-card),
-html body [class*="rounded"],html body [style*="border-radius"]{border-radius:6px!important}
-html body :is(.modal-overlay,.etp-modal-overlay){border-radius:0!important}
-html body :is(input[type="checkbox"],input[type="radio"]){border-radius:3px!important}
-html body :is(.status-dot,.spinner,.loading-spinner){border-radius:50%!important}
+html body *:not(svg):not(svg *):not(input[type="checkbox"]):not(input[type="radio"]):not(.status-dot):not(.spinner):not(.loading-spinner):not(.et-circle-indicator){border-radius:6px!important}
+html body input[type="checkbox"]{border-radius:3px!important}
+html body input[type="radio"],html body .status-dot,html body .spinner,html body .loading-spinner,html body .et-circle-indicator{border-radius:50%!important}
+html body :is(.modal-overlay,.etp-modal-overlay,.overlay,.app-shell,.page){border-radius:0!important}
 html body :is(button,.btn,.card,.filterbox,.modal,.etp-tabs,.nav-btn,.bottom-nav)::before,
 html body :is(button,.btn,.card,.filterbox,.modal,.etp-tabs,.nav-btn,.bottom-nav)::after{border-radius:inherit!important}
-@media(max-width:600px){html body :is(.card,.filterbox,.etp-tabs,.evo-panel,.etp-metrics>div,.etp-workout-card){border-radius:6px!important}}
 </style>
 </head>
 <body class="role-unselected">
