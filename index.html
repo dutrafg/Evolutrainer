@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0b0e14">
   <meta name="application-name" content="EvoluTrainer">
   <meta name="description" content="Gestão offline de treinos, clientes, avaliações e cobranças.">
-  <title>EvoluTrainer 0.77.beta — Gestão de Treinos, Clientes e Cobranças</title>
+  <title>EvoluTrainer 0.79.beta — Gestão de Treinos, Clientes e Cobranças</title>
   <link rel="icon" type="image/svg+xml" href="./assets/icon.svg">
   <style>
 /* Estilo de origem 1 —  */
@@ -446,6 +446,7 @@ body[data-theme="light"] .topbar,body.theme-light .topbar{background:rgba(248,24
 .library-card .ex-thumb,.routine-preview-row .ex-thumb{object-fit:cover;object-position:center}
 .library-card .library-title{overflow-wrap:anywhere;line-height:1.4}
 .media-source-note{margin-top:12px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--soft);color:var(--muted);font-size:12px;line-height:1.5}
+
 
 /* Estilo de origem 6 — id="v39-visual-refinement" */
 
@@ -896,7 +897,8 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .page .field label{font-size:13px;line-height:1.4;font-weight:650}
 .page .btn{min-height:43px;font-size:13px;letter-spacing:0;font-weight:680}
 .page .btn.small{min-height:39px;font-size:12px;padding:8px 12px}
-.page input,.page select,.page textarea{font-size:max(16px,1rem);line-height:1.4;border-radius:12px}.page .muted{line-height:1.5}
+.page input,.page select,.page textarea{font-size:max(16px,1rem);line-height:1.4;border-radius:12px}
+.page .muted{line-height:1.5}
 #page-finance .page-head{margin-bottom:18px}
 #page-finance .page-head h1::after{font-size:12px;display:inline-block;vertical-align:middle;margin-left:12px;font-weight:650}
 #page-finance .fin-service-table{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:18px 0 22px}
@@ -1241,7 +1243,7 @@ html[data-theme="light"] .client-calendar-days button{background:var(--soft)}
 
 </style>
 <style>
-/* EvoluTrainer 0.77.beta — Material Design 3 responsive visual layer. */
+/* EvoluTrainer 0.79.beta — Material Design 3 responsive visual layer. */
 :root{--primary:#aebcff;--primary-dark:#8295f4;--bg:#10131b;--surface:#191e2a;--card:#222838;--soft:#2b3243;--border:#414a60;--text:#f0f1fc;--muted:#b7c0d4;--radius:22px;font-family:Roboto,"Segoe UI",Arial,sans-serif!important;color-scheme:dark}
 body{background:var(--bg)!important;color:var(--text);font-family:Roboto,"Segoe UI",Arial,sans-serif!important;overflow-x:hidden}
 body *{min-width:0}button,input,select,textarea{font-family:inherit!important}button,.btn,.nav-btn{touch-action:manipulation;transition:background-color .18s ease,box-shadow .18s ease,transform .18s ease}
@@ -1301,7 +1303,7 @@ html[data-theme="light"],body[data-theme="light"],body.light,html.light{--primar
 
 </style>
 <style id="et-theme-073">
-/* EvoluTrainer 0.77.beta — Material Design 3 · Black / Amber
+/* EvoluTrainer 0.79.beta — Material Design 3 · Black / Amber
    Camada de identidade visual; mantém a lógica e os componentes existentes. */
 :root,html:not([data-theme="light"]){
  --primary:#FFD54A;--primary-dark:#F4B900;--bg:#0A0A0B;
@@ -1341,11 +1343,12 @@ a{accent-color:var(--primary)}input[type=checkbox],input[type=radio],input[type=
 @media(prefers-reduced-motion:reduce){button,.btn,.nav-btn{transition:none!important}}
 </style>
 <style id="et-theme-fix-074">
-/* 0.77.beta — corrige precedência dos tokens da identidade preta/amarela. */
+/* 0.79.beta — corrige precedência dos tokens da identidade preta/amarela. */
 :root,html,html:not([data-theme="light"]),html[data-theme="dark"],body:not([data-theme="light"]),body[data-theme="dark"],body.theme-dark{
  --primary:#FFD54A!important;--primary-dark:#F4B900!important;--bg:#0A0A0B!important;
  --surface:#141416!important;--card:#1B1B1E!important;--soft:#29292E!important;
- --border:#39393E!important;--text:#F7F7F5!important;--muted:#B6B6BA!important; --et-md3-primary:#FFD54A!important;--et-md3-on-primary:#191300!important;
+ --border:#39393E!important;--text:#F7F7F5!important;--muted:#B6B6BA!important;
+ --et-md3-primary:#FFD54A!important;--et-md3-on-primary:#191300!important;
  color-scheme:dark!important;
 }
 html[data-theme="light"],html[data-theme="light"] body,body[data-theme="light"],body.theme-light,html.light,html.light body{
@@ -1361,7 +1364,7 @@ html:not([data-theme="light"]) .nav-btn.active,html:not([data-theme="light"]) .e
 html:not([data-theme="light"]) :is(.btn.primary,.btn-primary,button.primary,.evo-cta){background:var(--primary)!important;color:#191300!important;border-color:var(--primary)!important}
 html[data-theme="light"] :is(.btn.primary,.btn-primary,button.primary,.evo-cta){background:var(--primary)!important;color:#fff!important;border-color:var(--primary)!important}
 </style><style id="et-075-fix">
-/* 0.77.beta: um único check Material 3, sem sobreposição dos pseudo-elementos. */
+/* 0.79.beta: um único check Material 3, sem sobreposição dos pseudo-elementos. */
 body.session-focus-mode #workout-active .et-md3-set-grid .set-check::before,
 #workout-active .et-md3-set-grid .set-check::before{content:none!important;display:none!important}
 body.session-focus-mode #workout-active .et-md3-set-grid .set-check::after,
@@ -1378,7 +1381,7 @@ body.session-focus-mode #workout-active .et-md3-set-grid .set-check:checked,
 #workout-active .et-md3-set-grid .set-check:checked{background:#FFD54A!important;border-color:#FFD54A!important}
 #workout-active .et-finish-btn:disabled{opacity:.45!important}
 </style>
-<style id="et-role-gate-fix">/* 0.77.beta — correção isolada da tela inicial (Material 3) */
+<style id="et-role-gate-fix">/* 0.79.beta — correção isolada da tela inicial (Material 3) */
 #et-role-gate{box-sizing:border-box;min-height:100dvh;height:100dvh;padding:clamp(12px,3vw,28px);background:radial-gradient(ellipse at 50% 0%,rgba(255,213,74,.10),transparent 55%),#090b0f;overflow-y:auto;align-items:safe center;justify-content:center;color:#f7f7f8}
 #et-role-gate .et-role-panel{box-sizing:border-box;flex:0 1 680px;width:100%;max-width:680px;min-width:0;margin:auto;padding:clamp(20px,4vw,34px);border-radius:28px;border:1px solid #36383e;background:#17191f;box-shadow:0 22px 65px #0008;overflow-wrap:normal}
 #et-role-gate .et-role-logo{font-size:clamp(25px,6vw,35px);line-height:1.15;letter-spacing:-1.1px;color:#fff;overflow-wrap:normal;word-break:normal}
@@ -1404,43 +1407,41 @@ body.session-focus-mode #workout-active .et-md3-set-grid .set-check:checked,
 @media(prefers-reduced-motion:reduce){#et-role-gate .et-role-choice{transition:none}}
 </style>
 
-<style id="et-evolution-tabs-alignment-fix">
-#page-evolution > .evo-segments{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;max-width:100%;box-sizing:border-box;overflow-x:hidden;gap:5px}
-#page-evolution > .evo-segments > button{display:flex;align-items:center;justify-content:center;min-width:0;width:100%;box-sizing:border-box;white-space:normal;overflow-wrap:anywhere;flex:initial;padding:12px 4px;text-align:center}
-@media(max-width:360px){#page-evolution > .evo-segments > button{font-size:10px;letter-spacing:0;padding:11px 2px}}
+<style id="et-student-phase1-css">
+body.role-student #et-student-phase1:not([hidden]){display:block;margin:0 0 18px}
+.et-p1-nav{display:flex;gap:7px;overflow-x:auto;padding:5px 0 12px;scrollbar-width:thin}
+.et-p1-nav button{flex:1;min-width:max-content;border:1px solid var(--border);background:var(--card);color:var(--text);padding:12px 9px;border-radius:9px;font-weight:700}
+.et-p1-nav button[aria-current="page"]{background:var(--primary);color:white}
+.et-p1-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:13px 0}
+.et-p1-kpi,.et-p1-panel{border:1px solid var(--border);background:var(--card);border-radius:10px;padding:14px}
+.et-p1-kpi strong{display:block;font-size:clamp(18px,4vw,27px);overflow-wrap:anywhere}
+.et-p1-kpi span,.et-p1-muted{font-size:12px;color:var(--muted)}
+.et-p1-panel{margin:12px 0}
+.et-p1-panel h2{font-size:18px;margin:0 0 9px}
+.et-p1-panel p{margin:6px 0}
+.et-p1-table{width:100%;border-collapse:collapse;font-size:13px}
+.et-p1-table th,.et-p1-table td{border-bottom:1px solid var(--border);padding:9px 4px;text-align:left}
+.et-p1-scroll{overflow-x:auto}
+.et-p1-bars{display:grid;gap:10px}
+.et-p1-bar{height:9px;background:var(--soft);border-radius:5px;overflow:hidden}
+.et-p1-bar>span{display:block;height:100%;background:var(--primary)}
+.et-p1-entry{padding:10px 0;border-bottom:1px solid var(--border)}
+.et-p1-entry:last-child{border-bottom:0}
+.et-p1-field{display:grid;gap:5px;margin:10px 0}
+.et-p1-field label{font-weight:700;font-size:13px}
+.et-p1-field select,.et-p1-field textarea{width:100%;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px}
+@media(max-width:420px){.et-p1-kpi{padding:9px}.et-p1-grid{gap:6px}}
 </style>
-<style id="et-square-soft-ui">
-/* 0.77.beta: regra abrangente para componentes de aluno e personal.
-   A versão anterior usava :is(...) e deixava de fora cartões específicos. */
-:root,html,body,.app-shell{--radius:6px!important;--et-corner:6px!important}
-html body *:not(svg):not(svg *):not(input[type="checkbox"]):not(input[type="radio"]):not(.status-dot):not(.spinner):not(.loading-spinner):not(.et-circle-indicator){border-radius:6px!important}
-html body input[type="checkbox"]{border-radius:3px!important}
-html body input[type="radio"],html body .status-dot,html body .spinner,html body .loading-spinner,html body .et-circle-indicator{border-radius:50%!important}
-html body :is(.modal-overlay,.etp-modal-overlay,.overlay,.app-shell,.page){border-radius:0!important}
-html body :is(button,.btn,.card,.filterbox,.modal,.etp-tabs,.nav-btn,.bottom-nav)::before,
-html body :is(button,.btn,.card,.filterbox,.modal,.etp-tabs,.nav-btn,.bottom-nav)::after{border-radius:inherit!important}
-<style id="et-report-mobile-layout">
-/* Evolução de cargas: impedir que regras antigas deixem os filtros espalhados. */
-#etp-report-view{width:100%;min-width:0}
-#etp-report-view .etp-report-filters{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;align-items:end!important;gap:12px!important;margin:14px 0 18px!important}
-#etp-report-view .etp-report-filters>label{display:block!important;position:static!important;flex:none!important;min-width:0!important;width:auto!important;max-width:none!important;height:auto!important;min-height:0!important;margin:0!important;padding:0!important;transform:none!important;float:none!important}
-#etp-report-view .etp-report-filters>label:first-child{grid-column:1/-1}
-#etp-report-view .etp-report-filters select{display:block!important;position:static!important;width:100%!important;min-width:0!important;max-width:100%!important;height:44px!important;min-height:44px!important;margin:6px 0 0!important;padding:8px 10px!important;transform:none!important}
-#etp-report-view .etp-section-head{margin-bottom:10px!important;gap:10px!important}
-#etp-report-view .etp-section-head h2{font-size:clamp(21px,5vw,30px)!important;line-height:1.18!important}
-#etp-report-view .etp-metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
-#etp-report-view .etp-metrics>div{min-width:0;padding:12px!important}
-#etp-report-view .etp-chart{max-height:420px!important;overflow-y:auto!important;gap:7px!important}
-#etp-report-view .etp-report-table{max-width:100%;overflow-x:auto!important}
-@media(min-width:720px){#etp-report-view .etp-report-filters{grid-template-columns:2fr 1fr 1fr!important}#etp-report-view .etp-report-filters>label:first-child{grid-column:auto}}
-@media(max-width:420px){#etp-report-view .etp-chart{padding:10px!important}#etp-report-view .etp-bar-row{grid-template-columns:54px minmax(0,1fr) 65px!important;gap:5px!important}}
+<style id="et-p1-today-only-css">
+/* Calendário original, dia selecionado e meus treinos pertencem apenas à aba Hoje. */
+body.role-student.et-p1-only-today #workout-routines{display:none!important}
+/* Durante a execução de um treino, o conteúdo e o cronômetro seguem disponíveis. */
+body.role-student.et-p1-only-today:has(#workout-active:not([hidden])) #workout-routines{display:none!important}
 </style>
-</style>
-<style id="et-set-progress-style">.et-set-progress{display:grid;gap:5px;margin:0 0 9px;min-height:6px;max-height:7px;overflow:hidden}.et-set-progress span{height:6px;border-radius:3px;background:color-mix(in srgb,var(--muted) 24%,transparent)}.et-set-progress span.done{background:#75c94d}@media(max-width:480px){.et-set-progress{gap:3px}}</style>
 </head>
 <body class="role-unselected">
  <div id="et-role-gate" role="dialog" aria-modal="true" aria-labelledby="et-role-title">
-  <div class="et-role-panel"><div class="et-role-logo">Evolu<span>Trainer</span></div><div class="et-role-tag">0.77.beta · Área de acesso</div>
+  <div class="et-role-panel"><div class="et-role-logo">Evolu<span>Trainer</span></div><div class="et-role-tag">0.79.beta · Área de acesso</div>
    <h1 id="et-role-title">Como deseja entrar?</h1><p class="et-role-description">Escolha o tipo de uso neste dispositivo. Cada treino continua salvo no banco individual do cliente.</p>
    <div class="et-role-choices" role="group" aria-label="Escolher modo de acesso">
     <button type="button" class="et-role-choice" id="et-enter-personal"><span class="et-role-icon">🏋️</span><strong>Personal</strong><small>Acesso aos clientes, treinos, biblioteca, histórico, evolução e configurações.</small></button>
@@ -1452,7 +1453,7 @@ html body :is(button,.btn,.card,.filterbox,.modal,.etp-tabs,.nav-btn,.bottom-nav
   </div></div>
  <div class="app-shell">
   <header class="topbar">
-   <div><div class="brand">Evolu<span>Trainer</span> <small>0.77.beta</small></div><div class="tagline">Treino, evolução e composição · 100% web</div></div>
+   <div><div class="brand">Evolu<span>Trainer</span> <small>0.79.beta</small></div><div class="tagline">Treino, evolução e composição · 100% web</div></div>
    <div class="status"><span class="status-dot"></span> <span id="status-text">Inicializando...</span></div><button type="button" id="et-personal-switch" class="btn secondary small" hidden>Trocar modo</button>
        <div id="active-client-bar" class="active-client-bar" aria-label="Cliente em atendimento">
       <div class="active-client-title"><span class="active-client-indicator" aria-hidden="true"></span><span id="active-client-label">CLIENTE EM ATENDIMENTO</span></div>
@@ -1472,6 +1473,7 @@ html body :is(button,.btn,.card,.filterbox,.modal,.etp-tabs,.nav-btn,.bottom-nav
     <div id="student-controls"></div>
    </section>
    <section id="page-workouts" class="page active" aria-label="Treinos">
+    <div id="et-student-phase1" hidden></div>
     <div id="workout-active" hidden></div>
     <div id="workout-routines">
      <div id="workout-calendar" aria-live="polite"></div>
@@ -1557,9 +1559,9 @@ html body :is(button,.btn,.card,.filterbox,.modal,.etp-tabs,.nav-btn,.bottom-nav
    </section>
   </main>
   <nav class="bottom-nav" aria-label="Navegação principal">
-   <div class="et52-side-brand" aria-label="Identidade do aplicativo"><div class="et52-side-logo">Evolu<span>Trainer</span> <small>0.77.beta</small></div><div class="et52-side-tag">Treino, evolução e composição · 100% web</div></div>
-   <button class="nav-btn nav-primary" data-tab="clients" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M16 9a3 3 0 0 0 0-5M17 16a5 5 0 0 1 4 4"/></svg></span>Clientes</button>
+   <div class="et52-side-brand" aria-label="Identidade do aplicativo"><div class="et52-side-logo">Evolu<span>Trainer</span> <small>0.79.beta</small></div><div class="et52-side-tag">Treino, evolução e composição · 100% web</div></div>
    <button class="nav-btn nav-primary" data-tab="workouts" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h16M8 7v10M16 7v10"/></svg></span>Treinos</button>
+   <button class="nav-btn nav-primary" data-tab="clients" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M16 9a3 3 0 0 0 0-5M17 16a5 5 0 0 1 4 4"/></svg></span>Clientes</button>
    <button class="nav-btn nav-primary" data-tab="library" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h5a3 3 0 0 1 3 3v14a3 3 0 0 0-3-3H4zm16 0h-5a3 3 0 0 0-3 3v14a3 3 0 0 1 3-3h5z"/></svg></span>Biblioteca</button>
    <button class="nav-btn nav-primary" data-tab="evolution" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3v18h18M6 16l5-5 4 3 6-8M17 6h4v4"/></svg></span>Evolução</button>
    <button class="nav-btn nav-desktop" data-tab="history" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 3"/></svg></span>Histórico</button>
@@ -1569,7 +1571,6 @@ html body :is(button,.btn,.card,.filterbox,.modal,.etp-tabs,.nav-btn,.bottom-nav
   </nav>
   <div id="et-more-menu" hidden role="dialog" aria-label="Mais opções"><button type="button" data-tab="history">Histórico</button><button type="button" data-tab="finance">Cobranças</button><button type="button" data-tab="settings">Configurações</button></div>
 <div id="rest-floating" class="floating-rest" role="region" aria-label="Cronômetro de descanso" hidden>
-  
   <div class="rest-track" aria-hidden="true"><span id="floating-rest-progress"></span></div>
   <div class="rest-row">
     <div><div class="rest-label" id="floating-rest-label">DESCANSO ENTRE SÉRIES</div><div class="rest-time" id="floating-rest-clock" aria-live="off">01:30</div></div>
@@ -1616,7 +1617,7 @@ class PDF {
  paragraph(t,size=10,max=WIDTH-80,leading=14,color=C.dark,bold=false){const lines=wrap(t,max,size,bold);for(const line of lines){this.ensure(leading);this.text(40,this.y+size,line,size,bold,color);this.y+=leading;}return lines.length;}
  heading(t){this.ensure(44);this.rect(38,this.y-1,WIDTH-76,28,C.soft);this.text(48,this.y+17,t,12,true,C.dark);this.y+=39;}
  keyValues(fields){this.ensure(58);const w=(WIDTH-80)/fields.length;fields.forEach(([key,value],i)=>{const x=40+i*w;this.text(x,this.y+5,key.toUpperCase(),8,true,C.muted);wrap(value,w-10,10,true).slice(0,2).forEach((line,j)=>this.text(x,this.y+23+j*12,line,10,true,C.dark));});this.y+=54;this.line(40,this.y-10,WIDTH-40,this.y-10,C.border);}
- toBlob(){this.pages.forEach((commands,i)=>{commands.push(`${rgb(C.muted)} rg BT /F1 8 Tf 1 0 0 1 40 30 Tm (EvoluTrainer 0.77.beta | Documento local) Tj ET`);commands.push(`${rgb(C.muted)} rg BT /F1 8 Tf 1 0 0 1 495 30 Tm (Pagina ${i+1} de ${this.pages.length}) Tj ET`);});
+ toBlob(){this.pages.forEach((commands,i)=>{commands.push(`${rgb(C.muted)} rg BT /F1 8 Tf 1 0 0 1 40 30 Tm (EvoluTrainer 0.79.beta | Documento local) Tj ET`);commands.push(`${rgb(C.muted)} rg BT /F1 8 Tf 1 0 0 1 495 30 Tm (Pagina ${i+1} de ${this.pages.length}) Tj ET`);});
   let objects=[null];const add=obj=>{objects.push(obj);return objects.length-1;};
   const font1=add('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>');
   const font2=add('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>');
@@ -1829,7 +1830,8 @@ function queueMirrorCatalog(){
  const task=state.catalogSyncQueue.catch(()=>{}).then(()=>mirrorCatalog());
  state.catalogSyncQueue=task;return task;
 }
-async function writeRoster(){if(!state.folderReady||!state.folder)return; // Preserve the original 'alunos/indice.json' for backwards compatibility.
+async function writeRoster(){if(!state.folderReady||!state.folder)return;
+ // Preserve the original 'alunos/indice.json' for backwards compatibility.
  for(const path of ['alunos','clientes']){
   const base=await state.folder.getDirectoryHandle(path,{create:true});
   const clients=state.students.filter(p=>(p.baseDir||'alunos')===path);
@@ -2245,7 +2247,7 @@ function openWorkoutPdfDialog(){
   <div class="field"><label for="pdf-display-name">Nome no topo do PDF <span class="muted">(opcional)</span></label><input id="pdf-display-name" maxlength="120" placeholder="${esc(state.student.name)}"></div>
   <label class="pdf-toggle"><span><strong>Ocultar pesos</strong><small>Mostra séries e repetições sem cargas</small></span><input type="checkbox" id="pdf-hide-weights"></label>
   <label class="pdf-toggle"><span><strong>Ocultar séries e repetições</strong><small>Mostra somente os exercícios do treino</small></span><input type="checkbox" id="pdf-hide-sets"></label>
-  
+  <div class="inline-notice">O PDF é gerado diretamente e baixado, sem os cabeçalhos/rodapés de impressão do navegador e sem mostrar caminhos file:///.</div>
   <div class="actions"><button class="btn primary block" type="button" data-action="export-workout-pdf">📄 Exportar PDF</button><button class="btn secondary" data-action="close-modal">Cancelar</button></div>
  </div>`);
 }
@@ -2278,7 +2280,8 @@ function exerciseLoadChart(ex){
  const records=state.sessions.slice().reverse().map(s=>{
   const e=(s.exercises||[]).find(x=>x.exerciseId===ex.exerciseId);if(!e)return null;
   const loads=(e.sets||[]).filter(x=>x.done&&Number(x.weightKg)>0).map(x=>Number(x.weightKg));
-  return loads.length?{date:s.date||s.endedAt||'',weight:Math.max(...loads),current:false}:null; }).filter(Boolean).slice(-5);
+  return loads.length?{date:s.date||s.endedAt||'',weight:Math.max(...loads),current:false}:null;
+ }).filter(Boolean).slice(-5);
  const loads=ex.sets.filter(x=>x.done&&Number(x.weightKg)>0).map(x=>Number(x.weightKg));
  const current=loads.length?{date:new Date().toISOString(),weight:Math.max(...loads),current:true}:null;
  const points=[...records,...(current?[current]:[])];const weights=points.map(p=>p.weight);
@@ -2350,7 +2353,7 @@ function restFinishedAlert(){
 function restClockLabel(remaining){const sec=Math.max(0,Math.ceil(remaining/1000));return String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0');}
 function beginRest(seconds){if(!state.active)return;const duration=Math.max(0,Math.min(1800,Math.round(num(seconds,0))));if(duration>0){state.active.restAlertIssued=false;state.active.restDurationMs=duration*1000;state.active.restPausedMs=0;state.active.restUntil=Date.now()+duration*1000;persistActive();updateClock();}}
 function toggleRestPause(){if(!state.active)return;const a=state.active;if(num(a.restPausedMs)>0){a.restUntil=Date.now()+a.restPausedMs;a.restDurationMs=Math.max(num(a.restDurationMs),a.restPausedMs);a.restPausedMs=0;}else if(num(a.restUntil)>Date.now()){a.restPausedMs=a.restUntil-Date.now();a.restUntil=0;}persistActive();updateClock();}
-function updateFloatingRest(){const bar=$('#rest-floating'),a=state.active;if(!bar)return;const paused=Boolean(a&&num(a.restPausedMs)>0);const remaining=paused?num(a.restPausedMs):Math.max(0,num(a?.restUntil)-Date.now());const show=Boolean(a&&state.tab==='workouts'&&(paused||remaining>0));bar.hidden=!show;document.body.classList.toggle('rest-visible',show);if(!show)return;const sets=workoutCompletionStatus(a);const setBar=$('#floating-set-progress');if(setBar){const total=Math.max(0,sets.total);const done=Math.max(0,Math.min(total,sets.done));setBar.style.gridTemplateColumns='repeat('+Math.max(1,total)+',minmax(0,1fr))';setBar.innerHTML=Array.from({length:total},(_,i)=>'<span class="'+(i<done?'done':'')+'"></span>').join('');setBar.setAttribute('aria-valuenow',String(total?Math.round(done/total*100):0));setBar.setAttribute('aria-valuetext',done+' de '+total+' séries concluídas');} $('#floating-rest-clock').textContent=restClockLabel(remaining);$('#floating-rest-label').textContent=paused?'DESCANSO PAUSADO':'DESCANSO ENTRE SÉRIES';$('#floating-rest-pause').textContent=paused?'▶ Continuar':'⏸ Pausar';const duration=Math.max(num(a.restDurationMs),remaining,1000);$('#floating-rest-progress').style.width=(Math.max(0,Math.min(100,100*remaining/duration)))+'%';}
+function updateFloatingRest(){const bar=$('#rest-floating'),a=state.active;if(!bar)return;const paused=Boolean(a&&num(a.restPausedMs)>0);const remaining=paused?num(a.restPausedMs):Math.max(0,num(a?.restUntil)-Date.now());const show=Boolean(a&&state.tab==='workouts'&&(paused||remaining>0));bar.hidden=!show;document.body.classList.toggle('rest-visible',show);if(!show)return;$('#floating-rest-clock').textContent=restClockLabel(remaining);$('#floating-rest-label').textContent=paused?'DESCANSO PAUSADO':'DESCANSO ENTRE SÉRIES';$('#floating-rest-pause').textContent=paused?'▶ Continuar':'⏸ Pausar';const duration=Math.max(num(a.restDurationMs),remaining,1000);$('#floating-rest-progress').style.width=(Math.max(0,Math.min(100,100*remaining/duration)))+'%';}
 function adjustRest(seconds){if(!state.active)return;const a=state.active;if(seconds===0){a.restUntil=0;a.restPausedMs=0;a.restDurationMs=0;}else if(num(a.restPausedMs)>0){a.restPausedMs=Math.max(0,a.restPausedMs+seconds*1000);a.restDurationMs=Math.max(num(a.restDurationMs),a.restPausedMs);}else if(num(a.restUntil)>Date.now()){a.restUntil=Math.max(Date.now(),a.restUntil+seconds*1000);a.restDurationMs=Math.max(0,num(a.restDurationMs)+seconds*1000,a.restUntil-Date.now());}else{beginRest(seconds);return;}persistActive();updateClock();}
 function workoutCompletionStatus(workout=state.active){
  const exercises=Array.isArray(workout?.exercises)?workout.exercises:[];
@@ -2727,10 +2730,11 @@ function renderActiveWorkout(){
  ${exerciseLoadChart(ex)}
  <div class="coach-ex-actions" role="group" aria-label="Ações do exercício ${ei+1}"><button type="button" class="btn et-ex-action et-ex-action-complete ${ex.completed?'coach-ex-done':'secondary'}" data-action="toggle-ex-complete" data-index="${ei}">${ex.completed?'✓ Exercício concluído · Reabrir':'○ Marcar exercício como concluído'}</button><button type="button" class="btn secondary et-ex-action et-ex-action-swap" data-action="swap-exercise" data-index="${ei}" ${ex.substituted?'disabled':''}>↪ Trocar exercício</button></div></div>`;
  }).join('')}
- <div class="card"><div class="presential-note"><label for="session-coach-note">Observações do atendimento</label><textarea id="session-coach-note" data-session-note maxlength="2500" placeholder="Resumo da sessão, progresso de cargas, orientações para a próxima aula...">${esc(w.notes||'')}</textarea></div><div class="inline-notice" style="margin-top:13px">Os registros são mantidos temporariamente neste navegador durante a execução e, ao finalizar, são salvos no histórico e na pasta individual de ${esc(state.student?.name||'cliente')}, quando a gravação estiver autorizada.</div><div class="actions"><button type="button" class="btn primary et-finish-btn" data-action="finish-workout" ${finishUnavailable}>✓ Concluir e salvar sessão</button></div></div>`; updateClock();
+ <div class="card"><div class="presential-note"><label for="session-coach-note">Observações do atendimento</label><textarea id="session-coach-note" data-session-note maxlength="2500" placeholder="Resumo da sessão, progresso de cargas, orientações para a próxima aula...">${esc(w.notes||'')}</textarea></div><div class="inline-notice" style="margin-top:13px">Os registros são mantidos temporariamente neste navegador durante a execução e, ao finalizar, são salvos no histórico e na pasta individual de ${esc(state.student?.name||'cliente')}, quando a gravação estiver autorizada.</div><div class="actions"><button type="button" class="btn primary et-finish-btn" data-action="finish-workout" ${finishUnavailable}>✓ Concluir e salvar sessão</button></div></div>`;
+ updateClock();
 }
 function updateClock(){if(state.active&&num(state.active.restUntil)>0&&num(state.active.restUntil)<=Date.now()&&!state.active.restAlertIssued){state.active.restAlertIssued=true;const expiredFor=Date.now()-state.active.restUntil;state.active.restUntil=0;state.active.restDurationMs=0;persistActive();if(expiredFor<120000)restFinishedAlert();}const clock=$('#workout-clock');if(clock&&state.active)clock.textContent=fmtDuration(Math.max(0,Math.floor((Date.now()-new Date(state.active.startedAt).getTime())/1000)));updateFloatingRest();}
-function saveFieldFromInput(el){if(!state.active)return;const ei=Number(el.dataset.setEx),si=Number(el.dataset.setNo);const field=el.dataset.setField;const ex=state.active.exercises[ei],set=ex?.sets[si];if(!set||!(field in set))return;const wasDone=Boolean(set.done);set[field]=field==='done'?el.checked:num(el.value,0);if(field==='done'&&!set.done&&ex.completed)ex.completed=false;persistActive();if(field==='done'){if(!wasDone&&set.done)beginRest(ex.restSeconds);refreshWorkoutProgress();if(!wasDone&&set.done){const status=workoutCompletionStatus();if(status.ready&&status.total>0&&status.pending===0&&!state.workoutCompletionPrompted){state.workoutCompletionPrompted=true;const workoutName=state.active?.name||state.active?.routineName||'este treino';if(confirm('Todas as '+status.total+' séries de '+workoutName+' foram marcadas como concluídas. Deseja concluir o treino agora?')){finishWorkout();}}}else if(!set.done){state.workoutCompletionPrompted=false;}}}
+function saveFieldFromInput(el){if(!state.active)return;const ei=Number(el.dataset.setEx),si=Number(el.dataset.setNo);const field=el.dataset.setField;const ex=state.active.exercises[ei],set=ex?.sets[si];if(!set||!(field in set))return;const wasDone=Boolean(set.done);set[field]=field==='done'?el.checked:num(el.value,0);if(field==='done'&&!set.done&&ex.completed)ex.completed=false;persistActive();if(field==='done'){if(!wasDone&&set.done)beginRest(ex.restSeconds);refreshWorkoutProgress();}}
 function readVisibleWorkout(){document.querySelectorAll('[data-set-field]').forEach(el=>saveFieldFromInput(el));if(state.active){state.active.notes=$('[data-session-note]')?.value||state.active.notes||'';document.querySelectorAll('[data-ex-note]').forEach(el=>{const ex=state.active.exercises[Number(el.dataset.exNote)];if(ex)ex.notes=el.value;});persistActive();}}
 function addSet(index){if(!state.active?.exercises[index])return;readVisibleWorkout();const exercise=state.active.exercises[index],list=exercise.sets;if(list.length>=25){notify('Limite de 25 séries por exercício.');return;}const last=list.at(-1)||{};list.push({...last,done:false});exercise.completed=false;persistActive();renderActiveWorkout();}
 function removeSet(index,setIndex){
@@ -3042,7 +3046,7 @@ function offlineFiles(){const assets=['index.html','assets/css/01-base.css','ass
 function showOfflineProgress(current,total,message){const lbl=$('#offline-progress'),meter=$('#offline-meter');if(lbl)lbl.textContent=`${message} — ${current}/${total} (${Math.round(current*100/Math.max(total,1))}%)`;if(meter)meter.value=Math.round(current*100/Math.max(total,1));}
 async function installOfflineFolder(){
  if(!state.exercises.length)await syncExerciseCatalog({showNotice:false});
- if(location.protocol==='file:'){notify('Você já está usando uma pasta local offline.');$('#offline-progress').textContent='Os arquivos estão na pasta local. Faça backup JSON dos seus treinos regularmente.';return;}if(!window.showDirectoryPicker){notify('Este navegador não permite escolher pastas. Baixe o ZIP e extraia-o em uma pasta.');$('#offline-progress').textContent='Pasta manual necessária: baixe o ZIP e extraia os arquivos.';return;}
+ if(location.protocol==='file:'){notify('HTML local não garante que as mídias estejam disponíveis offline.');$('#offline-progress').textContent='Os arquivos estão na pasta local. Faça backup JSON dos seus treinos regularmente.';return;}if(!window.showDirectoryPicker){notify('Este navegador não permite escolher pastas. Baixe o ZIP e extraia-o em uma pasta.');$('#offline-progress').textContent='Pasta manual necessária: baixe o ZIP e extraia os arquivos.';return;}
  let dir;
  // Directory picker MUST be called synchronously inside the user click event.
  try{dir=await window.showDirectoryPicker({id:'evolutrainer-offline-dados',mode:'readwrite'});}catch(err){if(err.name!=='AbortError')notify('Não foi possível acessar a pasta: '+err.message);return;}
@@ -3069,6 +3073,7 @@ async function cacheOfflineFiles(){
    if(!existing){
     const response=await fetch(url,{cache:'no-cache'});
     if(!response.ok||response.type==='opaque')throw Error('HTTP '+response.status);
+    // Prevent HTML fallbacks from being stored as images, scripts or JSON.
     const contentType=response.headers.get('content-type')||'';
     if(!/\.html?$/i.test(pathname)&&/text\/html/i.test(contentType))throw Error('Servidor retornou HTML em vez do arquivo');
     await cache.put(url,response);
@@ -3202,7 +3207,8 @@ if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostn
 /* EvoluTrainer v3.8 — leitura local de PDFs Reft digitais, sem redes ou OCR. */
 (function(){'use strict';
  const MAX_BYTES=18*1024*1024,MAX_PAGES=80;
- const escHtml=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); function bytesToLatin(bytes){let s='';for(let i=0;i<bytes.length;i+=16384)s+=String.fromCharCode(...bytes.subarray(i,i+16384));return s;}
+ const escHtml=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ function bytesToLatin(bytes){let s='';for(let i=0;i<bytes.length;i+=16384)s+=String.fromCharCode(...bytes.subarray(i,i+16384));return s;}
  function latinToBytes(s){const out=new Uint8Array(s.length);for(let i=0;i<s.length;i++)out[i]=s.charCodeAt(i)&255;return out;}
  function objects(text){const result=new Map();const re=/(?:^|\n|\r)(\d+)\s+(\d+)\s+obj\b/g;let m;const found=[];while((m=re.exec(text))!==null)found.push({id:Number(m[1]),start:re.lastIndex});for(let i=0;i<found.length;i++){const end=i+1<found.length?found[i+1].start:text.length;const val=text.slice(found[i].start,end).replace(/\s*endobj\s*$/,'');result.set(found[i].id,val);}return result;}
  async function inflate(b){if(typeof DecompressionStream==='undefined')throw Error('Este navegador não suporta a descompactação local necessária para ler o PDF.');const stream=new Blob([b]).stream().pipeThrough(new DecompressionStream('deflate'));const reader=stream.getReader(),parts=[];let total=0;while(true){const {done,value}=await reader.read();if(done)break;total+=value.byteLength;if(total>35*1024*1024){await reader.cancel();throw Error('Página PDF excede o limite de segurança após descompactação.');}parts.push(value);}const out=new Uint8Array(total);let offset=0;for(const part of parts){out.set(part,offset);offset+=part.byteLength;}return out;}
@@ -3262,7 +3268,7 @@ if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostn
  app.pending=null;closeModal();await refresh();setTab('workouts');
  notify(`${routines.length} treinos de ${p.clientName} salvos e conferidos no banco individual. O histórico foi preservado.`);}
  document.addEventListener('change',e=>{if(e.target.matches('[data-pdf-map],[data-pdf-value],[data-pdf-note]'))modifyField(e.target);});document.addEventListener('input',e=>{if(e.target.matches('[data-pdf-value],[data-pdf-note]'))modifyField(e.target);});
- window.EvoluPDF={...(window.EvoluPDF||{}),readPDF,parseRuns,restSecs,matches,open,confirm};})();
+ window.EvoluPDF={readPDF,parseRuns,restSecs,matches,open,confirm};})();
 
 </script>
 
@@ -3466,7 +3472,7 @@ function renderMeasurements(){
   const ranked=[...gains].sort((a,b)=>b.diff-a.diff).slice(0,8),max=ranked[0]?.diff||1;
   const bars=ranked.length?`<div class="report-bars">${ranked.map(x=>`<div class="report-bar-row"><span>${html(x.name)}</span><div class="report-bar-track"><div class="report-bar-fill" style="width:${Math.min(100,100*x.diff/max)}%"></div></div><strong>+${fmtKg(x.diff)}</strong></div>`).join('')}</div>`:'<div class="report-empty">Nenhuma progressão positiva de carga com registros comparáveis no período.</div>';
   const root=document.querySelector('#evolutrainer-print-report');if(!root)return false;
-  root.innerHTML=`<header class="report-hdr"><div><h1>RELATÓRIO DE EVOLUÇÃO</h1><small>PROGRESSÃO DE SOBRECARGA E FORÇA</small></div><div class="report-logo">EvoluTrainer<br><small>${html(trainer)}${cref?'<br>'+html(cref):''}</small></div></header><section class="report-meta"><div><span>Cliente</span><strong>${html(state.student?.name||'')}</strong></div><div><span>Período</span><strong>${short(from)} a ${short(to)}</strong></div><div><span>Objetivo / foco</span><strong>${html(focus)}</strong></div></section><section class="report-stats"><div><span>Sessões concluídas</span><strong>${sessions.length}</strong></div><div><span>Volume total</span><strong>${fmt(totalVolume,0)} kg</strong></div><div><span>Maior ganho absoluto</span><strong>${better?'+'+fmtKg(better.diff):'—'}</strong><span>${better?html(better.name):'Sem comparativo'}</span></div><div><span>Maior ganho percentual</span><strong>${betterPct?pct(betterPct.pct):'—'}</strong><span>${betterPct?html(betterPct.name):'Sem comparativo'}</span></div></section><div class="report-title">ANÁLISE POR EXERCÍCIO</div>${table}<div class="report-title">GANHOS DE CARGA (KG ADICIONADOS)</div>${bars}${directions?`<div class="report-note"><b>DIRETRIZES PARA O PRÓXIMO PERÍODO (INFORMADAS PELO PERSONAL)</b><p>${html(directions)}</p></div>`:''}<div class="report-note"><b>METODOLOGIA E LIMITAÇÕES</b><p>Comparação da maior carga (kg) em séries concluídas no primeiro e no último registro de cada exercício dentro do período. Volume = soma de carga × repetições das séries concluídas. A comparação não ajusta mudanças de repetições, amplitude, técnica ou equipamento. Exercícios com um único registro não possuem percentual comparável. Ausência de sessão no calendário não comprova falta. Este relatório não equivale a avaliação clínica.</p></div><footer class="report-footer"><span>EvoluTrainer 0.77.beta · Relatório individual e local · ${html(state.student?.name||'')}</span><span>Gerado em ${html(new Date().toLocaleDateString('pt-BR'))}</span></footer>`;
+  root.innerHTML=`<header class="report-hdr"><div><h1>RELATÓRIO DE EVOLUÇÃO</h1><small>PROGRESSÃO DE SOBRECARGA E FORÇA</small></div><div class="report-logo">EvoluTrainer<br><small>${html(trainer)}${cref?'<br>'+html(cref):''}</small></div></header><section class="report-meta"><div><span>Cliente</span><strong>${html(state.student?.name||'')}</strong></div><div><span>Período</span><strong>${short(from)} a ${short(to)}</strong></div><div><span>Objetivo / foco</span><strong>${html(focus)}</strong></div></section><section class="report-stats"><div><span>Sessões concluídas</span><strong>${sessions.length}</strong></div><div><span>Volume total</span><strong>${fmt(totalVolume,0)} kg</strong></div><div><span>Maior ganho absoluto</span><strong>${better?'+'+fmtKg(better.diff):'—'}</strong><span>${better?html(better.name):'Sem comparativo'}</span></div><div><span>Maior ganho percentual</span><strong>${betterPct?pct(betterPct.pct):'—'}</strong><span>${betterPct?html(betterPct.name):'Sem comparativo'}</span></div></section><div class="report-title">ANÁLISE POR EXERCÍCIO</div>${table}<div class="report-title">GANHOS DE CARGA (KG ADICIONADOS)</div>${bars}${directions?`<div class="report-note"><b>DIRETRIZES PARA O PRÓXIMO PERÍODO (INFORMADAS PELO PERSONAL)</b><p>${html(directions)}</p></div>`:''}<div class="report-note"><b>METODOLOGIA E LIMITAÇÕES</b><p>Comparação da maior carga (kg) em séries concluídas no primeiro e no último registro de cada exercício dentro do período. Volume = soma de carga × repetições das séries concluídas. A comparação não ajusta mudanças de repetições, amplitude, técnica ou equipamento. Exercícios com um único registro não possuem percentual comparável. Ausência de sessão no calendário não comprova falta. Este relatório não equivale a avaliação clínica.</p></div><footer class="report-footer"><span>EvoluTrainer 0.79.beta · Relatório individual e local · ${html(state.student?.name||'')}</span><span>Gerado em ${html(new Date().toLocaleDateString('pt-BR'))}</span></footer>`;
   if(window.EvoluPDF?.evolution){try{window.EvoluPDF.evolution({clientName:state.student?.name||'Cliente',start:from,end:to,focus,trainer,cref,directions,rows,sessionsCount:sessions.length,volumeKg:totalVolume});root.classList.remove('report-ready');root.innerHTML='';closeModal();return true;}catch(err){console.error(err);notify('Não foi possível gerar o PDF: '+err.message);return false;}}
   root.classList.add('report-ready');closeModal();
   try{window.print();}catch(e){console.error(e);notify('Não foi possível abrir a impressão neste navegador.');return false;}
@@ -3651,7 +3657,8 @@ async function save(){if(state.active||etRole!=='personal'){notify('Finalize o t
   });
   document.addEventListener('change',event=>{
     if(event.target?.id!=='fin-service')return;
-    const price=catalog[event.target.value];    const input=document.getElementById('fin-price');
+    const price=catalog[event.target.value];
+    const input=document.getElementById('fin-price');
     if(input&&price!==undefined){
       input.value=price.toFixed(2);
       input.dispatchEvent(new Event('input',{bubbles:true}));
@@ -3675,5 +3682,92 @@ async function save(){if(state.active||etRole!=='personal'){notify('Finalize o t
 
 
 <script defer src="./assets/js/meus-programas.js"></script>
+
+<script id="et-student-phase1-js">
+(function(){
+'use strict';
+let tab='hoje';
+const $p=()=>document.getElementById('et-student-phase1');
+const safe=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const number=v=>Number.isFinite(Number(v))?Number(v):0;
+const dateOf=v=>{const d=new Date(v);return Number.isNaN(+d)?null:d};
+const formatDate=v=>{const d=dateOf(v);return d?d.toLocaleDateString('pt-BR'):'—'};
+const own=()=>typeof state!=='undefined'&&state.student&&typeof etRole!=='undefined'&&etRole==='student';
+const sessions=()=>Array.isArray(state.sessions)?state.sessions:[];
+const routines=()=>typeof getOrderedRoutines==='function'?getOrderedRoutines():[];
+const doneSets=s=>Array.isArray(s.exercises)?s.exercises.flatMap(e=>Array.isArray(e.sets)?e.sets.filter(x=>x.done):[]):[];
+const getKey=()=> 'et-p1-feedback-'+String(state.student.id);
+const feedbacks=()=>{try{const x=JSON.parse(localStorage.getItem(getKey())||'[]');return Array.isArray(x)?x:[]}catch{return []}};
+const groups={
+'peito':['peito','chest','supino','crucifixo','crossover','voador'],
+'ombros':['ombro','shoulder','desenvolvimento','elevação lateral','elevacao lateral'],
+'costas':['costas','back','remada','puxada','barra fixa','pulldown'],
+'bíceps':['bíceps','biceps','rosca'],
+'tríceps':['tríceps','triceps','tríceps','triceps','testa'],
+'pernas':['perna','quadríceps','quadriceps','agachamento','leg press','extensora','flexora','panturrilha','glúteo','gluteo'],
+'abdômen':['abdômen','abdomen','abdominal','core']
+};
+function muscle(ex){const ref=typeof exerciseById==='function'?exerciseById(ex.exerciseId):null;const raw=[ref?.category,ref?.name,ex.name,ex.muscle].filter(Boolean).join(' ').toLocaleLowerCase('pt-BR');return Object.keys(groups).find(g=>groups[g].some(k=>raw.includes(k)))||'Outros'}
+function stats(){
+ const ss=sessions(),now=new Date(),month=ss.filter(s=>{const d=dateOf(s.date);return d&&d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear()});
+ const weekStart=new Date(now.getFullYear(),now.getMonth(),now.getDate()-(now.getDay()+6)%7);
+ const thisWeek=ss.filter(s=>{const d=dateOf(s.date);return d&&d>=weekStart});
+ const totals={};const best=new Map();let records=0;
+ [...ss].sort((a,b)=>(dateOf(a.date)||0)-(dateOf(b.date)||0)).forEach(s=>(s.exercises||[]).forEach(ex=>{
+  const m=muscle(ex),sets=(ex.sets||[]).filter(x=>x.done);const vol=sets.reduce((n,x)=>n+number(x.weightKg??x.weight)*number(x.reps),0);
+  if(!totals[m])totals[m]={sets:0,volume:0};totals[m].sets+=sets.length;totals[m].volume+=vol;
+  const key=String(ex.exerciseId||ex.name||'exercício');for(const set of sets){const weight=number(set.weightKg??set.weight);if(weight>0&&weight>(best.get(key)||0)){if(best.has(key))records++;best.set(key,weight)}}
+ }));
+ return {ss,month,thisWeek,totals,records};
+}
+function render(){
+ const root=$p();if(!root)return;
+ if(!own()){root.hidden=true;document.body.classList.remove('et-p1-only-today');return}
+ root.hidden=!!state.active;
+ if(state.active)return;
+ document.body.classList.toggle('et-p1-only-today',tab!=='hoje');
+ const {ss,month,thisWeek,totals,records}=stats(),rr=routines(),last=ss.slice().sort((a,b)=>(dateOf(b.date)||0)-(dateOf(a.date)||0))[0], next=rr[0];
+ const nav=[['hoje','Hoje'],['historico','Histórico'],['evolucao','Evolução'],['calendario','Calendário'],['feedback','Feedback']];
+ const header=`<div class="et-p1-nav" role="navigation" aria-label="Área do aluno">${nav.map(([id,name])=>`<button type="button" data-p1-tab="${id}" aria-current="${tab===id?'page':'false'}">${name}</button>`).join('')}</div>`;
+ let body='';
+ if(tab==='hoje'){
+  body=`<div class="et-p1-panel"><h2>Olá, ${safe(state.student.name)}!</h2><p class="et-p1-muted">Seu painel de treinamento. Os registros pertencem somente ao perfil selecionado.</p></div>
+  <div class="et-p1-grid"><div class="et-p1-kpi"><strong>${month.length}</strong><span>Treinos no mês</span></div><div class="et-p1-kpi"><strong>${thisWeek.length}</strong><span>Treinos na semana</span></div><div class="et-p1-kpi"><strong>${records}</strong><span>Progressões de carga*</span></div></div>
+  <div class="et-p1-panel"><h2>Próximo treino</h2><p><strong>${safe(next?.name||'Nenhum treino cadastrado')}</strong></p><p class="et-p1-muted">${next?`${(next.exercises||[]).length} exercícios · escolha o treino na lista abaixo`:'Solicite uma rotina ao seu personal.'}</p>${next?`<button type="button" class="btn primary" data-action="start" data-id="${safe(next.id)}">▶ Iniciar treino</button>`:''}</div>
+  <div class="et-p1-panel"><h2>Última sessão</h2><p>${last?safe(last.routineName||'Treino')+' · '+formatDate(last.date):'Nenhuma sessão concluída.'}</p><p class="et-p1-muted">* Progressões observadas no histórico registrado, não recordes verificados.</p></div>`;
+ }else if(tab==='historico'){
+  body=`<div class="et-p1-panel"><h2>Meu histórico (${ss.length})</h2>${ss.length?ss.slice().sort((a,b)=>(dateOf(b.date)||0)-(dateOf(a.date)||0)).map(s=>`<div class="et-p1-entry"><strong>${safe(s.routineName||'Treino')}</strong><p class="et-p1-muted">${formatDate(s.date)} · ${doneSets(s).length} séries · ${number(s.totalVolumeKg).toLocaleString('pt-BR')} kg de volume · ${Math.round(number(s.durationSeconds)/60)} min</p><details><summary>Ver exercícios</summary>${(s.exercises||[]).map(e=>`<p>${safe((typeof exerciseById==='function'?exerciseById(e.exerciseId)?.name:null)||e.name||'Exercício')}: ${(e.sets||[]).filter(x=>x.done).map(x=>safe(`${x.reps||0} reps × ${x.weightKg??x.weight??0} kg`)).join(', ')||'Sem séries concluídas'}</p>`).join('')}</details></div>`).join(''):'Nenhuma sessão registrada.'}</div>`;
+ }else if(tab==='evolucao'){
+  const entries=Object.entries(totals).sort((a,b)=>b[1].volume-a[1].volume),max=Math.max(1,...entries.map(x=>x[1].volume));
+  body=`<div class="et-p1-panel"><h2>Evolução por grupo muscular</h2><p class="et-p1-muted">Volume = peso × repetições, somado por grupo. Exercícios sem classificação identificável aparecem em Outros.</p>${entries.length?`<div class="et-p1-bars">${entries.map(([g,v])=>`<div><strong>${safe(g.charAt(0).toLocaleUpperCase('pt-BR')+g.slice(1))}</strong> · ${v.sets} séries · ${v.volume.toLocaleString('pt-BR',{maximumFractionDigits:1})} kg<div class="et-p1-bar"><span style="width:${Math.min(100,100*v.volume/max)}%"></span></div></div>`).join('')}</div>`:'Registre séries concluídas com carga para acompanhar a evolução.'}</div><div class="et-p1-panel"><h2>Resumo de frequência</h2><p>${ss.length} treinos concluídos no histórico · ${month.length} neste mês.</p></div>`;
+ }else if(tab==='calendario'){
+  const days=new Map();ss.forEach(s=>{const d=dateOf(s.date);if(d){const key=d.toLocaleDateString('pt-BR');days.set(key,(days.get(key)||0)+1)}});
+  body=`<div class="et-p1-panel"><h2>Calendário de treinos</h2><p class="et-p1-muted">Os dias realizados também aparecem no calendário existente logo abaixo.</p><div class="et-p1-scroll"><table class="et-p1-table"><thead><tr><th>Data</th><th>Sessões concluídas</th></tr></thead><tbody>${[...days].reverse().slice(0,31).map(([d,n])=>`<tr><td>${safe(d)}</td><td>${n}</td></tr>`).join('')||'<tr><td colspan="2">Nenhum treino concluído</td></tr>'}</tbody></table></div></div>`;
+ }else{
+  body=`<div class="et-p1-panel"><h2>Feedback pós-treino</h2><p class="et-p1-muted">Anote a dificuldade e possíveis desconfortos. Os dados ficam neste navegador e não são enviados automaticamente ao personal.</p>
+  <div class="et-p1-field"><label for="et-p1-effort">Esforço percebido</label><select id="et-p1-effort"><option value="leve">Leve</option><option value="moderado">Moderado</option><option value="intenso">Intenso</option><option value="muito intenso">Muito intenso</option></select></div>
+  <div class="et-p1-field"><label for="et-p1-discomfort">Desconforto</label><select id="et-p1-discomfort"><option value="nenhum">Nenhum</option><option value="leve">Leve</option><option value="moderado">Moderado</option><option value="forte">Forte</option></select></div>
+  <div class="et-p1-field"><label for="et-p1-note">Observações</label><textarea id="et-p1-note" rows="3" maxlength="1000" placeholder="Como foi o treino?"></textarea></div>
+  <button type="button" class="btn primary" data-p1-save>Salvar feedback</button><div id="et-p1-feedback-status" role="status" aria-live="polite"></div></div>
+  <div class="et-p1-panel"><h2>Registros anteriores</h2>${feedbacks().slice().reverse().slice(0,10).map(f=>`<div class="et-p1-entry"><strong>${formatDate(f.date)}</strong> · ${safe(f.effort)} · desconforto ${safe(f.discomfort)}<p>${safe(f.note)}</p></div>`).join('')||'<p>Nenhum feedback registrado.</p>'}</div>`;
+ }
+ root.innerHTML=header+body;
+}
+document.addEventListener('click',e=>{
+ const t=e.target.closest('[data-p1-tab]');if(t){tab=t.dataset.p1Tab;render();return}
+ if(e.target.closest('[data-p1-save]')&&own()){
+  const note=document.getElementById('et-p1-note')?.value||'';
+  const entry={date:new Date().toISOString(),effort:document.getElementById('et-p1-effort').value,discomfort:document.getElementById('et-p1-discomfort').value,note};
+  try{const list=feedbacks();list.push(entry);localStorage.setItem(getKey(),JSON.stringify(list.slice(-100)));render()}catch{document.getElementById('et-p1-feedback-status').textContent='Não foi possível salvar neste navegador.'}
+ }
+});
+const old=window.renderRoutines;
+if(typeof old==='function')window.renderRoutines=function(){const result=old.apply(this,arguments);render();return result};
+const apply=window.etApplyRole;
+if(typeof apply==='function')window.etApplyRole=function(){const result=apply.apply(this,arguments);render();return result};
+document.addEventListener('DOMContentLoaded',()=>{render()});
+window.etPhase1Refresh=render;
+})();
+</script>
 </body>
 </html>
