@@ -1,8 +1,8 @@
-# EvoluTrainer v6.0 PT-BR
+# EvoluTrainer v6.3 PT-BR
 
 Aplicativo web de gestão de **clientes, treinos, biblioteca de exercícios, histórico, evolução corporal e cobranças**, preparado para publicação como site estático na **Vercel** e instalação como **PWA (Progressive Web App)**.
 
-> **Versão:** v6.0 PT-BR — Este pacote não altera a numeração do aplicativo.
+> **Versão:** v6.3 PT-BR — Este pacote não altera a numeração do aplicativo.
 
 ## Funcionalidades
 
@@ -103,10 +103,18 @@ Abra `http://localhost:8000`. Evite abrir `index.html` diretamente com `file://`
 - [ ] Testar backup e restauração entre computador e celular.
 - [ ] Verificar separação de dados entre clientes.
 
-**Situação dos testes:** a sintaxe dos scripts, referências de mídia e integridade do pacote foram verificadas na preparação da v6.0. A instalação PWA real, o IndexedDB em produção e os testes de ponta a ponta precisam ser confirmados no domínio publicado. Consulte `QA-CHECKLIST.md` para os detalhes.
+**Situação dos testes:** a sintaxe dos scripts, referências de mídia e integridade do pacote foram verificadas na preparação da v6.3. A instalação PWA real, o IndexedDB em produção e os testes de ponta a ponta precisam ser confirmados no domínio publicado. Consulte `QA-CHECKLIST.md` para os detalhes.
 
 ## Documentação complementar
 
 - `IMPLEMENTACAO.md` — arquitetura e verificações técnicas.
 - `QA-CHECKLIST.md` — testes já feitos, pendências e riscos.
 - `LEIA-ME.txt` — instruções rápidas de publicação.
+
+## Novidades v6.3
+
+- Meus Programas: modelos PPL, Full Body, Upper/Lower e personalizados, com atribuição por cliente.
+- Evolução de Cargas: agrupamento mês a mês e de três em três meses.
+- Calendários responsivos centralizados para Treinos, Clientes e Evolução.
+- Interface índigo/grafite, com ícones SVG de navegação e ajustes de contraste.
+- O armazenamento dos clientes permanece local no dispositivo.
