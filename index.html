@@ -1419,6 +1419,22 @@ html body input[type="radio"],html body .status-dot,html body .spinner,html body
 html body :is(.modal-overlay,.etp-modal-overlay,.overlay,.app-shell,.page){border-radius:0!important}
 html body :is(button,.btn,.card,.filterbox,.modal,.etp-tabs,.nav-btn,.bottom-nav)::before,
 html body :is(button,.btn,.card,.filterbox,.modal,.etp-tabs,.nav-btn,.bottom-nav)::after{border-radius:inherit!important}
+<style id="et-report-mobile-layout">
+/* Evolução de cargas: impedir que regras antigas deixem os filtros espalhados. */
+#etp-report-view{width:100%;min-width:0}
+#etp-report-view .etp-report-filters{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;align-items:end!important;gap:12px!important;margin:14px 0 18px!important}
+#etp-report-view .etp-report-filters>label{display:block!important;position:static!important;flex:none!important;min-width:0!important;width:auto!important;max-width:none!important;height:auto!important;min-height:0!important;margin:0!important;padding:0!important;transform:none!important;float:none!important}
+#etp-report-view .etp-report-filters>label:first-child{grid-column:1/-1}
+#etp-report-view .etp-report-filters select{display:block!important;position:static!important;width:100%!important;min-width:0!important;max-width:100%!important;height:44px!important;min-height:44px!important;margin:6px 0 0!important;padding:8px 10px!important;transform:none!important}
+#etp-report-view .etp-section-head{margin-bottom:10px!important;gap:10px!important}
+#etp-report-view .etp-section-head h2{font-size:clamp(21px,5vw,30px)!important;line-height:1.18!important}
+#etp-report-view .etp-metrics{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+#etp-report-view .etp-metrics>div{min-width:0;padding:12px!important}
+#etp-report-view .etp-chart{max-height:420px!important;overflow-y:auto!important;gap:7px!important}
+#etp-report-view .etp-report-table{max-width:100%;overflow-x:auto!important}
+@media(min-width:720px){#etp-report-view .etp-report-filters{grid-template-columns:2fr 1fr 1fr!important}#etp-report-view .etp-report-filters>label:first-child{grid-column:auto}}
+@media(max-width:420px){#etp-report-view .etp-chart{padding:10px!important}#etp-report-view .etp-bar-row{grid-template-columns:54px minmax(0,1fr) 65px!important;gap:5px!important}}
+</style>
 </style>
 </head>
 <body class="role-unselected">
