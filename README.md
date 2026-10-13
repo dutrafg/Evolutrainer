@@ -118,3 +118,13 @@ Abra `http://localhost:8000`. Evite abrir `index.html` diretamente com `file://`
 - Calendários responsivos centralizados para Treinos, Clientes e Evolução.
 - Interface índigo/grafite, com ícones SVG de navegação e ajustes de contraste.
 - O armazenamento dos clientes permanece local no dispositivo.
+
+## Correção de séries — manutenção da v6.3
+
+- **Treino em andamento:** cada série agora tem um botão **×** para excluir aquela série, renumerando automaticamente as restantes.
+- Séries já concluídas exigem confirmação antes de excluir.
+- **Editar rotina:** utilize **− Série**, ou **×** nas metas individuais, e salve a rotina.
+- **Meus Programas:** utilize **− Série** para reduzir a quantidade antes de salvar.
+- Uma série mínima é preservada por exercício; o histórico de sessões finalizadas não é alterado.
+
+**QA:** todos os nove scripts passaram no verificador de sintaxe. Testes isolados cobriram confirmação, renumeração, último item, alteração de metas e persistência simulada. Verificação visual no Chromium em 320, 375, 390, 768 e 1440 px sem transbordamento das linhas. Testes end-to-end do aplicativo completo/IndexedDB permanecem pendentes porque a navegação a localhost foi bloqueada neste ambiente.
