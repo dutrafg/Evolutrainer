@@ -615,7 +615,7 @@ function exerciseLoadChart(ex){
  const dateLabel=date=>{const d=new Date(date);return Number.isFinite(+d)?`${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}`:'—'};
  return `<section class="coach-load-panel"><div class="coach-load-head"><strong>📈 Progresso de carga</strong><span>${esc(badge)}</span></div><p class="coach-load-meta">Maior peso de uma série concluída em cada sessão, não volume total.</p><svg class="coach-load-svg" viewBox="0 0 320 139" role="img" aria-label="Gráfico da evolução da carga em quilogramas"><line x1="14" y1="111" x2="306" y2="111" stroke="#354154"/>${trend}${dashed}${points.map((p,i)=>`<circle cx="${x(i)}" cy="${y(p.weight)}" r="5" fill="${p.current?'#121a26':'#39c875'}" stroke="#65e49b" stroke-width="2.4"><title>${esc(dateLabel(p.date))}: ${esc(p.weight)} kg${p.current?' (em andamento)':''}</title></circle><text x="${x(i)}" y="130" fill="${p.current?'#75dfa1':'#9aacc1'}" text-anchor="middle" font-size="9">${dateLabel(p.date)}</text>`).join('')}</svg><div class="coach-load-caption">Linha contínua: treinos anteriores. Linha pontilhada: sessão em andamento.</div></section>`;
 }
-function toggleExerciseComplete(index){if(!state.active?.exercises[index])return;readVisibleWorkout();const ex=state.active.exercises[index];if(!ex.completed&&!ex.sets.some(s=>s.done)){notify('Marque ao menos uma série concluída antes de finalizar o exercício.');return;}ex.completed=!ex.completed;persistActive();renderActiveWorkout();notify(ex.completed?'Exercício concluído.':'Exercício reaberto.');}
+function toggleExerciseComplete(index){if(!state.active?.exercises[index])return;readVisibleWorkout();const ex=state.active.exercises[index];if(!ex.completed&&(!ex.sets.length||ex.sets.some(s=>!s.done))){notify('Marque todas as séries deste exercício antes de marcá-lo como concluído.');return;}ex.completed=!ex.completed;persistActive();renderActiveWorkout();notify(ex.completed?'Exercício concluído.':'Exercício reaberto.');}
 function openSwapPicker(index){if(!state.active?.exercises[index])return;readVisibleWorkout();state.swapIndex=index;const ex=state.active.exercises[index];openModal('Trocar exercício',`<p class="muted">Substituir: <strong>${esc(ex.name)}</strong></p><p class="small muted">Caso já existam séries concluídas, elas serão preservadas no histórico desta sessão e o novo exercício será adicionado em seguida.</p><label for="swap-search">Buscar na biblioteca (1.230 exercícios)</label><input id="swap-search" type="search" autocomplete="off" placeholder="Nome, músculo ou equipamento..."><div id="swap-results" class="coach-swap-picker"></div>`);renderSwapResults();document.getElementById('swap-search')?.focus();}
 function renderSwapResults(){const el=$('#swap-results');if(!el)return;const term=norm($('#swap-search')?.value||'');const current=state.active?.exercises[state.swapIndex];const rows=state.exercises.filter(x=>x.id!==current?.exerciseId&&(!term||norm([x.name,x.originalName,x.category,x.equipment].join(' ')).includes(term))).slice(0,45);el.innerHTML=rows.length?rows.map(e=>`<button type="button" class="coach-swap-row" data-action="swap-select-exercise" data-id="${esc(e.id)}">${thumb(e)}<span><strong>${esc(e.name)}</strong><small>${esc(e.category||'Outros')} · ${esc(e.equipment||'Sem equipamento')}</small></span></button>`).join(''):empty('Nenhum exercício encontrado.');}
 function swapWorkoutExercise(id){const a=state.active,idx=state.swapIndex;const existing=a?.exercises?.[idx],newEx=exerciseById(id);if(!existing||!newEx)return;readVisibleWorkout();const record=lastClientPerformance(id),setCount=Math.max(1,Math.min(25,existing.sets.length||3)),type=newEx.type||'weight_reps';const fresh={exerciseId:newEx.id,name:newEx.name,type,notes:'',restSeconds:existing.restSeconds||90,sets:Array.from({length:setCount},()=>({weightKg:record?.weightKg||0,reps:record?.reps||10,seconds:60,distanceMeters:0,floors:0,steps:0,done:false}))};const done=existing.sets.filter(x=>x.done);
@@ -674,7 +674,34 @@ function beginRest(seconds){if(!state.active)return;const duration=Math.max(0,Ma
 function toggleRestPause(){if(!state.active)return;const a=state.active;if(num(a.restPausedMs)>0){a.restUntil=Date.now()+a.restPausedMs;a.restDurationMs=Math.max(num(a.restDurationMs),a.restPausedMs);a.restPausedMs=0;}else if(num(a.restUntil)>Date.now()){a.restPausedMs=a.restUntil-Date.now();a.restUntil=0;}persistActive();updateClock();}
 function updateFloatingRest(){const bar=$('#rest-floating'),a=state.active;if(!bar)return;const paused=Boolean(a&&num(a.restPausedMs)>0);const remaining=paused?num(a.restPausedMs):Math.max(0,num(a?.restUntil)-Date.now());const show=Boolean(a&&state.tab==='workouts'&&(paused||remaining>0));bar.hidden=!show;document.body.classList.toggle('rest-visible',show);if(!show)return;$('#floating-rest-clock').textContent=restClockLabel(remaining);$('#floating-rest-label').textContent=paused?'DESCANSO PAUSADO':'DESCANSO ENTRE SÉRIES';$('#floating-rest-pause').textContent=paused?'▶ Continuar':'⏸ Pausar';const duration=Math.max(num(a.restDurationMs),remaining,1000);$('#floating-rest-progress').style.width=(Math.max(0,Math.min(100,100*remaining/duration)))+'%';}
 function adjustRest(seconds){if(!state.active)return;const a=state.active;if(seconds===0){a.restUntil=0;a.restPausedMs=0;a.restDurationMs=0;}else if(num(a.restPausedMs)>0){a.restPausedMs=Math.max(0,a.restPausedMs+seconds*1000);a.restDurationMs=Math.max(num(a.restDurationMs),a.restPausedMs);}else if(num(a.restUntil)>Date.now()){a.restUntil=Math.max(Date.now(),a.restUntil+seconds*1000);a.restDurationMs=Math.max(0,num(a.restDurationMs)+seconds*1000,a.restUntil-Date.now());}else{beginRest(seconds);return;}persistActive();updateClock();}
-function refreshWorkoutProgress(){if(!state.active)return;const done=state.active.exercises.reduce((acc,e)=>acc+e.sets.filter(s=>s.done).length,0),total=state.active.exercises.reduce((acc,e)=>acc+e.sets.length,0);const el=$('#workout-progress');if(el)el.textContent=done+' de '+total+' séries concluídas';}
+function workoutCompletionStatus(workout=state.active){
+ const exercises=Array.isArray(workout?.exercises)?workout.exercises:[];
+ const total=exercises.reduce((sum,ex)=>sum+(Array.isArray(ex?.sets)?ex.sets.length:0),0);
+ const done=exercises.reduce((sum,ex)=>sum+(Array.isArray(ex?.sets)?ex.sets.filter(set=>Boolean(set?.done)).length:0),0);
+ const valid=exercises.length>0&&exercises.every(ex=>Array.isArray(ex?.sets)&&ex.sets.length>0);
+ return {total,done,pending:Math.max(0,total-done),ready:valid&&total===done};
+}
+function workoutFinishMessage(status){
+ if(!status.total)return 'Adicione e marque as séries para concluir o treino.';
+ if(status.pending)return status.pending===1?'Falta 1 série marcada para concluir e salvar.':`Faltam ${status.pending} séries marcadas para concluir e salvar.`;
+ return 'Todas as séries estão marcadas. Você pode concluir e salvar o treino.';
+}
+function refreshWorkoutProgress(){
+ if(!state.active)return;
+ const status=workoutCompletionStatus();
+ const el=$('#workout-progress');if(el)el.textContent=`${status.done} de ${status.total} séries concluídas`;
+ const hint=$('#workout-finish-hint');if(hint)hint.textContent=workoutFinishMessage(status);
+ document.querySelectorAll('#workout-active [data-action="finish-workout"]').forEach(btn=>{
+  btn.disabled=!status.ready;btn.setAttribute('aria-disabled',String(!status.ready));
+  btn.title=status.ready?'Concluir e salvar o treino':workoutFinishMessage(status);
+ });
+ document.querySelectorAll('#workout-active [data-action="toggle-ex-complete"]').forEach(btn=>{
+  const ex=state.active.exercises[Number(btn.dataset.index)];if(!ex)return;
+  btn.classList.toggle('coach-ex-done',Boolean(ex.completed));
+  btn.classList.toggle('secondary',!ex.completed);
+  btn.textContent=ex.completed?'✓ Exercício concluído · Reabrir':'○ Marcar exercício como concluído';
+ });
+}
 function renderStudentControls(){const pane=$('#student-controls');if(!pane)return;
  const active=state.students.filter(x=>x.active!==false).length;
  pane.innerHTML=`<div class="card student-panel">
@@ -1006,9 +1033,9 @@ function persistActive(){try{if(state.active){localStorage.setItem(activeWorkout
 function restoreActive(){try{const raw=localStorage.getItem(activeWorkoutKey());if(raw||state.sessionLock?.snapshot?.studentId===state.student?.id){const x=raw?JSON.parse(raw):structuredClone(state.sessionLock.snapshot);if(x&&Array.isArray(x.exercises)&&x.startedAt&&(!x.studentId||x.studentId===state.student?.id)){x.studentId=state.student.id;x.exercises.forEach(ex=>{ex.name=exerciseById(ex.exerciseId)?.name||ex.name;});state.active=x;}}}catch{state.active=null;}}
 function renderActiveWorkout(){
  const w=state.active;if(!w)return;
- const done=w.exercises.reduce((sum,e)=>sum+e.sets.filter(x=>x.done).length,0);
- const total=w.exercises.reduce((sum,e)=>sum+e.sets.length,0);
- $('#workout-active').innerHTML=`<div class="session-screen-header" role="banner"><div><div class="session-screen-kicker">${etRole==='student'?'● MEU TREINO EM ANDAMENTO':'● ATENDIMENTO EM ANDAMENTO · NAVEGAÇÃO BLOQUEADA'}</div><h1>${esc(state.student?.name||w.clientName||'Cliente')}</h1><p>${esc(w.routineName)} · Registre as séries para salvar a sessão</p></div><button type="button" class="btn primary" data-action="finish-workout" aria-label="Concluir e salvar sessão atual">✓ Concluir e salvar</button></div><div class="card"><div class="presential-session-header"><div><div class="client-attention-kicker">${etRole==='student'?'● MEU TREINO':'● SESSÃO PRESENCIAL'} · ${esc(state.student?.name||w.clientName||'Cliente')}</div><h1 style="font-size:19px;margin:5px 0 4px">${esc(w.routineName)}</h1><div class="muted small">Tempo de atendimento: <strong id="workout-clock" class="accent">00:00:00</strong></div><strong class="presential-counter" id="workout-progress">${done} de ${total} séries concluídas</strong></div></div>
+ const {done,total,ready}=workoutCompletionStatus(w);
+ const finishUnavailable=ready?'':'disabled aria-disabled="true"';
+ $('#workout-active').innerHTML=`<div class="session-screen-header" role="banner"><div><div class="session-screen-kicker">${etRole==='student'?'● MEU TREINO EM ANDAMENTO':'● ATENDIMENTO EM ANDAMENTO · NAVEGAÇÃO BLOQUEADA'}</div><h1>${esc(state.student?.name||w.clientName||'Cliente')}</h1><p>${esc(w.routineName)} · Registre as séries para salvar a sessão</p></div><button type="button" class="btn primary et-finish-btn" data-action="finish-workout" ${finishUnavailable} aria-label="Concluir e salvar sessão atual">✓ Concluir e salvar</button></div><p id="workout-finish-hint" class="et-workout-finish-hint" role="status" aria-live="polite">${workoutFinishMessage(workoutCompletionStatus(w))}</p><div class="card"><div class="presential-session-header"><div><div class="client-attention-kicker">${etRole==='student'?'● MEU TREINO':'● SESSÃO PRESENCIAL'} · ${esc(state.student?.name||w.clientName||'Cliente')}</div><h1 style="font-size:19px;margin:5px 0 4px">${esc(w.routineName)}</h1><div class="muted small">Tempo de atendimento: <strong id="workout-clock" class="accent">00:00:00</strong></div><strong class="presential-counter" id="workout-progress">${done} de ${total} séries concluídas</strong></div></div>
 
  <p class="small muted">Registre a execução real de cada série. O descanso é iniciado quando uma série é marcada como concluída.</p></div>
  ${w.exercises.map((ex,ei)=>{const fields=fieldsForType(ex.type);const col=fields.length===3?'cols-three':'';const previous=lastClientPerformance(ex.exerciseId);
@@ -1020,15 +1047,15 @@ function renderActiveWorkout(){
  <div class="actions"><button class="btn secondary small" data-action="add-set" data-index="${ei}">+ Adicionar série</button><button class="btn secondary small" data-action="start-ex-rest" data-index="${ei}">⏱ Descansar ${ex.restSeconds}s</button></div>
  <div class="presential-note"><label for="exercise-coach-note-${ei}">Observações técnicas do personal</label><textarea id="exercise-coach-note-${ei}" data-ex-note="${ei}" maxlength="1000" placeholder="Ajuste do banco, amplitude, execução, limitações...">${esc(ex.notes||'')}</textarea></div>
  ${exerciseLoadChart(ex)}
- <div class="coach-ex-actions"><button type="button" class="btn ${ex.completed?'coach-ex-done':'secondary'}" data-action="toggle-ex-complete" data-index="${ei}">${ex.completed?'✓ Exercício concluído · Reabrir':'◯ Marcar exercício como concluído'}</button><button type="button" class="btn secondary" data-action="swap-exercise" data-index="${ei}" ${ex.substituted?'disabled':''}>↪ Trocar exercício</button></div></div>`;
+ <div class="coach-ex-actions" role="group" aria-label="Ações do exercício ${ei+1}"><button type="button" class="btn et-ex-action et-ex-action-complete ${ex.completed?'coach-ex-done':'secondary'}" data-action="toggle-ex-complete" data-index="${ei}">${ex.completed?'✓ Exercício concluído · Reabrir':'○ Marcar exercício como concluído'}</button><button type="button" class="btn secondary et-ex-action et-ex-action-swap" data-action="swap-exercise" data-index="${ei}" ${ex.substituted?'disabled':''}>↪ Trocar exercício</button></div></div>`;
  }).join('')}
- <div class="card"><div class="presential-note"><label for="session-coach-note">Observações do atendimento</label><textarea id="session-coach-note" data-session-note maxlength="2500" placeholder="Resumo da sessão, progresso de cargas, orientações para a próxima aula...">${esc(w.notes||'')}</textarea></div><div class="inline-notice" style="margin-top:13px">Os registros são mantidos temporariamente neste navegador durante a execução e, ao finalizar, são salvos no histórico e na pasta individual de ${esc(state.student?.name||'cliente')}, quando a gravação estiver autorizada.</div><div class="actions"><button class="btn primary" data-action="finish-workout">✓ Concluir e salvar sessão</button></div></div>`;
+ <div class="card"><div class="presential-note"><label for="session-coach-note">Observações do atendimento</label><textarea id="session-coach-note" data-session-note maxlength="2500" placeholder="Resumo da sessão, progresso de cargas, orientações para a próxima aula...">${esc(w.notes||'')}</textarea></div><div class="inline-notice" style="margin-top:13px">Os registros são mantidos temporariamente neste navegador durante a execução e, ao finalizar, são salvos no histórico e na pasta individual de ${esc(state.student?.name||'cliente')}, quando a gravação estiver autorizada.</div><div class="actions"><button type="button" class="btn primary et-finish-btn" data-action="finish-workout" ${finishUnavailable}>✓ Concluir e salvar sessão</button></div></div>`;
  updateClock();
 }
 function updateClock(){if(state.active&&num(state.active.restUntil)>0&&num(state.active.restUntil)<=Date.now()&&!state.active.restAlertIssued){state.active.restAlertIssued=true;const expiredFor=Date.now()-state.active.restUntil;state.active.restUntil=0;state.active.restDurationMs=0;persistActive();if(expiredFor<120000)restFinishedAlert();}const clock=$('#workout-clock');if(clock&&state.active)clock.textContent=fmtDuration(Math.max(0,Math.floor((Date.now()-new Date(state.active.startedAt).getTime())/1000)));updateFloatingRest();}
-function saveFieldFromInput(el){if(!state.active)return;const ei=Number(el.dataset.setEx),si=Number(el.dataset.setNo);const field=el.dataset.setField;const ex=state.active.exercises[ei],set=ex?.sets[si];if(!set||!(field in set))return;const wasDone=Boolean(set.done);set[field]=field==='done'?el.checked:num(el.value,0);persistActive();if(field==='done'){if(!wasDone&&set.done)beginRest(ex.restSeconds);refreshWorkoutProgress();}}
+function saveFieldFromInput(el){if(!state.active)return;const ei=Number(el.dataset.setEx),si=Number(el.dataset.setNo);const field=el.dataset.setField;const ex=state.active.exercises[ei],set=ex?.sets[si];if(!set||!(field in set))return;const wasDone=Boolean(set.done);set[field]=field==='done'?el.checked:num(el.value,0);if(field==='done'&&!set.done&&ex.completed)ex.completed=false;persistActive();if(field==='done'){if(!wasDone&&set.done)beginRest(ex.restSeconds);refreshWorkoutProgress();}}
 function readVisibleWorkout(){document.querySelectorAll('[data-set-field]').forEach(el=>saveFieldFromInput(el));if(state.active){state.active.notes=$('[data-session-note]')?.value||state.active.notes||'';document.querySelectorAll('[data-ex-note]').forEach(el=>{const ex=state.active.exercises[Number(el.dataset.exNote)];if(ex)ex.notes=el.value;});persistActive();}}
-function addSet(index){if(!state.active?.exercises[index])return;readVisibleWorkout();const list=state.active.exercises[index].sets;if(list.length>=25){notify('Limite de 25 séries por exercício.');return;}const last=list.at(-1)||{};list.push({...last,done:false});persistActive();renderActiveWorkout();}
+function addSet(index){if(!state.active?.exercises[index])return;readVisibleWorkout();const exercise=state.active.exercises[index],list=exercise.sets;if(list.length>=25){notify('Limite de 25 séries por exercício.');return;}const last=list.at(-1)||{};list.push({...last,done:false});exercise.completed=false;persistActive();renderActiveWorkout();}
 function removeSet(index,setIndex){
  const ex=state.active?.exercises?.[index];
  if(!ex||!Array.isArray(ex.sets)||!Number.isInteger(setIndex)||setIndex<0||setIndex>=ex.sets.length)return;
@@ -1042,11 +1069,13 @@ function removeSet(index,setIndex){
 }
 async function finishWorkout(){
  if(!state.active||state.finishing)return;
+ readVisibleWorkout();
+ const status=workoutCompletionStatus(state.active);
+ if(!status.ready){refreshWorkoutProgress();notify(workoutFinishMessage(status));return;}
  state.finishing=true;
  try{
-  readVisibleWorkout();const a=state.active;
+  const a=state.active;
   const completed=a.exercises.flatMap(e=>e.sets.filter(s=>s.done));
-  if(!completed.length&&!confirm('Nenhuma série concluída. Deseja FINALIZAR e SALVAR esta sessão sem séries no histórico?'))return;
   const w={...structuredClone(a),coachMode:etRole!=='student',clientName:state.student.name,studentId:state.student.id,restUntil:0,restPausedMs:0,date:new Date().toISOString(),endedAt:new Date().toISOString(),durationSeconds:Math.max(0,Math.floor((Date.now()-new Date(a.startedAt).getTime())/1000)),schemaVersion:2,cancelled:completed.length===0,totalVolumeKg:a.exercises.reduce((acc,ex)=>acc+ex.sets.filter(s=>s.done&&fieldsForType(ex.type).some(([key])=>key==='reps')).reduce((val,set)=>val+num(set.weightKg)*num(set.reps),0),0),totalSets:completed.length};
   await put('sessions',w); // transação aguarda a escrita no IndexedDB E na pasta do cliente
   const verified=await getFrom('sessions',w.id);
@@ -1059,8 +1088,9 @@ async function finishWorkout(){
 }
 async function discardWorkout(){
  if(!state.active)return;
- notify('Para encerrar o atendimento, finalize e salve a sessão (mesmo sem séries).');
- if(confirm('Não é possível descartar um atendimento aberto. Deseja FINALIZAR e SALVAR agora?'))await finishWorkout();
+ const status=workoutCompletionStatus(state.active);
+ if(!status.ready){notify(workoutFinishMessage(status));return;}
+ if(confirm('Deseja concluir e salvar este treino?'))await finishWorkout();
 }
 function renderHistory(){const total=state.sessions.length;const vol=state.sessions.reduce((s,x)=>s+num(x.totalVolumeKg),0);$('#history-summary').innerHTML=`<div class="card"><div class="card-title">Resumo</div><div class="card-meta">${total} sessão(ões) · ${vol.toLocaleString('pt-BR',{maximumFractionDigits:1})} kg de volume acumulado</div></div>`;$('#history-list').innerHTML=total?state.sessions.map(s=>`<div class="card"><div class="card-top"><div><div class="card-title">${esc(s.routineName||'Treino')}</div><div class="card-meta">${esc(fmtDate(s.date))}<br>${num(s.totalSets)} séries feitas · ${num(s.totalVolumeKg).toLocaleString('pt-BR',{maximumFractionDigits:1})} kg · ${fmtDuration(num(s.durationSeconds))}</div></div><span class="pill">CONCLUÍDO</span></div>${s.notes?`<p class="small muted">Obs. do atendimento: ${esc(s.notes)}</p>`:''}<details class="history-details"><summary>Ver exercícios e séries</summary>${Array.isArray(s.exercises)?s.exercises.map(ex=>`<p><strong>${esc(exerciseById(ex.exerciseId)?.name||ex.name||'Exercício')}</strong> — ${ex.sets?.filter(x=>x.done).length||0} séries concluídas${ex.notes?`<br><small>Obs.: ${esc(ex.notes)}</small>`:''}</p>`).join(''):''}</details><div class="actions"><button class="btn danger small" data-action="delete-session" data-id="${esc(s.id)}">Excluir sessão</button></div></div>`).join(''):empty('Ainda não há sessões finalizadas. Inicie uma rotina e registre suas séries.');}
 async function exportData(){
