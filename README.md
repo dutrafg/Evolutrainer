@@ -1,87 +1,93 @@
-# EvoluTrainer 0.64.beta
+# EvoluTrainer — 0.92.beta
 
-Aplicativo de gestão de treinos, clientes e acompanhamento de evolução, desenvolvido como **SPA/PWA estática**. Compatível com publicação no **GitHub + Vercel** e uso offline após o carregamento e armazenamento dos recursos necessários.
+Aplicativo de gestão de treinos, clientes e acompanhamento físico para profissionais de educação física e seus alunos. Construído como **SPA/PWA estática**, com interface em português brasileiro e armazenamento predominantemente local.
 
-> **Versão:** `0.64.beta` — versão de testes. Não considerar homologada para produção até concluir testes de ponta a ponta no navegador e em dispositivos reais.
+**Site:** https://evolutrainer.vercel.app/  
+**Repositório:** https://github.com/dutrafg/Evolutrainer
 
-## Funcionalidades
+> **Status:** versão beta em evolução. Não considerar homologada para produção sem testes funcionais, visuais, de segurança e de recuperação de dados em navegadores e dispositivos reais.
 
-- **Treinos:** criação, edição e execução de rotinas, registro de séries, repetições, cargas e intervalos de descanso.
-- **Conclusão rigorosa:** o treino só pode ser concluído e salvo quando **todas as séries de todos os exercícios** estiverem marcadas como feitas. Enquanto houver séries pendentes, os botões de conclusão ficam desativados e mostram quantas faltam.
-- **Excluir série:** botão `×` em cada série na sessão. A exclusão de uma série já concluída exige confirmação. Pelo menos uma série é preservada por exercício.
-- **Concluir / trocar exercício:** botões com espaços próprios, sem sobreposição em telas pequenas; no celular ficam empilhados.
-- **Meus Programas:** modelos PPL, Full Body, Upper/Lower ou personalizados, editáveis e atribuíveis a clientes com cópias independentes.
-- **Biblioteca de exercícios:** catálogo de 1.230 exercícios com miniaturas e sequências ilustradas.
-- **Evolução de cargas:** comparação mês a mês ou a cada três meses, filtros e exportação CSV, a partir das séries efetivamente concluídas e salvas.
-- **Evolução corporal:** peso, composição, medidas, histórico e mapa anatômico.
-- **Clientes e Histórico:** registros separados por cliente no armazenamento local.
-- **Cobranças:** controle manual; o aplicativo **não processa pagamentos**.
-- **Importação/exportação:** recursos de treino em PDF e backup/restauração conforme a compatibilidade do navegador.
+## Design
 
-## Organização dos arquivos
+A versão 0.92.beta utiliza um **redesign inspirado na linguagem visual de plataformas modernas de gestão de treinos**, incluindo a Welltrainer como referência de organização, mas preservando o nome, os fluxos e a identidade do EvoluTrainer.
+
+- Paleta preta/grafite e amarelo-dourado (`#FFD54A`) para ações principais.
+- Cartões e campos com bordas discretas e cantos levemente arredondados.
+- Layout responsivo para celulares, tablets e desktops.
+- Temas claro e escuro, com atenção à legibilidade dos controles.
+- Estilos aplicados sobre a aplicação completa, sem substituir seus módulos por telas demonstrativas.
+
+## Funcionalidades principais
+
+- **Clientes:** cadastro, seleção e gerenciamento de alunos, com dados locais.
+- **Treinos:** criação e execução de rotinas, séries, repetições, cargas, descansos e registro de sessões.
+- **Meus Programas:** criação, edição e organização de programas de treino.
+- **Biblioteca de exercícios:** catálogo com categorias e recursos visuais, sujeitos à disponibilidade dos arquivos de mídia.
+- **Evolução:** acompanhamento de cargas e volumes, comparações por períodos e histórico.
+- **Área do aluno:** visão de treinos, histórico e indicadores de evolução.
+- **Avaliações e medidas:** registros de evolução corporal.
+- **Cobranças:** organização e acompanhamento manual.
+- **PDF:** exportação de treinos e relatórios e fluxo de importação compatível com os formatos implementados.
+
+A disponibilidade de recursos varia conforme permissões do navegador, armazenamento, dados existentes e compatibilidade do dispositivo.
+
+## Estrutura do projeto
 
 ```text
-index.html                   Página inicial do aplicativo
-README.md                    Documentação
-vercel.json                  Configurações para a Vercel
-manifest.webmanifest         Manifesto PWA
-sw.js                        Service Worker para o cache offline
-robots.txt                   Política de indexação
-assets/css/                  Estilos, incluindo layout responsivo
-assets/js/                   Lógica do app, programas, evolução, PDF e cobranças
-assets/icon-192.png          Ícone PWA de 192 px
-assets/icon-512.png          Ícone PWA de 512 px
-assets/anatomia-corporal.svg Mapa corporal
-media/thumbs/               Miniaturas da biblioteca
-media/steps/                Imagens dos exercícios
-data/exercises.json          Catálogo de exercícios
+index.html                         # Entrada da aplicação web
+assets/                            # Ícones, imagens e JavaScript complementar
+assets/js/meus-programas.js        # Módulo de programas e evolução
+data/exercises.json                # Base de exercícios
+media/                             # Miniaturas e sequências de exercícios
+manifest.webmanifest               # Metadados de instalação PWA
+sw.js                              # Service Worker para recursos offline
+vercel.json                        # Configuração de implantação
+README.md                          # Documentação
 ```
 
-## Publicar na Vercel usando o GitHub
+Os diretórios de mídia e os arquivos de dados devem ser mantidos junto ao `index.html` para que as imagens e os exercícios sejam carregados corretamente.
 
-1. Abra o repositório [dutrafg/Evolutrainer](https://github.com/dutrafg/Evolutrainer).
-2. Na Vercel, clique em **Add New → Project** e importe o repositório.
-3. Configure **Framework Preset: Other** e **Root Directory: `./`**.
-4. Não é necessário configurar comando de compilação; `index.html` deve permanecer na raiz.
-5. Publique e aguarde o status **Ready**. Abra a URL HTTPS gerada.
-6. Verifique o catálogo, as imagens, as rotinas e o registro do Service Worker.
+## Executar localmente
 
-Se o repositório já estiver conectado à Vercel, alterações na branch `main` **normalmente** disparam uma nova implantação, desde que a integração e o deploy automático estejam ativos.
+Para testar a aplicação como site, use um servidor HTTP local a partir da raiz do projeto:
 
-## Usar como PWA e offline
+```bash
+python -m http.server 8080
+```
 
-O `manifest.webmanifest` e o `sw.js` permitem instalar a aplicação em navegadores compatíveis. O Service Worker armazena a interface, os scripts, os estilos e o catálogo em cache e adiciona imagens ao cache conforme o uso.
+Abra `http://localhost:8080` no navegador. Abrir diretamente por `file://` pode limitar o carregamento de arquivos, o Service Worker e APIs de acesso a pastas. O suporte a algumas APIs também depende de HTTPS, permissões e navegador.
 
-Para usar **todas as imagens sem internet**, procure em Configurações a opção de baixar a biblioteca para uso offline e aguarde até terminar. O cache é próprio de cada dispositivo e pode ser removido pelo navegador/sistema; faça a primeira visita com internet. A instalação PWA requer HTTPS ou localhost, não basta abrir `index.html` por `file://`.
+## Publicação na Vercel
 
-## Dados, backups e privacidade
+1. Importe este repositório no painel da Vercel.
+2. Use a raiz do repositório como diretório do projeto.
+3. Publique como aplicação estática, preservando `vercel.json`, `assets/`, `data/` e `media/`.
+4. Após a implantação, verifique carregamento, navegação, recursos de mídia e atualização do cache PWA.
 
-**Os dados dos clientes não são enviados automaticamente ao GitHub, à Vercel ou a um servidor.** Eles ficam no armazenamento local do navegador e, quando autorizado e suportado, em pasta de arquivos do dispositivo. A troca de navegador, dispositivo ou endereço do site não transfere esses dados automaticamente.
+Se o navegador continuar exibindo estilos antigos, atualize a página e verifique o cache do Service Worker.
 
-- Exporte backups antes de atualizar, reinstalar ou trocar o dispositivo.
-- Confira o conteúdo restaurado **antes** de apagar a fonte anterior.
-- Proteja backups que contenham informações pessoais; o JSON exportado não é necessariamente criptografado.
-- Os modos **Aluno** e **Personal** personalizam a interface, mas **não são um sistema de autenticação seguro** para dados em computadores compartilhados.
-- O acesso offline e o armazenamento persistente dependem das permissões e capacidades do navegador.
+## Armazenamento e privacidade
 
-## Testes recomendados antes da produção
+O aplicativo usa mecanismos de armazenamento do navegador, como IndexedDB e localStorage, conforme o módulo. **Não há garantia de sincronização entre aparelhos**. Limpeza de dados do navegador, modo privado e troca de dispositivo podem causar perda de registros. Exporte backups regularmente e não armazene dados reais de clientes sem avaliar consentimento, controle de acesso e conformidade com a LGPD.
 
-1. Escolher um cliente de teste e criar uma rotina com dois exercícios de três séries.
-2. Iniciar o treino e confirmar que **Concluir e salvar** fica desativado com séries pendentes.
-3. Marcar cinco das seis séries; confirmar que ainda não é possível finalizar.
-4. Marcar a última série; confirmar que o botão de conclusão é habilitado.
-5. Desmarcar uma série; confirmar que o botão volta a ficar desativado.
-6. Marcar todas novamente, concluir e verificar os dados no Histórico e no relatório de cargas.
-7. Iniciar outra sessão, excluir uma série não concluída e conferir a renumeração; excluir série concluída deve pedir confirmação.
-8. Testar **Concluir exercício** e **Trocar exercício** em telas de 320, 375, 390, 768 e 1440 px.
-9. Testar recuperação após recarregar a página e troca de cliente, sem corromper a sessão ativa.
-10. Instalar PWA em HTTPS e verificar cache, offline, restauração de backup e armazenamento IndexedDB.
+## Checklist de validação
 
-**Situação:** as verificações de sintaxe e os testes automatizados isolados são executados antes da publicação. A validação em produção com IndexedDB real, PWA instalado e dispositivos Android/iOS precisa ser confirmada separadamente.
+- Navegação por todos os módulos nos modos claro e escuro.
+- Responsividade em larguras de celular, tablet e desktop.
+- Cadastro, edição, seleção e persistência de clientes.
+- Criação e execução de treinos, conclusão e histórico.
+- Biblioteca: filtros, miniaturas, GIFs e arquivos ausentes.
+- Exportação e importação de PDF com arquivos reais.
+- Programas, evolução de cargas e relatórios.
+- Operação offline, atualização do Service Worker e recuperação de backup.
+- Inspeção de erros no console, acessibilidade e segurança de entradas.
 
-## Observações técnicas
+**Nota de QA:** na atualização do redesign foram verificadas a presença dos estilos e a sintaxe dos scripts embutidos; isso **não substitui testes ponta a ponta** em navegadores reais.
 
-- Front-end estático em HTML, CSS e JavaScript; **sem backend** e sem sincronização de contas.
-- `assets/js/nucleo-app.js` coordena a execução e o armazenamento dos treinos; `assets/js/meus-programas.js` controla os programas reutilizáveis.
-- O cache PWA usa versão `0.64.beta` para atualizar arquivos da interface, preservando o cache de mídia reutilizável quando possível.
-- O histórico de sessões concluídas não é alterado pelas novas regras de finalização de treinos em andamento.
+## Versionamento
+
+A identificação atual é **0.92.beta**. As próximas alterações funcionais devem seguir a sequência combinada de versões beta, incluindo a transição de `0.99.beta` para `1.0.beta`.
+
+## Créditos
+
+EvoluTrainer é um projeto próprio. Welltrainer foi usada apenas como **referência de linguagem visual**, sem vínculo ou afiliação.
