@@ -447,7 +447,6 @@ body[data-theme="light"] .topbar,body.theme-light .topbar{background:rgba(248,24
 .library-card .library-title{overflow-wrap:anywhere;line-height:1.4}
 .media-source-note{margin-top:12px;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--soft);color:var(--muted);font-size:12px;line-height:1.5}
 
-
 /* Estilo de origem 6 — id="v39-visual-refinement" */
 
 /* Controles de execução inspirados em interfaces iOS, acessíveis e responsivos. */
@@ -897,8 +896,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 .page .field label{font-size:13px;line-height:1.4;font-weight:650}
 .page .btn{min-height:43px;font-size:13px;letter-spacing:0;font-weight:680}
 .page .btn.small{min-height:39px;font-size:12px;padding:8px 12px}
-.page input,.page select,.page textarea{font-size:max(16px,1rem);line-height:1.4;border-radius:12px}
-.page .muted{line-height:1.5}
+.page input,.page select,.page textarea{font-size:max(16px,1rem);line-height:1.4;border-radius:12px}.page .muted{line-height:1.5}
 #page-finance .page-head{margin-bottom:18px}
 #page-finance .page-head h1::after{font-size:12px;display:inline-block;vertical-align:middle;margin-left:12px;font-weight:650}
 #page-finance .fin-service-table{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:18px 0 22px}
@@ -1347,8 +1345,7 @@ a{accent-color:var(--primary)}input[type=checkbox],input[type=radio],input[type=
 :root,html,html:not([data-theme="light"]),html[data-theme="dark"],body:not([data-theme="light"]),body[data-theme="dark"],body.theme-dark{
  --primary:#FFD54A!important;--primary-dark:#F4B900!important;--bg:#0A0A0B!important;
  --surface:#141416!important;--card:#1B1B1E!important;--soft:#29292E!important;
- --border:#39393E!important;--text:#F7F7F5!important;--muted:#B6B6BA!important;
- --et-md3-primary:#FFD54A!important;--et-md3-on-primary:#191300!important;
+ --border:#39393E!important;--text:#F7F7F5!important;--muted:#B6B6BA!important; --et-md3-primary:#FFD54A!important;--et-md3-on-primary:#191300!important;
  color-scheme:dark!important;
 }
 html[data-theme="light"],html[data-theme="light"] body,body[data-theme="light"],body.theme-light,html.light,html.light body{
@@ -1797,8 +1794,7 @@ function queueMirrorCatalog(){
  const task=state.catalogSyncQueue.catch(()=>{}).then(()=>mirrorCatalog());
  state.catalogSyncQueue=task;return task;
 }
-async function writeRoster(){if(!state.folderReady||!state.folder)return;
- // Preserve the original 'alunos/indice.json' for backwards compatibility.
+async function writeRoster(){if(!state.folderReady||!state.folder)return; // Preserve the original 'alunos/indice.json' for backwards compatibility.
  for(const path of ['alunos','clientes']){
   const base=await state.folder.getDirectoryHandle(path,{create:true});
   const clients=state.students.filter(p=>(p.baseDir||'alunos')===path);
@@ -2247,8 +2243,7 @@ function exerciseLoadChart(ex){
  const records=state.sessions.slice().reverse().map(s=>{
   const e=(s.exercises||[]).find(x=>x.exerciseId===ex.exerciseId);if(!e)return null;
   const loads=(e.sets||[]).filter(x=>x.done&&Number(x.weightKg)>0).map(x=>Number(x.weightKg));
-  return loads.length?{date:s.date||s.endedAt||'',weight:Math.max(...loads),current:false}:null;
- }).filter(Boolean).slice(-5);
+  return loads.length?{date:s.date||s.endedAt||'',weight:Math.max(...loads),current:false}:null; }).filter(Boolean).slice(-5);
  const loads=ex.sets.filter(x=>x.done&&Number(x.weightKg)>0).map(x=>Number(x.weightKg));
  const current=loads.length?{date:new Date().toISOString(),weight:Math.max(...loads),current:true}:null;
  const points=[...records,...(current?[current]:[])];const weights=points.map(p=>p.weight);
@@ -2697,8 +2692,7 @@ function renderActiveWorkout(){
  ${exerciseLoadChart(ex)}
  <div class="coach-ex-actions" role="group" aria-label="Ações do exercício ${ei+1}"><button type="button" class="btn et-ex-action et-ex-action-complete ${ex.completed?'coach-ex-done':'secondary'}" data-action="toggle-ex-complete" data-index="${ei}">${ex.completed?'✓ Exercício concluído · Reabrir':'○ Marcar exercício como concluído'}</button><button type="button" class="btn secondary et-ex-action et-ex-action-swap" data-action="swap-exercise" data-index="${ei}" ${ex.substituted?'disabled':''}>↪ Trocar exercício</button></div></div>`;
  }).join('')}
- <div class="card"><div class="presential-note"><label for="session-coach-note">Observações do atendimento</label><textarea id="session-coach-note" data-session-note maxlength="2500" placeholder="Resumo da sessão, progresso de cargas, orientações para a próxima aula...">${esc(w.notes||'')}</textarea></div><div class="inline-notice" style="margin-top:13px">Os registros são mantidos temporariamente neste navegador durante a execução e, ao finalizar, são salvos no histórico e na pasta individual de ${esc(state.student?.name||'cliente')}, quando a gravação estiver autorizada.</div><div class="actions"><button type="button" class="btn primary et-finish-btn" data-action="finish-workout" ${finishUnavailable}>✓ Concluir e salvar sessão</button></div></div>`;
- updateClock();
+ <div class="card"><div class="presential-note"><label for="session-coach-note">Observações do atendimento</label><textarea id="session-coach-note" data-session-note maxlength="2500" placeholder="Resumo da sessão, progresso de cargas, orientações para a próxima aula...">${esc(w.notes||'')}</textarea></div><div class="inline-notice" style="margin-top:13px">Os registros são mantidos temporariamente neste navegador durante a execução e, ao finalizar, são salvos no histórico e na pasta individual de ${esc(state.student?.name||'cliente')}, quando a gravação estiver autorizada.</div><div class="actions"><button type="button" class="btn primary et-finish-btn" data-action="finish-workout" ${finishUnavailable}>✓ Concluir e salvar sessão</button></div></div>`; updateClock();
 }
 function updateClock(){if(state.active&&num(state.active.restUntil)>0&&num(state.active.restUntil)<=Date.now()&&!state.active.restAlertIssued){state.active.restAlertIssued=true;const expiredFor=Date.now()-state.active.restUntil;state.active.restUntil=0;state.active.restDurationMs=0;persistActive();if(expiredFor<120000)restFinishedAlert();}const clock=$('#workout-clock');if(clock&&state.active)clock.textContent=fmtDuration(Math.max(0,Math.floor((Date.now()-new Date(state.active.startedAt).getTime())/1000)));updateFloatingRest();}
 function saveFieldFromInput(el){if(!state.active)return;const ei=Number(el.dataset.setEx),si=Number(el.dataset.setNo);const field=el.dataset.setField;const ex=state.active.exercises[ei],set=ex?.sets[si];if(!set||!(field in set))return;const wasDone=Boolean(set.done);set[field]=field==='done'?el.checked:num(el.value,0);if(field==='done'&&!set.done&&ex.completed)ex.completed=false;persistActive();if(field==='done'){if(!wasDone&&set.done)beginRest(ex.restSeconds);refreshWorkoutProgress();}}
@@ -3147,8 +3141,7 @@ if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostn
 /* EvoluTrainer v3.8 — leitura local de PDFs Reft digitais, sem redes ou OCR. */
 (function(){'use strict';
  const MAX_BYTES=18*1024*1024,MAX_PAGES=80;
- const escHtml=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- function bytesToLatin(bytes){let s='';for(let i=0;i<bytes.length;i+=16384)s+=String.fromCharCode(...bytes.subarray(i,i+16384));return s;}
+ const escHtml=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); function bytesToLatin(bytes){let s='';for(let i=0;i<bytes.length;i+=16384)s+=String.fromCharCode(...bytes.subarray(i,i+16384));return s;}
  function latinToBytes(s){const out=new Uint8Array(s.length);for(let i=0;i<s.length;i++)out[i]=s.charCodeAt(i)&255;return out;}
  function objects(text){const result=new Map();const re=/(?:^|\n|\r)(\d+)\s+(\d+)\s+obj\b/g;let m;const found=[];while((m=re.exec(text))!==null)found.push({id:Number(m[1]),start:re.lastIndex});for(let i=0;i<found.length;i++){const end=i+1<found.length?found[i+1].start:text.length;const val=text.slice(found[i].start,end).replace(/\s*endobj\s*$/,'');result.set(found[i].id,val);}return result;}
  async function inflate(b){if(typeof DecompressionStream==='undefined')throw Error('Este navegador não suporta a descompactação local necessária para ler o PDF.');const stream=new Blob([b]).stream().pipeThrough(new DecompressionStream('deflate'));const reader=stream.getReader(),parts=[];let total=0;while(true){const {done,value}=await reader.read();if(done)break;total+=value.byteLength;if(total>35*1024*1024){await reader.cancel();throw Error('Página PDF excede o limite de segurança após descompactação.');}parts.push(value);}const out=new Uint8Array(total);let offset=0;for(const part of parts){out.set(part,offset);offset+=part.byteLength;}return out;}
@@ -3597,8 +3590,7 @@ async function save(){if(state.active||etRole!=='personal'){notify('Finalize o t
   });
   document.addEventListener('change',event=>{
     if(event.target?.id!=='fin-service')return;
-    const price=catalog[event.target.value];
-    const input=document.getElementById('fin-price');
+    const price=catalog[event.target.value];    const input=document.getElementById('fin-price');
     if(input&&price!==undefined){
       input.value=price.toFixed(2);
       input.dispatchEvent(new Event('input',{bubbles:true}));
