@@ -2243,7 +2243,7 @@ function openWorkoutPdfDialog(){
   <div class="field"><label for="pdf-display-name">Nome no topo do PDF <span class="muted">(opcional)</span></label><input id="pdf-display-name" maxlength="120" placeholder="${esc(state.student.name)}"></div>
   <label class="pdf-toggle"><span><strong>Ocultar pesos</strong><small>Mostra séries e repetições sem cargas</small></span><input type="checkbox" id="pdf-hide-weights"></label>
   <label class="pdf-toggle"><span><strong>Ocultar séries e repetições</strong><small>Mostra somente os exercícios do treino</small></span><input type="checkbox" id="pdf-hide-sets"></label>
-  <div class="inline-notice">O PDF é gerado diretamente e baixado, sem os cabeçalhos/rodapés de impressão do navegador e sem mostrar caminhos file:///.</div>
+  
   <div class="actions"><button class="btn primary block" type="button" data-action="export-workout-pdf">📄 Exportar PDF</button><button class="btn secondary" data-action="close-modal">Cancelar</button></div>
  </div>`);
 }
@@ -3260,7 +3260,7 @@ if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostn
  app.pending=null;closeModal();await refresh();setTab('workouts');
  notify(`${routines.length} treinos de ${p.clientName} salvos e conferidos no banco individual. O histórico foi preservado.`);}
  document.addEventListener('change',e=>{if(e.target.matches('[data-pdf-map],[data-pdf-value],[data-pdf-note]'))modifyField(e.target);});document.addEventListener('input',e=>{if(e.target.matches('[data-pdf-value],[data-pdf-note]'))modifyField(e.target);});
- window.EvoluPDF={readPDF,parseRuns,restSecs,matches,open,confirm};})();
+ window.EvoluPDF={...(window.EvoluPDF||{}),readPDF,parseRuns,restSecs,matches,open,confirm};})();
 
 </script>
 
