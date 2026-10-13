@@ -1,0 +1,27 @@
+{
+  "version": "6.0 PT-BR",
+  "based_on": "v5.9 PT-BR",
+  "exercise_count": 1230,
+  "media_count": 2947,
+  "media_bytes": 36274814,
+  "core_files": 25,
+  "css_files": [
+    "assets/css/01-base.css",
+    "assets/css/02-componentes.css",
+    "assets/css/03-aparencia.css",
+    "assets/css/04-responsivo.css"
+  ],
+  "js_files": [
+    "assets/js/pdf-exportacao.js",
+    "assets/js/nucleo-app.js",
+    "assets/js/pdf-importacao.js",
+    "assets/js/evolucao.js",
+    "assets/js/cobrancas.js",
+    "assets/js/navegacao.js",
+    "assets/js/acessibilidade.js",
+    "assets/js/precos-servicos.js"
+  ],
+  "missing_references": [],
+  "source_sha256": "12ece9055be7886648e19ea05375a6c015d1b6d46eccb35945cce4a2a581f8da",
+  "architecture": "SPA/PWA static, separated assets"
+}
