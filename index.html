@@ -1403,6 +1403,12 @@ body.session-focus-mode #workout-active .et-md3-set-grid .set-check:checked,
 @media(max-width:350px){#et-role-gate{padding:8px}#et-role-gate .et-role-panel{padding:17px 13px}#et-role-gate .et-role-choice{padding:12px 10px;gap:4px 9px}#et-role-gate .et-role-choice small{font-size:11px}}
 @media(prefers-reduced-motion:reduce){#et-role-gate .et-role-choice{transition:none}}
 </style>
+
+<style id="et-evolution-tabs-alignment-fix">
+#page-evolution > .evo-segments{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;max-width:100%;box-sizing:border-box;overflow-x:hidden;gap:5px}
+#page-evolution > .evo-segments > button{display:flex;align-items:center;justify-content:center;min-width:0;width:100%;box-sizing:border-box;white-space:normal;overflow-wrap:anywhere;flex:initial;padding:12px 4px;text-align:center}
+@media(max-width:360px){#page-evolution > .evo-segments > button{font-size:10px;letter-spacing:0;padding:11px 2px}}
+</style>
 </head>
 <body class="role-unselected">
  <div id="et-role-gate" role="dialog" aria-modal="true" aria-labelledby="et-role-title">
