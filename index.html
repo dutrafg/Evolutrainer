@@ -1554,6 +1554,47 @@ html[data-theme="light"] .etp-tabs button.active:hover{
 .etp-tabs button:not(.active):hover{background:color-mix(in srgb,var(--primary) 8%,var(--soft))}
 @media(max-width:520px){.etp-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:5px}.etp-tabs button{font-size:12px;padding:10px 5px}}
 </style>
+<style id="et-welltrainer-inspired-redesign-v092">
+/* EvoluTrainer 0.92.beta — redesign experimental aplicado à versão completa.
+   Referência de linguagem visual, sem copiar identidade ou ativos de terceiros. */
+:root,html:not([data-theme="light"]){
+ --primary:#ffd54a!important;--primary-dark:#e8ba30!important;
+ --bg:#0c0d0e!important;--surface:#17191b!important;--card:#1d2022!important;
+ --soft:#242628!important;--border:#303335!important;--text:#f5f5f3!important;
+ --muted:#a3a6a6!important;--radius:12px!important;
+ --et-md3-primary:#ffd54a!important;--et-md3-on-primary:#201a0b!important;color-scheme:dark
+}
+html[data-theme="light"]{
+ --primary:#b48300!important;--primary-dark:#966c00!important;
+ --bg:#f5f5f2!important;--surface:#fff!important;--card:#fff!important;
+ --soft:#f1f1ee!important;--border:#e3e4e0!important;--text:#242525!important;
+ --muted:#686d70!important;color-scheme:light
+}
+body,.app-shell,main{background:var(--bg)!important;color:var(--text)!important;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif!important}
+.app-shell{max-width:none!important}
+.topbar{background:var(--surface)!important;border-bottom:1px solid var(--border)!important;box-shadow:none!important;padding:22px clamp(18px,3vw,42px)!important;gap:14px!important}
+.topbar .brand{font-size:clamp(24px,3vw,30px)!important;letter-spacing:-1.1px!important;font-weight:850!important}
+.topbar .brand span,.et52-side-logo span{color:#ffd54a!important}
+.topbar .tagline{font-size:12px!important;opacity:.78}
+main{padding:28px clamp(16px,3vw,44px) 100px!important}
+.page-head{margin-bottom:22px!important;gap:12px!important}
+.page-head h1{font-size:clamp(27px,3.5vw,38px)!important;letter-spacing:-1.2px!important;font-weight:800!important}
+.page-head p{font-size:14px!important;color:var(--muted)!important}
+.card,.filterbox,.etp-editor,.client-calendar-wrap,.evo-panel,.modal-content,.sheet,.etp-tabs{background:var(--surface)!important;border:1px solid var(--border)!important;border-radius:14px!important;box-shadow:none!important}
+button,.btn,.btn.primary,.btn.secondary,input,select,textarea,.nav-btn,.etp-tabs button{border-radius:10px!important}
+.btn.primary,button.primary,.evo-cta{background:#ffd54a!important;color:#201a0b!important;border-color:#ffd54a!important;box-shadow:none!important;-webkit-text-fill-color:#201a0b!important}
+.btn.primary *,button.primary *,.evo-cta *{color:#201a0b!important;-webkit-text-fill-color:#201a0b!important}
+.btn.secondary{background:var(--soft)!important;color:var(--text)!important;border-color:var(--border)!important}
+html:not([data-theme="light"]) .etp-tabs button.active,html[data-theme="light"] .etp-tabs button.active,
+html:not([data-theme="light"]) .etp-tabs button.active:hover,html[data-theme="light"] .etp-tabs button.active:hover{
+ background:#ffd54a!important;color:#201a0b!important;-webkit-text-fill-color:#201a0b!important;box-shadow:none!important
+}
+.etp-tabs button.active *{color:#201a0b!important;-webkit-text-fill-color:#201a0b!important}
+:is(.card,.filterbox,.client-calendar-wrap,.evo-panel) h2{letter-spacing:-.4px}
+input,select,textarea{background:var(--soft)!important;color:var(--text)!important;border:1px solid var(--border)!important}
+@media(min-width:1000px){.bottom-nav{background:#121415!important;border-right:1px solid var(--border)!important}.app-shell main{max-width:none!important}}
+@media(max-width:700px){.topbar{padding:18px 15px!important}main{padding:22px 14px 110px!important}.page-head h1{font-size:29px!important}.bottom-nav{background:#121415!important}.nav-btn{min-width:0!important}}
+</style>
 </head>
 <body class="role-unselected">
  <div id="et-role-gate" role="dialog" aria-modal="true" aria-labelledby="et-role-title">
