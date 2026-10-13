@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0e14">
+  <meta name="application-name" content="EvoluTrainer">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="Gestão offline de treinos, clientes, avaliações e cobranças.">
+  <title>EvoluTrainer v6.0 PT-BR — Gestão de Treinos, Clientes e Cobranças</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/icon.svg">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+  
+  <link rel="stylesheet" href="./assets/css/01-base.css">
+
+
+
+
+  <link rel="stylesheet" href="./assets/css/02-componentes.css">
+
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#10151e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="./assets/css/03-aparencia.css">
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="./assets/css/04-responsivo.css">
+
+
+
+
+
+
+
+
+</head>
+<body class="role-unselected">
+ <div id="et-role-gate" role="dialog" aria-modal="true" aria-labelledby="et-role-title">
+  <div class="et-role-panel"><div class="et-role-logo">Evolu<span>Trainer</span></div><div class="et-role-tag">v6.0 PT-BR · Área de acesso</div>
+   <h1 id="et-role-title">Como deseja entrar?</h1><p class="et-role-description">Escolha o tipo de uso neste dispositivo. Cada treino continua salvo no banco individual do cliente.</p>
+   <div class="et-role-choices" role="group" aria-label="Escolher modo de acesso">
+    <button type="button" class="et-role-choice" id="et-enter-personal"><span class="et-role-icon">🏋️</span><strong>Personal</strong><small>Acesso aos clientes, treinos, biblioteca, histórico, evolução e configurações.</small></button>
+    <button type="button" class="et-role-choice" id="et-choose-student" aria-pressed="false"><span class="et-role-icon">👤</span><strong>Aluno</strong><small>Ver e executar seus treinos; trocar exercícios durante a sessão.</small></button>
+   </div>
+   <div id="et-role-student-box" class="et-role-student-box" hidden><label for="et-role-client">Selecione seu nome</label><select id="et-role-client"><option value="">Carregando clientes...</option></select><button type="button" id="et-enter-student" class="btn primary et-role-continue" disabled>Entrar nos meus treinos</button></div>
+   <div id="et-role-status" class="et-role-status" aria-live="polite">Preparando biblioteca e perfis...</div>
+   <p class="et-role-help">A escolha organiza a interface, mas não substitui autenticação. Em dispositivos compartilhados, proteja os dados e a pasta do banco.</p>
+  </div></div>
+ <div class="app-shell">
+  <header class="topbar">
+   <div><div class="brand">Evolu<span>Trainer</span> <small>v6.0 PT-BR</small></div><div class="tagline">Treino, evolução e composição · 100% web</div></div>
+   <div class="status"><span class="status-dot"></span> <span id="status-text">Inicializando...</span></div><button type="button" id="et-personal-switch" class="btn secondary small" hidden>Trocar modo</button>
+       <div id="active-client-bar" class="active-client-bar" aria-label="Cliente em atendimento">
+      <div class="active-client-title"><span class="active-client-indicator" aria-hidden="true"></span><span id="active-client-label">CLIENTE EM ATENDIMENTO</span></div>
+      <div class="active-client-tools">
+        <label class="sr-only" for="active-client-select">Selecionar cliente para atendimento</label>
+        <select id="active-client-select" aria-label="Selecionar cliente para atendimento"><option value="">Escolha um cliente...</option></select>
+        <button class="btn secondary small" id="active-client-folder" type="button" data-action="student-folder" hidden>Escolher pasta</button>
+        <button class="btn secondary small" data-action="client-view-profile" type="button" id="active-client-profile-btn" disabled>Ficha</button>
+      </div>
+      <div class="active-client-summary" id="active-client-summary" aria-live="polite">Selecione um cliente para consultar seus registros.</div>
+    </div>
+</header>
+   <div id="et-student-banner" hidden><div><div class="et-student-who" id="et-student-name">Aluno</div><small>Meus treinos · Meu perfil</small></div><button type="button" class="btn secondary small" id="et-student-exit">Sair</button></div>
+   <main>
+   <section id="page-clients" class="page" aria-label="Clientes">
+    <div class="page-head clients-page-heading"><div><h1>Clientes</h1><p>Cadastros, fichas e atendimento individual.</p></div></div>
+    <div id="student-controls"></div>
+   </section>
+   <section id="page-workouts" class="page active" aria-label="Treinos">
+    <div id="workout-active" hidden></div>
+    <div id="workout-routines">
+     <div id="workout-calendar" aria-live="polite"></div>
+     <div class="page-head"><div><h1>Treinos do cliente</h1><p>Rotinas exclusivas do cliente selecionado.</p></div><div class="actions workout-page-actions"><button class="btn secondary" data-action="workout-pdf-form">📄 PDF do treino</button><button class="btn secondary" data-action="pdf-import-open">Importar treino em PDF</button><button class="btn primary" data-action="new-routine">+ Novo treino</button></div></div>
+     <div id="routine-sort-tools" class="routine-sort-tools" aria-live="polite" hidden></div>
+     <div id="routines-list" class="stack"></div>
+    </div>
+   </section>
+   <section id="page-library" class="page" aria-label="Biblioteca">
+    <div class="page-head"><div><h1>Biblioteca de Exercícios</h1><p>Miniaturas de movimento, busca em português e montagem de treinos.</p></div><button class="btn primary" data-action="new-exercise">+ Criar</button></div>
+    <div class="filterbox">
+     <label class="sr-only" for="search-exercise">Buscar exercício</label>
+     <input id="search-exercise" type="search" placeholder="🔎 Buscar exercício pelo nome..." autocomplete="off">
+     <div class="filter-row"><select id="filter-muscle" aria-label="Grupo muscular"><option value="">Todos os músculos</option></select><select id="filter-equipment" aria-label="Equipamento"><option value="">Todos os equipamentos</option></select><select id="filter-source" aria-label="Origem"><option value="">Todos</option><option value="builtin">Catálogo</option><option value="custom">Personalizados</option><option value="favorites">Favoritos</option></select></div>
+     <div id="library-count" class="muted small"></div>
+    </div>
+    <div id="library-list" class="stack"></div>
+    <button id="load-more" class="btn block secondary" hidden data-action="load-more">Mostrar mais exercícios</button>
+   </section>
+   <section id="page-history" class="page" aria-label="Histórico">
+    <div class="page-head"><div><h1>Histórico do cliente</h1><p>Somente sessões do cliente selecionado.</p></div></div>
+    <div id="history-summary"></div><div id="history-list" class="stack"></div>
+   </section>
+   <section id="page-evolution" class="page evo-page" aria-label="Evolução física">
+    <div class="evo-heading"><div><div class="evo-eyebrow">SEU ACOMPANHAMENTO</div><h1>Evolução do cliente</h1><p>Resultados exclusivos do cliente selecionado.</p></div><button type="button" class="btn secondary small" data-evo-action="report-form" aria-label="Gerar relatório PDF de evolução">📄 Relatório PDF</button></div>
+    <div class="evo-segments" role="tablist" aria-label="Áreas de evolução"><button type="button" role="tab" data-evo-action="section" data-section="summary" class="selected">Resumo</button><button type="button" role="tab" data-evo-action="section" data-section="volume">Volume</button><button type="button" role="tab" data-evo-action="section" data-section="goal">Objetivo</button></div>
+    <div id="evo-main" aria-live="polite"></div>
+   </section>
+
+   <section id="page-finance" class="page" aria-label="Cobranças e pagamentos">
+    <div class="page-head"><div><span class="et-eyebrow">GESTÃO FINANCEIRA</span><h1>Cobranças</h1><p>Tabela de serviços do personal e registro manual de cobranças, 100% offline.</p></div></div>
+    <div class="fin-warning" role="note">Os pagamentos são registrados manualmente. O EvoluTrainer não processa Pix, cartão ou transferências bancárias.</div>
+    <section class="fin-service-table" aria-label="Tabela de serviços do personal">
+      <button type="button" class="fin-service-card" data-fin-preset="2x por Semana"><span class="fin-service-name">2x por Semana</span><strong>R$ 144,00</strong><small>Plano semanal</small></button>
+      <button type="button" class="fin-service-card" data-fin-preset="3x por Semana"><span class="fin-service-name">3x por Semana</span><strong>R$ 185,00</strong><small>Plano semanal</small></button>
+      <button type="button" class="fin-service-card" data-fin-preset="4x por Semana"><span class="fin-service-name">4x por Semana</span><strong>R$ 221,00</strong><small>Plano semanal</small></button>
+      <button type="button" class="fin-service-card" data-fin-preset="5x por Semana"><span class="fin-service-name">5x por Semana</span><strong>R$ 250,00</strong><small>Plano semanal</small></button>
+      <button type="button" class="fin-service-card" data-fin-preset="Diária"><span class="fin-service-name">Diária</span><strong>R$ 25,00</strong><small>Atendimento avulso</small></button>
+    </section>
+    <div id="finance-root" aria-live="polite"><div class="card">Carregando o banco financeiro local…</div></div>
+   </section>
+   <section id="page-settings" class="page" aria-label="Configurações">
+    <div class="page-head"><div><h1>Configurações</h1><p>Personalize o aplicativo e proteja os dados dos clientes.</p></div></div>
+    <div class="settings-intro"><span class="settings-eyebrow">PERSONALIZAÇÃO</span><h2>Seu aplicativo, do seu jeito</h2><p>Ajuste a aparência, o conforto e os avisos do atendimento.</p></div>
+    <div class="settings-grid et41-settings-top">
+      <div class="card et41-settings-card"><div class="et41-card-heading"><span class="et41-setting-symbol" aria-hidden="true">◐</span><div><div class="card-title">Aparência</div><p>Um visual confortável em qualquer dispositivo.</p></div></div>
+        <div class="et41-settings-row"><div><strong>Tema do aplicativo</strong><small>Escolha a aparência das telas</small></div><select id="cfg-theme" aria-label="Tema do aplicativo"><option value="dark">Escuro</option><option value="light">Claro</option><option value="system">Automático</option></select></div>
+        <div class="et43-ui-setting"><div><strong>Modo de interface</strong><small>Detectado automaticamente — com ajuste opcional para notebooks híbridos.</small></div><select id="cfg-ui-mode" aria-label="Modo da interface"><option value="auto">Automático</option><option value="touch">Toque</option><option value="desktop">Desktop</option></select></div><p id="cfg-ui-mode-status" class="settings-note et53-mode-status" role="status" aria-live="polite">Detectando modo de interface...</p><p class="settings-note et41-settings-footnote">Sua preferência é salva neste dispositivo.</p></div>
+      <div class="card et41-settings-card"><div class="et41-card-heading"><span class="et41-setting-symbol" aria-hidden="true">♫</span><div><div class="card-title">Avisos de descanso</div><p>Alertas sutis para o fim do intervalo.</p></div></div>
+        <div class="et41-settings-row et41-toggle-row"><div><label for="cfg-sound">Som suave</label><small>Dois tons discretos ao terminar o descanso</small></div><input type="checkbox" id="cfg-sound" checked aria-label="Ativar som ao terminar descanso"></div>
+        <div class="et41-settings-row et41-toggle-row"><div><label for="cfg-vibration">Vibração</label><small>Alerta háptico, se o navegador permitir</small></div><input type="checkbox" id="cfg-vibration" aria-label="Ativar vibração ao terminar descanso"></div>
+        <p class="et41-support" id="cfg-vibration-support" role="status" aria-live="polite">Verificando compatibilidade do dispositivo...</p>
+        <div class="et41-test-actions"><button type="button" class="btn secondary" data-action="test-rest-alert">♫ Testar som e vibração</button><button type="button" class="btn secondary" data-action="test-vibration">◎ Testar vibração</button></div>
+        <p class="settings-note" id="cfg-alert-result" aria-live="polite">Os avisos funcionam com o aplicativo aberto. O som requer interação prévia com a página.</p>
+      </div>
+    </div>
+    <div class="settings-intro settings-data-intro"><span class="settings-eyebrow">DADOS E SEGURANÇA</span><h2>Armazenamento e proteção</h2><p>Organize arquivos, faça cópias e transfira os registros com segurança.</p></div>
+    <div class="et5-group-label">Dados e segurança</div><div class="card"><div class="card-title">📁 Organização do banco de dados</div><p class="settings-note">Na pasta-base escolhida, o catálogo compartilhado fica separado dos registros particulares de cada cliente. A estrutura antiga <code>alunos/</code> continua legível por compatibilidade.</p><div class="settings-structure"><span class="settings-path">Banco de dados/</span><div class="settings-path">├── biblioteca/exercicios.json</div><div class="settings-path">├── clientes/indice.json</div><div class="settings-path">└── clientes/NOME--ID/</div><div class="settings-path">&nbsp;&nbsp;&nbsp; ├── cliente.json</div><div class="settings-path">&nbsp;&nbsp;&nbsp; ├── rotinas.json</div><div class="settings-path">&nbsp;&nbsp;&nbsp; ├── sessoes.json</div><div class="settings-path">&nbsp;&nbsp;&nbsp; ├── evolucao.json</div><div class="settings-path">&nbsp;&nbsp;&nbsp; └── perfil.json</div></div><div id="settings-folder-status" class="settings-note"></div><div class="actions"><button class="btn secondary" data-action="student-folder">📁 Escolher pasta-base</button><button class="btn secondary" data-action="sync-database">↻ Sincronizar arquivos</button><button class="btn secondary" data-action="student-legacy">Migrar dados antigos</button></div></div>
+    <div class="card"><div class="card-title">🔒 Trava de atendimento</div><p id="session-lock-status" class="settings-note">Verificando sessão...</p><p class="settings-note">Uma sessão em andamento impede trocar de cliente ou iniciar outra. A liberação acontece somente após registrar e confirmar o salvamento da sessão no banco e na pasta.</p></div>
+    <div class="card"><div class="card-title">💾 Backup completo e restauração</div><p class="settings-note">Crie um JSON com os perfis, treinos, sessões, avaliações e catálogo. Para restaurar, selecione a pasta-base correta. A restauração exige confirmação explícita e inclui uma cópia de segurança dos dados atuais.</p><div class="actions"><button class="btn primary" data-action="backup-full">⬇ Fazer backup completo</button></div><div class="field" style="margin-top:15px"><label for="restore-full-file">Arquivo de backup completo (.json)</label><input id="restore-full-file" type="file" accept=".json,application/json"></div><div class="actions"><button class="btn secondary" data-action="restore-full">⤴ Restaurar backup completo</button></div><div id="backup-status" class="settings-note" aria-live="polite"></div></div>
+    <div class="card"><div class="card-title">👤 Backup individual</div><p class="settings-note">Escolha o cliente do backup individual. A exportação e a restauração usam somente o perfil selecionado abaixo, sem misturar dados de outras pessoas.</p><div class="field"><label for="backup-client-select">Cliente do backup individual</label><select id="backup-client-select" aria-label="Selecionar cliente para backup individual"><option value="">Selecione um cliente...</option></select></div><div class="actions"><button class="btn secondary" data-action="export">Exportar cliente (JSON)</button></div><div class="field" style="margin-top:12px"><label for="import-file">Restaurar cliente</label><input type="file" id="import-file" accept=".json,application/json"></div><button class="btn secondary" data-action="import">Restaurar para o cliente escolhido</button></div>
+    <div class="card"><div class="card-title">🖼️ Qualidade das miniaturas</div><p class="settings-note">O catálogo base inclui 1.230 miniaturas visíveis. Algumas são fotografias ou animações verificadas; outras são ilustrações do grupo muscular, identificadas como não instrutivas. A importação de mídias com direitos de terceiros exige autorização.</p></div>
+    <div class="card transfer-card"><div class="card-title">📦 Transferir cliente entre dispositivos</div>
+<p class="settings-note">Exporte um pacote portátil com cadastro, rotinas, séries, treinos concluídos, evolução, medidas e exercícios personalizados. No celular, importe o arquivo no mesmo EvoluTrainer: o cliente será criado ou atualizado pelo seu identificador, sem misturar outros perfis.</p>
+<div class="field"><label for="portable-client-select">Cliente para transferir</label><select id="portable-client-select"><option value="">Selecione um cliente...</option></select></div>
+<div class="actions"><button class="btn primary" data-action="portable-export">↓ Exportar cliente completo (.json)</button></div>
+<div class="field" style="margin-top:12px"><label for="portable-import-file">Importar arquivo recebido do PC/celular (.json)</label><input id="portable-import-file" type="file" accept=".json,application/json"></div>
+<div class="actions"><button class="btn secondary" data-action="portable-import">↗ Importar ou atualizar cliente</button></div>
+<p class="settings-note" id="portable-status" aria-live="polite">A transferência não envia dados para nenhum servidor. Compartilhe este arquivo apenas por um meio seguro.</p></div>
+<div class="card automatic-backup-card"><div class="card-title">🕙 Backup diário de treinos — 22h</div>
+<p class="settings-note">Todos os dias, às 22h do dispositivo, salva os treinos, sessões e dados dos clientes. Com uma pasta autorizada, cria <code>backups/diarios/</code>. Sem pasta, mantém cópia no armazenamento local do navegador, que pode ser baixada manualmente.</p>
+<div class="settings-switch"><label for="cfg-daily-backup">Ativar backup automático diário</label><input type="checkbox" id="cfg-daily-backup" checked></div>
+<div id="daily-backup-status" class="settings-note" aria-live="polite">Carregando informações do backup...</div>
+<div class="actions"><button type="button" class="btn secondary" data-action="daily-backup-now">Fazer backup agora</button><button type="button" class="btn secondary" data-action="daily-backup-download">Baixar última cópia</button></div>
+<p class="settings-note">O backup automático requer o aplicativo aberto. Se ele estava fechado às 22h, a rotina pendente será executada na próxima abertura. A cópia no navegador não substitui um backup externo.</p></div>
+<div class="et5-group-label">Informações avançadas</div><div class="card"><div class="card-title">📚 Biblioteca incorporada</div><p id="db-stats" class="muted">Carregando...</p><p class="settings-note">O PWA oferece o catálogo de exercícios e as mídias em arquivos separados. Use o botão abaixo para guardar toda a biblioteca no cache offline deste dispositivo. Os clientes permanecem no armazenamento local isolado.</p></div>
+    <div class="card" id="offline-card"><div class="card-title">📲 PWA e biblioteca offline</div>
+<p class="settings-note">O aplicativo é instalável no navegador por HTTPS. A interface e o catálogo são armazenados automaticamente após a primeira visita; para guardar as 2.947 mídias e utilizá-las sem internet, escolha a opção abaixo. O procedimento pode consumir dezenas de megabytes e está sujeito ao espaço disponível no dispositivo.</p>
+<div class="actions"><button type="button" class="btn primary" data-action="offline-cache">Baixar biblioteca completa para uso offline</button><button type="button" class="btn secondary" data-action="offline-folder">Salvar arquivos em pasta (navegadores compatíveis)</button></div>
+<progress id="offline-meter" max="100" value="0" style="width:100%;height:12px;margin:14px 0 5px" aria-label="Progresso do download offline"></progress>
+<p id="offline-progress" class="settings-note" role="status" aria-live="polite">Pronto para preparar uso offline.</p></div>
+<div class="card"><div class="card-title">🛡️ Integridade e privacidade</div><p class="settings-note">Os arquivos JSON na pasta não são criptografados. Proteja seu dispositivo e faça backups regulares. Firefox e alguns navegadores não permitem escolher uma pasta física.</p><button class="btn secondary" data-action="self-test">Executar autoteste</button><div id="test-results" class="small muted" aria-live="polite"></div></div>
+   </section>
+  </main>
+  <nav class="bottom-nav" aria-label="Navegação principal">
+   <div class="et52-side-brand" aria-label="Identidade do aplicativo"><div class="et52-side-logo">Evolu<span>Trainer</span> <small>v6.0 PT-BR</small></div><div class="et52-side-tag">Treino, evolução e composição · 100% web</div></div>
+   <button class="nav-btn nav-primary" data-tab="workouts" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9v6m4-9v12m10-12v12m4-9v6M7 12h10"/></svg></span>Treinos</button>
+   <button class="nav-btn nav-primary" data-tab="clients" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M17 7a3 3 0 0 1 0 6M17 16a5 5 0 0 1 4 4"/></svg></span>Clientes</button>
+   <button class="nav-btn nav-primary" data-tab="library" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 5h6a3 3 0 0 1 3 3v12a3 3 0 0 0-3-3H3zm18 0h-6a3 3 0 0 0-3 3v12a3 3 0 0 1 3-3h6z"/></svg></span>Biblioteca</button>
+   <button class="nav-btn nav-primary" data-tab="evolution" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3v18h18M6 16l5-5 4 3 6-8"/></svg></span>Evolução</button>
+   <button class="nav-btn nav-desktop" data-tab="history" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 3"/></svg></span>Histórico</button>
+   <button class="nav-btn nav-desktop" data-tab="finance" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M7 15h3"/></svg></span>Cobranças</button>
+   <button class="nav-btn nav-desktop" data-tab="settings" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M4.9 4.9 7 7m10 10 2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></span>Configurações</button>
+   <button class="nav-btn nav-more" id="et-more-btn" type="button" aria-expanded="false" aria-controls="et-more-menu"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="4" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="20" cy="12" r="1"/></svg></span>Mais</button>
+  </nav>
+  <div id="et-more-menu" hidden role="dialog" aria-label="Mais opções"><button type="button" data-tab="history">Histórico</button><button type="button" data-tab="finance">Cobranças</button><button type="button" data-tab="settings">Configurações</button></div>
+<div id="rest-floating" class="floating-rest" role="region" aria-label="Cronômetro de descanso" hidden>
+  <div class="rest-track" aria-hidden="true"><span id="floating-rest-progress"></span></div>
+  <div class="rest-row">
+    <div><div class="rest-label" id="floating-rest-label">DESCANSO ENTRE SÉRIES</div><div class="rest-time" id="floating-rest-clock" aria-live="off">01:30</div></div>
+    <div class="rest-actions">
+      <button type="button" data-action="rest-sub" aria-label="Reduzir trinta segundos">−30s</button>
+      <button type="button" data-action="rest-add" aria-label="Acrescentar trinta segundos">+30s</button>
+      <button type="button" data-action="rest-pause" class="rest-pause" id="floating-rest-pause">⏸ Pausar</button>
+      <button type="button" data-action="rest-skip" class="rest-stop" aria-label="Encerrar descanso">■</button>
+    </div>
+  </div>
+  <div class="rest-manual"><label for="rest-manual-seconds">Definir descanso (segundos)</label><input type="number" id="rest-manual-seconds" min="0" max="1800" step="5" inputmode="numeric" placeholder="Ex.: 90"><button type="button" data-action="rest-manual">Aplicar</button></div>
+</div>
+
+ </div>
+ <div id="modal-overlay" class="modal-overlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading"><div class="modal-top"><h2 id="modal-heading"></h2><button class="icon-btn" data-action="close-modal" aria-label="Fechar">✕</button></div><div id="modal-body"></div></div>
+ </div>
+ <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+ 
+
+ 
+  <script src="./assets/js/pdf-exportacao.js"></script>
+
+
+  <script src="./assets/js/nucleo-app.js"></script>
+
+
+  <script src="./assets/js/pdf-importacao.js"></script>
+
+
+  <script src="./assets/js/evolucao.js"></script>
+
+<div id="evolutrainer-print-report" aria-hidden="true"></div>
+
+  <script src="./assets/js/cobrancas.js"></script>
+
+
+  <script src="./assets/js/navegacao.js"></script>
+
+
+  <script src="./assets/js/acessibilidade.js"></script>
+
+
+
+  <script src="./assets/js/precos-servicos.js"></script>
+
+
+</body>
+</html>
