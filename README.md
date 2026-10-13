@@ -44,9 +44,6 @@ Aplicativo web de gestão de **clientes, treinos, biblioteca de exercícios, his
 ├── media/
 │   ├── thumbs/               # Miniaturas
 │   └── steps/                # Imagens/animações dos movimentos
-├── IMPLEMENTACAO.md          # Detalhes técnicos da implementação
-├── QA-CHECKLIST.md           # Verificações realizadas e pendentes
-└── LEIA-ME.txt               # Instruções resumidas
 ```
 
 Os scripts estão separados em arquivos, mas ainda compartilham parte do escopo JavaScript original. Essa organização **não equivale** a uma reescrita completa com `import`/`export` ES Modules.
@@ -103,13 +100,10 @@ Abra `http://localhost:8000`. Evite abrir `index.html` diretamente com `file://`
 - [ ] Testar backup e restauração entre computador e celular.
 - [ ] Verificar separação de dados entre clientes.
 
-**Situação dos testes:** a sintaxe dos scripts, referências de mídia e integridade do pacote foram verificadas na preparação da v6.3. A instalação PWA real, o IndexedDB em produção e os testes de ponta a ponta precisam ser confirmados no domínio publicado. Consulte `QA-CHECKLIST.md` para os detalhes.
+**Situação dos testes:** a sintaxe dos scripts, referências de mídia e integridade do pacote foram verificadas na preparação da v6.3. A instalação PWA real, o IndexedDB em produção e os testes de ponta a ponta precisam ser confirmados no domínio publicado. Os detalhes da correção atual e as pendências estão descritos nesta seção do README.
 
 ## Documentação complementar
 
-- `IMPLEMENTACAO.md` — arquitetura e verificações técnicas.
-- `QA-CHECKLIST.md` — testes já feitos, pendências e riscos.
-- `LEIA-ME.txt` — instruções rápidas de publicação.
 
 ## Novidades v6.3
 
