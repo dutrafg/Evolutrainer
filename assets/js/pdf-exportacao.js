@@ -3,7 +3,7 @@
 (function(){
 'use strict';
 const WIDTH=595.28,HEIGHT=841.89;
-const C={dark:[.06,.09,.16],green:[0,.65,.37],muted:[.43,.49,.56],soft:[.95,.97,.96],border:[.86,.90,.90],white:[1,1,1]};
+const C={dark:[.07,.10,.18],green:[.36,.44,.91],muted:[.38,.44,.55],soft:[.94,.96,.99],border:[.83,.87,.94],white:[1,1,1]};
 function chLatin(ch){let n=ch.codePointAt(0);if(n<=255)return String.fromCharCode(n);const m={'€':128,'‚':130,'ƒ':131,'„':132,'…':133,'†':134,'‡':135,'ˆ':136,'‰':137,'Š':138,'‹':139,'Œ':140,'Ž':142,'‘':145,'’':146,'“':147,'”':148,'•':149,'–':150,'—':151,'˜':152,'™':153,'š':154,'›':155,'œ':156,'ž':158,'Ÿ':159,'°':176};return m[ch]?String.fromCharCode(m[ch]):'-';}
 function enc(s){return Array.from(String(s??'')).map(chLatin).join('');}
 function esc(s){return enc(s).replace(/[\\()]/g,'\\$&').replace(/[\r\n]+/g,' ');}
@@ -22,7 +22,7 @@ class PDF {
  paragraph(t,size=10,max=WIDTH-80,leading=14,color=C.dark,bold=false){const lines=wrap(t,max,size,bold);for(const line of lines){this.ensure(leading);this.text(40,this.y+size,line,size,bold,color);this.y+=leading;}return lines.length;}
  heading(t){this.ensure(44);this.rect(38,this.y-1,WIDTH-76,28,C.soft);this.text(48,this.y+17,t,12,true,C.dark);this.y+=39;}
  keyValues(fields){this.ensure(58);const w=(WIDTH-80)/fields.length;fields.forEach(([key,value],i)=>{const x=40+i*w;this.text(x,this.y+5,key.toUpperCase(),8,true,C.muted);wrap(value,w-10,10,true).slice(0,2).forEach((line,j)=>this.text(x,this.y+23+j*12,line,10,true,C.dark));});this.y+=54;this.line(40,this.y-10,WIDTH-40,this.y-10,C.border);}
- toBlob(){this.pages.forEach((commands,i)=>{commands.push(`${rgb(C.muted)} rg BT /F1 8 Tf 1 0 0 1 40 30 Tm (EvoluTrainer v3.3 PT-BR | Documento local) Tj ET`);commands.push(`${rgb(C.muted)} rg BT /F1 8 Tf 1 0 0 1 495 30 Tm (Pagina ${i+1} de ${this.pages.length}) Tj ET`);});
+ toBlob(){this.pages.forEach((commands,i)=>{commands.push(`${rgb(C.muted)} rg BT /F1 8 Tf 1 0 0 1 40 30 Tm (EvoluTrainer 0.66.beta | Documento local) Tj ET`);commands.push(`${rgb(C.muted)} rg BT /F1 8 Tf 1 0 0 1 495 30 Tm (Pagina ${i+1} de ${this.pages.length}) Tj ET`);});
   let objects=[null];const add=obj=>{objects.push(obj);return objects.length-1;};
   const font1=add('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>');
   const font2=add('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>');
@@ -52,7 +52,7 @@ function workout(client,routines,opt={}){
     p.ensure(18);p.text(45,p.y+11,`Descanso: ${fmtNum(ex.restSeconds||90)} segundos`,9,false,C.muted);p.y+=18;
     if(ex.notes){p.ensure(20);p.paragraph('Observações: '+ex.notes,9,WIDTH-100,12,C.muted);}
    }
-   p.space(12);p.line(43,p.y-2,WIDTH-44,p.y-2,C.border);
+   p.ensure(16);p.space(12);p.line(43,p.y-2,WIDTH-44,p.y-2,C.border);
   });
   p.space(12);
  });
@@ -65,11 +65,11 @@ function evolution(data){const p=new PDF('RELATÓRIO DE EVOLUÇÃO DE CARGA');co
  p.heading('RESUMO DO PERÍODO');p.keyValues([['Sessões',String(data.sessionsCount||0)],['Volume registrado',fmtNum(data.volumeKg||0)+' kg'],['Exercícios com carga',String(rows.length)]]);
  p.heading('COMPARATIVO DE CARGAS');
  if(!rows.length)p.paragraph('Não há séries concluídas com carga registrada no período.',10);
- for(const row of rows){p.ensure(68);p.paragraph(row.name,11,WIDTH-90,16,C.dark,true);const start=row.first?.date||'-',end=row.last?.date||'-',diff=Number(row.diff)||0;
+ for(const row of rows){p.ensure(104);p.paragraph(row.name,11,WIDTH-90,16,C.dark,true);const start=row.first?.date||'-',end=row.last?.date||'-',diff=Number(row.diff)||0;
   p.paragraph(`Inicial: ${start} · ${fmtNum(row.first?.weight)} kg     Final: ${end} · ${fmtNum(row.last?.weight)} kg`,10,WIDTH-90,15,C.dark);
   p.paragraph(row.comparable?`Evolução: ${diff>=0?'+':''}${fmtNum(diff)} kg (${Number(row.pct)>=0?'+':''}${fmtNum(row.pct)}%)`:'Evolução: registro único — sem comparação',10,WIDTH-90,15,row.comparable&&diff>0?C.green:C.muted,true);
   if(row.notes?.length)p.paragraph('Nota: '+row.notes[row.notes.length-1],9,WIDTH-90,13,C.muted);
-  p.space(8);p.line(43,p.y-2,WIDTH-43,p.y-2,C.border);p.space(8);
+  p.ensure(16);p.space(8);p.line(43,p.y-2,WIDTH-43,p.y-2,C.border);p.space(8);
  }
  const sorted=rows.filter(x=>x.comparable&&x.diff>0).sort((a,b)=>b.diff-a.diff).slice(0,6);if(sorted.length){p.heading('MAIORES GANHOS DE CARGA');sorted.forEach(r=>p.paragraph(`${r.name}: +${fmtNum(r.diff)} kg`,10,WIDTH-80,15,C.dark));}
  if(data.directions){p.heading('DIRETRIZES DO PROFISSIONAL');p.paragraph(data.directions,10,WIDTH-80,15,C.dark);}
