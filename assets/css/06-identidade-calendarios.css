@@ -189,3 +189,38 @@ html[data-theme="light"] .client-calendar-days button{background:var(--soft)}
  #workout-active .session-screen-header .et-finish-btn{flex:1 1 100%;max-width:none;min-width:0}
  #workout-finish-hint{margin-top:0}
 }
+
+/* 0.65.beta — correção de geometria dos calendários em telas móveis. */
+#workout-calendar .et43-calendar-layout,
+#workout-calendar .et43-calendar-main,
+#workout-calendar .et43-weekdays,
+#workout-calendar .et43-calendar-grid {min-width:0!important;box-sizing:border-box!important}
+#workout-calendar .et43-calendar-grid {
+  grid-template-columns:repeat(7,minmax(0,1fr))!important;
+  grid-auto-rows:auto!important;
+  align-items:start!important;
+  align-content:start!important;
+}
+#workout-calendar .et43-calendar-grid>.et43-cal-day {
+  aspect-ratio:1/1!important;
+  height:auto!important;
+  min-height:0!important;
+  padding:2px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  font-size:clamp(11px,3.2vw,16px)!important;
+  line-height:1.15!important;
+}
+#workout-calendar .et43-weekdays>span {font-size:clamp(10px,2.7vw,13px)!important;min-width:0!important}
+@media(max-width:600px){
+ #workout-calendar .et43-calendar{padding:12px 10px!important;max-width:100%!important}
+ #workout-calendar .et43-calendar-main{width:100%!important}
+ #workout-calendar .et43-calendar-grid,#workout-calendar .et43-weekdays{column-gap:4px!important}
+ #workout-calendar .et43-calendar-grid{row-gap:5px!important;grid-auto-rows:auto!important}
+ #workout-calendar .et43-cal-day{border-radius:11px!important}
+}
+@media(max-width:360px){
+ #workout-calendar .et43-calendar{padding:9px 7px!important}
+ #workout-calendar .et43-calendar-grid,#workout-calendar .et43-weekdays{column-gap:3px!important}
+}
