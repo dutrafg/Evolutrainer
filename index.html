@@ -1409,6 +1409,17 @@ body.session-focus-mode #workout-active .et-md3-set-grid .set-check:checked,
 #page-evolution > .evo-segments > button{display:flex;align-items:center;justify-content:center;min-width:0;width:100%;box-sizing:border-box;white-space:normal;overflow-wrap:anywhere;flex:initial;padding:12px 4px;text-align:center}
 @media(max-width:360px){#page-evolution > .evo-segments > button{font-size:10px;letter-spacing:0;padding:11px 2px}}
 </style>
+<style id="et-square-soft-ui">
+/* EvoluTrainer — identidade Material 3 com cantos discretos em toda a interface. */
+:root{--radius:8px!important;--et-corner:8px}
+:where(.app-shell,.page,.card,.filterbox,.modal,.toast,.etp-editor,.etp-tabs,.etp-panel,.evo-panel,.evo-kpi,.etp-chart,.etp-report-table,.etp-metrics>div,.client-calendar-wrap,.library-card,.client-list-item,.fin-service-card,.et41-settings-card,.empty,.inline-notice,.etp-empty){border-radius:8px!important}
+:where(button,.btn,.btn-primary,.nav-btn,.etp-tabs button,.etp-day-tab,.etp-result,.evo-cta,.pill,.badge,.chip,.tag,.tab,.etp-bar-track,.etp-bar-fill,select,input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),textarea,[role="button"],[role="tab"],dialog,details,summary){border-radius:7px!important}
+:where(.bottom-nav,.topbar,.etp-tabs,.etp-filters,.etp-report-filters){border-radius:8px!important}
+:where(.modal-overlay,.etp-modal-overlay){border-radius:0!important}
+:where(input[type="checkbox"],input[type="radio"]){border-radius:3px!important}
+:where(.status-dot,.spinner,.loading-spinner,[role="progressbar"] .dot){border-radius:50%!important}
+@media(max-width:600px){:where(.card,.filterbox,.etp-tabs,.evo-panel,.etp-metrics>div){border-radius:7px!important}}
+</style>
 </head>
 <body class="role-unselected">
  <div id="et-role-gate" role="dialog" aria-modal="true" aria-labelledby="et-role-title">
