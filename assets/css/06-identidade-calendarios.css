@@ -131,3 +131,16 @@ html[data-theme="light"] .client-calendar-days button{background:var(--soft)}
 @media(max-width:355px){#workout-calendar .et43-calendar{padding:9px!important}
  #workout-calendar .et43-weekdays,#workout-calendar .et43-calendar-grid{column-gap:3px!important}
  #workout-calendar .et43-cal-day{min-height:34px!important;font-size:11px}}
+
+/* Excluir séries: ação por linha, alinhada sem estourar o grid no mobile. */
+.workout-set.has-remove{grid-template-columns:28px repeat(2,minmax(0,1fr)) 48px 38px}
+.workout-set.cols-three.has-remove{grid-template-columns:28px repeat(3,minmax(0,1fr)) 48px 38px}
+.et-set-remove{border:1px solid color-mix(in srgb,#ed697c 42%,var(--border));color:#fa8592;background:color-mix(in srgb,#ed697c 9%,var(--card));border-radius:11px;width:36px;min-width:36px;height:38px;display:grid;place-items:center;font-size:22px;font-weight:500;line-height:1;cursor:pointer;touch-action:manipulation}
+.et-set-remove:hover:not(:disabled){background:color-mix(in srgb,#ed697c 22%,var(--card));border-color:#ef8790}
+.et-set-remove:disabled{opacity:.3;cursor:not-allowed}
+.et-set-remove:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
+.et-routine-set-control{display:flex;align-items:center;gap:7px;min-width:0}
+.et-routine-set-control>input{min-width:0;flex:1}
+.et-routine-set-control>.btn{white-space:nowrap;flex-shrink:0;min-height:38px}
+.pdf-set-row .et-set-remove{flex-shrink:0;align-self:center}
+@media(max-width:450px){.workout-set.has-remove{grid-template-columns:21px repeat(2,minmax(0,1fr)) 36px 30px;gap:4px}.workout-set.cols-three.has-remove{grid-template-columns:21px repeat(3,minmax(0,1fr)) 36px 30px;gap:4px}.workout-set.has-remove input{padding:7px 2px;font-size:12px}.workout-set.has-remove .et-set-remove{width:30px;min-width:30px;height:35px;border-radius:9px}.workout-set.has-remove .set-head{font-size:9px}}
