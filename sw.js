@@ -1,6 +1,6 @@
 /* EvoluTrainer v6.3 · PWA offline · nenhum dado pessoal passa pelo Service Worker */
 'use strict';
-const VERSION='v6.3';
+const VERSION='v6.3-sets-20261013';
 const CACHE_SHELL=`evolutrainer-${VERSION}-shell`;
 const CACHE_MEDIA='evolutrainer-media-persistente-v1';
 const CACHE_PREFIX='evolutrainer-v6.';
