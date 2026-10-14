@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0b0e14">
   <meta name="application-name" content="EvoluTrainer">
   <meta name="description" content="Gestão offline de treinos, clientes, avaliações e cobranças.">
-  <title>EvoluTrainer 1.0.beta — Gestão de Treinos, Clientes e Cobranças</title>
+  <title>EvoluTrainer 1.1.beta TESTE associação PT-EN — Gestão de Treinos, Clientes e Cobranças</title>
   <link rel="icon" type="image/svg+xml" href="./assets/icon.svg">
   <style>
 /* Estilo de origem 1 —  */
@@ -1845,7 +1845,7 @@ window.EvoluPDF={workout,evolution,PDF};
 
 /* EvoluTrainer v3.3 PT-BR — SPA estática. Nenhum servidor, API ou framework necessário. */
 'use strict';
-const DB_NAME = 'ReftLocalDB';
+const DB_NAME = 'EvoluTrainerTestePTEN_v11';
 const DB_VERSION = 3;
 const STORES = ['exercises','routines','sessions'];
 const EXTRA_STORES = ['bodyRecords','userProfile'];
@@ -1856,11 +1856,11 @@ const MEDIA_CACHE='evolutrainer-media-persistente-v1';
 const OFFLINE_KEY='evolutrainer_offline_status_v3';
 const SESSION_LOCK_ID='activeWorkoutLock';
 const SETTINGS_KEY='evolutrainer_31_preferences';
-const safeMedia = s=>typeof s==='string' && ((/^media\/(?:thumbs|steps)\/[a-zA-Z0-9_\-.]+\.(?:webp|gif|jpg|png)$/.test(s))||(s.length<=7_200_000&&/^data:image\/(?:png|jpeg|gif);base64,[A-Za-z0-9+/=]+$/.test(s)))?s:'';
+const safeMedia = s=>typeof s==='string' && ((/^https:\/\/raw\.githubusercontent\.com\/yuhonas\/free-exercise-db\/main\/exercises\/[A-Za-z0-9_\-./%]+\.jpg$/.test(s))||(/^media\/(?:thumbs|steps)\/[a-zA-Z0-9_\-.]+\.(?:webp|gif|jpg|png)$/.test(s))||(s.length<=7_200_000&&/^data:image\/(?:png|jpeg|gif);base64,[A-Za-z0-9+/=]+$/.test(s)))?s:'';
 function mediaURL(path){
  const valid=safeMedia(path);
  if(!valid)return '';
- if(valid.startsWith('data:image/'))return valid;
+ if(valid.startsWith('data:image/')||valid.startsWith('https://'))return valid;
  return './'+valid;
 }
 const mediaRank=p=>p.endsWith('.gif')?3:(!p.includes('illustracao_')?2:1);
@@ -1958,10 +1958,10 @@ const num = (value, fallback=0) => Number.isFinite(Number(value)) && Number(valu
 const fmtDate = iso => {const d = new Date(iso);return Number.isNaN(+d) ? 'Data inválida' : d.toLocaleString('pt-BR',{dateStyle:'short',timeStyle:'short'});};
 const fmtDuration = s => `${Math.floor(s/3600).toString().padStart(2,'0')}:${Math.floor(s%3600/60).toString().padStart(2,'0')}:${Math.floor(s%60).toString().padStart(2,'0')}`;
 const state = {db:null,registry:null,studentDb:null,student:null,students:[],clientSearch:'',clientStatus:'all',preferredClientId:null,clientSwitching:false,clientCalendarMonth:(()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');})(),clientCalendarSelectedDate:'',swapIndex:-1,deletingClient:false,pendingDeleteId:null,deletedClientIds:new Set(),folder:null,folderReady:false,folderLabel:'',writeQueue:Promise.resolve(),exercises:[],routines:[],sessions:[],tab:'workouts',organizingRoutines:false,limit:60,draft:null,pickerTerm:'',pickerFilter:'',pendingExercise:null,active:null,toastTimer:null,ticker:null,sessionLock:null,finishing:false,lockWriteQueue:Promise.resolve(),catalogSyncQueue:Promise.resolve(),restChimeContext:null};
-const EXERCISE_SEED_VERSION='ptbr-20261012-v58';
+const EXERCISE_SEED_VERSION='ptbr-freedb-associacao-20261013-v1';
 let exerciseCatalogSyncPromise=null;
-function getExerciseSeedVersion(){try{return localStorage.getItem('et.exerciseSeedVersion')||'';}catch{return '';}}
-function setExerciseSeedVersion(version){try{localStorage.setItem('et.exerciseSeedVersion',version);}catch{}}
+function getExerciseSeedVersion(){try{return localStorage.getItem('et.exerciseSeedVersion.pten')||'';}catch{return '';}}
+function setExerciseSeedVersion(version){try{localStorage.setItem('et.exerciseSeedVersion.pten',version);}catch{}}
 async function syncExerciseCatalog(options={}){
  const {initial=false,showNotice=false}=options||{};
  if(exerciseCatalogSyncPromise)return exerciseCatalogSyncPromise;
@@ -2650,11 +2650,25 @@ function normalizeExercise(x){if(!x||typeof x!=='object'||!x.id||!(x.name||x.nom
  };}
 async function readSeed(){const inline=$('#exercise-seed');if(inline)return JSON.parse(inline.textContent);if(Array.isArray(globalThis.EXERCISE_SEED))return globalThis.EXERCISE_SEED;
  const resp=await fetch('./data/exercises.json?v=ptbr-20261012',{cache:'no-cache'});if(!resp.ok)throw Error('Catálogo de exercícios indisponível');return resp.json();}
+
+const freeDbNameMap={"supino":"bench press","inclinado":"incline","declinado":"decline","rosca":"curl","martelo":"hammer","concentrada":"concentration","agachamento":"squat","terra":"deadlift","remada":"row","cavalinho":"t bar","puxada":"pulldown","alta":"lat","triceps":"triceps","testa":"lying triceps extension","desenvolvimento":"shoulder press","elevacao":"raise","lateral":"lateral","panturrilha":"calf raise","extensora":"leg extension","flexora":"leg curl","abdutora":"abductor","adutora":"adductor","crucifixo":"fly","voador":"butterfly","barra":"barbell","halter":"dumbbell","halteres":"dumbbell","polia":"cable","maquina":"machine","sentado":"seated","sentada":"seated","unilateral":"single","inverso":"reverse","inversa":"reverse","abdominal":"crunch","paralela":"dips","stiff":"stiff","afundo":"lunge","leg":"leg","press":"press","pulley":"cable","pegada":"grip","aberta":"wide","fechada":"close","frances":"french","direta":"barbell","alternada":"alternate","banco":"bench","scott":"preacher","romeno":"romanian","sumo":"sumo","livre":"free","vertical":"vertical","horizontal":"horizontal","peitoral":"chest","costas":"back","ombros":"shoulders","biceps":"biceps"};
+const freeDbNorm=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
+async function matchFreeDbMedia(source){
+ let catalog=[];try{const response=await fetch('./data/free-exercise-db-media.json');if(!response.ok)throw Error('Catálogo FreeDB não encontrado');catalog=await response.json();}catch(err){console.warn('Associação PT/EN indisponível',err);return source;}
+ const exact=new Map(catalog.map(x=>[freeDbNorm(x.name),x]));let matched=0,ambiguous=0;
+ const out=source.map(ex=>{if(ex.manualImage||ex.custom)return ex;
+ const pt=freeDbNorm(ex.name),original=freeDbNorm(ex.originalName||'');let row=exact.get(original)||exact.get(pt);
+ if(!row){const tokens=pt.split(' ').filter(t=>t.length>2&&!['com','para','dos','das','de','em','na','no','ao','uma'].includes(t));const english=tokens.flatMap(t=>(freeDbNameMap[t]||t).split(' ')).filter(t=>t.length>2);if(english.length<2)return ex;
+ let top=null,best=0,second=0;for(const x of catalog){const name=freeDbNorm(x.name);const score=english.filter(t=>name.split(' ').includes(t)).length/english.length;if(score>best){second=best;best=score;top=x;}else if(score>second)second=score;}if(best>=0.9&&best-second>=0.16)row=top;else if(best>=0.7)ambiguous++;}
+ if(!row||!row.images?.length)return ex;const prefix='https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/';const images=row.images.map(p=>prefix+p);matched++;return {...ex,image:images[0],images,matchedEnglishName:row.name};});
+ console.info('[EvoluTrainer PT→EN] imagens associadas:',matched,'ambíguas não aplicadas:',ambiguous);return out;
+}
+
 async function seedExercises(){
  const existing=await allFrom('exercises');
  const currentVersion=getExerciseSeedVersion();
  if(existing.length&&currentVersion===EXERCISE_SEED_VERSION)return 0;
- const source=await readSeed();if(!Array.isArray(source))throw Error('Formato de catálogo inválido');
+ let source=await readSeed();if(!Array.isArray(source))throw Error('Formato de catálogo inválido');source=await matchFreeDbMedia(source);
  const byId=new Map(existing.map(e=>[e.id,e]));
  const updates=[];
  for(const row of source){const ex=normalizeExercise(row);if(!ex?.name)continue;
