@@ -1958,7 +1958,7 @@ const num = (value, fallback=0) => Number.isFinite(Number(value)) && Number(valu
 const fmtDate = iso => {const d = new Date(iso);return Number.isNaN(+d) ? 'Data inválida' : d.toLocaleString('pt-BR',{dateStyle:'short',timeStyle:'short'});};
 const fmtDuration = s => `${Math.floor(s/3600).toString().padStart(2,'0')}:${Math.floor(s%3600/60).toString().padStart(2,'0')}:${Math.floor(s%60).toString().padStart(2,'0')}`;
 const state = {db:null,registry:null,studentDb:null,student:null,students:[],clientSearch:'',clientStatus:'all',preferredClientId:null,clientSwitching:false,clientCalendarMonth:(()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');})(),clientCalendarSelectedDate:'',swapIndex:-1,deletingClient:false,pendingDeleteId:null,deletedClientIds:new Set(),folder:null,folderReady:false,folderLabel:'',writeQueue:Promise.resolve(),exercises:[],routines:[],sessions:[],tab:'workouts',organizingRoutines:false,limit:60,draft:null,pickerTerm:'',pickerFilter:'',pendingExercise:null,active:null,toastTimer:null,ticker:null,sessionLock:null,finishing:false,lockWriteQueue:Promise.resolve(),catalogSyncQueue:Promise.resolve(),restChimeContext:null};
-const EXERCISE_SEED_VERSION='ptbr-freedb-associacao-20261013-v3';
+const EXERCISE_SEED_VERSION='ptbr-freedb-associacao-20261013-v4';
 let exerciseCatalogSyncPromise=null;
 function getExerciseSeedVersion(){try{return localStorage.getItem('et.exerciseSeedVersion.pten')||'';}catch{return '';}}
 function setExerciseSeedVersion(version){try{localStorage.setItem('et.exerciseSeedVersion.pten',version);}catch{}}
@@ -2885,8 +2885,50 @@ const ET5_FAVORITES_KEY='et5_library_favorites';
 let et5FavoriteIds=new Set();try{et5FavoriteIds=new Set(JSON.parse(localStorage.getItem(ET5_FAVORITES_KEY)||'[]'));}catch{}
 function et5FavHas(id){return et5FavoriteIds.has(id);}
 function et5ToggleFav(id){if(et5FavoriteIds.has(id))et5FavoriteIds.delete(id);else et5FavoriteIds.add(id);try{localStorage.setItem(ET5_FAVORITES_KEY,JSON.stringify([...et5FavoriteIds]));}catch{}renderLibrary();}
-function filteredExercises(){const term=norm($('#search-exercise').value.trim());const category=$('#filter-muscle').value;const equipment=$('#filter-equipment').value;const source=$('#filter-source').value;return state.exercises.filter(ex=>(!term||norm(ex.name).includes(term)||norm(ex.originalName).includes(term)||norm(ex.matchedEnglishName).includes(term)||norm(ex.category).includes(term)||norm(ex.equipment).includes(term)||norm(ex.secondary?.join(' ')).includes(term))&&(!category||ex.category===category)&&(!equipment||ex.equipment===equipment)&&(!source||(source==='favorites'?et5FavHas(ex.id):(source==='custom'?ex.custom:!ex.custom))));}
-function renderLibrary(){const data=filteredExercises();$('#library-count').textContent=`${data.length} exercício(s) encontrado(s) · ${state.exercises.length} no banco`;$('#library-list').innerHTML=data.length?data.slice(0,state.limit).map(ex=>`<div class="card library-card"><div class="card-top"><div class="ex-summary">${thumb(ex)}<div><div class="library-title">${esc(ex.name)}${ex.matchedEnglishName&&freeDbNorm(ex.matchedEnglishName)!==freeDbNorm(ex.name)?`<div style="font-size:.82em;font-weight:500;opacity:.75;margin-top:3px">${esc(ex.matchedEnglishName)}</div>`:""}</div><div class="card-meta">${esc(ex.category)} · ${esc(ex.equipment)}</div><span class="pill dim">${ex.custom?'Personalizado':'Catálogo'}</span></div></div><button class="btn primary small" data-action="library-add" data-id="${esc(ex.id)}">+ Treino</button></div><div class="actions"><button class="btn secondary small" type="button" data-et5-favorite="${esc(ex.id)}" aria-pressed="${et5FavHas(ex.id)}" aria-label="${et5FavHas(ex.id)?'Remover dos favoritos':'Adicionar aos favoritos'}">${et5FavHas(ex.id)?'★ Favorito':'☆ Favoritar'}</button><button class="btn secondary small" data-action="view-exercise" data-id="${esc(ex.id)}">Detalhes</button><button class="btn secondary small" data-action="edit-exercise-image" data-id="${esc(ex.id)}">🖼️ Editar GIF/imagem</button>${ex.custom?`<button class="btn danger small" data-action="delete-exercise" data-id="${esc(ex.id)}">Excluir</button>`:''}</div></div>`).join(''):empty('Nenhum exercício corresponde aos filtros.');$('#load-more').hidden=data.length<=state.limit;}
+
+/* Rótulo bilíngue para o catálogo FreeDB: Inglês - Português.
+   A tradução é de exibição, não altera IDs nem referências de treinos. */
+const etEnPtWords={
+'bench':'banco','press':'supino','incline':'inclinado','decline':'declinado','flat':'reto','dumbbell':'com halteres','barbell':'com barra','cable':'na polia','machine':'na máquina','smith':'no Smith','standing':'em pé','seated':'sentado','lying':'deitado','alternating':'alternado','alternate':'alternado','one':'um','arm':'braço','single':'unilateral','two':'dois','hand':'mão','hands':'mãos','wide':'aberta','close':'fechada','grip':'pegada','reverse':'inversa','front':'frontal','rear':'posterior','lateral':'lateral','raise':'elevação','raises':'elevações','curl':'rosca','curls':'roscas','hammer':'martelo','preacher':'Scott','concentration':'concentrada','squat':'agachamento','squats':'agachamentos','deadlift':'levantamento terra','romanian':'romeno','stiff':'stiff','leg':'perna','legs':'pernas','extension':'extensão','extensions':'extensões','calf':'panturrilha','hip':'quadril','thrust':'elevação','glute':'glúteo','bridge':'ponte','lunge':'afundo','lunges':'afundos','row':'remada','rows':'remadas','bent':'curvada','over':'sobre','pulldown':'puxada alta','pull':'puxada','down':'baixo','up':'alto','chin':'queixo','pullup':'barra fixa','pullups':'barra fixa','lat':'dorsal','t':'T','bar':'barra','triceps':'tríceps','biceps':'bíceps','shoulder':'ombro','shoulders':'ombros','chest':'peitoral','back':'costas','abdominal':'abdominal','abs':'abdômen','crunch':'abdominal','crunches':'abdominais','oblique':'oblíquo','obliques':'oblíquos','twist':'torção','twists':'torções','knee':'joelho','knees':'joelhos','hanging':'suspenso','floor':'no chão','side':'lateral','plank':'prancha','push':'empurrar','pushup':'flexão','pushups':'flexões','fly':'crucifixo','flyes':'crucifixo','butterfly':'voador','dip':'mergulho','dips':'paralelas','rope':'corda','kickback':'coice','skullcrusher':'tríceps testa','face':'rosto','vertical':'vertical','horizontal':'horizontal','bodyweight':'peso corporal','weighted':'com peso','assisted':'assistido','step':'passo','walking':'caminhando','sumo':'sumô','good':'bom','morning':'dia','hyperextension':'hiperextensão','shrug':'encolhimento','shrugs':'encolhimentos','wrist':'punho','forearm':'antebraço','neck':'pescoço','stretch':'alongamento','stretching':'alongamento','ball':'bola','medicine':'medicinal','kettlebell':'kettlebell','band':'elástico','bands':'elásticos','resistance':'resistência','with':'com','on':'no','in':'em','to':'para','the':'','and':'e','of':'de','a':'','an':''
+};
+const etEnPtPhrases=[
+[/\\bwide[ -]grip lat pulldown\\b/gi,'Puxada alta com pegada aberta'],
+[/\\bt[ -]bar row\\b/gi,'Remada cavalinho'],
+[/\\bincline dumbbell press\\b/gi,'Supino inclinado com halteres'],
+[/\\bflat bench press\\b/gi,'Supino reto'],
+[/\\bbench press\\b/gi,'Supino reto'],
+[/\\bhammer curl\\b/gi,'Rosca martelo'],
+[/\\bbarbell curl\\b/gi,'Rosca direta com barra'],
+[/\\bleg press\\b/gi,'Leg press'],
+[/\\bleg extension\\b/gi,'Cadeira extensora'],
+[/\\bleg curl\\b/gi,'Mesa flexora'],
+[/\\blat pulldown\\b/gi,'Puxada alta'],
+[/\\bseated cable row\\b/gi,'Remada baixa sentada na polia'],
+[/\\bshoulder press\\b/gi,'Desenvolvimento de ombros'],
+[/\\bdeadlift\\b/gi,'Levantamento terra'],
+[/\\bsit[ -]up\\b/gi,'Abdominal tradicional'],
+[/\\bair bike\\b/gi,'Abdominal bicicleta'],
+[/\\bcrunch\\b/gi,'Abdominal'],
+[/\\bpush[ -]up\\b/gi,'Flexão de braços'],
+[/\\bpull[ -]up\\b/gi,'Barra fixa']
+];
+function etEnglishToPortuguese(name){
+ let en=String(name||'').trim();if(!en)return '';
+ let phrase=etEnPtPhrases.find(([re])=>{re.lastIndex=0;return re.test(en)});
+ if(phrase){const exact=phrase[0];exact.lastIndex=0;if(en.replace(exact,'').trim()==='')return phrase[1];}
+ const parts=en.replace(/([a-z])([A-Z])/g,'$1 $2').split(/([\\s,()/-]+)/);
+ let pt=parts.map(p=>{const k=p.toLowerCase();return Object.prototype.hasOwnProperty.call(etEnPtWords,k)?etEnPtWords[k]:p}).join('').replace(/\\s+/g,' ').trim();
+ return pt.charAt(0).toLocaleUpperCase('pt-BR')+pt.slice(1);
+}
+function etBilingualLabel(ex){
+ const name=String(ex.name||'').trim(),en=String(ex.matchedEnglishName||ex.originalName||name).trim();
+ const englishFirst=String(ex.id||'').startsWith('free:')||ex.source==='free_exercise_db'||(freeDbNorm(name)===freeDbNorm(en));
+ const pt=englishFirst?etEnglishToPortuguese(en):name;
+ return {en,pt};
+}
+
+function filteredExercises(){const term=norm($('#search-exercise').value.trim());const category=$('#filter-muscle').value;const equipment=$('#filter-equipment').value;const source=$('#filter-source').value;return state.exercises.filter(ex=>(!term||norm(ex.name).includes(term)||norm(ex.originalName).includes(term)||norm(ex.matchedEnglishName).includes(term)||norm(etBilingualLabel(ex).pt).includes(term)||norm(ex.category).includes(term)||norm(ex.equipment).includes(term)||norm(ex.secondary?.join(' ')).includes(term))&&(!category||ex.category===category)&&(!equipment||ex.equipment===equipment)&&(!source||(source==='favorites'?et5FavHas(ex.id):(source==='custom'?ex.custom:!ex.custom))));}
+function renderLibrary(){const data=filteredExercises();$('#library-count').textContent=`${data.length} exercício(s) encontrado(s) · ${state.exercises.length} no banco`;$('#library-list').innerHTML=data.length?data.slice(0,state.limit).map(ex=>`<div class="card library-card"><div class="card-top"><div class="ex-summary">${thumb(ex)}<div><div class="library-title">${(()=>{const names=etBilingualLabel(ex);return esc(names.en)+" - "+esc(names.pt)})()}</div><div class="card-meta">${esc(ex.category)} · ${esc(ex.equipment)}</div><span class="pill dim">${ex.custom?'Personalizado':'Catálogo'}</span></div></div><button class="btn primary small" data-action="library-add" data-id="${esc(ex.id)}">+ Treino</button></div><div class="actions"><button class="btn secondary small" type="button" data-et5-favorite="${esc(ex.id)}" aria-pressed="${et5FavHas(ex.id)}" aria-label="${et5FavHas(ex.id)?'Remover dos favoritos':'Adicionar aos favoritos'}">${et5FavHas(ex.id)?'★ Favorito':'☆ Favoritar'}</button><button class="btn secondary small" data-action="view-exercise" data-id="${esc(ex.id)}">Detalhes</button><button class="btn secondary small" data-action="edit-exercise-image" data-id="${esc(ex.id)}">🖼️ Editar GIF/imagem</button>${ex.custom?`<button class="btn danger small" data-action="delete-exercise" data-id="${esc(ex.id)}">Excluir</button>`:''}</div></div>`).join(''):empty('Nenhum exercício corresponde aos filtros.');$('#load-more').hidden=data.length<=state.limit;}
 function openModal(title,html){$('#modal-heading').textContent=title;$('#modal-body').innerHTML=html;$('#modal-overlay').hidden=false;document.body.style.overflow='hidden';}
 function closeModal(){state.editImageId=null;state.editImageData=null;$('#modal-overlay').hidden=true;$('#modal-body').innerHTML='';document.body.style.overflow='';state.pendingExercise=null;state.draft=null;state.pendingDeleteId=null;state.customExerciseImage=null;}
 const MAIN_GROUPS=['Peito','Costas','Pernas','Ombros','Braços','Core','Cardio'];
