@@ -1696,7 +1696,7 @@ input,select,textarea{background:var(--soft)!important;color:var(--text)!importa
     <div class="et5-group-label">Dados e segurança</div><div class="card"><div class="card-title">📁 Organização do banco de dados</div><p class="settings-note">Na pasta-base escolhida, o catálogo compartilhado fica separado dos registros particulares de cada cliente. A estrutura antiga <code>alunos/</code> continua legível por compatibilidade.</p><div class="settings-structure"><span class="settings-path">Banco de dados/</span><div class="settings-path">├── biblioteca/exercicios.json</div><div class="settings-path">├── clientes/indice.json</div><div class="settings-path">└── clientes/NOME--ID/</div><div class="settings-path">&nbsp;&nbsp;&nbsp; ├── cliente.json</div><div class="settings-path">&nbsp;&nbsp;&nbsp; ├── rotinas.json</div><div class="settings-path">&nbsp;&nbsp;&nbsp; ├── sessoes.json</div><div class="settings-path">&nbsp;&nbsp;&nbsp; ├── evolucao.json</div><div class="settings-path">&nbsp;&nbsp;&nbsp; └── perfil.json</div></div><div id="settings-folder-status" class="settings-note"></div><div class="actions"><button class="btn secondary" data-action="student-folder">📁 Escolher pasta-base</button><button class="btn secondary" data-action="sync-database">↻ Sincronizar arquivos</button><button class="btn secondary" data-action="student-legacy">Migrar dados antigos</button></div></div>
     <div class="card"><div class="card-title">🔒 Trava de atendimento</div><p id="session-lock-status" class="settings-note">Verificando sessão...</p><p class="settings-note">Uma sessão em andamento impede trocar de cliente ou iniciar outra. A liberação acontece somente após registrar e confirmar o salvamento da sessão no banco e na pasta.</p></div>
     <div class="card"><div class="card-title">💾 Backup completo e restauração</div><p class="settings-note">Crie um JSON com os perfis, treinos, sessões, avaliações e catálogo. Para restaurar, selecione a pasta-base correta. A restauração exige confirmação explícita e inclui uma cópia de segurança dos dados atuais.</p><div class="actions"><button class="btn primary" data-action="backup-full">⬇ Fazer backup completo</button></div><div class="field" style="margin-top:15px"><label for="restore-full-file">Arquivo de backup completo (.json)</label><input id="restore-full-file" type="file" accept=".json,application/json"></div><div class="actions"><button class="btn secondary" data-action="restore-full">⤴ Restaurar backup completo</button></div><div id="backup-status" class="settings-note" aria-live="polite"></div></div>
-    <div class="card"><div class="card-title">👤 Backup individual</div><p class="settings-note">Escolha o cliente do backup individual. A exportação e a restauração usam somente o perfil selecionado abaixo, sem misturar dados de outras pessoas.</p><div class="field"><label for="backup-client-select">Cliente do backup individual</label><select id="backup-client-select" aria-label="Selecionar cliente para backup individual"><option value="">Selecione um cliente...</option></select></div><div class="actions"><button class="btn secondary" data-action="export">Exportar cliente (JSON)</button></div><div class="field" style="margin-top:12px"><label for="import-file">Restaurar cliente</label><input type="file" id="import-file" accept=".json,application/json"></div><button class="btn secondary" data-action="import">Restaurar para o cliente escolhido</button></div>
+    <div class="card"><div class="card-title">👤 Backup individual</div><p class="settings-note">Escolha o cliente do backup individual. O JSON inclui exercícios utilizados nos treinos e incorpora imagens/GIFs disponíveis para restauração em outro aparelho, sem misturar dados de outros clientes. Arquivos grandes podem levar mais tempo.</p><div class="field"><label for="backup-client-select">Cliente do backup individual</label><select id="backup-client-select" aria-label="Selecionar cliente para backup individual"><option value="">Selecione um cliente...</option></select></div><div class="actions"><button class="btn secondary" data-action="export">Exportar cliente (JSON)</button></div><div class="field" style="margin-top:12px"><label for="import-file">Restaurar cliente</label><input type="file" id="import-file" accept=".json,application/json"></div><button class="btn secondary" data-action="import">Restaurar para o cliente escolhido</button></div>
     <div class="card"><div class="card-title">🖼️ Qualidade das miniaturas</div><p class="settings-note">O catálogo base inclui 1.230 miniaturas visíveis. Algumas são fotografias ou animações verificadas; outras são ilustrações do grupo muscular, identificadas como não instrutivas. A importação de mídias com direitos de terceiros exige autorização.</p></div>
     <div class="card transfer-card"><div class="card-title">📦 Transferir cliente entre dispositivos</div>
 <p class="settings-note">Exporte um pacote portátil com cadastro, rotinas, séries, treinos concluídos, evolução, medidas e exercícios personalizados. No celular, importe o arquivo no mesmo EvoluTrainer: o cliente será criado ou atualizado pelo seu identificador, sem misturar outros perfis.</p>
@@ -3022,17 +3022,51 @@ async function discardWorkout(){
  await finishWorkout();
 }
 function renderHistory(){const total=state.sessions.length;const vol=state.sessions.reduce((s,x)=>s+num(x.totalVolumeKg),0);$('#history-summary').innerHTML=`<div class="card"><div class="card-title">Resumo</div><div class="card-meta">${total} sessão(ões) · ${vol.toLocaleString('pt-BR',{maximumFractionDigits:1})} kg de volume acumulado</div></div>`;$('#history-list').innerHTML=total?state.sessions.map(s=>`<div class="card"><div class="card-top"><div><div class="card-title">${esc(s.routineName||'Treino')}</div><div class="card-meta">${esc(fmtDate(s.date))}<br>${num(s.totalSets)} séries feitas · ${num(s.totalVolumeKg).toLocaleString('pt-BR',{maximumFractionDigits:1})} kg · ${fmtDuration(num(s.durationSeconds))}</div></div><span class="pill">CONCLUÍDO</span></div>${s.notes?`<p class="small muted">Obs. do atendimento: ${esc(s.notes)}</p>`:''}<details class="history-details"><summary>Ver exercícios e séries</summary>${Array.isArray(s.exercises)?s.exercises.map(ex=>`<p><strong>${esc(exerciseById(ex.exerciseId)?.name||ex.name||'Exercício')}</strong> — ${ex.sets?.filter(x=>x.done).length||0} séries concluídas${ex.notes?`<br><small>Obs.: ${esc(ex.notes)}</small>`:''}</p>`).join(''):''}</details><div class="actions"><button class="btn danger small" data-action="delete-session" data-id="${esc(s.id)}">Excluir sessão</button></div></div>`).join(''):empty('Ainda não há sessões finalizadas. Inicie uma rotina e registre suas séries.');}
+async function backupExercisesWithMedia(exercises){
+ const out=[];let missing=0;
+ for(const original of exercises){
+  const ex={...original};
+  for(const key of ['manualImage','image']){
+   const value=ex[key];if(!value||!safeMedia(value)||value.startsWith('data:'))continue;
+   try{
+    const response=await fetch(mediaURL(value));if(!response.ok)throw Error('HTTP '+response.status);
+    const blob=await response.blob();
+    if(!['image/gif','image/png','image/jpeg','image/webp'].includes(blob.type)||blob.size>8*1024*1024)throw Error('Mídia não suportada');
+    const encoded=await new Promise((ok,fail)=>{const reader=new FileReader();reader.onload=()=>ok(reader.result);reader.onerror=fail;reader.readAsDataURL(blob)});
+    if(!safeMedia(encoded))throw Error('Mídia grande ou incompatível');
+    ex[key]=encoded;
+   }catch(err){missing++;console.warn('Backup: mídia não incorporada',value,err);}
+  }
+  if(Array.isArray(ex.images)){
+   const imgs=[];
+   for(const path of ex.images){
+    if(!safeMedia(path)||path.startsWith('data:')){imgs.push(path);continue;}
+    try{
+     const response=await fetch(mediaURL(path));if(!response.ok)throw Error('HTTP '+response.status);
+     const blob=await response.blob();if(!['image/gif','image/png','image/jpeg','image/webp'].includes(blob.type)||blob.size>8*1024*1024)throw Error('Mídia incompatível');
+     const encoded=await new Promise((ok,fail)=>{const reader=new FileReader();reader.onload=()=>ok(reader.result);reader.onerror=fail;reader.readAsDataURL(blob)});
+     if(!safeMedia(encoded))throw Error('Mídia incompatível');imgs.push(encoded);
+    }catch(err){missing++;imgs.push(path);console.warn('Backup: etapa não incorporada',path,err);}
+   }
+   ex.images=imgs;
+  }
+  out.push(ex);
+ }
+ return {exercises:out,missing};
+}
 async function exportData(){
  const target=await ensureBackupClientContext();if(!target)return;
  await refresh();
- const payload={schemaVersion:4,app:'EvoluTrainer v6.0 PT-BR',studentId:state.student.id,studentName:state.student.name,clientId:state.student.id,clientName:state.student.name,exportedAt:new Date().toISOString(),exercises:state.exercises.filter(x=>x.custom),routines:state.routines,sessions:state.sessions,bodyRecords:window.Evolution?.records||[],userProfile:window.Evolution?.profile||null};
+ const ids=new Set(state.routines.flatMap(r=>(r.exercises||[]).map(e=>e.exerciseId)).concat(state.sessions.flatMap(r=>(r.exercises||[]).map(e=>e.exerciseId))));
+ const mediaPack=await backupExercisesWithMedia(state.exercises.filter(x=>x.custom||ids.has(x.id)));
+ const payload={schemaVersion:5,mediaEmbedded:mediaPack.missing===0,missingMedia:mediaPack.missing,app:'EvoluTrainer v6.0 PT-BR',studentId:state.student.id,studentName:state.student.name,clientId:state.student.id,clientName:state.student.name,exportedAt:new Date().toISOString(),exercises:mediaPack.exercises,routines:state.routines,sessions:state.sessions,bodyRecords:window.Evolution?.records||[],userProfile:window.Evolution?.profile||null};
  const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));
- const a=document.createElement('a');a.href=url;a.download=`evolutrainer_${safeSlug(state.student.name)}_${new Date().toISOString().slice(0,10)}.json`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000);notify('Backup individual de '+state.student.name+' exportado.');
+ const a=document.createElement('a');a.href=url;a.download=`evolutrainer_${safeSlug(state.student.name)}_${new Date().toISOString().slice(0,10)}.json`;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000);notify('Backup individual exportado'+(mediaPack.missing?' · Atenção: '+mediaPack.missing+' mídias não puderam ser incorporadas.':', com imagens e GIFs incorporados.'));
 }
 async function importData(){
  const target=await ensureBackupClientContext();if(!target)return;
  const file=$('#import-file').files?.[0];if(!file){notify('Selecione um arquivo JSON primeiro.');return;}
- if(file.size>20_000_000){notify('Arquivo muito grande (limite 20 MB).');return;}
+ if(file.size>150_000_000){notify('Arquivo muito grande (limite 150 MB).');return;}
  let raw;try{raw=JSON.parse(await file.text());}catch{notify('O arquivo não contém JSON válido.');return;}
  if(!Array.isArray(raw)&&(raw.clientId||raw.studentId)&&(raw.clientId||raw.studentId)!==state.student.id){notify('Backup pertence a outro cliente. Escolha o perfil correto no seletor de backup individual.');return;}
  if(!Array.isArray(raw)&&!raw.studentId&&!confirm('Importar este backup antigo SEM identificador para '+state.student.name+'? Confira o destinatário antes de continuar.'))return;
@@ -3092,8 +3126,9 @@ async function buildPortableClient(clientId){
  try{
   const data={};for(const name of PERSONAL_STORES)data[name]=await getAllDB(db,name);
   const referenced=new Set(data.routines.flatMap(r=>(r.exercises||[]).map(e=>e.exerciseId)).concat(data.sessions.flatMap(r=>(r.exercises||[]).map(e=>e.exerciseId))));
-  const exercises=(await getAllDB(state.db,'exercises')).filter(x=>x.custom||referenced.has(x.id));
-  return {kind:'EvoluTrainerPortableClient',schemaVersion:1,appVersion:'3.9',exportedAt:new Date().toISOString(),profile:{...client},data,exercises};
+  const mediaPack=await backupExercisesWithMedia((await getAllDB(state.db,'exercises')).filter(x=>x.custom||referenced.has(x.id)));
+  const exercises=mediaPack.exercises;
+  return {mediaEmbedded:mediaPack.missing===0,missingMedia:mediaPack.missing,kind:'EvoluTrainerPortableClient',schemaVersion:1,appVersion:'3.9',exportedAt:new Date().toISOString(),profile:{...client},data,exercises};
  }finally{if(db!==state.studentDb)db.close();}
 }
 function portableTargetId(){
@@ -3106,7 +3141,7 @@ async function exportPortableClient(id){
  const pack=await buildPortableClient(target);
  downloadJSON(pack,`EvoluTrainer_cliente_${safeSlug(pack.profile.name)}_${new Date().toISOString().slice(0,10)}.json`);
  const status=$('#portable-status');if(status)status.textContent=`Pacote gerado: ${pack.profile.name} · ${pack.data.routines.length} treinos · ${pack.data.sessions.length} sessões.`;
- notify('Pacote completo do cliente pronto para transferir ao celular.');
+ notify('Pacote do cliente exportado'+(pack.missingMedia?' · Atenção: '+pack.missingMedia+' mídias não incorporadas.':', com GIFs e imagens incorporados.'));
 }
 function validatePortable(raw){
  if(!raw||raw.kind!=='EvoluTrainerPortableClient'||raw.schemaVersion!==1)throw Error('Formato de pacote portátil não reconhecido.');
@@ -3135,7 +3170,7 @@ async function importPortableClient(){
   await new Promise((resolve,reject)=>{const tx=db.transaction(PERSONAL_STORES,'readwrite');for(const key of PERSONAL_STORES){const store=tx.objectStore(key);for(const r of records[key])store.put(r);}tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error);});
   if(state.folder)await mirrorStudent(state.folder,safe,db);
   const known=new Set((await getAllDB(state.db,'exercises')).map(x=>x.id));
-  const incoming=raw.exercises.map(normalizeExercise).filter(x=>x?.id&&x.name&&(x.custom||!known.has(x.id)));
+  const incoming=raw.exercises.map(normalizeExercise).filter(x=>x?.id&&x.name&&(x.custom||!known.has(x.id)||!!x.manualImage||String(x.image||'').startsWith('data:image/')));
   if(incoming.length)await transact(['exercises'],'readwrite',tx=>{const store=tx.objectStore('exercises');for(const ex of incoming)store.put(ex);});
   await registryPut('students',safe);
   state.students=state.students.filter(c=>c.id!==safe.id).concat(safe).sort((a,b)=>a.name.localeCompare(b.name,'pt-BR'));
