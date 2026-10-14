@@ -1870,7 +1870,8 @@ const verifiedMedia=ex=>{
  return valid.sort((a,b)=>mediaRank(b)-mediaRank(a))[0]||'';
 };
 const thumb=(ex,eager=false)=>{
- let valid=verifiedMedia(ex);
+ const n=norm(ex?.name||ex?.originalName||'').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();
+ let valid=['t bar','tbar','remada t bar'].includes(n)?'media/thumbs/free_T-Bar_Row_with_Handle.gif':verifiedMedia(ex);
  if(!valid&&ex&&(ex.name||ex.originalName||ex.exerciseId)){
   const resolved=sessionExerciseVisual(ex);
   valid=verifiedMedia(resolved);
