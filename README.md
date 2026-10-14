@@ -1,4 +1,4 @@
-# EvoluTrainer — 1.1.beta
+# EvoluTrainer — 0.92.beta
 
 Aplicativo de gestão de treinos, clientes e acompanhamento físico para profissionais de educação física e seus alunos. Construído como **SPA/PWA estática**, com interface em português brasileiro e armazenamento predominantemente local.
 
@@ -9,7 +9,7 @@ Aplicativo de gestão de treinos, clientes e acompanhamento físico para profiss
 
 ## Design
 
-A versão 1.1.beta utiliza um **redesign inspirado na linguagem visual de plataformas modernas de gestão de treinos**, incluindo a Welltrainer como referência de organização, mas preservando o nome, os fluxos e a identidade do EvoluTrainer.
+A versão 0.92.beta utiliza um **redesign inspirado na linguagem visual de plataformas modernas de gestão de treinos**, incluindo a Welltrainer como referência de organização, mas preservando o nome, os fluxos e a identidade do EvoluTrainer.
 
 - Paleta preta/grafite e amarelo-dourado (`#FFD54A`) para ações principais.
 - Cartões e campos com bordas discretas e cantos levemente arredondados.
@@ -86,12 +86,8 @@ O aplicativo usa mecanismos de armazenamento do navegador, como IndexedDB e loca
 
 ## Versionamento
 
-A identificação atual é **1.1.beta**. As próximas alterações funcionais devem seguir a sequência combinada de versões beta, incluindo a transição de `0.99.beta` para `1.0.beta`.
+A identificação atual é **0.92.beta**. As próximas alterações funcionais devem seguir a sequência combinada de versões beta, incluindo a transição de `0.99.beta` para `1.0.beta`.
 
 ## Créditos
 
 EvoluTrainer é um projeto próprio. Welltrainer foi usada apenas como **referência de linguagem visual**, sem vínculo ou afiliação.
-
-## GIFs aprovados — 1.1.beta
-
-Foram incorporados 166 GIFs aprovados no protótipo. Somente ilustrações provisórias foram substituídas; IDs, nomes, mídias já existentes e dados dos clientes foram preservados. Fontes e correspondências estão em `data/gifs-aprovados.json`. A nova revisão do catálogo sincroniza as miniaturas no IndexedDB; o cache do catálogo usa rede com fallback offline.
