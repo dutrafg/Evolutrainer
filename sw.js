@@ -1,6 +1,6 @@
 /* EvoluTrainer v6.3 · PWA offline · nenhum dado pessoal passa pelo Service Worker */
 'use strict';
-const VERSION='0.64.beta-20261013';
+const VERSION='1.1.beta-gifs-20261014';
 const CACHE_SHELL=`evolutrainer-${VERSION}-shell`;
 const CACHE_MEDIA='evolutrainer-media-persistente-v1';
 const CACHE_PREFIX='evolutrainer-';
@@ -42,6 +42,15 @@ self.addEventListener('fetch',event=>{
      const response=await fetch(request);
      if(response.ok)await c.put(request,response.clone());
      return response;
+   })());return;
+ }
+ // Catálogo atualizado pela rede; cópia canônica permite sincronizar offline.
+ if(url.pathname===normalized('./data/exercises.json').pathname){
+   event.respondWith((async()=>{
+     const cache=await caches.open(CACHE_SHELL);
+     try{const response=await fetch(request);if(response.ok){await cache.put(normalized('./data/exercises.json'),response.clone());return response;}}
+     catch{}
+     return await cache.match(normalized('./data/exercises.json'))||Response.error();
    })());return;
  }
  if(isShell(url)){

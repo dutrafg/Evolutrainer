@@ -1,0 +1,1668 @@
+{
+  "approvedByUser": true,
+  "version": "1.1.beta",
+  "date": "2026-10-14",
+  "count": 166,
+  "exercises": [
+    {
+      "id": "hevy:B4F2FF72",
+      "name": "Tesoura Abdominal",
+      "previousImage": "media/thumbs/illustracao_hevy_B4F2FF72.webp",
+      "image": "media/thumbs/web_aprovado_hevy_B4F2FF72.gif",
+      "sourceName": "leg scissors",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/12/Leg-Scissors.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/leg-scissors/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:99D5F10E",
+      "name": "Abdominal com Roda",
+      "previousImage": "media/thumbs/illustracao_hevy_99D5F10E.webp",
+      "image": "media/thumbs/web_aprovado_hevy_99D5F10E.gif",
+      "sourceName": "ab wheel rollout",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/06/Ab-Wheel-Rollout.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/ab-wheel-rollout/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:A05C064D",
+      "name": "Extensão Lombar (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_A05C064D.webp",
+      "image": "media/thumbs/web_aprovado_hevy_A05C064D.gif",
+      "sourceName": "Lever Back Extension",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/spine/lever-back-extension.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/spine/lever-back-extension.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:091737FA",
+      "name": "Extensão Lombar com Carga (Hiperextensão)",
+      "previousImage": "media/thumbs/illustracao_hevy_091737FA.webp",
+      "image": "media/thumbs/web_aprovado_hevy_091737FA.gif",
+      "sourceName": "weighted back extension",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/06/Weighted-Back-Extension.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/weighted-back-extension/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:B3B1D947",
+      "name": "Caminhada do Urso",
+      "previousImage": "media/thumbs/illustracao_hevy_B3B1D947.webp",
+      "image": "media/thumbs/web_aprovado_hevy_B3B1D947.gif",
+      "sourceName": "Bear Crawl",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/cardio/bear-crawl.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/cardio/bear-crawl.gif",
+      "frames": 18
+    },
+    {
+      "id": "hevy:DDB29047",
+      "name": "Flexão de Punhos Atrás das Costas (Barra)",
+      "previousImage": "media/thumbs/illustracao_hevy_DDB29047.webp",
+      "image": "media/thumbs/web_aprovado_hevy_DDB29047.gif",
+      "sourceName": "behind the back barbell wrist curl",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/06/Behind-The-Back-Barbell-Wrist-Curl.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/behind-the-back-barbell-wrist-curl/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:3D1CDC75",
+      "name": "Agachamento com Cinturão (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_3D1CDC75.webp",
+      "image": "media/thumbs/web_aprovado_hevy_3D1CDC75.gif",
+      "sourceName": "belt squat",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2023/01/belt-squat.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/belt-squat/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:79D0BB3A",
+      "name": "Supino Reto (Barra)",
+      "previousImage": "media/thumbs/illustracao_hevy_79D0BB3A.webp",
+      "image": "media/thumbs/web_aprovado_hevy_79D0BB3A.gif",
+      "sourceName": "Barbell Bench Press",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/pectorals/barbell-bench-press.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/pectorals/barbell-bench-press.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:99C1F2AD",
+      "name": "Supino Reto (Polia)",
+      "previousImage": "media/thumbs/illustracao_hevy_99C1F2AD.webp",
+      "image": "media/thumbs/web_aprovado_hevy_99C1F2AD.gif",
+      "sourceName": "Cable Bench Press",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/pectorals/cable-bench-press.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/pectorals/cable-bench-press.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:23E92538",
+      "name": "Remada Curvada (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_23E92538.webp",
+      "image": "media/thumbs/web_aprovado_hevy_23E92538.gif",
+      "sourceName": "Dumbbell Bent Over Row",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/upper-back/dumbbell-bent-over-row.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/upper-back/dumbbell-bent-over-row.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:A5AC6449",
+      "name": "Rosca Direta (Barra)",
+      "previousImage": "media/thumbs/illustracao_hevy_A5AC6449.webp",
+      "image": "media/thumbs/web_aprovado_hevy_A5AC6449.gif",
+      "sourceName": "Barbell Curl",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/biceps/barbell-curl.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/biceps/barbell-curl.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:ADA8623C",
+      "name": "Rosca Bíceps (Polia)",
+      "previousImage": "media/thumbs/illustracao_hevy_ADA8623C.webp",
+      "image": "media/thumbs/web_aprovado_hevy_ADA8623C.gif",
+      "sourceName": "Cable Curl",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/biceps/cable-curl.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/biceps/cable-curl.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:A41C7261",
+      "name": "Abdominal Bicicleta",
+      "previousImage": "media/thumbs/illustracao_hevy_A41C7261.webp",
+      "image": "media/thumbs/web_aprovado_hevy_A41C7261.gif",
+      "sourceName": "bicycle crunch",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Bicycle-Crunch.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/bicycle-crunch/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:BD0AD077",
+      "name": "Bird Dog (Braço e Perna Alternados)",
+      "previousImage": "media/thumbs/illustracao_hevy_BD0AD077.webp",
+      "image": "media/thumbs/web_aprovado_hevy_BD0AD077.gif",
+      "sourceName": "bird dog",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/07/Bird-Dog.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/bird-dog/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:56092DD1",
+      "name": "Salto na Caixa",
+      "previousImage": "media/thumbs/illustracao_hevy_56092DD1.webp",
+      "image": "media/thumbs/web_aprovado_hevy_56092DD1.gif",
+      "sourceName": "the box jump",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2015/07/The-Box-Jump.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/the-box-jump/",
+      "frames": 24
+    },
+    {
+      "id": "hevy:0F24286A",
+      "name": "Agachamento Búlgaro (Barra)",
+      "previousImage": "media/thumbs/illustracao_hevy_0F24286A.webp",
+      "image": "media/thumbs/web_aprovado_hevy_0F24286A.gif",
+      "sourceName": "barbell bulgarian split squat",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/05/Barbell-Bulgarian-Split-Squat.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/barbell-bulgarian-split-squat/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:B5D3A742",
+      "name": "Agachamento Búlgaro (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_B5D3A742.webp",
+      "image": "media/thumbs/web_aprovado_hevy_B5D3A742.gif",
+      "sourceName": "dumbbell bulgarian split squat",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/05/Dumbbell-Bulgarian-Split-Squat.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/dumbbell-bulgarian-split-squat/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:BB792A36",
+      "name": "Burpee",
+      "previousImage": "media/thumbs/illustracao_hevy_BB792A36.webp",
+      "image": "media/thumbs/web_aprovado_hevy_BB792A36.gif",
+      "sourceName": "Burpee",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/cardio/burpee.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/cardio/burpee.gif",
+      "frames": 30
+    },
+    {
+      "id": "hevy:CC55119B",
+      "name": "Pallof Press na Polia",
+      "previousImage": "media/thumbs/illustracao_hevy_CC55119B.webp",
+      "image": "media/thumbs/web_aprovado_hevy_CC55119B.gif",
+      "sourceName": "cable half kneeling pallof press",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/02/Cable-Half-Kneeling-Pallof-Press.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/cable-half-kneeling-pallof-press/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:6FCD7755",
+      "name": "Paralelas para Peitoral",
+      "previousImage": "media/thumbs/illustracao_hevy_6FCD7755.webp",
+      "image": "media/thumbs/web_aprovado_hevy_6FCD7755.gif",
+      "sourceName": "Chest Dip",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/pectorals/chest-dip.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/pectorals/chest-dip.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:E9E4089F",
+      "name": "Paralelas para Peitoral (Assistidas)",
+      "previousImage": "media/thumbs/illustracao_hevy_E9E4089F.webp",
+      "image": "media/thumbs/web_aprovado_hevy_E9E4089F.gif",
+      "sourceName": "Assisted Chest Dip Kneeling",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/pectorals/assisted-chest-dip-kneeling.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/pectorals/assisted-chest-dip-kneeling.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:12017185",
+      "name": "Crucifixo Peitoral (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_12017185.webp",
+      "image": "media/thumbs/web_aprovado_hevy_12017185.gif",
+      "sourceName": "Dumbbell Fly",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/pectorals/dumbbell-fly.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/pectorals/dumbbell-fly.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:78683336",
+      "name": "Crucifixo Peitoral (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_78683336.webp",
+      "image": "media/thumbs/web_aprovado_hevy_78683336.gif",
+      "sourceName": "Lever Seated Fly",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/pectorals/lever-seated-fly.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/pectorals/lever-seated-fly.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:EAC7D9C5",
+      "name": "Supino com Elástico",
+      "previousImage": "media/thumbs/illustracao_hevy_EAC7D9C5.webp",
+      "image": "media/thumbs/web_aprovado_hevy_EAC7D9C5.gif",
+      "sourceName": "band standing chest press",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/01/Band-Standing-Chest-Press.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/band-standing-chest-press/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:7EB3F7C3",
+      "name": "Supino na Máquina",
+      "previousImage": "media/thumbs/illustracao_hevy_7EB3F7C3.webp",
+      "image": "media/thumbs/web_aprovado_hevy_7EB3F7C3.gif",
+      "sourceName": "Lever Chest Press",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/pectorals/lever-chest-press.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/pectorals/lever-chest-press.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:6A8D3193",
+      "name": "Remada Cavalinho com Peito Apoiado",
+      "previousImage": "media/thumbs/illustracao_hevy_6A8D3193.webp",
+      "image": "media/thumbs/web_aprovado_hevy_6A8D3193.gif",
+      "sourceName": "lever reverse t bar row",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/08/Lever-Reverse-T-Bar-Row.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/lever-reverse-t-bar-row/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:F21D5693",
+      "name": "Elevação em Y com Peito Apoiado (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_F21D5693.webp",
+      "image": "media/thumbs/web_aprovado_hevy_F21D5693.gif",
+      "sourceName": "incline dumbbell y raise",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/10/Incline-Dumbbell-Y-Raise.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/incline-dumbbell-y-raise/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:D23C609B",
+      "name": "Barra Fixa Supinada (Assistida)",
+      "previousImage": "media/thumbs/illustracao_hevy_D23C609B.webp",
+      "image": "media/thumbs/web_aprovado_hevy_D23C609B.gif",
+      "sourceName": "Lever Assisted Chin Up",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/lats/lever-assisted-chin-up.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/lats/lever-assisted-chin-up.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:D928C232",
+      "name": "Abdominal Curto (com Carga)",
+      "previousImage": "media/thumbs/illustracao_hevy_D928C232.webp",
+      "image": "media/thumbs/web_aprovado_hevy_D928C232.gif",
+      "sourceName": "Weighted Crunch",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/abs/weighted-crunch.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/abs/weighted-crunch.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:5F4E6DD3",
+      "name": "Levantamento Terra (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_5F4E6DD3.webp",
+      "image": "media/thumbs/web_aprovado_hevy_5F4E6DD3.gif",
+      "sourceName": "Dumbbell Deadlift",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/glutes/dumbbell-deadlift.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/glutes/dumbbell-deadlift.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:20870ED5",
+      "name": "Levantamento Terra (Smith)",
+      "previousImage": "media/thumbs/illustracao_hevy_20870ED5.webp",
+      "image": "media/thumbs/web_aprovado_hevy_20870ED5.gif",
+      "sourceName": "Smith Deadlift",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/glutes/smith-deadlift.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/glutes/smith-deadlift.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:FFC106CB",
+      "name": "Supino Declinado (Smith)",
+      "previousImage": "media/thumbs/illustracao_hevy_FFC106CB.webp",
+      "image": "media/thumbs/web_aprovado_hevy_FFC106CB.gif",
+      "sourceName": "Smith Decline Bench Press",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/pectorals/smith-decline-bench-press.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/pectorals/smith-decline-bench-press.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:A351AED7",
+      "name": "Crucifixo Declinado (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_A351AED7.webp",
+      "image": "media/thumbs/web_aprovado_hevy_A351AED7.gif",
+      "sourceName": "Dumbbell Decline Fly",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/pectorals/dumbbell-decline-fly.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/pectorals/dumbbell-decline-fly.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:6575F52D",
+      "name": "Flexão de Braços Diamante",
+      "previousImage": "media/thumbs/illustracao_hevy_6575F52D.webp",
+      "image": "media/thumbs/web_aprovado_hevy_6575F52D.gif",
+      "sourceName": "Diamond Push Up",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/triceps/diamond-push-up.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/triceps/diamond-push-up.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:AFC29472",
+      "name": "Dragon Flag (Elevação Corporal)",
+      "previousImage": "media/thumbs/illustracao_hevy_AFC29472.webp",
+      "image": "media/thumbs/web_aprovado_hevy_AFC29472.gif",
+      "sourceName": "dragon flag",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/07/Leg-Raise-Dragon-Flag.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/dragon-flag/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:F1E57334",
+      "name": "Remada Unilateral (Halter)",
+      "previousImage": "media/thumbs/illustracao_hevy_F1E57334.webp",
+      "image": "media/thumbs/web_aprovado_hevy_F1E57334.gif",
+      "sourceName": "dumbbell row",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Row.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/dumbbell-row/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:01A35BF9",
+      "name": "Rosca Direta (Barra W)",
+      "previousImage": "media/thumbs/illustracao_hevy_01A35BF9.webp",
+      "image": "media/thumbs/web_aprovado_hevy_01A35BF9.gif",
+      "sourceName": "Ez Barbell Curl",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/biceps/ez-barbell-curl.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/biceps/ez-barbell-curl.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:D53F2886",
+      "name": "Supino no Chão (Barra)",
+      "previousImage": "media/thumbs/illustracao_hevy_D53F2886.webp",
+      "image": "media/thumbs/web_aprovado_hevy_D53F2886.gif",
+      "sourceName": "barbell floor press",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/07/Barbell-Floor-Press.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/barbell-floor-press/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:47B036EF",
+      "name": "Elevação Frontal (Elástico)",
+      "previousImage": "media/thumbs/illustracao_hevy_47B036EF.webp",
+      "image": "media/thumbs/web_aprovado_hevy_47B036EF.gif",
+      "sourceName": "Band Front Raise",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/delts/band-front-raise.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/delts/band-front-raise.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:BD86EFD5",
+      "name": "Elevação Frontal (Barra)",
+      "previousImage": "media/thumbs/illustracao_hevy_BD86EFD5.webp",
+      "image": "media/thumbs/web_aprovado_hevy_BD86EFD5.gif",
+      "sourceName": "Barbell Front Raise",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/delts/barbell-front-raise.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/delts/barbell-front-raise.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:5046D0A9",
+      "name": "Agachamento Frontal",
+      "previousImage": "media/thumbs/illustracao_hevy_5046D0A9.webp",
+      "image": "media/thumbs/web_aprovado_hevy_5046D0A9.gif",
+      "sourceName": "Barbell Front Squat",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/glutes/barbell-front-squat.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/glutes/barbell-front-squat.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:1283BBA6",
+      "name": "Agachamento Completo",
+      "previousImage": "media/thumbs/illustracao_hevy_1283BBA6.webp",
+      "image": "media/thumbs/web_aprovado_hevy_1283BBA6.gif",
+      "sourceName": "Barbell Full Squat",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/glutes/barbell-full-squat.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/glutes/barbell-full-squat.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:CDA23948",
+      "name": "Ponte de Glúteos",
+      "previousImage": "media/thumbs/illustracao_hevy_CDA23948.webp",
+      "image": "media/thumbs/web_aprovado_hevy_CDA23948.gif",
+      "sourceName": "Low Glute Bridge On Floor",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/glutes/low-glute-bridge-on-floor.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/glutes/low-glute-bridge-on-floor.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:CBA02382",
+      "name": "Coice de Glúteo (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_CBA02382.webp",
+      "image": "media/thumbs/web_aprovado_hevy_CBA02382.gif",
+      "sourceName": "glute kickback machine",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/06/Glute-Kickback-Machine.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/glute-kickback-machine/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:1E42FD5F",
+      "name": "Agachamento Hack (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_1E42FD5F.webp",
+      "image": "media/thumbs/web_aprovado_hevy_1E42FD5F.gif",
+      "sourceName": "Sled Hack Squat",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/glutes/sled-hack-squat.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/glutes/sled-hack-squat.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:1D4B3D6B",
+      "name": "Rosca Martelo (Elástico)",
+      "previousImage": "media/thumbs/illustracao_hevy_1D4B3D6B.webp",
+      "image": "media/thumbs/web_aprovado_hevy_1D4B3D6B.gif",
+      "sourceName": "hammer curl with resistance band",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/07/Hammer-Curl-with-Resistance-Band.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/hammer-curl-with-resistance-band/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:36E8F14E",
+      "name": "Rosca Martelo (Polia)",
+      "previousImage": "media/thumbs/illustracao_hevy_36E8F14E.webp",
+      "image": "media/thumbs/web_aprovado_hevy_36E8F14E.gif",
+      "sourceName": "Cable Hammer Curl With Rope",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/biceps/cable-hammer-curl-with-rope.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/biceps/cable-hammer-curl-with-rope.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:C9CCB878",
+      "name": "Corrida com Joelhos Altos e Saltitos",
+      "previousImage": "media/thumbs/illustracao_hevy_C9CCB878.webp",
+      "image": "media/thumbs/web_aprovado_hevy_C9CCB878.gif",
+      "sourceName": "high knee skips",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/02/High-Knee-Skips_Cardio.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/high-knee-skips/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:C469EA70",
+      "name": "Abdução de Quadril (Polia)",
+      "previousImage": "media/thumbs/illustracao_hevy_C469EA70.webp",
+      "image": "media/thumbs/web_aprovado_hevy_C469EA70.gif",
+      "sourceName": "cable hip abduction",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Cable-Hip-Abduction.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/cable-hip-abduction/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:F4B4C6EE",
+      "name": "Abdução de Quadril (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_F4B4C6EE.webp",
+      "image": "media/thumbs/web_aprovado_hevy_F4B4C6EE.gif",
+      "sourceName": "Lever Seated Hip Abduction",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/abductors/lever-seated-hip-abduction.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/abductors/lever-seated-hip-abduction.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:8BEBFED6",
+      "name": "Adução de Quadril (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_8BEBFED6.webp",
+      "image": "media/thumbs/web_aprovado_hevy_8BEBFED6.gif",
+      "sourceName": "Lever Seated Hip Adduction",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/adductors/lever-seated-hip-adduction.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/adductors/lever-seated-hip-adduction.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:92B8C7E1",
+      "name": "Elevação Pélvica",
+      "previousImage": "media/thumbs/illustracao_hevy_92B8C7E1.webp",
+      "image": "media/thumbs/web_aprovado_hevy_92B8C7E1.gif",
+      "sourceName": "bodyweight hip thrust",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/04/bodyweight-hip-thrust.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/bodyweight-hip-thrust/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:D57C2EC7",
+      "name": "Elevação Pélvica (Barra)",
+      "previousImage": "media/thumbs/illustracao_hevy_D57C2EC7.webp",
+      "image": "media/thumbs/web_aprovado_hevy_D57C2EC7.gif",
+      "sourceName": "barbell hip thrusts",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-Hip-Thrust.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/barbell-hip-thrusts/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:68CE0B9B",
+      "name": "Elevação Pélvica (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_68CE0B9B.webp",
+      "image": "media/thumbs/web_aprovado_hevy_68CE0B9B.gif",
+      "sourceName": "hip thrust machine",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/02/Hip-Thrust-Machine.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/hip-thrust-machine/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:291ABA92",
+      "name": "Elevação Pélvica (Smith)",
+      "previousImage": "media/thumbs/illustracao_hevy_291ABA92.webp",
+      "image": "media/thumbs/web_aprovado_hevy_291ABA92.gif",
+      "sourceName": "smith machine hip thrust",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/09/Smith-Machine-Hip-Thrust.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/smith-machine-hip-thrust/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:50DFDFAB",
+      "name": "Supino Inclinado (Barra)",
+      "previousImage": "media/thumbs/illustracao_hevy_50DFDFAB.webp",
+      "image": "media/thumbs/web_aprovado_hevy_50DFDFAB.gif",
+      "sourceName": "Barbell Incline Bench Press",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/pectorals/barbell-incline-bench-press.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/pectorals/barbell-incline-bench-press.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:07B38369",
+      "name": "Supino Inclinado (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_07B38369.webp",
+      "image": "media/thumbs/web_aprovado_hevy_07B38369.gif",
+      "sourceName": "Dumbbell Incline Bench Press",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/pectorals/dumbbell-incline-bench-press.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/pectorals/dumbbell-incline-bench-press.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:D3E2AB55",
+      "name": "Crucifixo Inclinado (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_D3E2AB55.webp",
+      "image": "media/thumbs/web_aprovado_hevy_D3E2AB55.gif",
+      "sourceName": "Dumbbell Incline Fly",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/pectorals/dumbbell-incline-fly.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/pectorals/dumbbell-incline-fly.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:FBF92739",
+      "name": "Supino Inclinado (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_FBF92739.webp",
+      "image": "media/thumbs/web_aprovado_hevy_FBF92739.gif",
+      "sourceName": "Lever Incline Chest Press",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/pectorals/lever-incline-chest-press.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/pectorals/lever-incline-chest-press.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:74103F24",
+      "name": "Supino JM para Tríceps (Barra)",
+      "previousImage": "media/thumbs/illustracao_hevy_74103F24.webp",
+      "image": "media/thumbs/web_aprovado_hevy_74103F24.gif",
+      "sourceName": "Barbell Jm Bench Press",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/triceps/barbell-jm-bench-press.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/triceps/barbell-jm-bench-press.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:040BA2E3",
+      "name": "Pular Corda",
+      "previousImage": "media/thumbs/illustracao_hevy_040BA2E3.webp",
+      "image": "media/thumbs/web_aprovado_hevy_040BA2E3.gif",
+      "sourceName": "Jump Rope",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/cardio/jump-rope.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/cardio/jump-rope.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:70D4EBBF",
+      "name": "Agachamento com Salto",
+      "previousImage": "media/thumbs/illustracao_hevy_70D4EBBF.webp",
+      "image": "media/thumbs/web_aprovado_hevy_70D4EBBF.gif",
+      "sourceName": "Jump Squat",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/glutes/jump-squat.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/glutes/jump-squat.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:991833C2",
+      "name": "Polichinelo",
+      "previousImage": "media/thumbs/illustracao_hevy_991833C2.webp",
+      "image": "media/thumbs/web_aprovado_hevy_991833C2.gif",
+      "sourceName": "jumping jack",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/05/Jumping-jack.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/jumping-jack/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:A127DA73",
+      "name": "Agachamento Goblet (Kettlebell)",
+      "previousImage": "media/thumbs/illustracao_hevy_A127DA73.webp",
+      "image": "media/thumbs/web_aprovado_hevy_A127DA73.gif",
+      "sourceName": "Kettlebell Goblet Squat",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/glutes/kettlebell-goblet-squat.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/glutes/kettlebell-goblet-squat.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:6433CD93",
+      "name": "Desenvolvimento de Ombros (Kettlebell)",
+      "previousImage": "media/thumbs/illustracao_hevy_6433CD93.webp",
+      "image": "media/thumbs/web_aprovado_hevy_6433CD93.gif",
+      "sourceName": "kettlebell shoulder press",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/11/Kettlebell-Shoulder-Press.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/kettlebell-shoulder-press/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:F8A0FCCA",
+      "name": "Balanço (Kettlebell Swing)",
+      "previousImage": "media/thumbs/illustracao_hevy_F8A0FCCA.webp",
+      "image": "media/thumbs/web_aprovado_hevy_F8A0FCCA.gif",
+      "sourceName": "Kettlebell Swing",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/glutes/kettlebell-swing.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/glutes/kettlebell-swing.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:5F8903BF",
+      "name": "Levantamento Turco (Kettlebell)",
+      "previousImage": "media/thumbs/illustracao_hevy_5F8903BF.webp",
+      "image": "media/thumbs/web_aprovado_hevy_5F8903BF.gif",
+      "sourceName": "turkish get up",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/04/Turkish-Get-Up-Squat-style.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/turkish-get-up/",
+      "frames": 54
+    },
+    {
+      "id": "hevy:D82EA543",
+      "name": "Puxada Ajoelhada (Elástico)",
+      "previousImage": "media/thumbs/illustracao_hevy_D82EA543.webp",
+      "image": "media/thumbs/web_aprovado_hevy_D82EA543.gif",
+      "sourceName": "kneeling pulldown with resistance band",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/05/Kneeling-pulldown.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/kneeling-pulldown-with-resistance-band/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:B74A95BB",
+      "name": "Flexão de Braços com Joelhos Apoiados",
+      "previousImage": "media/thumbs/illustracao_hevy_B74A95BB.webp",
+      "image": "media/thumbs/web_aprovado_hevy_B74A95BB.gif",
+      "sourceName": "Kneeling Push Up Male",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/pectorals/kneeling-push-up-male.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/pectorals/kneeling-push-up-male.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:6A6C31A5",
+      "name": "Puxada Alta para Dorsais (Polia)",
+      "previousImage": "media/thumbs/illustracao_hevy_6A6C31A5.webp",
+      "image": "media/thumbs/web_aprovado_hevy_6A6C31A5.gif",
+      "sourceName": "Cable Pulldown",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/lats/cable-pulldown.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/lats/cable-pulldown.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:473CF5B8",
+      "name": "Puxada Alta para Dorsais (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_473CF5B8.webp",
+      "image": "media/thumbs/web_aprovado_hevy_473CF5B8.gif",
+      "sourceName": "Lever Front Pulldown",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/lats/lever-front-pulldown.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/lats/lever-front-pulldown.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:4E5257DE",
+      "name": "Puxada Alta com Pegada Fechada (Polia)",
+      "previousImage": "media/thumbs/illustracao_hevy_4E5257DE.webp",
+      "image": "media/thumbs/web_aprovado_hevy_4E5257DE.gif",
+      "sourceName": "Cable Lateral Pulldown With V Bar",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/lats/cable-lateral-pulldown-with-v-bar.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/lats/cable-lateral-pulldown-with-v-bar.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:BE289E45",
+      "name": "Elevação Lateral de Ombros (Polia)",
+      "previousImage": "media/thumbs/illustracao_hevy_BE289E45.webp",
+      "image": "media/thumbs/web_aprovado_hevy_BE289E45.gif",
+      "sourceName": "Cable Lateral Raise",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/delts/cable-lateral-raise.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/delts/cable-lateral-raise.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:422B08F1",
+      "name": "Elevação Lateral de Ombros (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_422B08F1.webp",
+      "image": "media/thumbs/web_aprovado_hevy_422B08F1.gif",
+      "sourceName": "Dumbbell Lateral Raise",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/delts/dumbbell-lateral-raise.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/delts/dumbbell-lateral-raise.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:D5D0354D",
+      "name": "Elevação Lateral de Ombros (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_D5D0354D.webp",
+      "image": "media/thumbs/web_aprovado_hevy_D5D0354D.gif",
+      "sourceName": "Lever Lateral Raise",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/delts/lever-lateral-raise.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/delts/lever-lateral-raise.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:75A4F6C4",
+      "name": "Cadeira Extensora (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_75A4F6C4.webp",
+      "image": "media/thumbs/web_aprovado_hevy_75A4F6C4.gif",
+      "sourceName": "Lever Leg Extension",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/quads/lever-leg-extension.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/quads/lever-leg-extension.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:C7973E0E",
+      "name": "Leg Press (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_C7973E0E.webp",
+      "image": "media/thumbs/web_aprovado_hevy_C7973E0E.gif",
+      "sourceName": "Sled 45 Leg Press",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/glutes/sled-45-leg-press.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/glutes/sled-45-leg-press.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:0EB695C9",
+      "name": "Leg Press Horizontal (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_0EB695C9.webp",
+      "image": "media/thumbs/web_aprovado_hevy_0EB695C9.gif",
+      "sourceName": "horizontal leg press",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/08/Lever-Horizontal-Leg-Press.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/horizontal-leg-press/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:0482DA98",
+      "name": "Elevação de Pernas nas Paralelas",
+      "previousImage": "media/thumbs/illustracao_hevy_0482DA98.webp",
+      "image": "media/thumbs/web_aprovado_hevy_0482DA98.gif",
+      "sourceName": "Vertical Leg Raise On Parallel Bars",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/abs/vertical-leg-raise-on-parallel-bars.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/abs/vertical-leg-raise-on-parallel-bars.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:B537D09F",
+      "name": "Afundo (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_B537D09F.webp",
+      "image": "media/thumbs/web_aprovado_hevy_B537D09F.gif",
+      "sourceName": "Dumbbell Lunge",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/glutes/dumbbell-lunge.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/glutes/dumbbell-lunge.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:BD5935CF",
+      "name": "Elevação de Joelhos Deitado",
+      "previousImage": "media/thumbs/illustracao_hevy_BD5935CF.webp",
+      "image": "media/thumbs/web_aprovado_hevy_BD5935CF.gif",
+      "sourceName": "lying knee raise",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/05/Lying-Knee-Raise.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/lying-knee-raise/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:B8127AD1",
+      "name": "Mesa Flexora (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_B8127AD1.webp",
+      "image": "media/thumbs/web_aprovado_hevy_B8127AD1.gif",
+      "sourceName": "Lever Lying Leg Curl",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/hamstrings/lever-lying-leg-curl.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/hamstrings/lever-lying-leg-curl.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:D6A73CF2",
+      "name": "Extensão Cervical Deitado (com Carga)",
+      "previousImage": "media/thumbs/illustracao_hevy_D6A73CF2.webp",
+      "image": "media/thumbs/web_aprovado_hevy_D6A73CF2.gif",
+      "sourceName": "weighted lying neck extension",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/08/Weighted-Lying-Neck-Extension.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/weighted-lying-neck-extension/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:6AC96645",
+      "name": "Desenvolvimento Militar (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_6AC96645.webp",
+      "image": "media/thumbs/web_aprovado_hevy_6AC96645.gif",
+      "sourceName": "Dumbbell Standing Overhead Press",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/delts/dumbbell-standing-overhead-press.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/delts/dumbbell-standing-overhead-press.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:B09A1304",
+      "name": "Desenvolvimento Militar (Smith)",
+      "previousImage": "media/thumbs/illustracao_hevy_B09A1304.webp",
+      "image": "media/thumbs/web_aprovado_hevy_B09A1304.gif",
+      "sourceName": "Smith Shoulder Press",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/delts/smith-shoulder-press.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/delts/smith-shoulder-press.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:B5EFBF9C",
+      "name": "Tríceps Acima da Cabeça (Polia)",
+      "previousImage": "media/thumbs/illustracao_hevy_B5EFBF9C.webp",
+      "image": "media/thumbs/web_aprovado_hevy_B5EFBF9C.gif",
+      "sourceName": "Cable High Pulley Overhead Tricep Extension",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/triceps/cable-high-pulley-overhead-tricep-extension.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/triceps/cable-high-pulley-overhead-tricep-extension.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:018ADC12",
+      "name": "Remada Pendlay (Barra)",
+      "previousImage": "media/thumbs/illustracao_hevy_018ADC12.webp",
+      "image": "media/thumbs/web_aprovado_hevy_018ADC12.gif",
+      "sourceName": "Barbell Pendlay Row",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/upper-back/barbell-pendlay-row.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/upper-back/barbell-pendlay-row.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:30E293E3",
+      "name": "Agachamento Pendular (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_30E293E3.webp",
+      "image": "media/thumbs/web_aprovado_hevy_30E293E3.gif",
+      "sourceName": "pendulum squat",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/10/Pendulum-Squat.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/pendulum-squat/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:0EFE8162",
+      "name": "Flexão de Braços em V (Pike)",
+      "previousImage": "media/thumbs/illustracao_hevy_0EFE8162.webp",
+      "image": "media/thumbs/web_aprovado_hevy_0EFE8162.gif",
+      "sourceName": "pike push up",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/06/Pike-Push-up.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/pike-push-up/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:3FF6A22E",
+      "name": "Agachamento Pistol (Unilateral)",
+      "previousImage": "media/thumbs/illustracao_hevy_3FF6A22E.webp",
+      "image": "media/thumbs/web_aprovado_hevy_3FF6A22E.gif",
+      "sourceName": "Single Leg Squat Pistol Male",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/glutes/single-leg-squat-pistol-male.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/glutes/single-leg-squat-pistol-male.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:4F942934",
+      "name": "Rosca Scott (Barra)",
+      "previousImage": "media/thumbs/illustracao_hevy_4F942934.webp",
+      "image": "media/thumbs/web_aprovado_hevy_4F942934.gif",
+      "sourceName": "Barbell Preacher Curl",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/biceps/barbell-preacher-curl.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/biceps/barbell-preacher-curl.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:FAB6EB2F",
+      "name": "Rosca Scott (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_FAB6EB2F.webp",
+      "image": "media/thumbs/web_aprovado_hevy_FAB6EB2F.gif",
+      "sourceName": "Dumbbell Preacher Curl",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/biceps/dumbbell-preacher-curl.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/biceps/dumbbell-preacher-curl.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:1B2B1E7C",
+      "name": "Barra Fixa Pronada",
+      "previousImage": "media/thumbs/illustracao_hevy_1B2B1E7C.webp",
+      "image": "media/thumbs/web_aprovado_hevy_1B2B1E7C.gif",
+      "sourceName": "Pull Up",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/lats/pull-up.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/lats/pull-up.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:2C37EC5E",
+      "name": "Barra Fixa Pronada (Assistida)",
+      "previousImage": "media/thumbs/illustracao_hevy_2C37EC5E.webp",
+      "image": "media/thumbs/web_aprovado_hevy_2C37EC5E.gif",
+      "sourceName": "Assisted Pull Up",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/lats/assisted-pull-up.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/lats/assisted-pull-up.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:56808FD2",
+      "name": "Barra Fixa Pronada (Elástico)",
+      "previousImage": "media/thumbs/illustracao_hevy_56808FD2.webp",
+      "image": "media/thumbs/web_aprovado_hevy_56808FD2.gif",
+      "sourceName": "Band Assisted Pull Up",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/lats/band-assisted-pull-up.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/lats/band-assisted-pull-up.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:729237D1",
+      "name": "Barra Fixa Pronada (com Carga)",
+      "previousImage": "media/thumbs/illustracao_hevy_729237D1.webp",
+      "image": "media/thumbs/web_aprovado_hevy_729237D1.gif",
+      "sourceName": "weighted pull up",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/04/Weighted-Pull-up.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/weighted-pull-up/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:67280085",
+      "name": "Pullover (Halter)",
+      "previousImage": "media/thumbs/illustracao_hevy_67280085.webp",
+      "image": "media/thumbs/web_aprovado_hevy_67280085.gif",
+      "sourceName": "Dumbbell Pullover",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/pectorals/dumbbell-pullover.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/pectorals/dumbbell-pullover.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:B123DD01",
+      "name": "Pullover (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_B123DD01.webp",
+      "image": "media/thumbs/web_aprovado_hevy_B123DD01.gif",
+      "sourceName": "Lever Pullover",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/lats/lever-pullover.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/lats/lever-pullover.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:19372ABC",
+      "name": "Flexão de Braços (com Carga)",
+      "previousImage": "media/thumbs/illustracao_hevy_19372ABC.webp",
+      "image": "media/thumbs/web_aprovado_hevy_19372ABC.gif",
+      "sourceName": "weighted push up",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/04/Weighted-Push-up.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/weighted-push-up/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:947DAC23",
+      "name": "Flexão de Braços com Pegada Fechada",
+      "previousImage": "media/thumbs/illustracao_hevy_947DAC23.webp",
+      "image": "media/thumbs/web_aprovado_hevy_947DAC23.gif",
+      "sourceName": "Close Grip Push Up",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/triceps/close-grip-push-up.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/triceps/close-grip-push-up.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:C315DC2A",
+      "name": "Crucifixo Inverso para Deltoide Posterior (Polia)",
+      "previousImage": "media/thumbs/illustracao_hevy_C315DC2A.webp",
+      "image": "media/thumbs/web_aprovado_hevy_C315DC2A.gif",
+      "sourceName": "cable rear delt fly",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/02/cable-rear-delt-fly.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/cable-rear-delt-fly/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:E5988A0A",
+      "name": "Crucifixo Inverso para Deltoide Posterior (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_E5988A0A.webp",
+      "image": "media/thumbs/web_aprovado_hevy_E5988A0A.gif",
+      "sourceName": "Dumbbell Reverse Fly",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/delts/dumbbell-reverse-fly.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/delts/dumbbell-reverse-fly.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:D8281C62",
+      "name": "Crucifixo Inverso para Deltoide Posterior (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_D8281C62.webp",
+      "image": "media/thumbs/web_aprovado_hevy_D8281C62.gif",
+      "sourceName": "Lever Seated Reverse Fly",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/delts/lever-seated-reverse-fly.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/delts/lever-seated-reverse-fly.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:1B89CA1B",
+      "name": "Remada Renegada (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_1B89CA1B.webp",
+      "image": "media/thumbs/web_aprovado_hevy_1B89CA1B.gif",
+      "sourceName": "dumbbell renegade row",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/01/dumbbell-renegade-row-1.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/dumbbell-renegade-row/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:B567DD46",
+      "name": "Rosca Inversa (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_B567DD46.webp",
+      "image": "media/thumbs/web_aprovado_hevy_B567DD46.gif",
+      "sourceName": "Dumbbell Biceps Curl Reverse",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/biceps/dumbbell-biceps-curl-reverse.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/biceps/dumbbell-biceps-curl-reverse.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:C284D923",
+      "name": "Afundo para Trás",
+      "previousImage": "media/thumbs/illustracao_hevy_C284D923.webp",
+      "image": "media/thumbs/web_aprovado_hevy_C284D923.gif",
+      "sourceName": "reverse lunge",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/08/bodyweight-reverse-lunge.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/reverse-lunge/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:FFDA283B",
+      "name": "Afundo para Trás (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_FFDA283B.webp",
+      "image": "media/thumbs/web_aprovado_hevy_FFDA283B.gif",
+      "sourceName": "dumbbell reverse lunge",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/09/Dumbell-reverse-lunge.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/dumbbell-reverse-lunge/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:99B49684",
+      "name": "Prancha Invertida",
+      "previousImage": "media/thumbs/illustracao_hevy_99B49684.webp",
+      "image": "media/thumbs/web_aprovado_hevy_99B49684.gif",
+      "sourceName": "reverse plank",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/05/Reverse-plank.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/reverse-plank/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:D8460FA6",
+      "name": "Extensão de Punho (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_D8460FA6.webp",
+      "image": "media/thumbs/web_aprovado_hevy_D8460FA6.gif",
+      "sourceName": "Dumbbell Reverse Wrist Curl",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/forearms/dumbbell-reverse-wrist-curl.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/forearms/dumbbell-reverse-wrist-curl.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:2B4B7310",
+      "name": "Levantamento Terra Romeno (Barra)",
+      "previousImage": "media/thumbs/illustracao_hevy_2B4B7310.webp",
+      "image": "media/thumbs/web_aprovado_hevy_2B4B7310.gif",
+      "sourceName": "Barbell Romanian Deadlift",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/glutes/barbell-romanian-deadlift.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/glutes/barbell-romanian-deadlift.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:72CFFAD5",
+      "name": "Levantamento Terra Romeno (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_72CFFAD5.webp",
+      "image": "media/thumbs/web_aprovado_hevy_72CFFAD5.gif",
+      "sourceName": "Dumbbell Romanian Deadlift",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/glutes/dumbbell-romanian-deadlift.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/glutes/dumbbell-romanian-deadlift.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:234897AB",
+      "name": "Rosca Bíceps com Corda (Polia)",
+      "previousImage": "media/thumbs/illustracao_hevy_234897AB.webp",
+      "image": "media/thumbs/web_aprovado_hevy_234897AB.gif",
+      "sourceName": "cable rope hammer curl",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/06/rope-bicep-curls.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/cable-rope-hammer-curl/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:0222DB42",
+      "name": "Remo Ergométrico",
+      "previousImage": "media/thumbs/illustracao_hevy_0222DB42.webp",
+      "image": "media/thumbs/web_aprovado_hevy_0222DB42.gif",
+      "sourceName": "rowing machine",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/06/Rowing-Machine.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/rowing-machine/",
+      "frames": 24
+    },
+    {
+      "id": "hevy:AC1BB830",
+      "name": "Corrida",
+      "previousImage": "media/thumbs/illustracao_hevy_AC1BB830.webp",
+      "image": "media/thumbs/web_aprovado_hevy_AC1BB830.gif",
+      "sourceName": "running",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/07/Run.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/running/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:BB83BDDE",
+      "name": "Rotação Russa (Peso Corporal)",
+      "previousImage": "media/thumbs/illustracao_hevy_BB83BDDE.webp",
+      "image": "media/thumbs/web_aprovado_hevy_BB83BDDE.gif",
+      "sourceName": "Russian Twist",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/abs/russian-twist.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/abs/russian-twist.gif",
+      "frames": 24
+    },
+    {
+      "id": "hevy:7E93E23F",
+      "name": "Remada com Peito Apoiado no Banco (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_7E93E23F.webp",
+      "image": "media/thumbs/web_aprovado_hevy_7E93E23F.gif",
+      "sourceName": "dumbbell seal row",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/11/Dumbbell-Seal-Row.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/dumbbell-seal-row/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:C3BCABB3",
+      "name": "Remada Baixa Sentada com Pegada Aberta (Polia)",
+      "previousImage": "media/thumbs/illustracao_hevy_C3BCABB3.webp",
+      "image": "media/thumbs/web_aprovado_hevy_C3BCABB3.gif",
+      "sourceName": "Cable Seated Wide Grip Row",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/upper-back/cable-seated-wide-grip-row.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/upper-back/cable-seated-wide-grip-row.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:0393F233",
+      "name": "Remada Baixa Sentada com Triângulo (Polia)",
+      "previousImage": "media/thumbs/illustracao_hevy_0393F233.webp",
+      "image": "media/thumbs/web_aprovado_hevy_0393F233.gif",
+      "sourceName": "Cable Seated Row",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/upper-back/cable-seated-row.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/upper-back/cable-seated-row.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:5122E7D9",
+      "name": "Mergulho para Tríceps Sentado (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_5122E7D9.webp",
+      "image": "media/thumbs/web_aprovado_hevy_5122E7D9.gif",
+      "sourceName": "Lever Seated Dip",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/triceps/lever-seated-dip.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/triceps/lever-seated-dip.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:8BAB2735",
+      "name": "Rosca Inclinada Sentada (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_8BAB2735.webp",
+      "image": "media/thumbs/web_aprovado_hevy_8BAB2735.gif",
+      "sourceName": "Dumbbell Incline Curl",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/biceps/dumbbell-incline-curl.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/biceps/dumbbell-incline-curl.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:C01F58D1",
+      "name": "Rosca Martelo Inclinada Sentada (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_C01F58D1.webp",
+      "image": "media/thumbs/web_aprovado_hevy_C01F58D1.gif",
+      "sourceName": "Dumbbell Incline Hammer Curl",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/biceps/dumbbell-incline-hammer-curl.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/biceps/dumbbell-incline-hammer-curl.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:9372FFAA",
+      "name": "Elevação Lateral Sentada (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_9372FFAA.webp",
+      "image": "media/thumbs/web_aprovado_hevy_9372FFAA.gif",
+      "sourceName": "Dumbbell Seated Lateral Raise",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/delts/dumbbell-seated-lateral-raise.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/delts/dumbbell-seated-lateral-raise.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:11A123F3",
+      "name": "Cadeira Flexora (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_11A123F3.webp",
+      "image": "media/thumbs/web_aprovado_hevy_11A123F3.gif",
+      "sourceName": "Lever Seated Leg Curl",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/hamstrings/lever-seated-leg-curl.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/hamstrings/lever-seated-leg-curl.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:9930DF71",
+      "name": "Desenvolvimento Sentado (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_9930DF71.webp",
+      "image": "media/thumbs/web_aprovado_hevy_9930DF71.gif",
+      "sourceName": "Dumbbell Seated Shoulder Press",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/delts/dumbbell-seated-shoulder-press.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/delts/dumbbell-seated-shoulder-press.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:1006DF48",
+      "name": "Flexão de Punhos Sentada com Palmas para Cima",
+      "previousImage": "media/thumbs/illustracao_hevy_1006DF48.webp",
+      "image": "media/thumbs/web_aprovado_hevy_1006DF48.gif",
+      "sourceName": "Dumbbell Seated Palms Up Wrist Curl",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/forearms/dumbbell-seated-palms-up-wrist-curl.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/forearms/dumbbell-seated-palms-up-wrist-curl.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:1DF4A847",
+      "name": "Remada Sentada (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_1DF4A847.webp",
+      "image": "media/thumbs/web_aprovado_hevy_1DF4A847.gif",
+      "sourceName": "Lever Seated Row",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/upper-back/lever-seated-row.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/upper-back/lever-seated-row.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:FFABC123",
+      "name": "Encolhimento de Trapézio (Polia)",
+      "previousImage": "media/thumbs/illustracao_hevy_FFABC123.webp",
+      "image": "media/thumbs/web_aprovado_hevy_FFABC123.gif",
+      "sourceName": "Cable Shrug",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/traps/cable-shrug.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/traps/cable-shrug.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:ABEC557F",
+      "name": "Encolhimento de Trapézio (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_ABEC557F.webp",
+      "image": "media/thumbs/web_aprovado_hevy_ABEC557F.gif",
+      "sourceName": "Dumbbell Shrug",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/traps/dumbbell-shrug.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/traps/dumbbell-shrug.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:19A38071",
+      "name": "Encolhimento de Trapézio (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_19A38071.webp",
+      "image": "media/thumbs/web_aprovado_hevy_19A38071.gif",
+      "sourceName": "Lever Shrug",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/traps/lever-shrug.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/traps/lever-shrug.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:742E5BD5",
+      "name": "Encolhimento de Trapézio (Smith)",
+      "previousImage": "media/thumbs/illustracao_hevy_742E5BD5.webp",
+      "image": "media/thumbs/web_aprovado_hevy_742E5BD5.gif",
+      "sourceName": "Smith Shrug",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/traps/smith-shrug.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/traps/smith-shrug.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:37F9EDA7",
+      "name": "Flexão Lateral de Tronco",
+      "previousImage": "media/thumbs/illustracao_hevy_37F9EDA7.webp",
+      "image": "media/thumbs/web_aprovado_hevy_37F9EDA7.gif",
+      "sourceName": "standing side bend",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/09/standing-side-bend.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/standing-side-bend/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:D1CD146F",
+      "name": "Elevação Pélvica Unilateral (Halter)",
+      "previousImage": "media/thumbs/illustracao_hevy_D1CD146F.webp",
+      "image": "media/thumbs/web_aprovado_hevy_D1CD146F.gif",
+      "sourceName": "single leg dumbbell hip thrust",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2025/03/Single-Leg-Dumbbell-Hip-Thrust.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/single-leg-dumbbell-hip-thrust/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:3FD83744",
+      "name": "Leg Press Unilateral (Máquina)",
+      "previousImage": "media/thumbs/illustracao_hevy_3FD83744.webp",
+      "image": "media/thumbs/web_aprovado_hevy_3FD83744.gif",
+      "sourceName": "single leg press",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/04/Single-Leg-Press.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/single-leg-press/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:93472AC1",
+      "name": "Levantamento Terra Romeno Unilateral (Barra)",
+      "previousImage": "media/thumbs/illustracao_hevy_93472AC1.webp",
+      "image": "media/thumbs/web_aprovado_hevy_93472AC1.gif",
+      "sourceName": "Barbell Single Leg Deadlift",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/glutes/barbell-single-leg-deadlift.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/glutes/barbell-single-leg-deadlift.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:937292AB",
+      "name": "Levantamento Terra Romeno Unilateral (Halter)",
+      "previousImage": "media/thumbs/illustracao_hevy_937292AB.webp",
+      "image": "media/thumbs/web_aprovado_hevy_937292AB.gif",
+      "sourceName": "Dumbbell Single Leg Deadlift",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/glutes/dumbbell-single-leg-deadlift.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/glutes/dumbbell-single-leg-deadlift.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:238BA231",
+      "name": "Elevação de Panturrilha Unilateral em Pé",
+      "previousImage": "media/thumbs/illustracao_hevy_238BA231.webp",
+      "image": "media/thumbs/web_aprovado_hevy_238BA231.gif",
+      "sourceName": "single leg calf raise",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/06/Single-Leg-Calf-Raises.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/single-leg-calf-raise/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:5DA40761",
+      "name": "Elevação de Panturrilha Unilateral em Pé (Halter)",
+      "previousImage": "media/thumbs/illustracao_hevy_5DA40761.webp",
+      "image": "media/thumbs/web_aprovado_hevy_5DA40761.gif",
+      "sourceName": "Dumbbell Single Leg Calf Raise",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/calves/dumbbell-single-leg-calf-raise.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/calves/dumbbell-single-leg-calf-raise.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:DCFF3E9F",
+      "name": "Agachamento (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_DCFF3E9F.webp",
+      "image": "media/thumbs/web_aprovado_hevy_DCFF3E9F.gif",
+      "sourceName": "Dumbbell Squat",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/glutes/dumbbell-squat.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/glutes/dumbbell-squat.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:AA52E8D2",
+      "name": "Panturrilha em Pé (Smith)",
+      "previousImage": "media/thumbs/illustracao_hevy_AA52E8D2.webp",
+      "image": "media/thumbs/web_aprovado_hevy_AA52E8D2.gif",
+      "sourceName": "Smith Standing Leg Calf Raise",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/calves/smith-standing-leg-calf-raise.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/calves/smith-standing-leg-calf-raise.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:28927A36",
+      "name": "Elevação em Y em Pé (Polia)",
+      "previousImage": "media/thumbs/illustracao_hevy_28927A36.webp",
+      "image": "media/thumbs/web_aprovado_hevy_28927A36.gif",
+      "sourceName": "cable y raise",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/12/cable-y-raise.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/cable-y-raise/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:D2387AB1",
+      "name": "Puxada de Dorsais com Braços Estendidos (Polia)",
+      "previousImage": "media/thumbs/illustracao_hevy_D2387AB1.webp",
+      "image": "media/thumbs/web_aprovado_hevy_D2387AB1.gif",
+      "sourceName": "Cable Straight Arm Pulldown",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/lats/cable-straight-arm-pulldown.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/lats/cable-straight-arm-pulldown.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:2A48E443",
+      "name": "Levantamento Terra com Pernas Estendidas (Stiff)",
+      "previousImage": "media/thumbs/illustracao_hevy_2A48E443.webp",
+      "image": "media/thumbs/web_aprovado_hevy_2A48E443.gif",
+      "sourceName": "Barbell Straight Leg Deadlift",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/hamstrings/barbell-straight-leg-deadlift.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/hamstrings/barbell-straight-leg-deadlift.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:3F5F8D40",
+      "name": "Agachamento Sumô",
+      "previousImage": "media/thumbs/illustracao_hevy_3F5F8D40.webp",
+      "image": "media/thumbs/web_aprovado_hevy_3F5F8D40.gif",
+      "sourceName": "bodyweight sumo squat",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/02/BODYWEIGHT-SUMO-SQUAT.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/bodyweight-sumo-squat/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:6622E5A0",
+      "name": "Agachamento Sumô (Barra)",
+      "previousImage": "media/thumbs/illustracao_hevy_6622E5A0.webp",
+      "image": "media/thumbs/web_aprovado_hevy_6622E5A0.gif",
+      "sourceName": "barbell sumo squat",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Barbell-sumo-squat.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/barbell-sumo-squat/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:05293BCA",
+      "name": "Agachamento Sumô (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_05293BCA.webp",
+      "image": "media/thumbs/web_aprovado_hevy_05293BCA.gif",
+      "sourceName": "dumbbell sumo squat",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/02/dumbbell-sumo-squat.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/dumbbell-sumo-squat/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:08A2974E",
+      "name": "Remada Cavalinho (Barra T)",
+      "previousImage": "media/thumbs/illustracao_hevy_08A2974E.webp",
+      "image": "media/thumbs/web_aprovado_hevy_08A2974E.gif",
+      "sourceName": "Lever T Bar Row",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/upper-back/lever-t-bar-row.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/upper-back/lever-t-bar-row.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:90E506D5",
+      "name": "Thruster: Agachamento com Desenvolvimento (Barra)",
+      "previousImage": "media/thumbs/illustracao_hevy_90E506D5.webp",
+      "image": "media/thumbs/web_aprovado_hevy_90E506D5.gif",
+      "sourceName": "Barbell Thruster",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/delts/barbell-thruster.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/delts/barbell-thruster.gif",
+      "frames": 18
+    },
+    {
+      "id": "hevy:B94E35E1",
+      "name": "Pés na Barra (Toes To Bar)",
+      "previousImage": "media/thumbs/illustracao_hevy_B94E35E1.webp",
+      "image": "media/thumbs/web_aprovado_hevy_B94E35E1.gif",
+      "sourceName": "toes to bar",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2022/01/Toes-to-Bar.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/toes-to-bar/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:243710DE",
+      "name": "Esteira Ergométrica",
+      "previousImage": "media/thumbs/illustracao_hevy_243710DE.webp",
+      "image": "media/thumbs/web_aprovado_hevy_243710DE.gif",
+      "sourceName": "treadmill",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/06/Treadmill-.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/treadmill/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:28BB4A95",
+      "name": "Mergulho de Tríceps nas Paralelas",
+      "previousImage": "media/thumbs/illustracao_hevy_28BB4A95.webp",
+      "image": "media/thumbs/web_aprovado_hevy_28BB4A95.gif",
+      "sourceName": "Triceps Dip",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/triceps/triceps-dip.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/triceps/triceps-dip.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:4B4BF8C2",
+      "name": "Mergulho de Tríceps nas Paralelas (Assistido)",
+      "previousImage": "media/thumbs/illustracao_hevy_4B4BF8C2.webp",
+      "image": "media/thumbs/web_aprovado_hevy_4B4BF8C2.gif",
+      "sourceName": "Assisted Triceps Dip Kneeling",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/triceps/assisted-triceps-dip-kneeling.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/triceps/assisted-triceps-dip-kneeling.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:2F8D3067",
+      "name": "Extensão de Tríceps (Barra)",
+      "previousImage": "media/thumbs/illustracao_hevy_2F8D3067.webp",
+      "image": "media/thumbs/web_aprovado_hevy_2F8D3067.gif",
+      "sourceName": "Olympic Barbell Triceps Extension",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/triceps/olympic-barbell-triceps-extension.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/triceps/olympic-barbell-triceps-extension.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:21310F5F",
+      "name": "Extensão de Tríceps (Polia)",
+      "previousImage": "media/thumbs/illustracao_hevy_21310F5F.webp",
+      "image": "media/thumbs/web_aprovado_hevy_21310F5F.gif",
+      "sourceName": "high pulley overhead tricep extension",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/06/High-Pulley-Overhead-Tricep-Extension.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/high-pulley-overhead-tricep-extension/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:3765684D",
+      "name": "Extensão de Tríceps (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_3765684D.webp",
+      "image": "media/thumbs/web_aprovado_hevy_3765684D.gif",
+      "sourceName": "dumbbell triceps extension",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/02/Dumbbell-Triceps-Extension.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/dumbbell-triceps-extension/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:EC3B69A3",
+      "name": "Coice de Tríceps (Polia)",
+      "previousImage": "media/thumbs/illustracao_hevy_EC3B69A3.webp",
+      "image": "media/thumbs/web_aprovado_hevy_EC3B69A3.gif",
+      "sourceName": "Cable Kickback",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/triceps/cable-kickback.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/triceps/cable-kickback.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:6127A3AD",
+      "name": "Coice de Tríceps (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_6127A3AD.webp",
+      "image": "media/thumbs/web_aprovado_hevy_6127A3AD.gif",
+      "sourceName": "Dumbbell Kickback",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/triceps/dumbbell-kickback.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/triceps/dumbbell-kickback.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:94B7239B",
+      "name": "Tríceps na Polia Alta com Corda",
+      "previousImage": "media/thumbs/illustracao_hevy_94B7239B.webp",
+      "image": "media/thumbs/web_aprovado_hevy_94B7239B.gif",
+      "sourceName": "rope pushdown",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/06/Rope-Pushdown.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/rope-pushdown/",
+      "frames": 12
+    },
+    {
+      "id": "hevy:7AB9A362",
+      "name": "Remada Alta (Barra)",
+      "previousImage": "media/thumbs/illustracao_hevy_7AB9A362.webp",
+      "image": "media/thumbs/web_aprovado_hevy_7AB9A362.gif",
+      "sourceName": "Barbell Upright Row",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/delts/barbell-upright-row.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/delts/barbell-upright-row.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:797F0782",
+      "name": "Remada Alta (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_797F0782.webp",
+      "image": "media/thumbs/web_aprovado_hevy_797F0782.gif",
+      "sourceName": "Dumbbell Upright Row",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/delts/dumbbell-upright-row.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/delts/dumbbell-upright-row.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:72297E8C",
+      "name": "Rosca Bíceps Estilo Garçom (Halter)",
+      "previousImage": "media/thumbs/illustracao_hevy_72297E8C.webp",
+      "image": "media/thumbs/web_aprovado_hevy_72297E8C.gif",
+      "sourceName": "Dumbbell Waiter Biceps Curl",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/biceps/dumbbell-waiter-biceps-curl.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/biceps/dumbbell-waiter-biceps-curl.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:33EDD7DB",
+      "name": "Caminhada",
+      "previousImage": "media/thumbs/illustracao_hevy_33EDD7DB.webp",
+      "image": "media/thumbs/web_aprovado_hevy_33EDD7DB.gif",
+      "sourceName": "walking",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2021/09/Walking.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/walking/",
+      "frames": 24
+    },
+    {
+      "id": "hevy:32HKJ34K",
+      "name": "Afundo Caminhando",
+      "previousImage": "media/thumbs/illustracao_hevy_32HKJ34K.webp",
+      "image": "media/thumbs/web_aprovado_hevy_32HKJ34K.gif",
+      "sourceName": "Walking Lunge",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/glutes/walking-lunge.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/glutes/walking-lunge.gif",
+      "frames": 24
+    },
+    {
+      "id": "hevy:A733CC5B",
+      "name": "Afundo Caminhando (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_A733CC5B.webp",
+      "image": "media/thumbs/web_aprovado_hevy_A733CC5B.gif",
+      "sourceName": "dumbbell walking lunge",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2023/09/dumbbell-lunges.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/dumbbell-walking-lunge/",
+      "frames": 18
+    },
+    {
+      "id": "hevy:A1F47ACC",
+      "name": "Agachamento e Arremesso com Bola Medicinal",
+      "previousImage": "media/thumbs/illustracao_hevy_A1F47ACC.webp",
+      "image": "media/thumbs/web_aprovado_hevy_A1F47ACC.gif",
+      "sourceName": "wall ball",
+      "sourceUrl": "https://fitnessprogramer.com/wp-content/uploads/2023/01/wall-ball.gif",
+      "sourcePage": "https://fitnessprogramer.com/exercise/wall-ball/",
+      "frames": 18
+    },
+    {
+      "id": "hevy:7C50F118",
+      "name": "Barra Fixa com Pegada Aberta",
+      "previousImage": "media/thumbs/illustracao_hevy_7C50F118.webp",
+      "image": "media/thumbs/web_aprovado_hevy_7C50F118.gif",
+      "sourceName": "Wide Grip Pull Up",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/lats/wide-grip-pull-up.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/lats/wide-grip-pull-up.gif",
+      "frames": 12
+    },
+    {
+      "id": "hevy:123EE239",
+      "name": "Rosca Zottman (Halteres)",
+      "previousImage": "media/thumbs/illustracao_hevy_123EE239.webp",
+      "image": "media/thumbs/web_aprovado_hevy_123EE239.gif",
+      "sourceName": "Dumbbell Zottman Curl",
+      "sourceUrl": "https://raw.githubusercontent.com/JahelCuadrado/ExerciseGymGifsDB/main/biceps/dumbbell-zottman-curl.gif",
+      "sourcePage": "https://github.com/JahelCuadrado/ExerciseGymGifsDB/blob/main/biceps/dumbbell-zottman-curl.gif",
+      "frames": 24
+    }
+  ]
+}

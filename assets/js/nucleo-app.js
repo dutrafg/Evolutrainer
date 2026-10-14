@@ -71,7 +71,7 @@ const num = (value, fallback=0) => Number.isFinite(Number(value)) && Number(valu
 const fmtDate = iso => {const d = new Date(iso);return Number.isNaN(+d) ? 'Data inválida' : d.toLocaleString('pt-BR',{dateStyle:'short',timeStyle:'short'});};
 const fmtDuration = s => `${Math.floor(s/3600).toString().padStart(2,'0')}:${Math.floor(s%3600/60).toString().padStart(2,'0')}:${Math.floor(s%60).toString().padStart(2,'0')}`;
 const state = {db:null,registry:null,studentDb:null,student:null,students:[],clientSearch:'',clientStatus:'all',preferredClientId:null,clientSwitching:false,clientCalendarMonth:(()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');})(),clientCalendarSelectedDate:'',swapIndex:-1,deletingClient:false,pendingDeleteId:null,deletedClientIds:new Set(),folder:null,folderReady:false,folderLabel:'',writeQueue:Promise.resolve(),exercises:[],routines:[],sessions:[],tab:'workouts',organizingRoutines:false,limit:60,draft:null,pickerTerm:'',pickerFilter:'',pendingExercise:null,active:null,toastTimer:null,ticker:null,sessionLock:null,finishing:false,lockWriteQueue:Promise.resolve(),catalogSyncQueue:Promise.resolve(),restChimeContext:null};
-const EXERCISE_SEED_VERSION='ptbr-20261012-v58';
+const EXERCISE_SEED_VERSION='ptbr-20261014-gifs-aprovados-v11';
 let exerciseCatalogSyncPromise=null;
 function getExerciseSeedVersion(){try{return localStorage.getItem('et.exerciseSeedVersion')||'';}catch{return '';}}
 function setExerciseSeedVersion(version){try{localStorage.setItem('et.exerciseSeedVersion',version);}catch{}}
@@ -756,7 +756,7 @@ function normalizeExercise(x){if(!x||typeof x!=='object'||!x.id||!(x.name||x.nom
  instructions:x.instructions||x.instrucoes||null,instructions_en:Array.isArray(x.instructions_en)?x.instructions_en.slice(0,16).map(s=>String(s).slice(0,1200)):[],image:safeMedia(x.image||x.imagem||''),images:Array.isArray(x.images)?x.images.map(safeMedia).filter(Boolean).slice(0,4):[],exerciseKind:String(x.exerciseKind||'Musculação'),level:String(x.level||''),updatedAt:x.updatedAt||new Date().toISOString()
  };}
 async function readSeed(){const inline=$('#exercise-seed');if(inline)return JSON.parse(inline.textContent);if(Array.isArray(globalThis.EXERCISE_SEED))return globalThis.EXERCISE_SEED;
- const resp=await fetch('./data/exercises.json?v=ptbr-20261012',{cache:'no-cache'});if(!resp.ok)throw Error('Catálogo de exercícios indisponível');return resp.json();}
+ const resp=await fetch('./data/exercises.json?v=ptbr-20261014-gifs-aprovados',{cache:'no-cache'});if(!resp.ok)throw Error('Catálogo de exercícios indisponível');return resp.json();}
 async function seedExercises(){
  const existing=await allFrom('exercises');
  const currentVersion=getExerciseSeedVersion();
