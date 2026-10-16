@@ -1838,6 +1838,57 @@ svg{max-width:100%}
 }
 @media(max-width:390px){.page{padding-inline:13px!important}.topbar{padding-inline:13px!important}.nav-btn{font-size:9px!important}.card{padding:15px!important}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* Corporate UI 3.1 — neutralização das regras legadas MD3 amarelas */
+html[data-theme="light"] .etp-tabs,
+html[data-theme="light"] .etp-tabs button,
+html[data-theme="light"] .etp-tabs button:not(.active){
+ background:#fff!important;color:#55595e!important;-webkit-text-fill-color:#55595e!important;
+ border-color:#e3e3e3!important;box-shadow:none!important;
+}
+html[data-theme="light"] .etp-tabs button.active,
+html[data-theme="light"] .etp-tabs button.active:hover,
+html[data-theme="light"] .etp-tabs button[aria-selected="true"]{
+ background:#292d32!important;color:#fff!important;-webkit-text-fill-color:#fff!important;
+ border-color:#292d32!important;box-shadow:none!important;
+}
+html[data-theme="dark"] .etp-tabs{background:#26282c!important;border-color:#45484c!important}
+html[data-theme="dark"] .etp-tabs button{color:#ddd!important;-webkit-text-fill-color:#ddd!important}
+html[data-theme="dark"] .etp-tabs button.active{background:#f3f3f3!important;color:#191b1e!important;-webkit-text-fill-color:#191b1e!important}
+html[data-theme="light"] .topbar .brand span,
+html[data-theme="light"] .et52-side-logo span,
+html[data-theme="light"] #et-role-gate .et-role-logo span{color:#292d32!important;-webkit-text-fill-color:#292d32!important}
+html[data-theme="light"] .btn.primary,
+html[data-theme="light"] button.primary,
+html[data-theme="light"] .evo-cta,
+html[data-theme="light"] .et-role-continue{
+ background:#292d32!important;color:#fff!important;-webkit-text-fill-color:#fff!important;border-color:#292d32!important
+}
+html[data-theme="light"] .btn.primary *,
+html[data-theme="light"] button.primary *,
+html[data-theme="light"] .evo-cta *{color:#fff!important;-webkit-text-fill-color:#fff!important}
+html[data-theme="dark"] .btn.primary,
+html[data-theme="dark"] button.primary,
+html[data-theme="dark"] .evo-cta{
+ background:#f3f3f3!important;color:#191b1e!important;-webkit-text-fill-color:#191b1e!important;border-color:#f3f3f3!important
+}
+html[data-theme="light"] .etp-tabs button{border-radius:7px!important;min-height:42px!important}
+html[data-theme="light"] .et-eyebrow,
+html[data-theme="light"] .fin-heading,
+html[data-theme="light"] .evo-kicker{color:#55595e!important}
+html[data-theme="light"] .et52-side,
+html[data-theme="light"] .et52-sidebar,
+html[data-theme="light"] .et52-side-logo{background:#fff!important;color:#292d32!important;border-color:#e3e3e3!important}
+html[data-theme="light"] .et52-side button.active,
+html[data-theme="light"] .et52-sidebar button.active{background:#f2f2f2!important;color:#292d32!important}
+html[data-theme="light"] .nav-btn.active{background:#f2f2f2!important;color:#292d32!important}
+html[data-theme="light"] .client-attention-card,
+html[data-theme="light"] .active-client-tools{background:#fff!important;border-color:#e3e3e3!important}
+html[data-theme="light"] .fin-warning,
+html[data-theme="light"] .inline-notice{background:#f6f6f6!important;color:#4b4d50!important;border-color:#e3e3e3!important}
+#et-role-gate .et-role-choice[aria-pressed="true"]{border-color:var(--text)!important;background:var(--soft)!important}
+#et-role-gate .et-role-choice:focus-visible{outline-color:var(--text)!important}
+#et-role-gate .et-role-continue{background:#292d32!important;color:#fff!important}
 </style>
 </head>
 <body class="role-unselected">
