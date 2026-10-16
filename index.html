@@ -2869,6 +2869,82 @@ html[data-theme="dark"] #page-settings .et41-toggle-row input[type="checkbox"]:c
 html[data-theme="dark"] :where(button,a,input,select,textarea):focus-visible{
  outline:2px solid #a9c6ff!important;outline-offset:2px!important;
 }
+
+/* EvoluTrainer Minimal UI — 2026-10-16 | referência conceitual: EvoluFisico */
+:root,html[data-theme="light"]{
+ --radius:10px!important;--ui5-bg:#f8f9fb!important;--ui5-surface:#fff!important;
+ --ui5-border:#e4e8ed!important;--ui5-quiet:#f5f7f9!important;
+ --ui5-tint:#edf2f9!important;--ui5-text:#202b38!important;
+ --ui5-secondary:#637181!important;--ui5-accent:#315e9c!important;
+}
+html[data-theme="dark"]{
+ --radius:10px!important;--ui5-bg:#121416!important;--ui5-surface:#1b1e22!important;
+ --ui5-border:#343940!important;--ui5-quiet:#22262b!important;
+ --ui5-tint:#263344!important;--ui5-text:#f0f2f4!important;
+ --ui5-secondary:#adb6c0!important;--ui5-accent:#abc7ef!important;
+}
+body{letter-spacing:-.008em!important}
+.page{max-width:1160px!important}
+.page-head{margin-bottom:20px!important;gap:8px 14px!important}
+.page-head h1{font-size:clamp(22px,2.4vw,29px)!important;font-weight:720!important;letter-spacing:-.035em!important}
+.page-head p{font-size:13px!important;line-height:1.55!important}
+.card,.library-card,.client-row,.student-panel,.evo-card,.evo-panel,.evo-surface,
+.evo-kpi,.et-p1-panel,.et41-settings-card,.fin-service-card,.et43-calendar,
+.client-attention-card{
+ border-radius:10px!important;box-shadow:none!important;
+ background:var(--ui5-surface)!important;border:1px solid var(--ui5-border)!important;
+}
+.card-title,.library-title{font-size:15px!important;font-weight:680!important;letter-spacing:-.015em!important}
+.card-meta,.muted,.settings-note{line-height:1.6!important}
+.btn,button.btn,button[data-action],button[data-et5-favorite]{
+ border-radius:8px!important;box-shadow:none!important;
+ font-size:13px!important;line-height:1.35!important;font-weight:620!important;
+ min-height:42px!important;transition:background-color .16s,border-color .16s,color .16s!important;
+}
+.btn.secondary,.btn.danger{
+ background:var(--ui5-surface)!important;color:var(--ui5-text)!important;
+ border:1px solid var(--ui5-border)!important;
+}
+input:not([type="checkbox"]):not([type="radio"]),select,textarea{
+ border-radius:8px!important;min-height:42px!important;
+ box-shadow:none!important;font-size:14px!important;
+}
+label{font-weight:600!important}
+.topbar{box-shadow:none!important;border-bottom:1px solid var(--ui5-border)!important}
+.brand{font-weight:730!important;letter-spacing:-.035em!important}
+.bottom-nav{box-shadow:none!important;border-top:1px solid var(--ui5-border)!important}
+.bottom-nav .nav-btn{border-radius:8px!important;font-weight:600!important;gap:5px!important}
+.bottom-nav .nav-btn.active{font-weight:720!important}
+.modal,.modal-content,.dialog,.sheet{border-radius:12px!important;box-shadow:0 16px 50px #0002!important}
+.pill,.badge,.chip{border-radius:6px!important}
+.et-p1-panel .et-p1-entry,.filterbox,.settings-structure{
+ border-radius:9px!important;border:1px solid var(--ui5-border)!important;
+ background:var(--ui5-quiet)!important;
+}
+#page-settings .et41-settings-row{gap:16px!important}
+#page-settings .et41-test-actions{gap:9px!important}
+#page-settings .et41-test-actions .btn{white-space:normal!important}
+#page-evolution .evo-day,#workout-calendar .et43-cal-day{border-radius:7px!important}
+.et-p1-nav button,.etp-tabs button,.evo-segments button{border-radius:7px!important}
+.actions{gap:8px!important}
+@media(min-width:900px){
+ .page{padding:30px clamp(28px,3vw,44px)!important}
+ .card{padding:22px!important}
+}
+@media(max-width:700px){
+ .page{padding:20px 15px calc(108px + env(safe-area-inset-bottom))!important}
+ .page-head{margin-bottom:17px!important}
+ .page-head h1{font-size:23px!important}
+ .card,.evo-panel,.et-p1-panel{padding:17px!important;margin-bottom:12px!important}
+ .topbar{padding:12px 16px!important}
+ .bottom-nav .nav-btn{min-height:58px!important}
+ .bottom-nav .nav-icon{font-size:20px!important}
+ .actions .btn{white-space:normal!important}
+}
+@media(max-width:380px){
+ .page{padding-inline:11px!important}
+ .card,.evo-panel,.et-p1-panel{padding:14px!important}
+}
 </style>
 </head>
 <body class="role-unselected">
