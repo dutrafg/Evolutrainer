@@ -2661,6 +2661,95 @@ label{line-height:1.45}
  .library-card,.client-row,.et43-session-item{transition:none!important}
 }
 </style>
+<style id="et-ui5-clean-final-polish">
+/* UI 5.0 — Clean Experience final pass: restrained iOS-inspired hierarchy */
+:root,html[data-theme="light"]{
+ --ui5-hairline:#e2e9f1;--ui5-subtle:#f7f9fc;--ui5-tint:#edf3ff;
+ --ui5-shadow:0 1px 2px rgba(23,36,53,.025);
+}
+html[data-theme="dark"]{
+ --ui5-hairline:#344356;--ui5-subtle:#1b2939;--ui5-tint:#233650;
+ --ui5-shadow:0 1px 2px rgba(0,0,0,.06);
+}
+.page,.et-p1-panel,.evo-page,.et43-calendar{min-width:0!important}
+.page-head,.evo-heading{min-width:0!important}
+.page-head h1,.evo-heading h1{margin-top:0!important;margin-bottom:5px!important}
+.page-head p,.evo-heading p{margin-top:0!important}
+.card,.et-p1-panel,.evo-panel,.et43-calendar,.et43-calendar-detail,
+.client-attention-card,.library-card,.fin-service-card,.et41-settings-card{
+ border:1px solid var(--ui5-hairline)!important;box-shadow:var(--ui5-shadow)!important;
+ border-radius:12px!important;
+}
+.card-title,.evo-panel-heading,.et-p1-panel h2{line-height:1.3!important}
+.card-meta,.evo-note,.et-p1-muted{line-height:1.55!important}
+.btn,.nav-btn,.et-p1-nav button,.evo-segments button,.etp-tabs button{
+ -webkit-tap-highlight-color:transparent;touch-action:manipulation;
+}
+.btn.secondary,.btn.danger,.et-p1-nav button:not([aria-current="page"]){
+ border:1px solid var(--ef-button-border,#d5e2f5)!important;
+}
+.btn:focus-visible,.nav-btn:focus-visible,.et-p1-nav button:focus-visible,
+.evo-segments button:focus-visible,.etp-tabs button:focus-visible{
+ outline:2px solid var(--ui5-blue)!important;outline-offset:2px!important;
+}
+.et-p1-nav{
+ gap:7px!important;scrollbar-width:none!important;
+ scroll-padding-inline:12px!important;padding-bottom:10px!important;
+}
+.et-p1-nav::-webkit-scrollbar{display:none!important}
+.et-p1-nav button{min-height:42px!important}
+.et-p1-panel .et-p1-entry{
+ background:var(--ui5-subtle)!important;border-color:var(--ui5-hairline)!important;
+}
+.et-p1-panel .et-p1-entry strong{font-weight:650!important}
+.et-p1-panel .et-p1-entry p{margin-top:6px!important}
+#page-evolution .evo-calendar-panel,#workout-calendar .et43-calendar{overflow:hidden!important}
+#page-evolution .evo-calendar,#workout-calendar .et43-calendar-grid{
+ width:100%!important;max-width:100%!important;min-width:0!important;
+ grid-template-columns:repeat(7,minmax(0,1fr))!important;
+}
+#page-evolution .evo-day,#workout-calendar .et43-cal-day{
+ min-width:0!important;max-width:100%!important;box-sizing:border-box!important;
+}
+#page-evolution .evo-day.empty{background:transparent!important;border-color:transparent!important}
+#page-evolution .evo-day.future{opacity:.45!important}
+#page-evolution .evo-day.today,#workout-calendar .et43-cal-day.is-today:not(.is-selected){
+ box-shadow:none!important;
+}
+#page-evolution .evo-score{margin:18px auto 20px!important}
+#page-evolution .evo-progress .evo-bar{
+ background:var(--et-chart-track)!important;border-radius:100px!important;
+}
+#page-evolution .evo-progress .evo-bar>span{
+ background:var(--ui5-blue)!important;border-radius:100px!important;
+}
+#page-clients .client-list,#page-library #library-list{min-width:0!important}
+#page-library .filter-row{min-width:0!important}
+#page-library .filter-row>*{min-width:0!important}
+#workout-active .et-md3-set-grid{max-width:100%!important;overflow-x:auto}
+.bottom-nav{
+ padding-bottom:env(safe-area-inset-bottom)!important;
+ backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+}
+.bottom-nav .nav-btn{
+ flex:1 1 0!important;min-width:0!important;padding-inline:3px!important;
+ border:1px solid transparent!important;
+}
+.bottom-nav .nav-btn.active{
+ background:var(--ui5-tint)!important;border-color:var(--ui5-hairline)!important;
+}
+@media(max-width:700px){
+ .page{padding:18px 14px calc(112px + env(safe-area-inset-bottom))!important}
+ .page-head{margin-bottom:16px!important}
+ .card,.evo-panel,.et-p1-panel{padding:16px!important}
+ .et-p1-nav{margin-bottom:8px!important}
+ .et-p1-panel .et-p1-entry{padding:13px!important}
+ #page-evolution .evo-calendar,#workout-calendar .et43-calendar-grid{gap:4px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
 </head>
 <body class="role-unselected">
  <div id="et-role-gate" role="dialog" aria-modal="true" aria-labelledby="et-role-title">
