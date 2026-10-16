@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#292d32">
+  <meta name="theme-color" content="#2259ce">
   <meta name="application-name" content="EvoluTrainer">
   <meta name="description" content="Gestão offline de treinos, clientes, avaliações e cobranças.">
   <title>EvoluTrainer 1.0.beta — Gestão de Treinos, Clientes e Cobranças</title>
@@ -2023,6 +2023,120 @@ html[data-theme="light"] .evo-page,html[data-theme="light"] .evo-panel{
  .evo-progress.group .evo-progress-head{gap:8px!important}
  .evo-progress.group .evo-progress-head strong,.evo-progress.group .evo-progress-head b{font-size:12px!important}
  .evo-progress.group .evo-bar,.evo-progress.group .evo-bar>span{height:8px!important;min-height:8px!important;max-height:8px!important}
+}
+</style>
+<style id="et-evolufisico-identity-893">
+/* EvoluTrainer × EvoluFísico 8.9.3 — shared visual identity, isolated UI override */
+:root,html[data-theme="light"]{
+ --primary:#2259ce!important;--primary-dark:#1747aa!important;
+ --bg:#f4f6f9!important;--surface:#fff!important;--card:#fff!important;
+ --soft:#edf3ff!important;--border:#dde4ec!important;
+ --text:#172435!important;--muted:#5b6b7c!important;
+ --et-canvas:#f4f6f9;--et-panel:#fff;--et-subtle:#edf3ff;
+ --et-stroke:#dde4ec;--et-ink:#172435;--et-caption:#5b6b7c;
+ --et-chart-track:#e7edf4;--et-chart-fill:#2259ce;
+ --et-chart-label:#172435;--et-chart-muted:#5b6b7c;
+ --et-corporate:#2259ce;--et-quiet:#edf3ff;
+ --ef-surface:#fff;--ef-page:#f4f6f9;--ef-ink:#172435;
+ --ef-muted:#5b6b7c;--ef-line:#dde4ec;--ef-accent:#2259ce;--ef-soft:#edf3ff;
+ color-scheme:light!important;
+}
+html[data-theme="dark"]{
+ --primary:#94baff!important;--primary-dark:#7199eb!important;
+ --bg:#101822!important;--surface:#17212e!important;--card:#1b2837!important;
+ --soft:#233650!important;--border:#344356!important;
+ --text:#edf2f8!important;--muted:#b0bed0!important;
+ --et-canvas:#101822;--et-panel:#17212e;--et-subtle:#233650;
+ --et-stroke:#344356;--et-ink:#edf2f8;--et-caption:#b0bed0;
+ --et-chart-track:#344356;--et-chart-fill:#94baff;
+ --et-chart-label:#edf2f8;--et-chart-muted:#b0bed0;
+ --et-corporate:#94baff;--et-quiet:#233650;
+ --ef-surface:#17212e;--ef-page:#101822;--ef-ink:#edf2f8;
+ --ef-muted:#b0bed0;--ef-line:#344356;--ef-accent:#94baff;--ef-soft:#233650;
+ color-scheme:dark!important;
+}
+html,body,button,input,select,textarea{
+ font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,system-ui,sans-serif!important;
+}
+body,.app-shell,.page,.evo-page{background:var(--bg)!important;color:var(--text)!important}
+.app-shell{max-width:1200px!important;box-shadow:none!important}
+.topbar{background:var(--surface)!important;color:var(--text)!important;border-bottom:1px solid var(--border)!important;box-shadow:none!important}
+.topbar .brand,.topbar .brand span,.et52-side-logo,.et52-side-logo span{color:var(--text)!important;-webkit-text-fill-color:var(--text)!important}
+.topbar .tagline,.et52-side-tag{color:var(--muted)!important}
+.status-dot{background:var(--primary)!important}
+.card,.client-attention-card,.client-row,.library-card,.student-panel,
+.evo-card,.evo-panel,.evo-surface,.et-p1-panel,.et41-settings-card,
+.fin-service-card,.coach-load-panel,.et43-metric,.settings-structure{
+ background:var(--card)!important;background-image:none!important;
+ color:var(--text)!important;border:1px solid var(--border)!important;
+ border-radius:10px!important;box-shadow:none!important;
+}
+.card-title,.evo-panel-heading,.fin-heading,.page-head h1{color:var(--text)!important}
+.muted,.hint,.card-meta,.evo-note,.et-p1-muted,.settings-note,.evo-kicker,
+.client-attention-kicker,.et-eyebrow{color:var(--muted)!important}
+.btn.primary,button.btn.primary,button.primary,.evo-cta,.evo-cta.primary{
+ background:#2259ce!important;color:#fff!important;-webkit-text-fill-color:#fff!important;
+ border:1px solid #2259ce!important;box-shadow:none!important;
+}
+.btn.primary *,button.primary *,.evo-cta *{color:inherit!important;-webkit-text-fill-color:inherit!important}
+.btn.primary:hover:not(:disabled),button.primary:hover:not(:disabled){background:#1747aa!important;border-color:#1747aa!important}
+html[data-theme="dark"] .btn.primary,html[data-theme="dark"] button.primary,
+html[data-theme="dark"] .evo-cta{
+ background:#94baff!important;color:#101822!important;-webkit-text-fill-color:#101822!important;border-color:#94baff!important;
+}
+html[data-theme="dark"] .btn.primary:hover:not(:disabled){background:#b6d0ff!important;border-color:#b6d0ff!important}
+.btn.secondary,.btn.danger{background:var(--surface)!important;color:var(--text)!important;-webkit-text-fill-color:var(--text)!important;border:1px solid var(--border)!important}
+.btn.secondary:hover:not(:disabled),.btn.danger:hover:not(:disabled){background:var(--soft)!important}
+.btn,.btn.small{border-radius:8px!important;box-shadow:none!important}
+input,select,textarea,#active-client-select{
+ background:var(--surface)!important;color:var(--text)!important;
+ border:1px solid var(--border)!important;border-radius:8px!important;
+}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{
+ outline:2px solid var(--primary)!important;outline-offset:2px!important;
+}
+.etp-tabs,.evo-segments{background:var(--soft)!important;border:1px solid var(--border)!important;border-radius:10px!important}
+.etp-tabs button,.evo-segments button{border-radius:8px!important}
+html[data-theme="light"] .etp-tabs button:not(.active),html[data-theme="light"] .evo-segments button:not(.selected){
+ background:transparent!important;color:#5b6b7c!important;-webkit-text-fill-color:#5b6b7c!important;
+}
+html[data-theme="light"] .etp-tabs button.active,
+html[data-theme="light"] .etp-tabs button[aria-selected="true"],
+html[data-theme="light"] .evo-segments button.selected{
+ background:#2259ce!important;color:#fff!important;-webkit-text-fill-color:#fff!important;border-color:#2259ce!important;
+}
+html[data-theme="dark"] .etp-tabs button:not(.active),
+html[data-theme="dark"] .evo-segments button:not(.selected){
+ background:transparent!important;color:#b0bed0!important;-webkit-text-fill-color:#b0bed0!important;
+}
+html[data-theme="dark"] .etp-tabs button.active,
+html[data-theme="dark"] .etp-tabs button[aria-selected="true"],
+html[data-theme="dark"] .evo-segments button.selected{
+ background:#94baff!important;color:#101822!important;-webkit-text-fill-color:#101822!important;border-color:#94baff!important;
+}
+.evo-progress.group .evo-progress-head strong{color:var(--et-chart-label)!important;-webkit-text-fill-color:var(--et-chart-label)!important}
+.evo-progress.group .evo-progress-head b{color:var(--et-chart-muted)!important;-webkit-text-fill-color:var(--et-chart-muted)!important}
+.evo-progress.group .evo-bar{background:var(--et-chart-track)!important}
+.evo-progress.group .evo-bar>span{background:var(--et-chart-fill)!important}
+.evo-kpi,.et-p1-kpi,.et43-metric{background:var(--card)!important;border-color:var(--border)!important}
+.evo-kpi strong,.et-p1-kpi strong,.fin-service-card span{color:var(--text)!important}
+.bottom-nav,.nav-desktop,.navbar,.bottom-tabs,.tabbar{
+ background:var(--surface)!important;color:var(--text)!important;border-color:var(--border)!important;box-shadow:none!important;
+}
+.nav-btn{color:var(--muted)!important;background:transparent!important}
+.nav-btn.active{background:var(--soft)!important;color:var(--primary)!important;border-color:transparent!important}
+.nav-btn.active .nav-icon{color:var(--primary)!important}
+.pill,.badge,.chip{background:var(--soft)!important;color:var(--text)!important;border-color:var(--border)!important}
+.ex-thumb{border:1px solid var(--border)!important;border-radius:8px!important}
+.evo-bar{background:var(--et-chart-track)!important}
+.evo-bar span{background:var(--et-chart-fill)!important}
+.fin-warning,.inline-notice,.empty,.evo-empty{background:var(--soft)!important;color:var(--text)!important;border-color:var(--border)!important}
+.modal,.modal-content,.dialog,.sheet{background:var(--surface)!important;color:var(--text)!important;border-color:var(--border)!important}
+@media(max-width:700px){
+ .page{padding:20px 16px 100px!important}
+ .topbar{padding:14px 16px!important}
+ .card,.evo-panel,.et-p1-panel{padding:18px!important}
+ .bottom-nav{background:var(--surface)!important}
 }
 </style>
 </head>
