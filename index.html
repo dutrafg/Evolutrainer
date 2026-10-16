@@ -2310,6 +2310,126 @@ html[data-theme="dark"] #workout-active .et-md3-set-grid .set-check:checked{back
 html[data-theme="light"] .client-calendar-days button.selected,html[data-theme="light"] .client-calendar-days button[aria-selected="true"]{background:#2259ce!important;color:#fff!important;border-color:#2259ce!important}
 html[data-theme="dark"] .client-calendar-days button.selected,html[data-theme="dark"] .client-calendar-days button[aria-selected="true"]{background:#94baff!important;color:#101822!important;border-color:#94baff!important}
 </style>
+<style id="et-evolution-ef-unification">
+/* EvoluFísico unified evolution dashboard — dark/light contrast and alignment */
+#page-evolution,#page-evolution .evo-page{background:var(--bg)!important;color:var(--text)!important}
+#page-evolution .evo-panel,#page-evolution .evo-calendar-panel,
+#page-evolution .evo-kpi{
+ background:var(--card)!important;color:var(--text)!important;
+ border:1px solid var(--border)!important;border-radius:11px!important;
+ box-shadow:none!important;background-image:none!important;
+}
+#page-evolution .evo-kpi strong,#page-evolution .evo-panel strong{color:var(--text)!important}
+#page-evolution .evo-segments{
+ display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ gap:5px!important;padding:5px!important;background:var(--soft)!important;
+ border:1px solid var(--border)!important;border-radius:10px!important;
+}
+#page-evolution .evo-segments button{
+ display:flex!important;justify-content:center!important;align-items:center!important;
+ min-width:0!important;min-height:42px!important;padding:8px 5px!important;
+ border:1px solid transparent!important;border-radius:7px!important;
+ background:transparent!important;color:var(--muted)!important;
+ -webkit-text-fill-color:var(--muted)!important;box-shadow:none!important;
+}
+html[data-theme="light"] #page-evolution .evo-segments button.selected,
+html[data-theme="light"] #page-evolution .evo-segments button.active{
+ background:#2259ce!important;color:#fff!important;-webkit-text-fill-color:#fff!important;
+ border-color:#2259ce!important;
+}
+html[data-theme="dark"] #page-evolution .evo-segments button.selected,
+html[data-theme="dark"] #page-evolution .evo-segments button.active{
+ background:#94baff!important;color:#101822!important;-webkit-text-fill-color:#101822!important;
+ border-color:#94baff!important;
+}
+#page-evolution .evo-calendar-panel{min-width:0!important}
+#page-evolution .evo-month-head,#page-evolution .evo-calendar{
+ width:100%!important;max-width:560px!important;margin-left:auto!important;margin-right:auto!important;
+}
+#page-evolution .evo-month-head{
+ display:grid!important;grid-template-columns:38px minmax(0,1fr) 38px!important;
+ align-items:center!important;gap:8px!important;
+}
+#page-evolution .evo-month-head strong{
+ text-align:center!important;min-width:0!important;color:var(--text)!important;
+}
+#page-evolution .evo-month-head button{
+ display:grid!important;place-items:center!important;width:38px!important;height:38px!important;
+ padding:0!important;border:1px solid var(--border)!important;
+ background:var(--surface)!important;color:var(--text)!important;
+ border-radius:8px!important;box-shadow:none!important;
+}
+#page-evolution .evo-calendar{
+ display:grid!important;grid-template-columns:repeat(7,minmax(0,1fr))!important;
+ gap:clamp(3px,.7vw,7px)!important;align-items:stretch!important;
+ justify-items:stretch!important;text-align:center!important;min-width:0!important;
+}
+#page-evolution .evo-calendar .weekday{
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ min-width:0!important;padding:5px 0!important;font-size:clamp(9px,1.5vw,11px)!important;
+ font-weight:650!important;letter-spacing:0!important;color:var(--muted)!important;
+}
+#page-evolution .evo-day{
+ display:grid!important;place-items:center!important;box-sizing:border-box!important;
+ width:100%!important;min-width:0!important;min-height:0!important;
+ aspect-ratio:1/1!important;margin:0!important;padding:2px!important;
+ background:var(--surface)!important;color:var(--text)!important;
+ -webkit-text-fill-color:var(--text)!important;
+ border:1px solid var(--border)!important;border-radius:8px!important;
+ box-shadow:none!important;outline:none!important;
+ font-size:clamp(11px,2.5vw,14px)!important;font-weight:650!important;
+}
+#page-evolution .evo-day.trained{
+ background:var(--soft)!important;color:var(--primary)!important;
+ -webkit-text-fill-color:var(--primary)!important;
+ border-color:var(--ef-button-border,#b8cdec)!important;
+}
+#page-evolution .evo-day.today{
+ border:2px solid var(--primary)!important;
+ box-shadow:none!important;outline:none!important;
+}
+#page-evolution .evo-day.future{opacity:.48!important}
+#page-evolution .evo-day.empty{
+ background:transparent!important;border-color:transparent!important;
+ box-shadow:none!important;opacity:0!important;
+}
+#page-evolution .evo-score{
+ background:radial-gradient(closest-side,var(--card) 78%,transparent 80%),
+ conic-gradient(var(--primary) calc(var(--score)*1%),var(--soft) 0)!important;
+ color:var(--text)!important;box-shadow:none!important;
+}
+#page-evolution .evo-score strong{color:var(--text)!important}
+#page-evolution .evo-progress:not(.group){
+ background:transparent!important;border:0!important;box-shadow:none!important;
+ padding:0!important;margin:14px 0!important;
+}
+#page-evolution .evo-progress:not(.group)>*{
+ background:transparent!important;color:var(--text)!important;
+}
+#page-evolution .evo-progress .evo-progress-head,
+#page-evolution .evo-progress .evo-progress-head>*{
+ background:transparent!important;color:var(--muted)!important;
+ -webkit-text-fill-color:var(--muted)!important;
+}
+#page-evolution .evo-progress .evo-bar{
+ background:var(--et-chart-track)!important;background-image:none!important;
+ border:0!important;box-shadow:none!important;overflow:hidden!important;
+ height:8px!important;border-radius:20px!important;
+}
+#page-evolution .evo-progress .evo-bar>span{
+ background:var(--et-chart-fill)!important;background-image:none!important;
+ box-shadow:none!important;border:0!important;height:100%!important;
+ border-radius:20px!important;
+}
+#page-evolution .evo-legend-dot{background:var(--primary)!important}
+#page-evolution .evo-note{color:var(--muted)!important}
+@media(max-width:600px){
+ #page-evolution .evo-calendar-panel{padding:14px!important}
+ #page-evolution .evo-calendar{gap:4px!important}
+ #page-evolution .evo-day{border-radius:7px!important}
+ #page-evolution .evo-segments button{min-height:40px!important}
+}
+</style>
 </head>
 <body class="role-unselected">
  <div id="et-role-gate" role="dialog" aria-modal="true" aria-labelledby="et-role-title">
