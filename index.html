@@ -2186,6 +2186,114 @@ html[data-theme="dark"] .btn.primary,html[data-theme="dark"] .evo-cta.primary{
 @media(max-width:700px){.btn{min-height:42px!important}.nav-btn{border-radius:8px!important}}
 @media(prefers-reduced-motion:reduce){.btn,.etp-tabs button,.evo-segments button,.nav-btn{transition:none!important}}
 </style>
+<style id="et-evolufisico-calendar-fix">
+/* EvoluFísico calendar refinement — align grids, remove legacy yellow */
+:root,html[data-theme="light"]{
+ --et-cal-idle:#fff;--et-cal-trained:#edf3ff;--et-cal-selected:#2259ce;
+ --et-cal-text:#172435;--et-cal-border:#dde4ec;--et-cal-dot:#2259ce;
+}
+html[data-theme="dark"]{
+ --et-cal-idle:#17212e;--et-cal-trained:#233650;--et-cal-selected:#94baff;
+ --et-cal-text:#edf2f8;--et-cal-border:#344356;--et-cal-dot:#94baff;
+}
+#workout-calendar .et43-calendar{
+ background:var(--card)!important;color:var(--text)!important;
+ border:1px solid var(--border)!important;border-radius:12px!important;
+ padding:clamp(12px,2.2vw,24px)!important;box-shadow:none!important;min-width:0!important;
+}
+#workout-calendar .et43-calendar-layout{min-width:0!important;gap:20px!important}
+#workout-calendar .et43-calendar-main{min-width:0!important;max-width:100%!important}
+#workout-calendar .et43-weekdays,
+#workout-calendar .et43-calendar-grid{
+ display:grid!important;grid-template-columns:repeat(7,minmax(0,1fr))!important;
+ gap:clamp(3px,.7vw,7px)!important;width:100%!important;min-width:0!important;
+ align-items:stretch!important;justify-items:stretch!important;
+}
+#workout-calendar .et43-weekdays{margin:0 0 9px!important}
+#workout-calendar .et43-weekdays span{
+ min-width:0!important;display:flex!important;align-items:center!important;justify-content:center!important;
+ text-align:center!important;color:var(--muted)!important;font-size:clamp(10px,1.3vw,12px)!important;
+ font-weight:650!important;padding:5px 0!important;
+}
+#workout-calendar .et43-calendar-grid{grid-auto-rows:auto!important}
+#workout-calendar .et43-cal-day{
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ flex-direction:column!important;position:relative!important;box-sizing:border-box!important;
+ min-width:0!important;width:100%!important;min-height:0!important;height:auto!important;
+ aspect-ratio:1/1!important;padding:3px!important;margin:0!important;
+ background:var(--et-cal-idle)!important;color:var(--et-cal-text)!important;
+ border:1px solid var(--et-cal-border)!important;border-radius:9px!important;
+ box-shadow:none!important;line-height:1.2!important;overflow:hidden!important;
+}
+#workout-calendar .et43-cal-day:hover{
+ background:var(--soft)!important;border-color:var(--primary)!important;
+}
+#workout-calendar .et43-cal-day.is-trained:not(.is-selected){
+ background:var(--et-cal-trained)!important;border-color:var(--et-cal-border)!important;
+}
+#workout-calendar .et43-cal-day.is-selected{
+ background:var(--et-cal-selected)!important;border-color:var(--et-cal-selected)!important;
+ color:#fff!important;-webkit-text-fill-color:#fff!important;box-shadow:none!important;
+}
+html[data-theme="dark"] #workout-calendar .et43-cal-day.is-selected{
+ color:#101822!important;-webkit-text-fill-color:#101822!important;
+}
+#workout-calendar .et43-cal-day.is-today:not(.is-selected){
+ background:var(--et-cal-idle)!important;
+ border:2px solid var(--primary)!important;box-shadow:none!important;
+}
+#workout-calendar .et43-cal-day .et43-day-num{
+ color:inherit!important;-webkit-text-fill-color:inherit!important;
+ font-size:clamp(12px,2.7vw,17px)!important;font-weight:700!important;
+ line-height:1.15!important;
+}
+#workout-calendar .et43-cal-day .et43-day-mark{
+ color:var(--et-cal-dot)!important;-webkit-text-fill-color:var(--et-cal-dot)!important;
+ font-size:10px!important;height:10px!important;line-height:10px!important;
+}
+#workout-calendar .et43-cal-day.is-selected .et43-day-mark{
+ color:#fff!important;-webkit-text-fill-color:#fff!important;
+}
+html[data-theme="dark"] #workout-calendar .et43-cal-day.is-selected .et43-day-mark{
+ color:#101822!important;-webkit-text-fill-color:#101822!important;
+}
+#workout-calendar .et43-calendar-metrics{gap:8px!important}
+#workout-calendar .et43-metric{
+ background:var(--surface)!important;border:1px solid var(--border)!important;
+ border-radius:9px!important;min-width:0!important;box-shadow:none!important;
+}
+#workout-calendar .et43-calendar-detail{
+ background:var(--surface)!important;border:1px solid var(--border)!important;
+ border-radius:10px!important;box-shadow:none!important;min-width:0!important;
+}
+#workout-calendar .et43-calendar-detail h3{color:var(--text)!important}
+#workout-calendar .et43-calendar-legend{gap:10px 16px!important;color:var(--muted)!important}
+#workout-calendar .et43-legend-dot{background:var(--et-cal-idle)!important;border:1px solid var(--et-cal-border)!important}
+#workout-calendar .et43-legend-dot.trained{background:var(--et-cal-dot)!important;border-color:var(--et-cal-dot)!important}
+#workout-calendar .et43-session-item{
+ background:var(--card)!important;border:1px solid var(--border)!important;border-radius:8px!important;
+}
+#workout-calendar .et43-session-index{background:var(--soft)!important;color:var(--primary)!important}
+.client-calendar-wrap{background:var(--card)!important;border-color:var(--border)!important;border-radius:10px!important}
+.client-calendar-days{grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:4px!important}
+.client-calendar-days button{
+ background:var(--surface)!important;color:var(--text)!important;
+ border:1px solid var(--border)!important;border-radius:7px!important;
+}
+.evo-calendar{grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:5px!important}
+@media(max-width:700px){
+ #workout-calendar .et43-calendar{padding:12px!important}
+ #workout-calendar .et43-calendar-layout{grid-template-columns:minmax(0,1fr)!important}
+ #workout-calendar .et43-weekdays,#workout-calendar .et43-calendar-grid{gap:4px!important}
+ #workout-calendar .et43-cal-day{aspect-ratio:1/1!important;border-radius:8px!important;min-height:0!important}
+ #workout-calendar .et43-calendar-detail{padding:15px!important}
+}
+@media(max-width:390px){
+ #workout-calendar .et43-calendar{padding:10px!important}
+ #workout-calendar .et43-weekdays,#workout-calendar .et43-calendar-grid{gap:3px!important}
+ #workout-calendar .et43-cal-day .et43-day-num{font-size:13px!important}
+}
+</style>
 </head>
 <body class="role-unselected">
  <div id="et-role-gate" role="dialog" aria-modal="true" aria-labelledby="et-role-title">
