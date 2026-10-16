@@ -353,6 +353,88 @@ hr,.divider{border-color:var(--border)!important}
 }
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
+
+/* Corporate UI 2 — correção visual do modo claro e navegação */
+:root,html[data-theme="light"]{
+ --primary:#292d32!important;--primary-dark:#1b1e21!important;
+ --bg:#ffffff!important;--surface:#ffffff!important;--card:#ffffff!important;
+ --soft:#f7f7f7!important;--border:#e5e5e5!important;
+ --text:#25272a!important;--muted:#696c70!important;
+ --accent:#292d32!important;--accent-strong:#1b1e21!important;
+ color-scheme:light!important;
+}
+html[data-theme="dark"]{
+ --primary:#f4f4f4!important;--primary-dark:#fff!important;
+ --bg:#191b1e!important;--surface:#222428!important;--card:#26282c!important;
+ --soft:#303237!important;--border:#42454a!important;
+ --text:#f6f6f6!important;--muted:#b9bbbf!important;
+ --accent:#f4f4f4!important;color-scheme:dark!important;
+}
+html[data-theme="light"] body,
+html[data-theme="light"] .app-shell,
+html[data-theme="light"] main,
+html[data-theme="light"] .page,
+html[data-theme="light"] section{background-color:#fff!important;color:#25272a!important}
+html[data-theme="light"] .topbar,
+html[data-theme="light"] .active-client-tools,
+html[data-theme="light"] .client-attention-card,
+html[data-theme="light"] .client-row,
+html[data-theme="light"] .student-panel,
+html[data-theme="light"] .evo-card,
+html[data-theme="light"] .evo-panel,
+html[data-theme="light"] .evo-surface,
+html[data-theme="light"] .card,
+html[data-theme="light"] .library-card{background:#fff!important;color:#25272a!important;border-color:#e5e5e5!important}
+html[data-theme="light"] .btn.primary,
+html[data-theme="light"] button.btn.primary{background:#292d32!important;border-color:#292d32!important;color:#fff!important}
+html[data-theme="light"] .btn.secondary,
+html[data-theme="light"] .btn.danger,
+html[data-theme="light"] .active-client-tools .btn{background:#fff!important;border:1px solid #dcdcdc!important;color:#25272a!important}
+html[data-theme="light"] .pill,
+html[data-theme="light"] .chip,
+html[data-theme="light"] .badge{background:#f4f4f4!important;color:#333!important;border-color:#e5e5e5!important}
+html[data-theme="light"] input,
+html[data-theme="light"] select,
+html[data-theme="light"] textarea,
+html[data-theme="light"] #active-client-select{background:#fff!important;color:#25272a!important;border:1px solid #dcdcdc!important}
+html[data-theme="light"] .bottom-nav,
+html[data-theme="light"] .navbar,
+html[data-theme="light"] .bottom-tabs,
+html[data-theme="light"] .tabbar{background:#fff!important;color:#333!important;border-top:1px solid #e5e5e5!important}
+html[data-theme="light"] .bottom-nav button,
+html[data-theme="light"] .bottom-nav a,
+html[data-theme="light"] .nav-item{color:#62666a!important;background:transparent!important}
+html[data-theme="light"] .bottom-nav .active,
+html[data-theme="light"] .bottom-nav [aria-current="page"],
+html[data-theme="light"] .nav-item.active{background:#f1f1f1!important;color:#202225!important;border-radius:8px!important}
+html[data-theme="light"] .brand span{color:#25272a!important}
+html[data-theme="light"] .status-dot{background:#292d32!important}
+html[data-theme="light"] .page-head h1,
+html[data-theme="light"] .card-title{color:#25272a!important}
+html[data-theme="light"] .muted,
+html[data-theme="light"] .card-meta,
+html[data-theme="light"] .page-head p{color:#696c70!important}
+html[data-theme="light"] [style*="background:#ffd"],
+html[data-theme="light"] [style*="background: #ffd"]{background:#f5f5f5!important;color:#25272a!important}
+html[data-theme="light"] [style*="color:#ffd"],
+html[data-theme="light"] [style*="color: #ffd"]{color:#292d32!important}
+html[data-theme="light"] .tab.active,
+html[data-theme="light"] [role="tab"][aria-selected="true"]{background:#292d32!important;color:#fff!important;border-color:#292d32!important}
+html[data-theme="light"] [role="tab"]:not([aria-selected="true"]){background:#fff!important;color:#555!important}
+html[data-theme="dark"] .bottom-nav,
+html[data-theme="dark"] .bottom-tabs,
+html[data-theme="dark"] .navbar{background:#222428!important;color:#f4f4f4!important;border-color:#42454a!important}
+html[data-theme="dark"] .btn.primary{background:#f4f4f4!important;color:#191b1e!important;border-color:#f4f4f4!important}
+html[data-theme="dark"] .btn.secondary{background:#26282c!important;color:#f4f4f4!important;border-color:#42454a!important}
+@media(max-width:700px){
+ .topbar{gap:14px!important;flex-wrap:wrap!important}
+ .page{padding:22px 18px!important}
+ .page-head{gap:14px!important}
+ .card{padding:20px!important}
+ .actions{gap:10px!important}
+ .bottom-nav,.bottom-tabs{box-shadow:none!important}
+}
+
 </style>
 
 
