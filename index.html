@@ -2779,6 +2779,96 @@ html[data-theme="dark"]{
   outline:2px solid var(--primary)!important;outline-offset:3px!important;
 }
 #page-settings .et41-toggle-row input[type="checkbox"]:disabled{opacity:.55!important;cursor:not-allowed!important}
+
+/* Dark Clean 2026-10-16 — design tokens e componentes; tema claro intocado */
+html[data-theme="dark"]{
+ --bg:#111316!important;--surface:#171a1e!important;--card:#1c2025!important;
+ --soft:#252a30!important;--border:#353b43!important;
+ --text:#f1f3f5!important;--muted:#aab3be!important;
+ --primary:#a9c6ff!important;--primary-dark:#c5d8ff!important;
+ --accent:#a9c6ff!important;--accent-strong:#c5d8ff!important;
+ --ui5-bg:#111316!important;--ui5-surface:#1c2025!important;
+ --ui5-border:#353b43!important;--ui5-text:#f1f3f5!important;
+ --ui5-secondary:#aab3be!important;--ui5-accent:#a9c6ff!important;
+ --ui5-blue:#a9c6ff!important;--ui5-tint:#263447!important;
+ --ui5-quiet:#20252b!important;color-scheme:dark!important;
+}
+html[data-theme="dark"] body,
+html[data-theme="dark"] .app-shell{background:#111316!important;color:var(--text)!important}
+html[data-theme="dark"] .topbar,
+html[data-theme="dark"] .bottom-nav,
+html[data-theme="dark"] .bottom-tabs,
+html[data-theme="dark"] .navbar,
+html[data-theme="dark"] .tabbar{
+ background:#171a1e!important;color:var(--text)!important;
+ border-color:#353b43!important;box-shadow:none!important;
+}
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .library-card,
+html[data-theme="dark"] .client-row,
+html[data-theme="dark"] .student-panel,
+html[data-theme="dark"] .evo-card,
+html[data-theme="dark"] .evo-panel,
+html[data-theme="dark"] .evo-surface,
+html[data-theme="dark"] .evo-kpi,
+html[data-theme="dark"] .et-p1-panel,
+html[data-theme="dark"] .et41-settings-card,
+html[data-theme="dark"] .fin-service-card,
+html[data-theme="dark"] .et43-calendar,
+html[data-theme="dark"] .modal,
+html[data-theme="dark"] .modal-content{
+ background:#1c2025!important;background-image:none!important;
+ color:#f1f3f5!important;border:1px solid #353b43!important;
+ box-shadow:none!important;
+}
+html[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]),
+html[data-theme="dark"] select,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] #active-client-select{
+ background:#171a1e!important;color:#f1f3f5!important;
+ border:1px solid #414852!important;
+}
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder{color:#9ba6b2!important;opacity:1}
+html[data-theme="dark"] .btn.secondary,
+html[data-theme="dark"] .btn.danger{
+ background:#252a30!important;border:1px solid #414852!important;
+ color:#f1f3f5!important;
+}
+html[data-theme="dark"] .btn.primary{
+ background:#a9c6ff!important;border-color:#a9c6ff!important;
+ color:#111820!important;
+}
+html[data-theme="dark"] .bottom-nav .nav-btn{color:#aab3be!important}
+html[data-theme="dark"] .bottom-nav .nav-btn.active{
+ color:#c5d8ff!important;background:#263447!important;
+ border-color:#35465d!important;
+}
+html[data-theme="dark"] .et-p1-panel .et-p1-entry,
+html[data-theme="dark"] .filterbox,
+html[data-theme="dark"] .settings-structure{
+ background:#20252b!important;border-color:#353b43!important;color:#f1f3f5!important;
+}
+html[data-theme="dark"] .pill.dim,
+html[data-theme="dark"] .chip,
+html[data-theme="dark"] .badge{
+ background:#252a30!important;color:#d4dbe4!important;border-color:#414852!important;
+}
+html[data-theme="dark"] #page-settings .et41-toggle-row input[type="checkbox"]:not(:checked){
+ background:#30363e!important;border-color:#65707e!important;
+}
+html[data-theme="dark"] #page-settings .et41-toggle-row input[type="checkbox"]:checked{
+ background:#a9c6ff!important;border-color:#a9c6ff!important;
+}
+html[data-theme="dark"] #page-settings .et41-toggle-row input[type="checkbox"]::before{
+ background:#fff!important;
+}
+html[data-theme="dark"] #page-settings .et41-toggle-row input[type="checkbox"]:checked::before{
+ background:#172435!important;
+}
+html[data-theme="dark"] :where(button,a,input,select,textarea):focus-visible{
+ outline:2px solid #a9c6ff!important;outline-offset:2px!important;
+}
 </style>
 </head>
 <body class="role-unselected">
