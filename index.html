@@ -2139,6 +2139,53 @@ html[data-theme="dark"] .evo-segments button.selected{
  .bottom-nav{background:var(--surface)!important}
 }
 </style>
+<style id="et-ef-subtle-blue-button-outlines">
+/* EvoluFísico visual refinement — subtle blue outlines */
+:root,html[data-theme="light"]{
+ --ef-button-border:#d5e2f5;
+ --ef-button-border-hover:#b8cdec;
+ --ef-button-hover:#f7faff;
+ --ef-button-focus:rgba(34,89,206,.16);
+}
+html[data-theme="dark"]{
+ --ef-button-border:#405a7d;
+ --ef-button-border-hover:#6687b1;
+ --ef-button-hover:#22334b;
+ --ef-button-focus:rgba(148,186,255,.19);
+}
+.btn.secondary,.btn.danger,
+.etp-tabs button:not(.active),.evo-segments button:not(.selected),
+.et52-side button:not(.active),.et52-sidebar button:not(.active),
+.nav-btn:not(.active){
+ border:1px solid var(--ef-button-border)!important;
+ background:var(--surface)!important;color:var(--text)!important;
+ box-shadow:none!important;
+}
+.btn.secondary:hover:not(:disabled),.btn.danger:hover:not(:disabled),
+.etp-tabs button:not(.active):hover,.evo-segments button:not(.selected):hover,
+.et52-side button:not(.active):hover,.et52-sidebar button:not(.active):hover,
+.nav-btn:not(.active):hover{
+ background:var(--ef-button-hover)!important;border-color:var(--ef-button-border-hover)!important;
+}
+.btn.primary,.evo-cta.primary,button.btn.primary{
+ border:1px solid #2259ce!important;box-shadow:none!important;
+}
+html[data-theme="dark"] .btn.primary,html[data-theme="dark"] .evo-cta.primary{
+ border-color:#94baff!important;
+}
+.btn:focus-visible,.etp-tabs button:focus-visible,.evo-segments button:focus-visible,
+.nav-btn:focus-visible,.et52-side button:focus-visible{
+ outline:2px solid var(--primary)!important;outline-offset:2px!important;
+ box-shadow:0 0 0 4px var(--ef-button-focus)!important;
+}
+.btn:disabled,.nav-btn:disabled{opacity:.48!important;box-shadow:none!important}
+.btn,.etp-tabs button,.evo-segments button,.nav-btn{transition:background-color .15s ease,border-color .15s ease,color .15s ease!important}
+.nav-btn:not(.active){border-color:transparent!important;background:transparent!important}
+.nav-btn.active{border:1px solid var(--ef-button-border)!important;background:var(--soft)!important}
+.etp-tabs button.active,.evo-segments button.selected{border:1px solid var(--primary)!important}
+@media(max-width:700px){.btn{min-height:42px!important}.nav-btn{border-radius:8px!important}}
+@media(prefers-reduced-motion:reduce){.btn,.etp-tabs button,.evo-segments button,.nav-btn{transition:none!important}}
+</style>
 </head>
 <body class="role-unselected">
  <div id="et-role-gate" role="dialog" aria-modal="true" aria-labelledby="et-role-title">
