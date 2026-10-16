@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0b0e14">
+  <meta name="theme-color" content="#2259ce">
   <meta name="application-name" content="EvoluTrainer">
   <meta name="description" content="Gestão offline de treinos, clientes, avaliações e cobranças.">
   <title>EvoluTrainer 1.0.beta — Gestão de Treinos, Clientes e Cobranças</title>
@@ -293,6 +293,60 @@ html[data-theme="light"] .client-attention-card{background:#fff!important}
 html[data-theme="light"] .settings-structure{background:#edf3f7}
 
 
+
+/* EvoluTrainer · identidade visual EvoluFísico 8.9.3 · interface clean */
+:root{
+ --primary:#2259ce;--primary-dark:#1747aa;--bg:#f4f6f9;--surface:#fff;
+ --card:#fff;--soft:#edf3ff;--border:#dde4ec;--text:#172435;
+ --muted:#5b6b7c;--danger:#c93e4b;--radius:10px;
+ font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:light;
+}
+html[data-theme="light"]{--primary:#2259ce;--primary-dark:#1747aa;--bg:#f4f6f9;--surface:#fff;--card:#fff;--soft:#edf3ff;--border:#dde4ec;--text:#172435;--muted:#5b6b7c;color-scheme:light}
+html[data-theme="dark"]{--primary:#94baff;--primary-dark:#7199eb;--bg:#101822;--surface:#17212e;--card:#1b2837;--soft:#233650;--border:#344356;--text:#edf2f8;--muted:#b0bed0;color-scheme:dark}
+body{background:var(--bg)!important;color:var(--text)!important;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif!important}
+.app-shell{background:var(--bg)!important;max-width:1180px!important;box-shadow:none!important}
+.topbar{background:var(--surface)!important;border-bottom:1px solid var(--border)!important;backdrop-filter:none!important;box-shadow:none!important;padding:14px 22px!important}
+.brand{font-size:18px!important;letter-spacing:-.35px!important;color:var(--text)!important}
+.brand span{color:var(--primary)!important}
+.page{padding:clamp(14px,2.4vw,28px)!important}
+.page-head{margin-bottom:18px!important}
+.page-head h1{font-size:clamp(19px,2vw,25px)!important;font-weight:750!important;letter-spacing:-.5px!important}
+.page-head p,.tagline,.muted,.card-meta{color:var(--muted)!important}
+.card,.library-card,.settings-grid .card,.client-row,.student-panel,.evo-card,.evo-panel,.evo-surface{
+ background:var(--card)!important;color:var(--text)!important;
+ border:1px solid var(--border)!important;border-radius:10px!important;
+ box-shadow:none!important;
+}
+.card{padding:clamp(13px,1.7vw,20px)!important;margin-bottom:12px!important}
+.card-title,.library-title{font-weight:700!important;letter-spacing:-.2px!important;line-height:1.4!important}
+.btn,.btn.primary,.btn.secondary,.btn.danger,button[data-action],button[data-et5-favorite]{
+ border-radius:8px!important;box-shadow:none!important;min-height:39px;
+ font-weight:650!important;letter-spacing:0!important;transition:background .15s,border-color .15s!important;
+}
+.btn.primary{background:#2259ce!important;color:#fff!important;border:1px solid #2259ce!important}
+.btn.primary:hover{background:#1747aa!important}
+.btn.secondary{background:var(--surface)!important;color:var(--text)!important;border:1px solid var(--border)!important}
+.btn.danger{background:#fff0f0!important;color:#a52a36!important;border:1px solid #e9b9be!important}
+.pill,.badge,.chip{border-radius:6px!important;box-shadow:none!important}
+input,select,textarea{background:var(--surface)!important;color:var(--text)!important;border:1px solid var(--border)!important;border-radius:8px!important;min-height:40px}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible{outline:2px solid #2259ce!important;outline-offset:2px!important}
+.library-card .card-top{gap:12px!important;align-items:center!important}
+.library-card .actions{gap:8px!important}
+.library-card .actions .btn{min-height:36px!important}
+.ex-thumb{border-radius:8px!important}
+.navbar,.bottom-nav,.tabbar,.bottom-tabs{background:var(--surface)!important;border-color:var(--border)!important;box-shadow:none!important}
+.nav-item.active,.nav-link.active,.tab.active{color:var(--primary)!important}
+.modal,.modal-content,.dialog,.sheet{background:var(--surface)!important;color:var(--text)!important;border-color:var(--border)!important;border-radius:12px!important}
+@media(max-width:650px){
+ .topbar{padding:12px 15px!important}
+ .page{padding:14px!important}
+ .card{padding:13px!important}
+ .library-card .card-top{align-items:flex-start!important}
+ .library-card .actions{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ .library-card .actions>.btn{white-space:normal!important;min-width:0!important;padding:9px 7px!important}
+ .library-card .actions>.btn:last-child:nth-child(odd){grid-column:1/-1}
+}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
 </style>
 
