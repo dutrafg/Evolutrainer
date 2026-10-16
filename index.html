@@ -1965,6 +1965,66 @@ html[data-theme="dark"] .etp-tabs button.active{background:#f3f3f3!important;col
 }
 @media(max-width:360px){.page{padding-inline:12px!important}.etp-tabs button{font-size:10px!important}.nav-btn{font-size:9px!important}}
 </style>
+<style id="et-corporate-ui-4-0-chart-fix">
+/* EvoluTrainer Corporate UI 4.0 — gráficos legíveis e escala monocromática */
+:root,html[data-theme="light"]{
+ --et-chart-track:#e9eaec;--et-chart-fill:#3b3e43;
+ --et-chart-label:#282b2e;--et-chart-muted:#666a6f;
+}
+html[data-theme="dark"]{
+ --et-chart-track:#44474c;--et-chart-fill:#e5e6e8;
+ --et-chart-label:#f6f6f6;--et-chart-muted:#c0c3c7;
+}
+.evo-progress.group{
+ display:block!important;background:transparent!important;border:0!important;
+ padding:0!important;margin:19px 0 21px!important;box-shadow:none!important;
+}
+.evo-progress.group .evo-progress-head{
+ display:flex!important;align-items:baseline!important;justify-content:space-between!important;
+ gap:12px!important;margin:0 0 9px!important;line-height:1.4!important;
+ background:transparent!important;border:0!important;padding:0!important;
+}
+.evo-progress.group .evo-progress-head strong{
+ color:var(--et-chart-label)!important;-webkit-text-fill-color:var(--et-chart-label)!important;
+ font-size:13px!important;font-weight:650!important;line-height:1.4!important;
+ background:transparent!important;white-space:normal!important;
+}
+.evo-progress.group .evo-progress-head b{
+ color:var(--et-chart-muted)!important;-webkit-text-fill-color:var(--et-chart-muted)!important;
+ font-size:13px!important;font-weight:650!important;line-height:1.4!important;
+ background:transparent!important;white-space:nowrap!important;
+}
+.evo-progress.group .evo-bar{
+ position:relative!important;display:block!important;width:100%!important;height:9px!important;
+ min-height:9px!important;max-height:9px!important;margin:0!important;padding:0!important;
+ overflow:hidden!important;border:0!important;border-radius:100px!important;
+ background:var(--et-chart-track)!important;background-image:none!important;
+ box-shadow:none!important;
+}
+.evo-progress.group .evo-bar>span{
+ position:relative!important;display:block!important;height:100%!important;min-height:9px!important;
+ max-height:9px!important;border:0!important;border-radius:100px!important;
+ background:var(--et-chart-fill)!important;background-image:none!important;
+ box-shadow:none!important;opacity:1!important;
+}
+.evo-progress.group .evo-bar:before,.evo-progress.group .evo-bar:after,
+.evo-progress.group .evo-bar>span:before,.evo-progress.group .evo-bar>span:after{
+ content:none!important;display:none!important;
+}
+.evo-panel .evo-note{color:var(--muted)!important;line-height:1.65!important;margin-top:24px!important}
+.evo-panel .evo-panel-heading{color:var(--text)!important}
+.evo-kpi{background:var(--card)!important;color:var(--text)!important;border:1px solid var(--border)!important}
+.evo-kpi strong{color:var(--text)!important}
+html[data-theme="light"] .evo-page,html[data-theme="light"] .evo-panel{
+ background:#fff!important;color:#25272a!important;
+}
+@media(max-width:700px){
+ .evo-progress.group{margin:16px 0 19px!important}
+ .evo-progress.group .evo-progress-head{gap:8px!important}
+ .evo-progress.group .evo-progress-head strong,.evo-progress.group .evo-progress-head b{font-size:12px!important}
+ .evo-progress.group .evo-bar,.evo-progress.group .evo-bar>span{height:8px!important;min-height:8px!important;max-height:8px!important}
+}
+</style>
 </head>
 <body class="role-unselected">
  <div id="et-role-gate" role="dialog" aria-modal="true" aria-labelledby="et-role-title">
