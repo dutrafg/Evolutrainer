@@ -1425,7 +1425,7 @@ function et43AutomaticMode(){
  const noHover=window.matchMedia?.('(hover: none)').matches||false;
  const touchCapable=Number(navigator.maxTouchPoints||0)>0;
  // Em híbridos, priorize toque em telas compactas e mantenha o ajuste manual disponível.
- return small||coarse||(touchCapable&&(!fine||window.innerWidth<=1024))||(noHover&&!fine)?'touch':'desktop';
+ return small||coarse||(touchCapable&&(!fine||window.innerWidth<=1024))||(noHover&&!fine&&window.innerWidth<=1024)?'touch':'desktop';
 }
 function et43ApplyInterfaceMode(){
  const resolved=et43Preference==='auto'?et43AutomaticMode():et43Preference;
