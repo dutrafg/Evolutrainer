@@ -3010,6 +3010,29 @@ body.role-student #page-home{display:none!important}
 #page-clients .client-toolbar{display:flex;flex-wrap:wrap;gap:10px}#page-clients #client-search{min-width:180px;flex:1 1 220px}#page-clients #client-filter{flex:0 1 160px}
 #page-workouts .workout-page-actions{flex-wrap:wrap;gap:8px}#page-workouts .workout-page-actions .btn{min-height:42px}
 @media(max-width:650px){.et-home-metrics{gap:8px}.et-home-metrics .card{padding:12px 9px}.et-home-metrics span{font-size:11px}.et-home-shortcuts{grid-template-columns:repeat(2,minmax(0,1fr))}.et-commercial-home .actions>.btn{flex:1 1 100%}}
+</style><style id="et-phase1-polish">
+/* Fase 1: densidade, acessibilidade e responsividade sem alterar regras de negócio. */
+#page-clients .student-panel>.card-top{align-items:flex-start;gap:12px;flex-wrap:wrap}
+#page-clients .student-panel>.card-top .card-meta{max-width:60ch}
+#page-clients .client-attention-card{border-radius:12px}
+#page-clients .client-attention-identity{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+#page-clients .client-quick-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+#page-clients .client-quick-actions .btn{min-width:0;white-space:normal;min-height:42px}
+#page-clients .client-attention-stats{display:flex;flex-wrap:wrap;gap:10px}
+#page-clients .client-attention-stats>span{border-radius:9px}
+#page-workouts .session-screen-header{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+#page-workouts .session-screen-header>div{min-width:0;flex:1 1 260px}
+#page-workouts .session-screen-header .et-finish-btn{min-height:46px}
+#page-workouts .active-ex-heading{display:flex;align-items:center;gap:10px;min-width:0}
+#page-workouts .active-ex-heading .card-title{overflow-wrap:anywhere}
+#page-workouts .workout-set input[type=number]{min-width:0;width:100%;max-width:100%;box-sizing:border-box}
+#page-workouts .routine-card{border-radius:12px}
+#page-workouts .routine-card .actions{display:flex;flex-wrap:wrap;gap:8px}
+#page-workouts .routine-card .actions .btn{min-height:40px}
+#page-clients button:focus-visible,#page-workouts button:focus-visible,.bottom-nav button:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+@media(max-width:760px){#page-clients .client-quick-actions{grid-template-columns:repeat(2,minmax(0,1fr))}#page-workouts .session-screen-header .et-finish-btn{width:100%}#page-workouts .routine-card .actions .btn{flex:1 1 135px}}
+@media(max-width:390px){#page-clients .client-quick-actions{grid-template-columns:1fr}#page-workouts .session-screen-header h1{overflow-wrap:anywhere}}
+@media(prefers-reduced-motion:reduce){#page-clients *,#page-workouts *{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style></head>
 <body class="role-unselected">
  <div id="et-role-gate" role="dialog" aria-modal="true" aria-labelledby="et-role-title">
