@@ -2996,7 +2996,12 @@ html[data-theme="dark"] #page-settings #cfg-daily-backup:checked::before{backgro
 }
 </style>
   <link rel="stylesheet" href="./assets/css/07-corporativo-branco-grafite.css">
-</head>
+<style>
+#page-backup .card,#page-security .card{max-width:960px;margin-inline:auto}
+#page-backup .page-head,#page-security .page-head{max-width:960px;margin-inline:auto}
+#page-security input[type=password]{width:100%;max-width:560px}
+#et-more-menu:not([hidden]){max-height:min(70vh,540px);overflow-y:auto}
+</style></head>
 <body class="role-unselected">
  <div id="et-role-gate" role="dialog" aria-modal="true" aria-labelledby="et-role-title">
   <div class="et-role-panel"><div class="et-role-logo">Evolu<span>Trainer</span></div><div class="et-role-tag">TESTE 1.0.RC · Área de acesso</div>
@@ -3088,7 +3093,10 @@ html[data-theme="dark"] #page-settings #cfg-daily-backup:checked::before{backgro
         <p class="settings-note" id="cfg-alert-result" aria-live="polite">Os avisos funcionam com o aplicativo aberto. O som requer interação prévia com a página.</p>
       </div>
     </div>
-    <div class="settings-intro settings-data-intro"><span class="settings-eyebrow">DADOS E SEGURANÇA</span><h2>Armazenamento e proteção</h2><p>Organize arquivos, faça cópias e transfira os registros com segurança.</p></div>
+   </section>
+<section id="page-backup" class="page" aria-label="Backup">
+<div class="page-head"><div><h1>Backup</h1><p>Armazenamento, restauração, transferência e biblioteca offline.</p></div></div>
+    <div class="settings-intro settings-data-intro"><span class="settings-eyebrow">DADOS E SEGURANÇA</span><h2>Backup e armazenamento</h2><p>Organize arquivos, faça cópias e transfira os registros com segurança.</p></div>
     <div class="et5-group-label">Dados e segurança</div><div class="card"><div class="card-title">📁 Organização do banco de dados</div><p class="settings-note">Na pasta-base escolhida, o catálogo compartilhado fica separado dos registros particulares de cada cliente. A estrutura antiga <code>alunos/</code> continua legível por compatibilidade.</p><div id="settings-folder-status" class="settings-note"></div><div class="actions"><button class="btn secondary" data-action="student-folder">📁 Escolher pasta-base</button><button class="btn secondary" data-action="sync-database">↻ Sincronizar arquivos</button><button class="btn secondary" data-action="student-legacy">Migrar dados antigos</button></div></div>
     <div class="card"><div class="card-title">🔒 Trava de atendimento</div><p id="session-lock-status" class="settings-note">Verificando sessão...</p><p class="settings-note">Uma sessão em andamento impede trocar de cliente ou iniciar outra. A liberação acontece somente após registrar e confirmar o salvamento da sessão no banco e na pasta.</p></div>
     <div class="card"><div class="card-title">💾 Backup completo e restauração</div><p class="settings-note">Crie um JSON com os perfis, treinos, sessões, avaliações e catálogo. Para restaurar, selecione a pasta-base correta. A restauração exige confirmação explícita e inclui uma cópia de segurança dos dados atuais.</p><div class="actions"><button class="btn primary" data-action="backup-full">⬇ Fazer backup completo</button></div><div class="field" style="margin-top:15px"><label for="restore-full-file">Arquivo de backup completo (.json)</label><input id="restore-full-file" type="file" accept=".json,application/json"></div><div class="actions"><button class="btn secondary" data-action="restore-full">⤴ Restaurar backup completo</button></div><div id="backup-status" class="settings-note" aria-live="polite"></div></div>
@@ -3113,8 +3121,22 @@ html[data-theme="dark"] #page-settings #cfg-daily-backup:checked::before{backgro
 <div class="actions"><button type="button" class="btn primary" data-action="offline-cache">Baixar biblioteca completa para uso offline</button><button type="button" class="btn secondary" data-action="offline-folder">Salvar arquivos em pasta (navegadores compatíveis)</button></div>
 <progress id="offline-meter" max="100" value="0" style="width:100%;height:12px;margin:14px 0 5px" aria-label="Progresso do download offline"></progress>
 <p id="offline-progress" class="settings-note" role="status" aria-live="polite">Pronto para preparar uso offline.</p></div>
+
+</section>
+<section id="page-security" class="page" aria-label="Segurança">
+<div class="page-head"><div><h1>Segurança</h1><p>Proteção e integridade dos dados locais.</p></div></div>
+<div class="card"><div class="card-title">🔐 Backup criptografado — AES-256-GCM</div>
+<p class="settings-note">Proteção de backups por senha com AES-256-GCM e PBKDF2-SHA-256 (310.000 iterações). A senha não é armazenada. Sem a senha, o arquivo não pode ser recuperado.</p>
+<p class="settings-note"><strong>Importante:</strong> o IndexedDB, os JSONs da pasta e os backups comuns continuam sem criptografia. Esta proteção se aplica somente aos backups gerados nesta área.</p>
+<div class="field"><label for="et-security-password">Senha do backup (mínimo 12 caracteres)</label><input id="et-security-password" type="password" autocomplete="new-password" minlength="12"></div>
+<div class="field"><label for="et-security-confirm">Confirmar senha (para exportar)</label><input id="et-security-confirm" type="password" autocomplete="new-password" minlength="12"></div>
+<div class="actions"><button type="button" class="btn primary" data-et-sec="export">Baixar backup criptografado</button></div>
+<div class="field"><label for="et-security-file">Restaurar arquivo criptografado</label><input id="et-security-file" type="file" accept=".json,application/json"></div>
+<div class="actions"><button type="button" class="btn secondary" data-et-sec="import">Descriptografar e restaurar</button></div>
+<p class="settings-note" id="et-security-status" role="status" aria-live="polite">Nenhum arquivo enviado a servidores.</p></div>
 <div class="card"><div class="card-title">🛡️ Integridade e privacidade</div><p class="settings-note">Os arquivos JSON na pasta não são criptografados. Proteja seu dispositivo e faça backups regulares. Firefox e alguns navegadores não permitem escolher uma pasta física.</p><button class="btn secondary" data-action="self-test">Executar autoteste</button><div id="test-results" class="small muted" aria-live="polite"></div></div>
-   </section>
+
+</section>
   </main>
   <nav class="bottom-nav" aria-label="Navegação principal">
    <div class="et52-side-brand" aria-label="Identidade do aplicativo"><div class="et52-side-logo">Evolu<span>Trainer</span> <small>1.0.RC</small></div><div class="et52-side-tag">Treino, evolução e composição · 100% web</div></div>
@@ -3127,7 +3149,7 @@ html[data-theme="dark"] #page-settings #cfg-daily-backup:checked::before{backgro
    <button class="nav-btn nav-desktop" data-tab="settings" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M4.9 4.9 7 7m10 10 2 2M19 5l-2 2M7 17l-2 2"/></svg></span>Configurações</button>
    <button class="nav-btn nav-more" id="et-more-btn" type="button" aria-expanded="false" aria-controls="et-more-menu"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="19" cy="12" r="1.4"/></svg></span>Mais</button>
   </nav>
-  <div id="et-more-menu" hidden role="dialog" aria-label="Mais opções"><button type="button" data-tab="history">Histórico</button><button type="button" data-tab="finance">Cobranças</button><button type="button" data-tab="settings">Configurações</button></div>
+  <div id="et-more-menu" hidden role="dialog" aria-label="Mais opções"><button type="button" data-tab="history">Histórico</button><button type="button" data-tab="finance">Cobranças</button><button type="button" data-tab="settings">Configurações</button><button type="button" data-tab="backup">Backup</button><button type="button" data-tab="security">Segurança</button></div>
 <div id="rest-floating" class="floating-rest" role="region" aria-label="Cronômetro de descanso" hidden>
   <div class="rest-track" aria-hidden="true"><span id="floating-rest-progress"></span></div>
   <div class="rest-row">
@@ -5471,5 +5493,6 @@ window.addEventListener('online',()=>{if(tab==='offline')render()});
 window.addEventListener('offline',()=>{if(tab==='offline')render()});
 })();
 </script>
+<script src="./assets/js/seguranca-backup.js" defer></script>
 </body>
 </html>
