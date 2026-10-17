@@ -117,6 +117,9 @@
 body.library-view #active-client-bar{display:none!important}
 /* Backup e Segurança não exibem o seletor de cliente em atendimento. */
 body.administrative-view #active-client-bar{display:none!important}
+/* O seletor global de atendimento aparece exclusivamente na aba Treinos. */
+body:not(.workouts-view) #active-client-bar{display:none!important}
+
 
 /* EvoluTrainer: descanso fixo durante a execução presencial */
 .floating-rest{position:fixed;bottom:calc(70px + env(safe-area-inset-bottom, 0px));left:50%;transform:translateX(-50%);z-index:45;width:min(calc(100% - 20px),860px);padding:12px 13px 13px;background:#1a202df7;backdrop-filter:blur(14px);border:1px solid #426651;border-radius:21px;box-shadow:0 -10px 36px #0009;display:grid;gap:9px}
@@ -4158,7 +4161,7 @@ async function seedExercises(){
 async function refresh(){state.exercises=await allFrom('exercises');[state.routines,state.sessions]=state.studentDb?await Promise.all([allFrom('routines'),allFrom('sessions')]):[[],[]];state.exercises.sort((a,b)=>(a.name||'').localeCompare(b.name||'','pt-BR'));state.routines=getOrderedRoutines(state.routines);state.sessions.sort((a,b)=>(b.date||'').localeCompare(a.date||''));if(state.studentDb)await window.Evolution?.reload();else window.Evolution?.reset?.();updateStats();}
 function renderActiveClientBar(){
  const bar=$('#active-client-bar'),select=$('#active-client-select'),label=$('#active-client-label'),summary=$('#active-client-summary');
- if(bar)bar.hidden=['settings','finance'].includes(state.tab);
+ if(bar)bar.hidden=state.tab!=='workouts';
  if(!select)return;
  const selected=state.student;
  select.innerHTML='<option value="">Selecione um cliente...</option>'+state.students.map(c=>`<option value="${esc(c.id)}" ${selected?.id===c.id?'selected':''}>${esc(c.name)}${c.active===false?' (inativo)':''}</option>`).join('');
@@ -4258,6 +4261,7 @@ function setTab(tab){
  if(['history','evolution'].includes(tab)&&!activeRequired())return;
  state.tab=tab;
  document.body.classList.toggle('library-view',tab==='library');
+ document.body.classList.toggle('workouts-view',tab==='workouts');
  document.body.classList.toggle('administrative-view',tab==='backup'||tab==='security');
  document.querySelectorAll('.page').forEach(el=>el.classList.toggle('active',el.id==='page-'+tab));
  document.querySelectorAll('[data-tab]').forEach(el=>{el.classList.toggle('active',el.dataset.tab===tab);el.setAttribute('aria-current',el.dataset.tab===tab?'page':'false');});
