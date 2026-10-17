@@ -4761,6 +4761,22 @@ function validateRestore(raw){
   ids.add(p.id);
  }
  if(total>350000)throw Error('Backup maior que o limite de registros.');
+ const libraryIds=new Set();
+ for(const ex of raw.library.exercises){
+  if(!ex||typeof ex!=='object'||typeof ex.id!=='string'||!ex.id.trim()||ex.id.length>150||libraryIds.has(ex.id))throw Error('Exercício inválido ou duplicado na biblioteca do backup.');
+  libraryIds.add(ex.id);
+ }
+ for(const row of raw.clients){
+  for(const store of PERSONAL_STORES){
+   const recordIds=new Set();
+   for(const record of row.data[store]){
+    if(recordIds.has(record.id))throw Error('IDs duplicados em '+store+' para '+row.profile.name+'.');
+    recordIds.add(record.id);
+    if(store==='routines'&&(!Array.isArray(record.exercises)||typeof record.name!=='string'))throw Error('Rotina inválida para '+row.profile.name+'.');
+    if(store==='sessions'&&typeof record.date!=='string')throw Error('Sessão sem data válida para '+row.profile.name+'.');
+   }
+  }
+ }
  return {clients:raw.clients.length,exercises:raw.library.exercises.length};
 }
 async function restoreAllClients(){
