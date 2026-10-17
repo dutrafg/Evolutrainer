@@ -1,6 +1,6 @@
 /* EvoluTrainer v6.3 · PWA offline · nenhum dado pessoal passa pelo Service Worker */
 'use strict';
-const VERSION='1.0.RC-update-consent-20261017';
+const VERSION='1.0.RC-access-recovery-20261017';
 const CACHE_SHELL=`evolutrainer-${VERSION}-shell`;
 const CACHE_MEDIA='evolutrainer-media-persistente-v1';
 const CACHE_PREFIX='evolutrainer-';
@@ -32,10 +32,8 @@ self.addEventListener('fetch',event=>{
  if(request.mode==='navigate'){
    event.respondWith((async()=>{
      const cache=await caches.open(CACHE_SHELL);
-     const cached=await cache.match(normalized('./index.html'));
-     if(cached)return cached;
-     try{const response=await fetch(request);if(response.ok)await cache.put(normalized('./index.html'),response.clone());return response;}
-     catch{return Response.error();}
+     try{const response=await fetch(request,{cache:'no-store'});if(response.ok)await cache.put(normalized('./index.html'),response.clone());return response;}
+     catch{return await cache.match(normalized('./index.html'))||Response.error();}
    })());return;
  }
  if(isMedia(url)){
