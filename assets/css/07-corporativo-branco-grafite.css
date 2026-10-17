@@ -1,0 +1,29 @@
+/* TESTE 1.0.beta — identidade corporativa branco e grafite; camada visual isolada */
+:root,html[data-theme="light"]{--primary:#343b45;--primary-dark:#232a33;--bg:#f2f4f6;--surface:#fff;--card:#fff;--soft:#f3f5f7;--border:#d8dde3;--text:#202630;--muted:#596472;--danger:#b73b42;--radius:12px;--et-focus:#4c657c;--et-shadow:0 8px 26px rgba(29,36,44,.055);color-scheme:light}
+html[data-theme="dark"]{--primary:#dce1e6;--primary-dark:#aeb8c3;--bg:#14181d;--surface:#1c2229;--card:#252c34;--soft:#2d353e;--border:#45505c;--text:#f2f4f6;--muted:#b7c1cc;--danger:#f28e95;--radius:12px;--et-focus:#bdcad8;--et-shadow:0 8px 26px rgba(0,0,0,.18);color-scheme:dark}
+html,body{max-width:100%;overflow-x:clip}body{background:var(--bg)!important;color:var(--text)!important}
+.app-shell{background:var(--surface)!important;color:var(--text);box-shadow:var(--et-shadow);max-width:1320px!important}
+.topbar,.bottom-nav{background:var(--surface)!important;border-color:var(--border)!important;color:var(--text)!important}
+.page,.card,.filterbox,.modal,.modal-content,.routine-sort-tools{color:var(--text)}
+.card,.filterbox,.routine-sort-tools{background:var(--card)!important;border:1px solid var(--border)!important;border-radius:var(--radius)!important;box-shadow:var(--et-shadow)}
+.btn,.nav-btn,.et-role-choice,button{border-radius:9px!important}
+.btn.primary,.btn-primary,button.primary{background:var(--primary)!important;color:var(--surface)!important;border:1px solid var(--primary)!important}
+html[data-theme="dark"] .btn.primary,html[data-theme="dark"] .btn-primary,html[data-theme="dark"] button.primary{color:#1c2229!important}
+.btn.secondary,.btn:not(.primary):not(.danger),button.secondary{background:var(--soft);border-color:var(--border);color:var(--text)}
+.btn.danger{background:#9c343e!important;color:#fff!important}
+input:not([type="checkbox"]):not([type="radio"]),select,textarea{background:var(--card)!important;color:var(--text)!important;border:1px solid var(--border)!important;border-radius:9px!important;max-width:100%}
+input::placeholder,textarea::placeholder{color:var(--muted);opacity:.9}
+:where(button,a,input,select,textarea,[tabindex]):focus-visible{outline:3px solid var(--et-focus)!important;outline-offset:2px!important}
+:where(.page,.card,.modal-content,.actions,.filter-row,.workout-set){min-width:0}
+:where(.card,.card-title,.card-meta,.page-head h1,.page-head p){overflow-wrap:anywhere}
+:where(.actions,.page-head){flex-wrap:wrap}
+.nav-btn{color:var(--muted)!important}.nav-btn.active,.nav-btn[aria-current="page"]{color:var(--text)!important;background:var(--soft)!important}
+html[data-theme="light"] .muted,html[data-theme="light"] .card-meta{color:#586473!important}
+html[data-theme="dark"] .muted,html[data-theme="dark"] .card-meta{color:#b7c1cc!important}
+#et-role-gate{background:rgba(17,22,28,.72)}.et-role-panel{background:var(--surface)!important;color:var(--text)!important;border:1px solid var(--border)!important}
+.et-role-choice{border:1px solid var(--border)!important;background:var(--card)!important;color:var(--text)!important}
+@media(min-width:1024px){.app-shell{width:min(100%,1320px)}.page{padding:24px 28px}}
+@media(max-width:720px){.app-shell{width:100%;box-shadow:none}.page{padding:16px 12px}.page-head{align-items:flex-start}.bottom-nav{padding-bottom:env(safe-area-inset-bottom,0px);overflow-x:auto;justify-content:flex-start}.nav-btn{min-width:68px;flex:1 0 auto;min-height:54px}.card,.filterbox{padding:14px}}
+@media(max-width:390px){.page{padding:12px 9px}.btn{white-space:normal;overflow-wrap:anywhere}.actions .btn{flex:1 1 auto}}
+@media(max-width:600px){:where(.page,.modal-content,.card) table{display:block;overflow-x:auto;max-width:100%}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}

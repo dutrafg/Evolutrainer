@@ -3,7 +3,7 @@
 (function(){
 'use strict';
 const WIDTH=595.28,HEIGHT=841.89;
-const C={dark:[.07,.10,.18],green:[.36,.44,.91],muted:[.38,.44,.55],soft:[.94,.96,.99],border:[.83,.87,.94],white:[1,1,1]};
+const C={dark:[.11,.12,.14],green:[.14,.15,.17],muted:[.37,.39,.43],soft:[.96,.96,.97],border:[.88,.89,.91],white:[1,1,1]};
 function chLatin(ch){let n=ch.codePointAt(0);if(n<=255)return String.fromCharCode(n);const m={'€':128,'‚':130,'ƒ':131,'„':132,'…':133,'†':134,'‡':135,'ˆ':136,'‰':137,'Š':138,'‹':139,'Œ':140,'Ž':142,'‘':145,'’':146,'“':147,'”':148,'•':149,'–':150,'—':151,'˜':152,'™':153,'š':154,'›':155,'œ':156,'ž':158,'Ÿ':159,'°':176};return m[ch]?String.fromCharCode(m[ch]):'-';}
 function enc(s){return Array.from(String(s??'')).map(chLatin).join('');}
 function esc(s){return enc(s).replace(/[\\()]/g,'\\$&').replace(/[\r\n]+/g,' ');}
