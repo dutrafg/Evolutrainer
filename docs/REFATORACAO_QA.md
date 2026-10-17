@@ -43,3 +43,12 @@
 ## Estado
 - Branch de trabalho criada: `refactor/arquitetura-2026-10`.
 - Este documento registra o diagnóstico e o plano. **Não equivale à conclusão da refatoração ou validação de produção.**
+
+## Execução registrada em 16/10/2026
+- CSS: 33 blocos inline extraídos para três folhas externas; arquivo principal agora ~27 KB de marcação HTML.
+- JS: exportação PDF, importação PDF, evolução, cobranças, preços, área do aluno e núcleo SPA extraídos sem mudança intencional de lógica.
+- PWA: precache atualizado para incluir arquivos externos da refatoração.
+- QA estático: verificados 11 arquivos CSS/JS referenciados no HTML; os 8 JS externos passaram na verificação sintática via parser JavaScript.
+- Automação: `tests/structural-smoke.cjs` e `.github/workflows/refactor-qa.yml` adicionados. **Execução do GitHub Actions ainda não confirmada.**
+- **Pendências bloqueantes para produção:** teste no navegador de inicialização, treino, clientes, PDF, evolução e cobranças; backup/restauração; offline PWA; atualização de cache e validação visual em Android/desktop.
+- O código está publicado na branch de refatoração, mas **não homologado para mesclagem em main**.
