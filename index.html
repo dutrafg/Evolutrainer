@@ -3033,6 +3033,31 @@ body.role-student #page-home{display:none!important}
 @media(max-width:760px){#page-clients .client-quick-actions{grid-template-columns:repeat(2,minmax(0,1fr))}#page-workouts .session-screen-header .et-finish-btn{width:100%}#page-workouts .routine-card .actions .btn{flex:1 1 135px}}
 @media(max-width:390px){#page-clients .client-quick-actions{grid-template-columns:1fr}#page-workouts .session-screen-header h1{overflow-wrap:anywhere}}
 @media(prefers-reduced-motion:reduce){#page-clients *,#page-workouts *{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style><style id="et-phase1-student-clean">
+/* UI minimalista: funções mantidas em detalhes expansíveis. */
+#page-clients .student-panel>.card-top .card-meta,#page-clients .student-folder-status,#page-clients .et-demo-option,#page-clients .presential-banner{display:none!important}
+#page-clients .student-panel{padding:16px;border-radius:12px}
+#page-clients .student-panel>.card-top{margin-bottom:12px}
+#page-clients .student-panel>.card-top .pill{font-size:11px}
+#page-clients .client-attention-card{padding:14px;margin:14px 0;border-radius:12px}
+#page-clients .client-attention-stats{gap:8px;margin:10px 0}
+#page-clients .client-attention-stats>span{font-size:12px}
+#page-clients .client-list{display:grid;gap:10px}
+#page-clients .client-list-item{padding:14px;border-radius:12px}
+#page-clients .client-list-primary{display:flex;align-items:center;gap:12px}
+#page-clients .client-list-actions{display:flex;align-items:center;gap:10px;margin-top:12px}
+#page-clients .client-list-actions>.btn{flex:1;min-height:42px}
+#page-clients .et-student-details{margin-top:12px}
+#page-clients .et-student-details>summary{cursor:pointer;font-size:13px;font-weight:600;padding:10px 12px;border:1px solid var(--border,rgba(120,120,120,.22));border-radius:9px;list-style:none}
+#page-clients .et-student-details>summary::-webkit-details-marker{display:none}
+#page-clients .et-student-details>summary::after{content:"⌄";float:right;margin-left:8px}
+#page-clients .et-student-details[open]>summary::after{content:"⌃"}
+#page-clients .et-list-details{margin:0;flex:1}
+#page-clients .et-list-detail-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
+#page-clients .et-list-detail-actions .btn{min-height:40px}
+#page-clients .et-student-details .client-quick-actions{margin-top:10px}
+#page-clients .client-toolbar{margin:18px 0 12px}
+@media(max-width:430px){#page-clients .student-panel{padding:12px}#page-clients .client-list-item{padding:12px}#page-clients .client-list-info{min-width:0}#page-clients .client-list-info strong{overflow-wrap:anywhere}}
 </style></head>
 <body class="role-unselected">
  <div id="et-role-gate" role="dialog" aria-modal="true" aria-labelledby="et-role-title">
@@ -3064,8 +3089,8 @@ body.role-student #page-home{display:none!important}
    <div id="et-student-banner" hidden><div><div class="et-student-who" id="et-student-name">Aluno</div><small>Meus treinos · Meu perfil</small></div><button type="button" class="btn secondary small" id="et-student-exit">Sair</button></div>
    <main>
    <section id="page-home" class="page et-commercial-home" aria-label="Início do Personal"><div class="page-head"><div><h1>Visão geral</h1><p>Seu atendimento em um só lugar.</p></div></div><div class="et-home-metrics"><div class="card"><span>Clientes cadastrados</span><strong id="et-home-clients">0</strong></div><div class="card"><span>Clientes ativos</span><strong id="et-home-active">0</strong></div><div class="card"><span>Sessões registradas</span><strong id="et-home-sessions">0</strong></div></div><div class="card et-home-focus"><div class="card-title">Próximo passo</div><p id="et-home-client-text">Selecione um cliente para iniciar o atendimento.</p><div class="actions"><button type="button" class="btn primary" data-tab="workouts">Abrir treinos</button><button type="button" class="btn secondary" data-tab="clients">Selecionar cliente</button></div></div><div class="card"><div class="card-title">Acesso rápido</div><div class="et-home-shortcuts"><button type="button" class="btn secondary" data-tab="clients">Clientes</button><button type="button" class="btn secondary" data-tab="workouts">Treinos</button><button type="button" class="btn secondary" data-tab="evolution">Evolução</button><button type="button" class="btn secondary" data-tab="finance">Cobranças</button></div></div></section>
-   <section id="page-clients" class="page" aria-label="Clientes">
-    <div class="page-head clients-page-heading"><div><h1>Clientes</h1><p>Cadastros, fichas e atendimento individual.</p></div></div>
+   <section id="page-clients" class="page" aria-label="Alunos">
+    <div class="page-head clients-page-heading"><div><h1>Alunos</h1><p>Cadastros e acompanhamento.</p></div></div>
     <div id="student-controls"></div>
    </section>
    <section id="page-workouts" class="page active" aria-label="Treinos">
@@ -3176,7 +3201,7 @@ body.role-student #page-home{display:none!important}
    <div class="et52-side-brand" aria-label="Identidade do aplicativo"><div class="et52-side-logo">Evolu<span>Trainer</span> <small>1.0.RC</small></div><div class="et52-side-tag">Treino, evolução e composição · 100% web</div></div>
    <button class="nav-btn nav-primary" data-tab="home" type="button"><span class="nav-icon" aria-hidden="true">⌂</span>Início</button>
    <button class="nav-btn nav-primary" data-tab="workouts" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h16M8 7v10M16 7v10"/></svg></span>Treinos</button>
-   <button class="nav-btn nav-primary" data-tab="clients" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M16 9a3 3 0 0 0 0-5M17 16a5 5 0 0 1 4 4"/></svg></span>Clientes</button>
+   <button class="nav-btn nav-primary" data-tab="clients" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M16 9a3 3 0 0 0 0-5M17 16a5 5 0 0 1 4 4"/></svg></span>Alunos</button>
    <button class="nav-btn nav-desktop" data-tab="library" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h5a3 3 0 0 1 3 3v14a3 3 0 0 0-3-3H4zm16 0h-5a3 3 0 0 0-3 3v14a3 3 0 0 1 3-3h5z"/></svg></span>Biblioteca</button>
    <button class="nav-btn nav-primary" data-tab="evolution" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 3v18h18M6 16l5-5 4 3 6-8M17 6h4v4"/></svg></span>Evolução</button>
    <button class="nav-btn nav-desktop" data-tab="history" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 3"/></svg></span>Histórico</button>
@@ -3789,11 +3814,13 @@ function renderClientList(){const p=$('#client-list');if(!p)return;const query=n
   <div class="client-list-info"><strong title="${esc(c.name)}">${esc(c.name)}</strong><small>${esc(c.email||'Sem e-mail')} · <span class="client-status ${c.active===false?'inactive':''}">${c.active===false?'Inativo':'Ativo'}</span>${c.demo?' · Simulado':''}</small></div>
  </div>
  <div class="client-list-actions">
-  <button class="btn ${state.student?.id===c.id?'secondary':'primary'} small" data-action="client-open" data-id="${esc(c.id)}" ${!state.folderReady?'disabled':''}>${state.student?.id===c.id?'✓ Em atendimento':'▶ Atender'}</button>
-  <button class="btn secondary small" data-action="client-pdf-for" data-id="${esc(c.id)}" ${!state.folderReady?'disabled':''}>📄 PDF do treino</button>
-  <button class="btn secondary small" data-action="client-edit" data-id="${esc(c.id)}" ${!state.folderReady?'disabled':''} aria-label="Editar ${esc(c.name)}">Editar</button>
-  <button class="btn secondary small" data-action="client-start-for" data-id="${esc(c.id)}" ${!state.folderReady||c.active===false?'disabled':''} title="Selecionar ${esc(c.name)} e iniciar treino presencial">▶ Treinar</button>
-  <button class="btn danger small" data-action="client-delete-request" data-id="${esc(c.id)}" ${!state.folderReady?'disabled':''} aria-label="Excluir cliente ${esc(c.name)}">Excluir</button>
+  <button class="btn ${state.student?.id===c.id?'secondary':'primary'} small" data-action="client-open" data-id="${esc(c.id)}" ${!state.folderReady?'disabled':''}>${state.student?.id===c.id?'✓ Selecionado':'Selecionar'}</button>
+  <details class="et-student-details et-list-details"><summary aria-label="Mais opções de ${esc(c.name)}">Mais opções</summary><div class="et-list-detail-actions">
+  <button class="btn secondary small" data-action="client-pdf-for" data-id="${esc(c.id)}" ${!state.folderReady?'disabled':''}>PDF do treino</button>
+  <button class="btn secondary small" data-action="client-edit" data-id="${esc(c.id)}" ${!state.folderReady?'disabled':''}>Editar</button>
+  <button class="btn secondary small" data-action="client-start-for" data-id="${esc(c.id)}" ${!state.folderReady||c.active===false?'disabled':''}>Iniciar treino</button>
+  <button class="btn danger small" data-action="client-delete-request" data-id="${esc(c.id)}" ${!state.folderReady?'disabled':''}>Excluir</button>
+  </div></details>
  </div>
  </div>`).join(''):empty('Nenhum cliente encontrado.');
 }
@@ -3894,11 +3921,11 @@ function returnClientCalendarToday(){
 
 function activeClientCard(){const c=state.student;if(!c)return `<div class="client-attention-card"><div class="client-attention-kicker">Nenhum cliente selecionado</div><strong>Quem você vai atender?</strong><p class="hint">Clique em <b>Atender</b> na lista ou use o seletor fixo no topo. Só os dados do cliente escolhido serão exibidos.</p></div>`;
 return `<div class="client-attention-card" id="client-attention-card" aria-label="Ficha do cliente em atendimento">
-<div class="client-attention-kicker">● CLIENTE EM ATENDIMENTO</div><div class="client-attention-identity"><div class="client-avatar large">${esc((c.name[0]||'C').toUpperCase())}</div><div><strong>${esc(c.name)}</strong><span class="small">${c.email?esc(c.email)+' · ':''}${c.phone?'☎ '+esc(c.phone):''}${!c.email&&!c.phone?'Contatos não informados':''}</span></div><span class="client-status ${c.active===false?'inactive':''}">${c.active===false?'Inativo':'Ativo'}</span></div>
-<div class="client-attention-stats"><span><b>${state.routines.length}</b> treinos</span><span><b>${state.sessions.length}</b> sessões concluídas</span><span>Evolução individual</span></div>
+<div class="client-attention-kicker">● ALUNO SELECIONADO</div><div class="client-attention-identity"><div class="client-avatar large">${esc((c.name[0]||'C').toUpperCase())}</div><div><strong>${esc(c.name)}</strong><span class="small">${c.email?esc(c.email)+' · ':''}${c.phone?'☎ '+esc(c.phone):''}${!c.email&&!c.phone?'Contatos não informados':''}</span></div><span class="client-status ${c.active===false?'inactive':''}">${c.active===false?'Inativo':'Ativo'}</span></div>
+<div class="client-attention-stats et-compact-stats"><span><b>${state.routines.length}</b> treinos</span><span><b>${state.sessions.length}</b> sessões concluídas</span><span>Evolução individual</span></div>
 <button class="btn primary block client-start-main" data-action="client-start-training" ${c.active===false?'disabled':''}>${state.active?'▶ Continuar treino presencial':'▶ Iniciar treino presencial'}</button>
-<div class="client-quick-actions"><button class="btn secondary small" data-action="portable-export-current">📦 Transferir cliente</button><button class="btn secondary small" data-action="client-workouts">🏋️ Treinos</button><button class="btn secondary small" data-action="client-history">📊 Histórico</button><button class="btn secondary small" data-finance-client="${esc(c.id)}">Cobranças</button><button class="btn secondary small" data-action="client-evolution">📈 Evolução</button><button class="btn secondary small" data-action="client-edit" data-id="${esc(c.id)}">✎ Editar ficha</button><button class="btn ${c.active===false?'primary':'secondary'} small" data-action="client-toggle" data-id="${esc(c.id)}">${c.active===false?'✓ Reativar':'⏸ Desativar'}</button><button class="btn danger small" data-action="client-delete-request" data-id="${esc(c.id)}">🗑 Excluir cliente</button></div>
-<div class="presential-banner">Atendimento presencial: registre séries, carga, repetições e observações em nome deste cliente. ${c.active===false?'Reative o cliente para iniciar uma sessão.':'Os outros clientes não têm acesso a este histórico.'}</div></div>`;}
+<details class="et-student-details"><summary>Mais opções do aluno</summary><div class="client-quick-actions"><button class="btn secondary small" data-action="portable-export-current">📦 Transferir cliente</button><button class="btn secondary small" data-action="client-workouts">🏋️ Treinos</button><button class="btn secondary small" data-action="client-history">📊 Histórico</button><button class="btn secondary small" data-finance-client="${esc(c.id)}">Cobranças</button><button class="btn secondary small" data-action="client-evolution">📈 Evolução</button><button class="btn secondary small" data-action="client-edit" data-id="${esc(c.id)}">✎ Editar ficha</button><button class="btn ${c.active===false?'primary':'secondary'} small" data-action="client-toggle" data-id="${esc(c.id)}">${c.active===false?'✓ Reativar':'⏸ Desativar'}</button><button class="btn danger small" data-action="client-delete-request" data-id="${esc(c.id)}">🗑 Excluir cliente</button></div>
+</details><div class="presential-banner">Atendimento presencial: registre séries, carga, repetições e observações em nome deste cliente. ${c.active===false?'Reative o cliente para iniciar uma sessão.':'Os outros clientes não têm acesso a este histórico.'}</div></div>`;}
 
 // Atendimento do personal: o treino é iniciado exclusivamente no perfil selecionado.
 function openWorkoutPdfDialog(){
@@ -4051,13 +4078,13 @@ function refreshWorkoutProgress(){
 function renderStudentControls(){const pane=$('#student-controls');if(!pane)return;
  const active=state.students.filter(x=>x.active!==false).length;
  pane.innerHTML=`<div class="card student-panel">
- <div class="card-top"><div><div class="card-title">👥 Clientes</div><div class="card-meta">Cadastre e gerencie clientes. Treinos, histórico e evolução são individuais.</div></div><span class="pill">${state.students.length} CLIENTES · ${active} ATIVOS</span></div>
+ <div class="card-top"><div><div class="card-title">Alunos</div><div class="card-meta">Gerencie seus alunos em um só lugar.</div></div><span class="pill">${state.students.length} ALUNOS · ${active} ATIVOS</span></div>
  <div class="student-folder-status ${state.folderReady?'connected':''}">${state.folderReady?'✓ Dados protegidos: '+esc(state.folderLabel):'⚠ Inicialize o armazenamento local para cadastrar clientes'}</div>
- <div class="actions">${state.folderReady?'<button class="btn primary small" data-action="student-new">＋ Novo cliente</button><button class="btn secondary small" data-action="student-samples">Criar 3 amostras</button>':'<span class="small muted">Armazenamento local disponível. Para exportar os arquivos para uma pasta, abra Configurações.</span>'}</div>
+ <div class="actions">${state.folderReady?'<button class="btn primary small" data-action="student-new">＋ Novo aluno</button><button class="btn secondary small et-demo-option" data-action="student-samples">Criar amostras</button>':'<span class="small muted">Armazenamento local disponível. Para exportar os arquivos para uma pasta, abra Configurações.</span>'}</div>
  ${state.folderReady?activeClientCard():''}
  ${state.students.length?`<div class="client-toolbar"><input id="client-search" type="search" placeholder="Buscar cliente por nome, e-mail ou telefone" value="${esc(state.clientSearch||'')}" aria-label="Buscar clientes"><select id="client-filter" aria-label="Filtrar clientes"><option value="all" ${state.clientStatus==='all'?'selected':''}>Todos</option><option value="active" ${state.clientStatus==='active'?'selected':''}>Ativos</option><option value="inactive" ${state.clientStatus==='inactive'?'selected':''}>Inativos</option></select></div><div id="client-list" class="client-list"></div>`:'<div class="empty">Cadastre seu primeiro cliente ou crie as três amostras de demonstração.</div>'}
 
- <p class="hint">Quando uma pasta física estiver conectada: <code>clientes/NOME--ID/</code> com cadastro, rotinas, sessões e evolução separados. Perfis antigos continuam acessíveis em <code>alunos/</code> sem migração destrutiva.</p></div>`;
+ </div>`;
  renderClientList();renderActiveClientBar();const bt=$('[data-action="new-routine"]');if(bt)bt.disabled=!state.folderReady||!state.student;
 }
 function openStudentModal(id=null){if(!state.folderReady){notify('Conecte uma pasta primeiro.');return;}
