@@ -4573,7 +4573,9 @@ async function importData(){
  const file=$('#import-file').files?.[0];if(!file){notify('Selecione um arquivo JSON primeiro.');return;}
  if(file.size>150_000_000){notify('Arquivo muito grande (limite 150 MB).');return;}
  let raw;try{raw=JSON.parse(await file.text());}catch{notify('O arquivo não contém JSON válido.');return;}
- if(!Array.isArray(raw)&&(raw.clientId||raw.studentId)&&(raw.clientId||raw.studentId)!==state.student.id){notify('Backup pertence a outro cliente. Escolha o perfil correto no seletor de backup individual.');return;}
+ if(raw===null||typeof raw!=='object'){notify('Backup inválido: o arquivo deve conter um objeto JSON ou uma lista de exercícios.');return;}
+ if(!Array.isArray(raw)&&raw.kind&&raw.kind!=='EvoluTrainerClientBackup'&&raw.kind!=='EvoluTrainerPortableClient'&&raw.kind!=='EvoluTrainerFullBackup'){notify('Tipo de backup não reconhecido. Utilize a restauração correspondente ao formato exportado.');return;}
+ if(!Array.isArray(raw)&&(raw.clientId||raw.studentId)&&String(raw.clientId||raw.studentId)!==String(state.student.id)){notify('Backup pertence a outro cliente. Escolha o perfil correto no seletor de backup individual.');return;}
  if(!Array.isArray(raw)&&!raw.studentId&&!confirm('Importar este backup antigo SEM identificador para '+state.student.name+'? Confira o destinatário antes de continuar.'))return;
  const arrayMode=Array.isArray(raw), exercises=arrayMode?raw:raw.exercises||[],routines=arrayMode?[]:raw.routines||[],sessions=arrayMode?[]:raw.sessions||[],bodyRecords=arrayMode?[]:raw.bodyRecords||[];
  if(![exercises,routines,sessions,bodyRecords].every(Array.isArray)){notify('Formato de JSON não suportado.');return;}
