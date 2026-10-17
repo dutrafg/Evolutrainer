@@ -4992,10 +4992,12 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   if(!box){box=document.createElement('section');box.id='et-update-notice';box.setAttribute('role','status');box.setAttribute('aria-live','polite');box.innerHTML='<strong>Atualização disponível</strong><p id="et-update-explanation">Uma nova versão do EvoluTrainer está pronta. Você escolhe quando atualizar.</p><div class="et-update-actions"><button type="button" id="et-update-later">Depois</button><button type="button" id="et-update-now">Atualizar agora</button></div>';document.body.appendChild(box);
    box.querySelector('#et-update-later').addEventListener('click',()=>{box.hidden=true});
    box.querySelector('#et-update-now').addEventListener('click',()=>{
-    const busy=Boolean(window.state?.active)||Boolean(document.querySelector('#workout-active:not([hidden]) .session-screen-header'));
+    const busy=Boolean(document.body.classList.contains('session-focus-mode'))||Boolean(document.querySelector('#workout-active:not([hidden]) .session-screen-header'));
     if(busy&&!window.confirm('Há um treino em andamento. Salve ou conclua o atendimento antes de atualizar. Atualizar mesmo assim?'))return;
     refreshApproved=true;box.querySelector('#et-update-now').disabled=true;
-    (registration?.waiting||waiting)?.postMessage({type:'SKIP_WAITING'});
+    const worker=registration?.waiting||waiting;
+    if(worker)worker.postMessage({type:'SKIP_WAITING'});
+    else{refreshApproved=false;box.querySelector('#et-update-now').disabled=false;box.querySelector('#et-update-explanation').textContent='A atualização não está mais aguardando instalação. Verifique novamente quando estiver online.';}
    });
   }
   box.hidden=false;
