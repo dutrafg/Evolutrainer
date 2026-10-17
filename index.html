@@ -4839,7 +4839,7 @@ async function installOfflineFolder(){
 }
 async function cacheOfflineFiles(){
  const label=$('#offline-progress');
- if(!('caches' in window)||!window.isSecureContext){if(label)label.textContent='Cache indisponível: abra o aplicativo por HTTPS ou localhost.';return;}
+ if(!('caches' in window)||!window.isSecureContext){showOfflineProgress(0,0,'Cache indisponível: abra o aplicativo por HTTPS ou localhost.');return {complete:false,stored:0,total:0,failed:['Cache indisponível']};}
  if(!state.exercises.length){try{await syncExerciseCatalog({showNotice:false});}catch(err){console.warn('Catálogo indisponível',err);}}
  const files=offlineFiles(), cache=await caches.open(MEDIA_CACHE);
  let completed=0,stored=0,failed=[];
@@ -4866,6 +4866,8 @@ async function cacheOfflineFiles(){
  try{localStorage.setItem(OFFLINE_KEY,JSON.stringify({cache:complete,files:stored,total:files.length,failed:failed.slice(0,100),date:new Date().toISOString()}));}catch(err){console.warn('Não foi possível salvar o resumo offline',err);}
  if(label){label.textContent=complete?'Biblioteca offline concluída: '+stored+'/'+files.length+' arquivos.':'Cache parcial: '+stored+'/'+files.length+' arquivos disponíveis; '+failed.length+' falhas. Primeiro erro: '+(failed[0]||'desconhecido')+'. Para ter todas as mídias offline, publique a pasta completa de assets e media no servidor.';}
  notify(complete?'Cache offline concluído.':'Cache parcial: '+failed.length+' arquivo(s) indisponíveis. Veja os detalhes abaixo.');
+ const studentStatus=document.getElementById('et-p2-status');if(studentStatus)studentStatus.textContent=complete?'Biblioteca offline pronta: '+stored+'/'+files.length+' arquivos.':'Biblioteca parcialmente disponível: '+stored+'/'+files.length+' arquivos; '+failed.length+' falha(s). Consulte Configurações no modo Personal para detalhes.';
+ return {complete,stored,total:files.length,failed};
 }
 
 async function clickAction(button){
@@ -5599,7 +5601,7 @@ function render(){
 document.addEventListener('click',e=>{
  const t=e.target.closest('[data-p1-tab]');if(t){tab=t.dataset.p1Tab;render();return}
  if(e.target.closest('[data-p2-goal]')&&own()){const n=Number(document.getElementById('et-p2-goal')?.value);if(n>=1&&n<=7){try{localStorage.setItem(goalKey(),String(n));render()}catch{alert('Falha ao salvar meta')}}return}
- if(e.target.closest('[data-p2-offline]')&&own()){const status=document.getElementById('et-p2-status'),button=e.target.closest('[data-p2-offline]');if(!navigator.onLine){if(status)status.textContent='Conecte-se à internet para preparar a biblioteca pela primeira vez.';return}if(typeof cacheOfflineFiles!=='function'){if(status)status.textContent='Recurso offline indisponível.';return}button.disabled=true;if(status)status.textContent='Preparando biblioteca offline. Aguarde nesta tela...';Promise.resolve().then(()=>cacheOfflineFiles()).then(()=>{if(status)status.textContent='Preparação finalizada. Verifique se todos os arquivos foram armazenados.'}).catch(err=>{if(status)status.textContent='Não foi possível preparar a biblioteca: '+(err?.message||'erro desconhecido')}).finally(()=>{button.disabled=false});return}
+ if(e.target.closest('[data-p2-offline]')&&own()){const status=document.getElementById('et-p2-status'),button=e.target.closest('[data-p2-offline]');if(!navigator.onLine){if(status)status.textContent='Conecte-se à internet para preparar a biblioteca pela primeira vez.';return}if(typeof cacheOfflineFiles!=='function'){if(status)status.textContent='Recurso offline indisponível.';return}button.disabled=true;if(status)status.textContent='Preparando biblioteca offline. Aguarde nesta tela...';Promise.resolve().then(()=>cacheOfflineFiles()).then(result=>{if(status&&result)status.textContent=result.complete?'Biblioteca offline pronta: '+result.stored+'/'+result.total+' arquivos.':'Cache parcial: '+result.stored+'/'+result.total+' arquivos; '+result.failed.length+' falha(s). Tente novamente quando estiver conectado.'}).catch(err=>{if(status)status.textContent='Não foi possível preparar a biblioteca: '+(err?.message||'erro desconhecido')}).finally(()=>{button.disabled=false});return}
  if(e.target.closest('[data-p1-save]')&&own()){
   const note=document.getElementById('et-p1-note')?.value||'';
   const entry={date:new Date().toISOString(),effort:document.getElementById('et-p1-effort').value,discomfort:document.getElementById('et-p1-discomfort').value,note};
