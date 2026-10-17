@@ -1,10 +1,10 @@
 /* EvoluTrainer v6.3 · PWA offline · nenhum dado pessoal passa pelo Service Worker */
 'use strict';
-const VERSION='teste-1.0.beta-corp-20261017';
+const VERSION='1.0.RC-backup-seguranca-20261017';
 const CACHE_SHELL=`evolutrainer-${VERSION}-shell`;
 const CACHE_MEDIA='evolutrainer-media-persistente-v1';
 const CACHE_PREFIX='evolutrainer-';
-const SHELL_FILES=["./", "./index.html", "./manifest.webmanifest", "./data/exercises.json", "./assets/icon.svg", "./assets/icon-192.png", "./assets/icon-512.png", "./assets/apple-touch-icon.png", "./assets/anatomia-corporal.svg", "./assets/css/01-base.css", "./assets/css/02-componentes.css", "./assets/css/03-aparencia.css", "./assets/css/04-responsivo.css", "./assets/css/05-programas.css", "./assets/css/06-identidade-calendarios.css", "./assets/css/07-corporativo-branco-grafite.css", "./assets/js/pdf-exportacao.js", "./assets/js/nucleo-app.js", "./assets/js/pdf-importacao.js", "./assets/js/evolucao.js", "./assets/js/cobrancas.js", "./assets/js/navegacao.js", "./assets/js/acessibilidade.js", "./assets/js/precos-servicos.js", "./assets/js/meus-programas.js"];
+const SHELL_FILES=["./", "./index.html", "./manifest.webmanifest", "./data/exercises.json", "./assets/icon.svg", "./assets/icon-192.png", "./assets/icon-512.png", "./assets/apple-touch-icon.png", "./assets/anatomia-corporal.svg", "./assets/css/01-base.css", "./assets/css/02-componentes.css", "./assets/css/03-aparencia.css", "./assets/css/04-responsivo.css", "./assets/css/05-programas.css", "./assets/css/06-identidade-calendarios.css", "./assets/css/07-corporativo-branco-grafite.css", "./assets/js/pdf-exportacao.js", "./assets/js/nucleo-app.js", "./assets/js/pdf-importacao.js", "./assets/js/evolucao.js", "./assets/js/cobrancas.js", "./assets/js/navegacao.js", "./assets/js/acessibilidade.js", "./assets/js/precos-servicos.js", "./assets/js/meus-programas.js", "./assets/js/seguranca-backup.js"];
 const scopeURL=self.registration.scope;
 const normalized=path=>new URL(path,scopeURL);
 const isMedia=url=>/\/media\/(thumbs|steps)\/[a-zA-Z0-9_.-]+\.(webp|gif|png|jpg)$/.test(url.pathname);
