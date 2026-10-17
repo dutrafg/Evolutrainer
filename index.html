@@ -4977,7 +4977,43 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 
 // PWA independente do banco IndexedDB; disponível apenas por HTTPS/localhost.
-if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(e=>console.warn('PWA indisponível:',e.message)));
+<style id="et-update-consent-style">
+#et-update-notice{position:fixed;z-index:99999;bottom:max(16px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:min(440px,calc(100vw - 28px));background:var(--card,#1b2837);color:var(--text,#fff);border:1px solid var(--border,#64748b);border-radius:12px;box-shadow:0 15px 50px rgba(0,0,0,.32);padding:16px;display:grid;gap:10px}#et-update-notice[hidden]{display:none!important}#et-update-notice strong{font-size:15px}#et-update-notice p{margin:0;font-size:13px;line-height:1.45}#et-update-notice .et-update-actions{display:flex;gap:8px;flex-wrap:wrap}#et-update-notice button{min-height:42px;flex:1;border-radius:9px;padding:9px 12px;cursor:pointer}
+</style>
+<script id="et-update-consent-script">
+(function(){
+ if(!('serviceWorker' in navigator)||!(location.protocol==='https:'||['localhost','127.0.0.1'].includes(location.hostname)))return;
+ let registration=null,refreshApproved=false,waiting=null;
+ function show(worker){
+  if(!navigator.serviceWorker.controller||!worker)return;
+  waiting=worker;
+  let box=document.getElementById('et-update-notice');
+  if(!box){box=document.createElement('section');box.id='et-update-notice';box.setAttribute('role','status');box.setAttribute('aria-live','polite');box.innerHTML='<strong>Atualização disponível</strong><p id="et-update-explanation">Uma nova versão do EvoluTrainer está pronta. Você escolhe quando atualizar.</p><div class="et-update-actions"><button type="button" id="et-update-later">Depois</button><button type="button" id="et-update-now">Atualizar agora</button></div>';document.body.appendChild(box);
+   box.querySelector('#et-update-later').addEventListener('click',()=>{box.hidden=true});
+   box.querySelector('#et-update-now').addEventListener('click',()=>{
+    const busy=Boolean(window.state?.active)||Boolean(document.querySelector('#workout-active:not([hidden]) .session-screen-header'));
+    if(busy&&!window.confirm('Há um treino em andamento. Salve ou conclua o atendimento antes de atualizar. Atualizar mesmo assim?'))return;
+    refreshApproved=true;box.querySelector('#et-update-now').disabled=true;
+    (registration?.waiting||waiting)?.postMessage({type:'SKIP_WAITING'});
+   });
+  }
+  box.hidden=false;
+ }
+ navigator.serviceWorker.addEventListener('controllerchange',()=>{if(refreshApproved){refreshApproved=false;location.reload()}});
+ window.addEventListener('load',async()=>{
+  try{
+   registration=await navigator.serviceWorker.register('./sw.js');
+   if(registration.waiting)show(registration.waiting);
+   registration.addEventListener('updatefound',()=>{
+    const worker=registration.installing;if(!worker)return;
+    worker.addEventListener('statechange',()=>{if(worker.state==='installed'&&navigator.serviceWorker.controller)show(registration.waiting||worker)});
+   });
+   document.addEventListener('visibilitychange',()=>{if(!document.hidden&&navigator.onLine)registration.update().catch(()=>{})});
+   if(navigator.onLine)registration.update().catch(()=>{});
+  }catch(e){console.warn('PWA indisponível:',e.message)}
+ });
+})();
+</script>
 
 </script>
 
