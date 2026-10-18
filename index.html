@@ -3201,7 +3201,45 @@ html:not([data-et-ui="touch"]) body:not(.role-student) #page-home .et-home-insig
 @media(min-width:1100px) and (max-width:1330px){
 html:not([data-et-ui="touch"]) body:not(.role-student) #page-home.active{grid-template-columns:minmax(0,1fr) minmax(250px,.9fr);gap:12px}
 html:not([data-et-ui="touch"]) body:not(.role-student) #page-home .et-home-insight-grid{grid-template-columns:1fr}
-}</style></head>
+}</style><style id="et-desktop-corporate-phase-c">
+/* Refinamento desktop: acessibilidade e consistência sem alterar rotinas */
+@media(min-width:1100px){
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .et-corp-nav-heading:first-of-type{margin-top:0}
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .nav-btn:focus-visible{
+  outline:2px solid var(--primary)!important;outline-offset:2px!important;
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .nav-btn:hover:not(.active){
+  background:color-mix(in srgb,var(--primary) 7%,var(--card))!important;
+  border-color:var(--border)!important;
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) #page-home .card{
+  transition:border-color .15s ease,background-color .15s ease;
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) #page-home .card-title{
+  font-size:15px!important;letter-spacing:-.015em!important;line-height:1.35!important;
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) #page-home .et-home-metrics .card>span{
+  font-size:12px!important;font-weight:650!important;letter-spacing:.01em!important;
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) #page-home .et-home-shortcuts .btn:focus-visible{
+  outline:2px solid var(--primary)!important;outline-offset:2px!important;
+ }
+}
+@media(min-width:1100px) and (max-width:1180px){
+ html:not([data-et-ui="touch"]) body:not(.role-student) #page-home.active{
+  display:block!important;
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) #page-home>.et-home-metrics{
+  margin-bottom:16px!important;
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) #page-home>.card{
+  margin-bottom:16px!important;height:auto!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ #page-home .card,.bottom-nav .nav-btn{transition:none!important;animation:none!important;}
+}
+</style></head>
 <body class="role-unselected">
  <div id="et-role-gate" role="dialog" aria-modal="true" aria-labelledby="et-role-title">
   <div class="et-role-panel"><div class="et-role-logo">Evolu<span>Trainer</span></div><div class="et-role-tag">TESTE 1.0.RC · Área de acesso</div>
@@ -3342,6 +3380,7 @@ html:not([data-et-ui="touch"]) body:not(.role-student) #page-home .et-home-insig
   </main>
   <nav class="bottom-nav" aria-label="Navegação principal">
    <div class="et-corporate-brand-row" aria-hidden="true"></div><div class="et52-side-brand" aria-label="Identidade do aplicativo"><div class="et52-side-logo">Evolu<span>Trainer</span> <small>1.0.RC</small></div><div class="et52-side-tag">Treino, evolução e composição · 100% web</div></div>
+   <div class="et-corp-nav-heading" aria-hidden="true">OPERAÇÃO</div>
    <button class="nav-btn nav-primary" data-tab="home" type="button"><span class="nav-icon" aria-hidden="true">⌂</span>Início</button>
    <button class="nav-btn nav-primary" data-tab="workouts" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h16M8 7v10M16 7v10"/></svg></span>Treinos</button>
    <button class="nav-btn nav-primary" data-tab="clients" type="button"><span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2M16 9a3 3 0 0 0 0-5M17 16a5 5 0 0 1 4 4"/></svg></span>Alunos</button>
