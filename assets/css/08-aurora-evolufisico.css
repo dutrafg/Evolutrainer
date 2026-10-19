@@ -219,3 +219,46 @@ html body #page-home .et-commercial-home .card{background:var(--card)!important}
  html body #page-home .et-home-metrics .card:last-child:nth-child(odd){grid-column:1/-1!important}
 }
 @media(max-width:420px){html body #page-home .et-home-metrics{grid-template-columns:1fr!important}}
+
+
+/* Fase 5: proteção contra vazamentos de estilos de versões anteriores. */
+@media (min-width:1100px){
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .et52-side-brand,
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .et52-side-logo{
+   background-color:transparent!important;background-image:none!important;color:#f8fafc!important;
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .et52-side-logo,
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .et52-side-logo span{
+   display:inline!important;width:auto!important;min-width:0!important;
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .et52-side-logo small{
+   display:block!important;width:auto!important;
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) #page-home .et-commercial-home{
+   padding:0!important;box-shadow:none!important;border:0!important;
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .nav-btn .nav-icon{
+  color:inherit!important;background:transparent!important;
+ }
+}
+html body .card,html body .filterbox,html body .evo-kpi,html body .evo-panel{
+ color:var(--text)!important;max-width:100%;
+}
+html body .card *{overflow-wrap:break-word}
+html body .page-head,html body .card-top,html body .row-between{min-width:0}
+html body .page-head>*{min-width:0}
+html body .actions{align-items:center}
+html body .actions .btn{max-width:100%}
+html body .et-home-metrics{min-width:0}
+html body :is(select,input,textarea){max-width:100%}
+html body .nav-btn:focus-visible,html body .btn:focus-visible{outline:2px solid var(--primary)!important;outline-offset:2px!important}
+@media(max-width:679px){
+ html body .page-head{flex-wrap:wrap!important}
+ html body .page-head>.actions{width:100%!important}
+ html body .et-home-shortcuts{grid-template-columns:1fr!important}
+ html body .workout-toolbar{flex-wrap:wrap!important}
+ html body .workout-set{min-width:0!important}
+}
+@media(prefers-reduced-motion:reduce){
+ html *,html *::before,html *::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
