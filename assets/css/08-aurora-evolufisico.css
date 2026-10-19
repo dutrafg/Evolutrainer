@@ -1,0 +1,58 @@
+/* EvoluTrainer Aurora — identidade adaptada do EvoluFisico 9.0.
+   Camada visual: mantém IDs, handlers, estrutura e dados existentes. */
+:root,html[data-theme="light"]{
+ --primary:#0a5c43!important;--primary-dark:#074934!important;--bg:#f3f6f4!important;--surface:#f8faf8!important;--card:#ffffff!important;--soft:#e6f3ec!important;--border:#e1e9e4!important;--text:#0c1a14!important;--muted:#5d6f66!important;--radius:14px!important;
+ --ef-lime:#c6f35a;--ef-green:#0a5c43;--ef-green-hover:#12805c;color-scheme:light;
+}
+html[data-theme="dark"]{
+ --primary:#6ee7b7!important;--primary-dark:#8df0c8!important;--bg:#08100c!important;--surface:#0e1913!important;--card:#101a15!important;--soft:#16271f!important;--border:#26392d!important;--text:#e8f1ec!important;--muted:#9aad9f!important;--radius:14px!important;--ef-lime:#c6f35a;--ef-green:#6ee7b7;color-scheme:dark;
+}
+html,body,button,input,select,textarea{font-family:Inter,"EF Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif!important}
+html body{background:var(--bg)!important;color:var(--text);-webkit-font-smoothing:antialiased}
+html body .app-shell{background:var(--surface)!important;color:var(--text);box-shadow:none!important}
+html body .topbar{background:var(--surface)!important;border-bottom:1px solid var(--border)!important;box-shadow:0 3px 18px rgba(12,26,20,.04)!important}
+html body .brand{font-weight:800!important;letter-spacing:-.055em!important}
+html body .brand span{color:var(--primary)!important}
+html body .tagline,html body .muted,html body .card-meta{color:var(--muted)!important}
+html body .page-head h1,html body .evo-heading h1{font-weight:800!important;letter-spacing:-.045em!important;color:var(--text)!important}
+html body .card,html body .filterbox,html body .modal,html body .evo-panel,html body .evo-kpi,html body .routine-item,html body .coach-load-panel,html body .client-calendar-wrap{background:var(--card)!important;border:1px solid var(--border)!important;border-radius:16px!important;color:var(--text)!important;box-shadow:0 1px 3px rgba(12,26,20,.035)!important}
+html body .card{padding:clamp(15px,1.7vw,22px)!important}
+html body .btn,html body .icon-btn,html body .nav-btn{border-radius:10px!important;transition:background .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease}
+html body .btn.primary,html body button.primary,html body .start-training{background:#0a5c43!important;color:#fff!important;border-color:#0a5c43!important;box-shadow:0 5px 16px rgba(10,92,67,.12)!important}
+html[data-theme="dark"] body .btn.primary,html[data-theme="dark"] body button.primary,html[data-theme="dark"] body .start-training{background:#6ee7b7!important;color:#07180e!important;border-color:#6ee7b7!important}
+html body .btn.secondary{background:var(--soft)!important;color:var(--text)!important;border-color:var(--border)!important}
+html body .btn:hover:not(:disabled){filter:brightness(1.04)}
+html body .btn:active:not(:disabled){transform:scale(.98)}
+html body :is(input:not([type=checkbox]),select,textarea){background:var(--card)!important;color:var(--text)!important;border:1px solid var(--border)!important;border-radius:10px!important;min-height:40px}
+html body :is(input,select,textarea,button):focus-visible{outline:2px solid var(--primary)!important;outline-offset:2px!important}
+html body :is(input[type=checkbox],input[type=radio]){accent-color:#0a5c43!important}
+html body .pill{border-radius:8px!important;background:var(--soft)!important;color:var(--primary)!important}
+html body .bottom-nav{background:var(--surface)!important;border-color:var(--border)!important}
+html body .nav-btn{color:var(--muted)!important}
+html body .nav-btn.active,html body .nav-btn[aria-current="page"]{background:rgba(198,243,90,.21)!important;color:var(--primary)!important;font-weight:800!important}
+html[data-theme="dark"] body .nav-btn.active{background:rgba(198,243,90,.12)!important;color:#d9f77f!important}
+html body .evo-segments{background:var(--soft)!important;border-color:var(--border)!important;border-radius:12px!important}
+html body .evo-segments button.selected{background:#0a5c43!important;color:white!important}
+html body .evo-day.trained{background:#0a5c43!important;color:white!important;border-color:#12805c!important}
+html body .evo-day.today{outline-color:var(--primary)!important}
+html body .status-dot{background:#16a36f!important}
+html body .ex-thumb{border-radius:11px!important}
+html body .modal-overlay{backdrop-filter:blur(4px)}
+html body .modal{box-shadow:0 22px 60px rgba(4,20,12,.22)!important}
+html body .inline-notice{background:var(--soft)!important;color:var(--text)!important;border-color:var(--border)!important}
+html body .toast{background:#0a5c43!important;color:#fff!important;border-radius:12px!important}
+@media(min-width:1100px){
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav{background:#0b241b!important;border-right:1px solid #254534!important}
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .nav-btn{color:#c2d5ca!important;border-radius:10px!important}
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .nav-btn.active{background:rgba(198,243,90,.14)!important;color:#d9f77f!important}
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .et-corp-nav-heading{color:#9eb9a8!important}
+ html:not([data-et-ui="touch"]) body .page{max-width:none}
+}
+@media(max-width:680px){
+ html body .topbar{padding:12px 15px!important}
+ html body .page{padding:16px!important}
+ html body .card{border-radius:13px!important}
+ html body .bottom-nav{box-shadow:0 -4px 20px rgba(12,26,20,.05)!important}
+ html body .nav-btn.active{background:transparent!important;border-bottom:3px solid #0a5c43!important}
+}
+@media(prefers-reduced-motion:reduce){html body .btn,html body .nav-btn{transition:none!important}}
