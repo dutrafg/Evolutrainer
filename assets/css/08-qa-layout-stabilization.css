@@ -1,0 +1,119 @@
+/* QA LAYOUT — correções de conflitos após revisão da versão 1.0.RC
+   Mantém IDs, scripts, banco de dados e a paleta original branco/grafite.
+   Evita seletores globais sobre componentes com semântica própria. */
+:root,html[data-theme="light"]{
+ --primary:#334155;--primary-dark:#1e293b;--bg:#f3f5f8;--surface:#fff;--card:#fff;
+ --soft:#f1f5f9;--border:#dbe2ea;--text:#1e293b;--muted:#64748b;--et-sidebar:#152236;
+ --et-on-primary:#fff;color-scheme:light
+}
+html[data-theme="dark"]{
+ --primary:#d5e0ec;--primary-dark:#e2e8f0;--bg:#111821;--surface:#18212c;--card:#212e3b;
+ --soft:#2b3949;--border:#46566b;--text:#f3f6fb;--muted:#b9c7d6;--et-sidebar:#101a28;
+ --et-on-primary:#172231;color-scheme:dark
+}
+html body{color:var(--text)!important;background:var(--bg)!important}
+html body .app-shell{background:var(--surface)!important;color:var(--text)!important}
+html body .topbar{background:var(--surface)!important;border-bottom:1px solid var(--border)!important}
+html body .card,html body .filterbox,html body .evo-panel,html body .evo-kpi,
+html body .modal,html body .routine-item,html body .client-calendar-wrap{
+ background:var(--card)!important;border:1px solid var(--border)!important;
+ color:var(--text)!important;border-radius:12px!important;max-width:100%;
+}
+html body .card-title,html body .page-head h1{color:var(--text)!important}
+html body .muted,html body .card-meta,html body .hint{color:var(--muted)!important}
+html body .btn.primary,html body .btn-primary,html body button.primary{
+ color:var(--et-on-primary)!important;background:var(--primary)!important;
+ border:1px solid var(--primary)!important
+}
+html body .btn.secondary,html body button.secondary{
+ background:var(--soft)!important;color:var(--text)!important;border:1px solid var(--border)!important
+}
+html body .btn.danger{background:#9f3344!important;color:white!important;border-color:#9f3344!important}
+html body :is(input:not([type="checkbox"]):not([type="radio"]),select,textarea){
+ background:var(--card)!important;color:var(--text)!important;border-color:var(--border)!important;
+ border-radius:9px!important;min-width:0;max-width:100%
+}
+html body .actions{display:flex;flex-wrap:wrap;gap:8px}
+html body .actions .btn{white-space:normal;overflow-wrap:anywhere}
+html body .page-head,html body .card-top,html body .row-between{min-width:0;gap:12px}
+html body .page-head>*{min-width:0}
+html body .evo-segments button.selected{background:var(--primary)!important;color:var(--et-on-primary)!important}
+html body .pill{border-radius:7px}
+html body .modal{max-width:min(100%,650px);overflow-wrap:anywhere}
+html body .et-role-panel{background:var(--surface)!important;color:var(--text)!important}
+html body .et-role-choice{background:var(--card)!important;color:var(--text)!important}
+html body .bottom-nav .nav-btn{border-radius:9px!important}
+html body .bottom-nav .nav-btn.active{font-weight:800!important}
+html body :is(button,input,select,textarea,a):focus-visible{
+ outline:2px solid #3183ef!important;outline-offset:2px!important
+}
+@media(min-width:1100px){
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav{
+  background:var(--et-sidebar)!important;border-color:#35475c!important;
+  overflow-x:hidden!important;overflow-y:auto!important;scrollbar-width:thin!important;
+  scrollbar-color:#61738b transparent!important;
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .et52-side-brand{
+  background:transparent!important;border:0!important;border-bottom:1px solid #39495c!important;
+  border-radius:0!important;box-shadow:none!important;
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .et52-side-logo,
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .et52-side-logo span,
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .et52-side-logo small{
+  background:none!important;box-shadow:none!important;text-shadow:none!important;
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .et52-side-logo{color:#f8fafc!important}
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .et52-side-logo span{color:#9fc9ff!important}
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .et52-side-logo small,
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .et52-side-tag{color:#b5c4d7!important}
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .et-corp-nav-heading{
+  color:#acbfd5!important;border-color:#39495c!important
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .nav-btn{
+  color:#d3deeb!important;min-width:0!important;max-width:100%!important;
+  white-space:nowrap!important;min-height:43px!important
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .nav-btn.active{
+  color:#fff!important;background:#314862!important;
+  border-color:#6783a5!important;box-shadow:inset 3px 0 #9fc9ff!important
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .nav-btn:hover:not(.active){
+  color:#fff!important;background:#253b53!important
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) #page-home.active{
+  grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)!important;
+  gap:16px!important
+ }
+ html:not([data-et-ui="touch"]) body:not(.role-student) #page-home .et-home-metrics{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important
+ }
+}
+@media(min-width:1100px) and (max-width:1280px){
+ html:not([data-et-ui="touch"]) body:not(.role-student) #page-home.active{
+  display:block!important
+ }
+}
+@media(max-width:1099px){
+ html body .bottom-nav{background:var(--surface)!important;border-color:var(--border)!important}
+ html body .bottom-nav .nav-btn{color:var(--muted)!important}
+ html body .bottom-nav .nav-btn.active{color:var(--text)!important;background:var(--soft)!important}
+}
+@media(max-width:720px){
+ html body .page{padding:16px 12px!important}
+ html body .page-head{flex-wrap:wrap!important}
+ html body .page-head h1{font-size:21px!important}
+ html body .card,.filterbox{padding:14px!important}
+ html body .bottom-nav{max-width:100vw!important}
+ html body .workout-toolbar{flex-wrap:wrap!important}
+ html body .evo-kpis{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:420px){
+ html body .page{padding:12px 10px!important}
+ html body .two-fields{grid-template-columns:1fr!important}
+ html body .evo-kpis{grid-template-columns:1fr!important}
+}
+@media(prefers-reduced-motion:reduce){
+ html body *,html body *::before,html body *::after{
+  animation-duration:.01ms!important;transition-duration:.01ms!important
+ }
+}
