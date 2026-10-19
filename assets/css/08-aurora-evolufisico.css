@@ -110,3 +110,44 @@ html body .status{color:var(--muted)!important}
  html body :is(.filter-row,.two-fields) {min-width:0}
  html body .modal{width:100%!important}
 }
+
+
+/* Fase 3: realinhamento com os tokens verificados em assets/css/23-simple-interface.css do EvoluFisico 9.0. */
+:root,html[data-theme="light"]{
+ --primary:#2563eb!important;--primary-dark:#1d4ed8!important;
+ --bg:#f8fafc!important;--surface:#f8fafc!important;--card:#ffffff!important;
+ --soft:#eff6ff!important;--border:#e2e8f0!important;--text:#0f172a!important;--muted:#64748b!important;
+ --ef-green:#10b981;--ef-lime:#dbeafe;--ef-shadow-sm:0 1px 2px rgba(15,23,42,.05);
+}
+html[data-theme="dark"]{
+ --primary:#3b82f6!important;--primary-dark:#60a5fa!important;--bg:#0b111a!important;
+ --surface:#0b111a!important;--card:#131d2b!important;--soft:#1b2e49!important;
+ --border:#223348!important;--text:#f1f5f9!important;--muted:#94a3b8!important;
+ --ef-green:#34d399;--ef-lime:#1e3a5f;
+}
+html body .brand span,html body .et52-side-logo span{color:var(--primary)!important}
+html body .btn.primary,html body button.primary,html body .start-training{background:#2563eb!important;color:#fff!important;border-color:#2563eb!important;box-shadow:0 4px 11px rgba(37,99,235,.12)!important}
+html body .btn.primary:hover:not(:disabled){background:#1d4ed8!important;border-color:#1d4ed8!important}
+html[data-theme="dark"] body .btn.primary,html[data-theme="dark"] body button.primary,html[data-theme="dark"] body .start-training{background:#3b82f6!important;color:#fff!important;border-color:#3b82f6!important}
+html body .evo-segments button.selected{background:var(--primary)!important;color:white!important}
+html body .evo-day.trained{background:#10b981!important;border-color:#10b981!important;color:white!important}
+html body .status-dot{background:#10b981!important}
+html body :is(input[type=checkbox],input[type=radio]){accent-color:var(--primary)!important}
+html body .toast{background:#1d4ed8!important}
+html body .btn.danger{background:#fff1f2!important;color:#be123c!important;border-color:#fecdd3!important}
+html body .card,html body .filterbox,html body .modal,html body .evo-panel,html body .evo-kpi{border-radius:12px!important}
+html body .btn,html body .icon-btn{border-radius:8px!important}
+html body :is(input:not([type=checkbox]),select,textarea){border-radius:8px!important}
+html body .pill{border-radius:6px!important}
+html body .nav-btn.active,html body .nav-btn[aria-current="page"]{background:#eff6ff!important;color:#1d4ed8!important}
+html[data-theme="dark"] body .nav-btn.active,html[data-theme="dark"] body .nav-btn[aria-current="page"]{background:#1b2e49!important;color:#93c5fd!important}
+html body .bottom-nav .nav-btn.active{border-color:#2563eb!important}
+html body .et52-side-tag{color:#b7c9df!important}
+html body .inline-notice{background:var(--soft)!important;border-color:var(--border)!important}
+@media(min-width:1100px){
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav{background:linear-gradient(180deg,#111e32,#0f172a)!important;border-color:#23334c!important}
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .nav-btn.active{background:rgba(59,130,246,.20)!important;color:#bfdbfe!important;box-shadow:inset 3px 0 0 #60a5fa!important}
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .et-corp-nav-heading{color:#94a3b8!important;border-color:#334155!important}
+ html:not([data-et-ui="touch"]) body:not(.role-student) .et52-side-logo span{color:#93c5fd!important}
+}
+@media(max-width:679px){html body .nav-btn.active{border-bottom:3px solid #2563eb!important}}
