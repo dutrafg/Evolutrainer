@@ -56,3 +56,57 @@ html body .toast{background:#0a5c43!important;color:#fff!important;border-radius
  html body .nav-btn.active{background:transparent!important;border-bottom:3px solid #0a5c43!important}
 }
 @media(prefers-reduced-motion:reduce){html body .btn,html body .nav-btn{transition:none!important}}
+
+
+/* Fase 2 — refinamento fiel ao EvoluFísico 9.0-beta (Aurora) */
+:root{--ef-shadow-sm:0 1px 2px rgba(12,26,20,.05),0 1px 1px rgba(12,26,20,.03);--ef-shadow-md:0 6px 18px -8px rgba(12,26,20,.14);--ef-radius-lg:22px;--ef-radius-md:14px;--ef-radius-sm:10px}
+html body .page-head{gap:18px!important;margin-bottom:23px!important;align-items:center}
+html body .page-head h1{font-size:clamp(23px,2.1vw,30px)!important;line-height:1.18!important}
+html body .page-head p{font-size:13px!important;line-height:1.6!important}
+html body .card-title{font-size:15px!important;font-weight:760!important;letter-spacing:-.025em}
+html body .filterbox{padding:18px!important}
+html body .btn{font-size:13px!important;font-weight:720!important;min-height:40px!important}
+html body .btn.small{min-height:33px!important;font-size:12px!important}
+html body .btn.danger{background:#fff0ed!important;color:#ab332d!important;border:1px solid #efcbc5!important}
+html[data-theme="dark"] body .btn.danger{background:#431c1c!important;color:#ffd4ca!important;border-color:#72403a!important}
+html body .btn.primary:hover:not(:disabled){background:#12805c!important;border-color:#12805c!important}
+html body :is(.card,.evo-panel,.evo-kpi,.filterbox){box-shadow:var(--ef-shadow-sm)!important}
+html body .evo-kpis{gap:14px!important}
+html body .evo-kpi{padding:19px!important}
+html body .evo-kpi strong{font-weight:800!important}
+html body .evo-segments button{border-radius:9px!important}
+html body .section-label{letter-spacing:.075em;text-transform:uppercase;font-size:11px!important}
+html body :is(.picker-row,.routine-item,.workout-set,.client-calendar-wrap){border-color:var(--border)!important}
+html body .picker-row{background:var(--card)!important;border-radius:11px!important}
+html body .picker-row:hover{background:var(--soft)!important}
+html body .modal{border-radius:18px!important;padding:clamp(18px,2vw,26px)!important}
+html body .modal-top h2{font-size:19px!important;font-weight:800!important;letter-spacing:-.03em}
+html body .icon-btn{background:var(--soft)!important;color:var(--text)!important}
+html body .et52-side-brand{border-bottom-color:rgba(255,255,255,.12)!important}
+html body .et52-side-logo{letter-spacing:-.05em!important;font-weight:850!important}
+html body .et52-side-logo span{color:#c6f35a!important}
+html body .et52-side-tag{color:#bad0c3!important}
+html body .bottom-nav .nav-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+html body :is(#page-settings,#page-backup,#page-security,#page-finance) .page-head{margin-bottom:25px!important}
+html body :is(#page-settings,#page-backup,#page-security) .card{margin-bottom:15px}
+html body #page-finance .card{box-shadow:var(--ef-shadow-sm)!important}
+html body .status{color:var(--muted)!important}
+@media(min-width:1100px){
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav{background:linear-gradient(180deg,#0b271d 0%,#071c15 100%)!important}
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .nav-btn{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:12px!important;text-align:left!important;font-size:13px!important;font-weight:650!important;min-height:43px!important;padding:10px 12px!important;line-height:1.25!important}
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .nav-btn.active{font-weight:760!important;box-shadow:inset 3px 0 0 #c6f35a!important}
+ html:not([data-et-ui="touch"]) body:not(.role-student) .bottom-nav .et-corp-nav-heading{color:#89a897!important;border-color:#244537!important;font-weight:800!important;font-size:10px!important}
+ html:not([data-et-ui="touch"]) body:not(.role-student) .topbar{min-height:64px!important}
+ html:not([data-et-ui="touch"]) body:not(.role-student) .page{padding-top:27px!important}
+}
+@media(min-width:680px) and (max-width:1099px){
+ html body .page{padding:24px!important}
+ html body .card{padding:19px!important}
+}
+@media(max-width:679px){
+ html body .page-head{align-items:flex-start!important}
+ html body .page-head h1{font-size:22px!important}
+ html body .btn{white-space:normal!important}
+ html body :is(.filter-row,.two-fields) {min-width:0}
+ html body .modal{width:100%!important}
+}
