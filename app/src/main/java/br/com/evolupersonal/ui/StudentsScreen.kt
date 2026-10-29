@@ -8,6 +8,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import br.com.evolupersonal.data.StudentEntity
@@ -37,7 +38,7 @@ fun StudentsScreen(vm: TrainerViewModel, onBack: () -> Unit) {
         })
         return
     }
-    LazyVerticalGrid(columns = GridCells.Adaptive(300.dp), modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(18.dp), horizontalArrangement = Arrangement.spacedBy(12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+    LazyVerticalGrid(columns = GridCells.Adaptive(300.dp), modifier = Modifier.fillMaxSize().testTag("students-grid"), contentPadding = PaddingValues(18.dp), horizontalArrangement = Arrangement.spacedBy(12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item(span = { GridItemSpan(maxLineSpan) }) { TextButton(onClick = { if (target == null) onBack() else selected = -1L }) { Text(if (target == null) "Voltar ao início" else "Todos os alunos") } }
         item(span = { GridItemSpan(maxLineSpan) }) { SectionHeader(target?.name ?: "Alunos", "Cadastro e acompanhamento individual") }
         if (target == null) {

@@ -36,8 +36,10 @@ class AdaptiveProfileTest {
             throw e
         }
         compose.onNodeWithText("Alunos (0) · gerenciar").performScrollTo().assertIsDisplayed().assertIsEnabled().performClick()
-        compose.onNodeWithText("Pesquisar aluno por nome").performScrollTo().assertIsDisplayed()
-        compose.onNodeWithText("Cadastrar aluno").performScrollTo().assertIsDisplayed().performClick()
+        compose.onNodeWithTag("students-grid").performScrollToNode(hasText("Pesquisar aluno por nome"))
+        compose.onNodeWithText("Pesquisar aluno por nome").assertIsDisplayed()
+        compose.onNodeWithTag("students-grid").performScrollToNode(hasText("Cadastrar aluno"))
+        compose.onNodeWithText("Cadastrar aluno").assertIsDisplayed().performClick()
         compose.onNodeWithText("Nome").performTextInput("Aluna Tablet")
         compose.onNodeWithText("Objetivo").performTextInput("Força")
         compose.onNodeWithText("Salvar").performScrollTo().assertIsDisplayed().performClick()
@@ -45,8 +47,10 @@ class AdaptiveProfileTest {
             org.robolectric.Shadows.shadowOf(android.os.Looper.getMainLooper()).idle()
             !vm.busy && vm.students.value.any { it.name == "Aluna Tablet" }
         }
+        compose.onNodeWithTag("students-grid").performScrollToNode(hasText("Aluna Tablet"))
         compose.onNodeWithText("Aluna Tablet").assertIsDisplayed()
-        compose.onNodeWithText("Pesquisar aluno por nome").performScrollTo().performTextInput("não existe")
+        compose.onNodeWithTag("students-grid").performScrollToNode(hasText("Pesquisar aluno por nome"))
+        compose.onNodeWithText("Pesquisar aluno por nome").performTextInput("não existe")
         compose.onNodeWithText("Nenhum aluno encontrado").assertExists()
     }
 
