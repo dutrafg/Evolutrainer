@@ -150,7 +150,7 @@ fun TrainerApp(viewModel: TrainerViewModel) {
                         }
                     }
                     2 -> LibraryScreen(exercises, viewModel::addExercise)
-                    3 -> ProgressScreen(routines, history, allSets)
+                    3 -> ProgressScreen(routines, history, allSets, students)
                     4 -> ProfileScreen(
                         name = viewModel.profileName,
                         dark = viewModel.isDarkTheme,
