@@ -127,7 +127,7 @@ fun TrainerApp(viewModel: TrainerViewModel) {
                             tabIndex = 1
                         },
                         onResume = { tabIndex = 1 },
-                        onCreate = { tabIndex = 1 }
+                        onCreate = { selectedRoutineId = -1L; tabIndex = 1 }
                     )
                     1 -> {
                         val active = activeSession

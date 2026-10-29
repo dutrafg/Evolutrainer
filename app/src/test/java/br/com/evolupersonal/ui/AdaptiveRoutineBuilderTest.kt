@@ -71,6 +71,11 @@ class AdaptiveRoutineBuilderTest {
         val template = vm.routines.value.single { it.isTemplate }.id
         detail("Criar treino deste modelo")
         waitFor { !vm.busy && vm.routines.value.size == 3 }
+        // Starting a new routine from Home must not reopen the last selected copy.
+        click("Início")
+        compose.onNodeWithText("Criar treino").performScrollTo(); click("Criar treino")
+        scroll("routines-grid", "Novo treino")
+        compose.onNodeWithText("Novo treino").assertIsDisplayed()
         runBlocking(Dispatchers.IO) {
             val dao = db.trainerDao()
             val sourceItems = dao.getRoutineExerciseList(source)
