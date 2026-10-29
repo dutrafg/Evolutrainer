@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
 import {emptyState,change,saveStudent,saveExercise,saveRoutine,startSession,recordSet,finishSession,validate,toKg,fromKg} from '../dist/domain.js';
-import {prescription,validatePrescription,pauseSession,substitute,timerPhase,createWeeks,applyWeek,performance,muscleVolume,studentBundle,mergeStudentFeedback,migrate} from '../dist/beta-domain.js';
+import {prescription,validatePrescription,pauseSession,substitute,timerPhase,createWeeks,applyWeek,performance,muscleVolume,studentBundle,mergeStudentFeedback,migrate,filterExercises,validateBlocks} from '../dist/beta-domain.js';
 import {exportBackup,importBackup} from '../dist/backup.js';
 function seed(){const s=emptyState();s.profile={name:'Personal Teste',theme:'light'};saveStudent(s,{id:'',name:'Maria',goal:'Força',equipment:'Halteres',availability:'Segundas',notes:''});saveStudent(s,{id:'',name:'José',goal:'Força',equipment:'Cabo',availability:'Quartas',notes:''});saveExercise(s,{id:'',name:'Remada',muscle:'Costas',equipment:'Cabo',instructions:'Controle',secondary:['Bíceps']});saveExercise(s,{id:'',name:'Puxada',muscle:'Costas',equipment:'Cabo',instructions:'Controle'});saveRoutine(s,{id:'',title:'Treino A',studentId:s.students[0].id,day:1,notes:''});s.routines[0].items=[{exerciseId:s.exercises[0].id,sets:1,reps:8,repsMax:10,rest:90,load:20}];return validate(s);}
 test('salvamento preserva o estado original e valida os limites',()=>{const s=seed();const next=change(s,x=>{x.students[0].name='Maria editada';});assert.equal(s.students[0].name,'Maria');assert.equal(next.rev,1);assert.throws(()=>change(s,x=>{x.students[0].name='A';}));});
@@ -22,3 +22,19 @@ test('backup criptografado restaura todas as tabelas e rejeita senha e adultera�
 
 test("ficha nova conserva o ID usado pela navegação",()=>{const s=seed();saveRoutine(s,{id:"routine_ui",title:"Ficha nova",studentId:null,day:1,notes:""});assert.ok(s.routines.find(x=>x.id==="routine_ui"));});
 test("conversão de libras preserva carga canônica",()=>{assert.equal(toKg(100,"lb"),45.359237);assert.ok(Math.abs(fromKg(toKg(73.5,"lb"),"lb")-73.5)<1e-10);assert.equal(toKg(20,"kg"),20);});
+
+test('busca combina nome músculo e equipamento sem depender de acentos',()=>{
+ const exercises=[{id:'a',name:'Supino inclinado',muscle:'Peitoral',equipment:'Halteres'},{id:'b',name:'Rosca bíceps',muscle:'Bíceps',equipment:'Cabo'}];
+ assert.deepEqual(filterExercises(exercises,'supino halteres').map(x=>x.id),['a']);
+ assert.deepEqual(filterExercises(exercises,'biceps cabo').map(x=>x.id),['b']);
+ assert.equal(filterExercises(exercises,'inexistente').length,0);
+ assert.equal(filterExercises(exercises,'','peitoral').length,1);
+});
+test('blocos normalizam nomes e rejeitam mistura de métodos e participantes incompletos',()=>{
+ const p={sets:3,reps:10,rest:90,method:'SUPER',block:'Bloco A'};
+ assert.equal(validateBlocks([p,{...p,block:' bloco a '}]).length,2);
+ assert.throws(()=>validateBlocks([p]));
+ assert.throws(()=>validateBlocks([p,{...p,method:'BI'}]));
+ assert.throws(()=>validateBlocks([p,{...p},{...p}]));
+ assert.equal(validateBlocks([p,p,p].map(x=>({...x,method:'TRI'}))).length,3);
+});

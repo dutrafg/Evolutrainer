@@ -1,5 +1,5 @@
-import {advancedEmpty,migrate,validateAdvanced,validatePrescription,prescription,enforceStudent} from './beta-domain.js';
-export const VERSION = '0.1.0-beta.1';
+import {advancedEmpty,migrate,validateAdvanced,validatePrescription,prescription,enforceStudent,validateBlocks} from './beta-domain.js';
+export const VERSION = '0.1.0-beta.2';
 export const goals = ['Hipertrofia', 'Emagrecimento', 'Manutenção', 'Definição muscular', 'Condicionamento', 'Força'];
 export const emptyState = () => ({schema:2,advanced:advancedEmpty(),rev:0,profile:null,students:[],exercises:[],routines:[],sessions:[]});
 export const id = () => {
@@ -61,7 +61,7 @@ export function startSession(s,routineId,now=Date.now()) {
  assert(!s.sessions.some(x=>!x.finishedAt),'Retome a sessão aberta antes de iniciar outra.');
  const r=s.routines.find(x=>x.id===routineId);assert(r && !r.archived && r.items.length,'Adicione exercícios a uma ficha ativa.');
  const student=s.students.find(x=>x.id===r.studentId);assert(!r.studentId || student?.active,'Reative o aluno para iniciar uma sessão.');
- const planned=r.items.map(validatePrescription);planned.forEach(p=>{if(['SUPER','BI','TRI','CIRCUIT'].includes(p.method)){const count=planned.filter(x=>x.block===p.block&&x.method===p.method).length;assert(p.method==='TRI'?count===3:p.method==='CIRCUIT'?count>=2:count===2,'Confira os participantes dos blocos: bi/supersérie = 2, tri-set = 3 e circuito ≥2.');}});
+ validateBlocks(r.items);
  const items=r.items.map(i=>({...prescription(i),secondary:s.exercises.find(e=>e.id===i.exerciseId).secondary||[],name:s.exercises.find(e=>e.id===i.exerciseId).name,muscle:s.exercises.find(e=>e.id===i.exerciseId).muscle}));
  s.sessions.push({id:id(),routineId:r.id,studentId:r.studentId,studentName:student?.name || '',title:r.title,items,sets:[],startedAt:now,finishedAt:null,restUntil:0,pausedAt:0,pausedMs:0,events:[],timer:null,fatigue:null});
 }

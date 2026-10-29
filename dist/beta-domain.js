@@ -35,3 +35,19 @@ export function muscleVolume(s,studentId,now=Date.now()){const hits=new Map();fo
 export function studentBundle(s,studentId){const x=s.students.find(x=>x.id===studentId);ok(x,'Aluno não encontrado.');const routines=s.routines.filter(r=>r.studentId===studentId),sessions=s.sessions.filter(r=>r.studentId===studentId),used=new Set([...routines,...sessions].flatMap(r=>r.items.map(i=>i.exerciseId)));return {...s,rev:0,profile:{name:x.name,theme:s.profile.theme,role:'student',studentId},students:[structuredClone(x)],exercises:s.exercises.filter(e=>used.has(e.id)),routines:structuredClone(routines),sessions:structuredClone(sessions),advanced:{...advancedEmpty(),messages:s.advanced.messages.filter(m=>m.studentId===studentId),appointments:s.advanced.appointments.filter(m=>m.studentId===studentId)}};}
 export function mergeStudentFeedback(s,packet){ok(packet.profile?.role==='student','Selecione um pacote do aluno.');const owner=packet.profile.studentId;ok(s.students.some(x=>x.id===owner),'Aluno fora deste cadastro.');for(const message of packet.advanced.messages.filter(x=>x.sender==='student')){ok(message.studentId===owner,'Mensagem de outro aluno.');if(!s.advanced.messages.some(x=>x.id===message.id))s.advanced.messages.push(structuredClone(message));}for(const session of packet.sessions){ok(session.studentId===owner&&s.routines.some(r=>r.id===session.routineId&&r.studentId===owner),'Sessão fora do compartilhamento.');const previous=s.sessions.find(x=>x.id===session.id);if(!previous)s.sessions.push(structuredClone(session));else if(JSON.stringify(previous)!==JSON.stringify(session))throw new Error('Há uma sessão com o mesmo ID e conteúdo diferente. Revise sem substituir o histórico.');}}
 export function enforceStudent(previous,next){if(previous.profile?.role!=='student')return;for(const k of ['students','exercises','routines'])ok(JSON.stringify(previous[k])===JSON.stringify(next[k]),'Edição disponível apenas no espaço profissional.');for(const k of ['plans','payments','assessments','appointments','reviews','preferences'])ok(JSON.stringify(previous.advanced[k])===JSON.stringify(next.advanced[k]),'Acesso restrito ao profissional.');ok(previous.profile.studentId===next.profile.studentId&&next.profile.role==='student','Perfil do aluno inválido.');const oldMessages=new Map(previous.advanced.messages.map(x=>[x.id,x]));ok(previous.advanced.messages.every(x=>JSON.stringify(x)===JSON.stringify(next.advanced.messages.find(m=>m.id===x.id))));ok(next.advanced.messages.filter(x=>!oldMessages.has(x.id)).every(x=>x.sender==='student'&&x.studentId===previous.profile.studentId));}
+
+export function filterExercises(exercises,query='',muscle=''){
+ const terms=normalize(query).split(/\s+/).filter(Boolean);
+ return exercises.filter(e=>(!muscle||normalize(e.muscle)===normalize(muscle))&&terms.every(t=>normalize([e.name,e.muscle,e.equipment].join(' ')).includes(t)));
+}
+export function validateBlocks(items){
+ const planned=items.map(validatePrescription);
+ for(const p of planned){
+  if(!['SUPER','BI','TRI','CIRCUIT'].includes(p.method))continue;
+  const group=planned.filter(x=>normalize(x.block)===normalize(p.block));
+  ok(group.every(x=>x.method===p.method),'Use o mesmo método em todos os exercícios do bloco '+p.block+'.');
+  const count=group.length;
+  ok(p.method==='TRI'?count===3:p.method==='CIRCUIT'?count>=2:count===2,'Confira o bloco '+p.block+': bi/supersérie = 2, tri-set = 3 e circuito ≥2.');
+ }
+ return planned;
+}
