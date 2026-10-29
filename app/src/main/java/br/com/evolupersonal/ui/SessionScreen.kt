@@ -62,8 +62,9 @@ fun SessionScreen(vm: TrainerViewModel, session: WorkoutSessionEntity) {
                     OutlinedButton(onClick = { vm.startTimer(if (p.method == "AMRAP") p.durationSeconds.coerceAtLeast(1) else p.workSeconds, if (p.method == "AMRAP") 0 else p.intervalSeconds, if (p.method == "AMRAP") 1 else p.rounds) }, enabled = !vm.busy) { Text("Iniciar método") }
                     OutlinedButton(onClick = { replacing = item.id }, enabled = !vm.busy) { Text("Substituir ${exercise?.name}") }
                 }
-                ExerciseEntryCard(actualId, exercise?.name ?: "Exercício", exercise?.muscleGroup.orEmpty(), "${p.sets} séries", p.repsMin, sets.filter { it.exerciseId == actualId }, previous) { reps, load, rir, type, rpe, note -> vm.recordSet(actualId, reps, load, rir, type, rpe, note) }
+
             }
+            ExerciseEntryCard(actualId, exercise?.name ?: "Exercício", exercise?.muscleGroup.orEmpty(), "${p.sets} séries", p.repsMin, sets.filter { it.exerciseId == actualId }, previous, enabled = state.pausedAt == 0L && !vm.busy) { reps, load, rir, type, rpe, note -> vm.recordSet(actualId, reps, load, rir, type, rpe, note) }
         }
         Text("${sets.size} série(s) salva(s). Substituições e séries anteriores permanecem no registro.")
         Button(onClick = { finish = true }, enabled = !vm.busy && sets.isNotEmpty()) { Text("Concluir treino") }

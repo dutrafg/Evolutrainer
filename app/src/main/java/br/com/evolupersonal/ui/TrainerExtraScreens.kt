@@ -143,6 +143,7 @@ internal fun ExerciseEntryCard(
     targetReps: Int,
     sets: List<WorkoutSetEntity>,
     previous: WorkoutSetEntity?,
+    enabled: Boolean = true,
     onRecord: (String, String, String, String, String, String) -> Unit
 ) {
     var reps by rememberSaveable(exerciseId) { mutableStateOf(targetReps.toString()) }
@@ -237,6 +238,7 @@ internal fun ExerciseEntryCard(
                 maxLines = 2
             )
             FilledTonalButton(
+                enabled = enabled,
                 onClick = { onRecord(reps, load, rir, selectedType, rpe, notes) },
                 modifier = Modifier.fillMaxWidth()
             ) {
