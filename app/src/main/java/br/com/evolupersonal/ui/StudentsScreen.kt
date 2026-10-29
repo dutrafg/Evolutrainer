@@ -90,6 +90,8 @@ fun StudentsScreen(
                         }
                         if (assigned) {
                             TextButton(onClick = { onAssign(routine.id, null) }) { Text("Desvincular") }
+                        } else if (routine.studentId != null) {
+                            Text("Outro aluno", color = MaterialTheme.colorScheme.onSurfaceVariant)
                         } else {
                             TextButton(onClick = { onAssign(routine.id, target.id) }) { Text("Atribuir") }
                         }
