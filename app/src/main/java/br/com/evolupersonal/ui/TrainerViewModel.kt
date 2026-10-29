@@ -1,6 +1,13 @@
 package br.com.evolupersonal.ui
 
 import android.app.Application
+import android.net.Uri
+import br.com.evolupersonal.data.AppSettingsEntity
+import br.com.evolupersonal.data.BackupCrypto
+import br.com.evolupersonal.data.TrainerBackup
+import kotlinx.coroutines.CancellationException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import androidx.room.withTransaction
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -30,12 +37,36 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
     private val dao = database.trainerDao()
     private val preferences = app.getSharedPreferences("trainer_settings", 0)
 
-    var profileName by mutableStateOf(preferences.getString("name", "") ?: "")
+    var settings by mutableStateOf(AppSettingsEntity())
         private set
-    var isDarkTheme by mutableStateOf(preferences.getBoolean("dark", true))
+    val profileName get() = settings.name
+    val isDarkTheme get() = settings.dark
+    var ready by mutableStateOf(false)
+        private set
+    var busy by mutableStateOf(false)
+        private set
+    var startupError by mutableStateOf(false)
         private set
     var statusMessage by mutableStateOf<String?>(null)
         private set
+    private var pendingBackup: ByteArray? = null
+
+    init { loadSettings() }
+
+    fun loadSettings() = perform {
+        startupError = false
+        try {
+            settings = dao.getSettings() ?: AppSettingsEntity(
+                name = preferences.getString("name", "")?.trim().orEmpty().take(60),
+                dark = preferences.getBoolean("dark", true),
+                initialized = (preferences.getString("name", "")?.trim()?.length ?: 0) >= 2
+            ).also { dao.saveSettings(it) }
+            ready = true
+        } catch (e: Exception) {
+            startupError = true
+            throw e
+        }
+    }
 
     val students = dao.observeStudents().stateIn(
         viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList()
@@ -64,14 +95,73 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
 
     fun clearStatus() { statusMessage = null }
 
-    fun updateName(name: String) {
-        profileName = name.take(60)
-        preferences.edit().putString("name", profileName).apply()
+    fun saveProfile(name: String, experience: String, equipment: String, goal: String, restSeconds: Int) = perform {
+        require(name.trim().length in 2..60) { "Informe um nome de 2 a 60 caracteres." }
+        require(goal.trim().length in 1..100 && equipment.length <= 200 && restSeconds in 15..600) { "Confira objetivo, equipamentos e descanso (15–600 s)." }
+        require(experience in listOf("Iniciante", "Intermediário", "Avançado"))
+        val updated = settings.copy(name = name.trim(), experience = experience, equipment = equipment.trim(), goal = goal.trim(), restSeconds = restSeconds, initialized = true)
+        dao.saveSettings(updated)
+        settings = updated
+        statusMessage = "Perfil salvo com sucesso."
     }
 
-    fun toggleTheme(isDark: Boolean) {
-        isDarkTheme = isDark
-        preferences.edit().putBoolean("dark", isDark).apply()
+    fun toggleTheme(isDark: Boolean) = perform {
+        val updated = settings.copy(dark = isDark)
+        dao.saveSettings(updated)
+        settings = updated
+    }
+
+    fun saveStudent(id: Long?, name: String, goal: String, equipment: String, notes: String, onSaved: () -> Unit) = perform {
+        require(name.trim().length in 2..80 && goal.trim().length in 1..100 && equipment.length <= 200 && notes.length <= 500) { "Confira nome, objetivo e os limites dos campos." }
+        val current = if (id != null) requireNotNull(dao.getStudent(id)) { "Aluno não encontrado." } else null
+        val student = (current ?: StudentEntity(name = "", goal = "", equipment = "", notes = "")).copy(name = name.trim(), goal = goal.trim(), equipment = equipment.trim(), notes = notes.trim())
+        if (current == null) dao.insertStudent(student) else require(dao.updateStudent(student) == 1)
+        statusMessage = "Aluno salvo com sucesso."
+        onSaved()
+    }
+
+    fun setStudentActive(id: Long, active: Boolean) = perform {
+        val student = requireNotNull(dao.getStudent(id)) { "Aluno não encontrado." }
+        require(dao.updateStudent(student.copy(active = active)) == 1)
+        statusMessage = if (active) "Aluno reativado." else "Aluno inativado. Histórico preservado."
+    }
+
+    fun prepareBackup(password: CharArray, onReady: () -> Unit) = perform {
+        try {
+            pendingBackup = withContext(Dispatchers.IO) { BackupCrypto.encrypt(TrainerBackup(database).snapshot(), password) }
+            onReady()
+        } finally { password.fill('\u0000') }
+    }
+
+    fun writeBackup(uri: Uri?) = perform {
+        val bytes = pendingBackup
+        pendingBackup = null
+        if (uri == null || bytes == null) return@perform
+        withContext(Dispatchers.IO) {
+            requireNotNull(getApplication<Application>().contentResolver.openOutputStream(uri, "wt")).use { it.write(bytes); it.flush() }
+        }
+        statusMessage = "Backup criptografado salvo. Guarde a senha para restaurar."
+    }
+
+    fun restoreBackup(uri: Uri, password: CharArray) = perform {
+        try {
+            val restored = withContext(Dispatchers.IO) {
+                val bytes = requireNotNull(getApplication<Application>().contentResolver.openInputStream(uri)).use { input ->
+                    val out = java.io.ByteArrayOutputStream()
+                    val buffer = ByteArray(8192)
+                    while (true) {
+                        val count = input.read(buffer)
+                        if (count < 0) break
+                        require(out.size() + count <= BackupCrypto.MAX_BYTES) { "Backup excede 20 MB." }
+                        out.write(buffer, 0, count)
+                    }
+                    out.toByteArray()
+                }
+                TrainerBackup(database).restore(BackupCrypto.decrypt(bytes, password))
+            }
+            settings = restored
+            statusMessage = "Backup restaurado com sucesso."
+        } finally { password.fill('\u0000') }
     }
 
     fun addStudent(name: String, goal: String, equipment: String, notes: String) = perform {
@@ -91,7 +181,7 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
 
     fun assignRoutine(routineId: Long, studentId: Long?) = perform {
         require(dao.getRoutine(routineId) != null) { "Treino não encontrado." }
-        require(studentId == null || students.value.any { it.id == studentId }) { "Aluno não encontrado." }
+        require(studentId == null || dao.getStudent(studentId)?.active == true) { "Selecione um aluno ativo." }
         val current = dao.getRoutine(routineId)!!
         require(current.studentId == null || current.studentId == studentId || studentId == null) {
             "Este treino pertence a outro aluno. Faça uma cópia antes de atribuir."
@@ -190,6 +280,7 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
             "Adicione pelo menos um exercício para começar."
         }
         val routine = dao.getRoutine(routineId) ?: throw IllegalArgumentException("Treino não encontrado.")
+        require(routine.studentId == null || dao.getStudent(routine.studentId)?.active == true) { "Reative o aluno antes de iniciar um novo treino." }
         dao.insertSession(
             WorkoutSessionEntity(
                 routineId = routineId,
@@ -264,13 +355,21 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     private fun perform(block: suspend () -> Unit) {
+        if (busy) return
+        busy = true
         viewModelScope.launch {
             try {
                 block()
+            } catch (e: CancellationException) {
+                throw e
+            } catch (e: javax.crypto.AEADBadTagException) {
+                statusMessage = "Senha incorreta ou backup corrompido. Seus dados foram preservados."
             } catch (e: IllegalArgumentException) {
                 statusMessage = e.message ?: "Dados inválidos."
             } catch (e: Exception) {
-                statusMessage = "Não foi possível salvar. Tente novamente."
+                statusMessage = "Não foi possível concluir. Confira os dados e tente novamente."
+            } finally {
+                busy = false
             }
         }
     }

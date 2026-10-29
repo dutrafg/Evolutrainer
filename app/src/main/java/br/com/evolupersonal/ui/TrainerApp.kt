@@ -67,11 +67,13 @@ fun TrainerApp(viewModel: TrainerViewModel) {
     }
 
     EvoluPersonalTheme(dark = viewModel.isDarkTheme) {
+        BoxWithConstraints(Modifier.fillMaxSize()) {
+        val wide = maxWidth >= 600.dp
         Scaffold(
             containerColor = MaterialTheme.colorScheme.background,
             snackbarHost = { SnackbarHost(snackbar) },
             bottomBar = {
-                NavigationBar(containerColor = MaterialTheme.colorScheme.surface) {
+                if (!wide && viewModel.ready && viewModel.settings.initialized) NavigationBar(containerColor = MaterialTheme.colorScheme.surface) {
                     tabs.forEachIndexed { index, tab ->
                         NavigationBarItem(
                             selected = tabIndex == index,
@@ -84,17 +86,33 @@ fun TrainerApp(viewModel: TrainerViewModel) {
                 }
             }
         ) { inner ->
-            Column(Modifier.fillMaxSize().padding(inner)) {
+            if (!viewModel.ready) {
+                Column(Modifier.fillMaxSize().padding(inner).padding(24.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+                    Text("EvoluPersonal", style = MaterialTheme.typography.headlineMedium)
+                    if (viewModel.startupError) {
+                        Text("Não foi possível abrir os dados. Tente novamente.")
+                        Button(onClick = viewModel::loadSettings, enabled = !viewModel.busy) { Text("Tentar novamente") }
+                    } else CircularProgressIndicator()
+                }
+            } else if (!viewModel.settings.initialized) {
+                Box(Modifier.padding(inner)) { ProfileSetupScreen(viewModel) }
+            } else Row(Modifier.fillMaxSize().padding(inner)) {
+                if (wide) NavigationRail {
+                    tabs.forEachIndexed { index, tab ->
+                        NavigationRailItem(
+                            selected = tabIndex == index,
+                            onClick = { tabIndex = index; showStudents = false },
+                            icon = { Icon(tab.icon, contentDescription = null) },
+                            label = { Text(tab.title) }
+                        )
+                    }
+                }
+                Column(Modifier.weight(1f).fillMaxHeight()) {
+                if (viewModel.busy) LinearProgressIndicator(Modifier.fillMaxWidth())
                 Header(tabIndex, viewModel.profileName)
                 when (tabIndex) {
                     0 -> if (showStudents) {
-                        StudentsScreen(
-                            students = students,
-                            routines = routines,
-                            onCreate = viewModel::addStudent,
-                            onAssign = viewModel::assignRoutine,
-                            onBack = { showStudents = false }
-                        )
+                        StudentsScreen(viewModel, onBack = { showStudents = false })
                     } else HomeScreen(
                         profileName = viewModel.profileName,
                         studentCount = students.size,
@@ -121,7 +139,8 @@ fun TrainerApp(viewModel: TrainerViewModel) {
                                     history.any { it.id == previous.sessionId && it.studentId == active.studentId }
                                 },
                                 onRecord = viewModel::recordSet,
-                                onFinish = viewModel::finishSession
+                                onFinish = viewModel::finishSession,
+                                defaultRestSeconds = viewModel.settings.restSeconds
                             )
                         } else if (selectedRoutineId > 0L) {
                             RoutineDetailScreen(
@@ -151,14 +170,11 @@ fun TrainerApp(viewModel: TrainerViewModel) {
                     }
                     2 -> LibraryScreen(exercises, viewModel::addExercise)
                     3 -> ProgressScreen(routines, history, allSets, students)
-                    4 -> ProfileScreen(
-                        name = viewModel.profileName,
-                        dark = viewModel.isDarkTheme,
-                        onNameChanged = viewModel::updateName,
-                        onThemeChanged = viewModel::toggleTheme
-                    )
+                    4 -> ProfileSetupScreen(viewModel)
                 }
             }
+            }
+        }
         }
     }
 }
@@ -619,3 +635,4 @@ fun dayName(day: Int): String = when (day) {
     7 -> "Domingo"
     else -> "Sem dia fixo"
 }
+

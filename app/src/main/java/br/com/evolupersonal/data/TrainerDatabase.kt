@@ -8,6 +8,7 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.Insert
+import androidx.room.Update
 import androidx.room.PrimaryKey
 import androidx.room.Query
 import androidx.room.Room
@@ -128,8 +129,52 @@ data class WorkoutSetEntity(
     @ColumnInfo(defaultValue = "''") val notes: String = ""
 )
 
+@Entity(tableName = "app_settings")
+data class AppSettingsEntity(
+    @PrimaryKey val id: Int = 1,
+    val name: String = "",
+    val dark: Boolean = true,
+    val initialized: Boolean = false,
+    val experience: String = "Iniciante",
+    val equipment: String = "",
+    val goal: String = "Condicionamento",
+    val restSeconds: Int = 90
+)
+
 @Dao
 interface TrainerDao {
+    @Query("SELECT * FROM app_settings WHERE id = 1")
+    suspend fun getSettings(): AppSettingsEntity?
+
+    @Insert(onConflict = androidx.room.OnConflictStrategy.REPLACE)
+    suspend fun saveSettings(settings: AppSettingsEntity)
+
+    @Query("SELECT * FROM students WHERE id = :id")
+    suspend fun getStudent(id: Long): StudentEntity?
+
+    @Update
+    suspend fun updateStudent(student: StudentEntity): Int
+
+    @Query("SELECT * FROM exercises ORDER BY id")
+    suspend fun exportExercises(): List<ExerciseEntity>
+    @Query("SELECT * FROM students ORDER BY id")
+    suspend fun exportStudents(): List<StudentEntity>
+    @Query("SELECT * FROM routines ORDER BY id")
+    suspend fun exportRoutines(): List<RoutineEntity>
+    @Query("SELECT * FROM routine_exercises ORDER BY id")
+    suspend fun exportItems(): List<RoutineExerciseEntity>
+    @Query("SELECT * FROM workout_sessions ORDER BY id")
+    suspend fun exportSessions(): List<WorkoutSessionEntity>
+    @Query("SELECT * FROM workout_sets ORDER BY id")
+    suspend fun exportSets(): List<WorkoutSetEntity>
+
+    @Query("DELETE FROM workout_sets") suspend fun clearSets()
+    @Query("DELETE FROM workout_sessions") suspend fun clearSessions()
+    @Query("DELETE FROM routine_exercises") suspend fun clearItems()
+    @Query("DELETE FROM routines") suspend fun clearRoutines()
+    @Query("DELETE FROM students") suspend fun clearStudents()
+    @Query("DELETE FROM exercises") suspend fun clearExercises()
+
     @Query("SELECT * FROM students ORDER BY name COLLATE NOCASE")
     fun observeStudents(): Flow<List<StudentEntity>>
 
@@ -169,7 +214,7 @@ interface TrainerDao {
     @Query("SELECT * FROM workout_sessions WHERE finishedAt IS NULL ORDER BY startedAt DESC LIMIT 1")
     suspend fun getActiveSession(): WorkoutSessionEntity?
 
-    @Query("SELECT * FROM workout_sessions WHERE finishedAt IS NOT NULL ORDER BY finishedAt DESC LIMIT 30")
+    @Query("SELECT * FROM workout_sessions WHERE finishedAt IS NOT NULL ORDER BY finishedAt DESC")
     fun observeHistory(): Flow<List<WorkoutSessionEntity>>
 
     @Query("SELECT * FROM workout_sets ORDER BY performedAt, id")
@@ -211,6 +256,7 @@ interface TrainerDao {
 
 @Database(
     entities = [
+        AppSettingsEntity::class,
         ExerciseEntity::class,
         StudentEntity::class,
         RoutineEntity::class,
@@ -218,8 +264,8 @@ interface TrainerDao {
         WorkoutSessionEntity::class,
         WorkoutSetEntity::class
     ],
-    version = 2,
-    exportSchema = false
+    version = 3,
+    exportSchema = true
 )
 abstract class TrainerDatabase : RoomDatabase() {
     abstract fun trainerDao(): TrainerDao
@@ -246,13 +292,20 @@ abstract class TrainerDatabase : RoomDatabase() {
             }
         }
 
+        val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("CREATE TABLE IF NOT EXISTS app_settings (id INTEGER NOT NULL PRIMARY KEY, name TEXT NOT NULL, dark INTEGER NOT NULL, initialized INTEGER NOT NULL, experience TEXT NOT NULL, equipment TEXT NOT NULL, goal TEXT NOT NULL, restSeconds INTEGER NOT NULL)")
+            }
+        }
+
         fun get(context: Context): TrainerDatabase =
             instance ?: synchronized(this) {
                 instance ?: Room.databaseBuilder(
                     context.applicationContext,
                     TrainerDatabase::class.java,
                     "evolupersonal.db"
-                ).addMigrations(MIGRATION_1_2).build().also { instance = it }
+                ).addMigrations(MIGRATION_1_2, MIGRATION_2_3).build().also { instance = it }
             }
     }
 }
+

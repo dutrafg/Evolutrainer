@@ -142,7 +142,8 @@ fun ActiveSessionScreen(
     sets: List<WorkoutSetEntity>,
     previousSets: List<WorkoutSetEntity>,
     onRecord: (Long, String, String, String, String, String, String) -> Unit,
-    onFinish: () -> Unit
+    onFinish: () -> Unit,
+    defaultRestSeconds: Int = 90
 ) {
     var showConfirmation by remember { mutableStateOf(false) }
     var restUntil by rememberSaveable { mutableLongStateOf(0L) }
@@ -185,7 +186,7 @@ fun ActiveSessionScreen(
                     )
                 }
                 Row(Modifier.horizontalScroll(rememberScrollState())) {
-                    listOf(60, 90, 120).forEach { seconds ->
+                    listOf(defaultRestSeconds, 60, 90, 120).distinct().forEach { seconds ->
                         TextButton(onClick = { restUntil = System.currentTimeMillis() + seconds * 1000L }) {
                             Text("${seconds}s")
                         }
@@ -495,60 +496,6 @@ private fun SummaryCard(label: String, value: String, modifier: Modifier) {
     }
 }
 
-@Composable
-fun ProfileScreen(
-    name: String,
-    dark: Boolean,
-    onNameChanged: (String) -> Unit,
-    onThemeChanged: (Boolean) -> Unit
-) {
-    var draftName by remember(name) { mutableStateOf(name) }
-    Column(
-        Modifier.fillMaxSize().verticalScroll(rememberScrollState())
-            .padding(horizontal = 18.dp, vertical = 12.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
-    ) {
-        SectionHeader("Seu perfil", "Preferências salvas neste dispositivo.")
-        Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
-            Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                OutlinedTextField(
-                    value = draftName,
-                    onValueChange = { draftName = it.take(60) },
-                    label = { Text("Como prefere ser chamado?") },
-                    modifier = Modifier.fillMaxWidth(),
-                    singleLine = true
-                )
-                Button(onClick = { onNameChanged(draftName.trim()) }, modifier = Modifier.fillMaxWidth()) {
-                    Text("Salvar nome")
-                }
-            }
-        }
-        Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
-            Row(
-                Modifier.fillMaxWidth().padding(18.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Column(Modifier.weight(1f)) {
-                    Text("Modo escuro", fontWeight = FontWeight.SemiBold)
-                    Text("Alterar a aparência do EvoluPersonal", style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant)
-                }
-                Switch(checked = dark, onCheckedChange = onThemeChanged)
-            }
-        }
-        Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
-            Column(Modifier.padding(18.dp)) {
-                Text("EvoluPersonal 0.1.0-dev", fontWeight = FontWeight.SemiBold)
-                Spacer(Modifier.height(5.dp))
-                Text("Android nativo · Dados offline · Biblioteca 3D em integração futura",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant)
-            }
-        }
-    }
-}
-
 private val ptBr = Locale.forLanguageTag("pt-BR")
 
 private fun formatKg(value: Double): String =
@@ -556,3 +503,4 @@ private fun formatKg(value: Double): String =
 
 private fun formatDate(timestamp: Long): String =
     SimpleDateFormat("dd/MM/yyyy 'às' HH:mm", ptBr).format(Date(timestamp))
+
