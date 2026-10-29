@@ -6,7 +6,7 @@ Nova implementação web/PWA + APK Android com Capacitor 8, em `feature/pwa-hibr
 
 Node 22+, Java 21, Android SDK 36. `npm ci`, `npm run check`, `npm test`, `npm run build`, `npx cap sync android`. A compilação automatizada usa Gradle 8.14.3 e gera APK debug beta para Android 10+.
 
-O APK usa `br.com.evolupersonal.hibrido`, origem local `https://localhost` e arquivos web incluídos no pacote. Versão atual: `0.1.0-beta.5`, versionCode `1001`. Para atualizar este beta, manter identificador, origem e assinatura e aumentar versionCode. Não desinstalar para atualizar. A assinatura é fixa de **desenvolvimento**, exclusiva dos betas; a chave de teste não é identidade de produção. Não atualiza diretamente o aplicativo Kotlin anterior, que possui outro armazenamento e assinatura.
+O APK usa `br.com.evolupersonal.hibrido`, origem local `https://localhost` e arquivos web incluídos no pacote. Versão atual: `0.1.0-beta.6`, versionCode `1001`. Para atualizar este beta, manter identificador, origem e assinatura e aumentar versionCode. Não desinstalar para atualizar. A assinatura é fixa de **desenvolvimento**, exclusiva dos betas; a chave de teste não é identidade de produção. Não atualiza diretamente o aplicativo Kotlin anterior, que possui outro armazenamento e assinatura.
 
 ## Escopo beta
 
@@ -21,3 +21,4 @@ Perfil/primeiro acesso, alunos, catálogo de 500 exercícios por IDs canônicos,
 - IndexedDB mantém os dados locais; o backup é criptografado por senha. O banco local não recebe criptografia adicional por este beta. Limpeza dos dados do site remove o armazenamento local; manter cópias.
 
 Os aprendizados do EvoluFísico2 foram aplicados nos fluxos de salvamento confirmado, responsividade, isolamento de temas, IDs permanentes, atualização controlada e recuperação transacional. Não houve cópia integral da interface/código legado.
+

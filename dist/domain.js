@@ -1,5 +1,5 @@
 import {advancedEmpty,migrate,validateAdvanced,validatePrescription,prescription,enforceStudent,validateBlocks} from './beta-domain.js';
-export const VERSION = '0.1.0-beta.5';
+export const VERSION = '0.1.0-beta.6';
 export const goals = ['Hipertrofia', 'Emagrecimento', 'Manutenção', 'Definição muscular', 'Condicionamento', 'Força'];
 export const emptyState = () => ({schema:2,advanced:advancedEmpty(),rev:0,profile:null,students:[],exercises:[],routines:[],sessions:[]});
 export const id = () => {
@@ -78,3 +78,4 @@ export const initials = name => name.trim().split(/\s+/).slice(0,2).map(x=>x[0])
 
 export const toKg=(value,unit='kg')=>unit==='lb'?value*.45359237:value;
 export const fromKg=(value,unit='kg')=>unit==='lb'?value/.45359237:value;
+
