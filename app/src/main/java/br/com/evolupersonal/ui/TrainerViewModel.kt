@@ -1,6 +1,7 @@
 package br.com.evolupersonal.ui
 
 import android.app.Application
+import androidx.room.withTransaction
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -25,7 +26,8 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class TrainerViewModel(app: Application) : AndroidViewModel(app) {
-    private val dao = TrainerDatabase.get(app).trainerDao()
+    private val database = TrainerDatabase.get(app)
+    private val dao = database.trainerDao()
     private val preferences = app.getSharedPreferences("trainer_settings", 0)
 
     var profileName by mutableStateOf(preferences.getString("name", "") ?: "")
@@ -90,6 +92,10 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
     fun assignRoutine(routineId: Long, studentId: Long?) = perform {
         require(dao.getRoutine(routineId) != null) { "Treino não encontrado." }
         require(studentId == null || students.value.any { it.id == studentId }) { "Aluno não encontrado." }
+        val current = dao.getRoutine(routineId)!!
+        require(current.studentId == null || current.studentId == studentId || studentId == null) {
+            "Este treino pertence a outro aluno. Faça uma cópia antes de atribuir."
+        }
         dao.assignRoutine(routineId, studentId)
         statusMessage = if (studentId == null) "Treino desvinculado." else "Treino atribuído ao aluno."
     }
@@ -124,6 +130,52 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
             )
         )
         statusMessage = "Exercício incluído no treino."
+    }
+
+    fun duplicateRoutine(routineId: Long) = perform {
+        val routine = dao.getRoutine(routineId)
+            ?: throw IllegalArgumentException("Treino não encontrado.")
+        database.withTransaction {
+            val newId = dao.insertRoutine(
+                routine.copy(id = 0, title = (routine.title + " (cópia)").take(60), studentId = null)
+            )
+            dao.getRoutineExerciseList(routineId).forEach { item ->
+                dao.insertRoutineExercise(item.copy(id = 0, routineId = newId))
+            }
+        }
+        statusMessage = "Cópia do treino criada, sem alterar o original."
+    }
+
+    fun changeTargets(itemId: Long, targetSets: Int, targetReps: Int) = perform {
+        require(targetSets in 1..15 && targetReps in 1..1000) {
+            "Informe 1 a 15 séries e 1 a 1000 repetições."
+        }
+        require(dao.updateTargets(itemId, targetSets, targetReps) > 0) {
+            "Exercício não encontrado na rotina."
+        }
+        statusMessage = "Prescrição atualizada."
+    }
+
+    fun removeFromRoutine(itemId: Long) = perform {
+        require(dao.getActiveSession() == null) {
+            "Conclua a sessão em andamento antes de alterar a ficha."
+        }
+        require(dao.removeRoutineExercise(itemId) > 0) { "Item não encontrado." }
+        statusMessage = "Exercício retirado da ficha. Histórico preservado."
+    }
+
+    fun reorderRoutineExercise(routineId: Long, itemId: Long, direction: Int) = perform {
+        require(direction == -1 || direction == 1) { "Direção inválida." }
+        require(dao.getActiveSession() == null) { "Conclua o treino aberto antes de reordenar." }
+        database.withTransaction {
+            val items = dao.getRoutineExerciseList(routineId)
+            val index = items.indexOfFirst { it.id == itemId }
+            require(index >= 0 && index + direction in items.indices) { "Posição inválida." }
+            val other = items[index + direction]
+            dao.updateSortOrder(itemId, other.sortOrder)
+            dao.updateSortOrder(other.id, items[index].sortOrder)
+        }
+        statusMessage = "Ordem do treino atualizada."
     }
 
     fun startRoutine(routineId: Long, energy: Int?, sleep: Int?, fatigue: Int?) = perform {
