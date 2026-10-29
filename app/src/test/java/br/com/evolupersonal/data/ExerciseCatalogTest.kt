@@ -60,6 +60,8 @@ class ExerciseCatalogTest {
         val original = backup.snapshot()
         val legacy = JsonParser.parseString(String(original)).asJsonObject
         legacy.addProperty("databaseVersion", 3)
+        legacy.getAsJsonArray("items").forEach { it.asJsonObject.remove("prescriptionJson") }
+        legacy.getAsJsonArray("sessions").forEach { it.asJsonObject.remove("runtimeJson") }
         legacy.getAsJsonArray("exercises").forEach { e -> listOf("equipment", "instructions", "favorite").forEach { e.asJsonObject.remove(it) } }
         backup.restore(legacy.toString().toByteArray())
         assertEquals("", dao.getExercise(id)!!.equipment)

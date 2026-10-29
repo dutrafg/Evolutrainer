@@ -101,7 +101,7 @@ fun RoutineDetailScreen(vm: TrainerViewModel, routineId: Long, onBack: () -> Uni
     }
     if (targetId > 0) {
         val item = items.firstOrNull { it.id == targetId }
-        if (item != null) TargetsEditor(item, vm, onBack = { targetId = -1 })
+        if (item != null) PrescriptionEditor(item, vm, onBack = { targetId = -1 })
         else Column(Modifier.padding(18.dp)) { Text("Item indisponível."); TextButton(onClick = { targetId = -1 }) { Text("Voltar à ficha") } }
         return
     }

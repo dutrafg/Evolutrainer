@@ -140,6 +140,8 @@ class RoutineBuilderTest {
         for (version in listOf(3, 4)) {
             val old = JsonParser.parseString(String(original)).asJsonObject
             old.addProperty("databaseVersion", version)
+            old.getAsJsonArray("items").forEach { it.asJsonObject.remove("prescriptionJson") }
+            old.getAsJsonArray("sessions").forEach { it.asJsonObject.remove("runtimeJson") }
             old.getAsJsonArray("routines").forEach { e -> listOf("divisionLabel", "notes", "isTemplate", "archived").forEach { e.asJsonObject.remove(it) } }
             if (version == 3) old.getAsJsonArray("exercises").forEach { e -> listOf("equipment", "instructions", "favorite").forEach { e.asJsonObject.remove(it) } }
             backup.restore(old.toString().toByteArray())

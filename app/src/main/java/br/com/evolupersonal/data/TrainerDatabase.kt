@@ -79,7 +79,8 @@ data class RoutineExerciseEntity(
     val exerciseId: Long,
     val sortOrder: Int = 0,
     val targetSets: Int = 3,
-    val targetReps: Int = 10
+    val targetReps: Int = 10,
+    @ColumnInfo(defaultValue = "''") val prescriptionJson: String = ""
 )
 
 @Entity(
@@ -102,7 +103,8 @@ data class WorkoutSessionEntity(
     val studentId: Long? = null,
     val energy: Int? = null,
     val sleep: Int? = null,
-    val fatigue: Int? = null
+    val fatigue: Int? = null,
+    @ColumnInfo(defaultValue = "''") val runtimeJson: String = ""
 )
 
 @Entity(
@@ -153,6 +155,9 @@ data class AppSettingsEntity(
 
 @Dao
 interface TrainerDao {
+    @Update suspend fun updateRoutineItem(item: RoutineExerciseEntity): Int
+    @Update suspend fun updateSession(item: WorkoutSessionEntity): Int
+
     @Update
     suspend fun updateRoutine(routine: RoutineEntity): Int
 
@@ -289,7 +294,7 @@ interface TrainerDao {
         WorkoutSessionEntity::class,
         WorkoutSetEntity::class
     ],
-    version = 5,
+    version = 6,
     exportSchema = true
 )
 abstract class TrainerDatabase : RoomDatabase() {
@@ -341,13 +346,20 @@ abstract class TrainerDatabase : RoomDatabase() {
             }
         }
 
+        val MIGRATION_5_6 = object : Migration(5, 6) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE routine_exercises ADD COLUMN prescriptionJson TEXT NOT NULL DEFAULT ''")
+                db.execSQL("ALTER TABLE workout_sessions ADD COLUMN runtimeJson TEXT NOT NULL DEFAULT ''")
+            }
+        }
+
         fun get(context: Context): TrainerDatabase =
             instance ?: synchronized(this) {
                 instance ?: Room.databaseBuilder(
                     context.applicationContext,
                     TrainerDatabase::class.java,
                     "evolupersonal.db"
-                ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5).build().also { instance = it }
+                ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6).build().also { instance = it }
             }
     }
 }

@@ -50,13 +50,13 @@ class TrainerBackup(private val db: TrainerDatabase) {
     private val dao = db.trainerDao()
     private val gson = com.google.gson.GsonBuilder().serializeNulls().create()
     suspend fun snapshot(): ByteArray = db.withTransaction {
-        val data = BackupData("EvoluPersonal", 1, 5, requireNotNull(dao.getSettings()),
+        val data = BackupData("EvoluPersonal", 1, 6, requireNotNull(dao.getSettings()),
             dao.exportStudents(), dao.exportExercises(), dao.exportRoutines(), dao.exportItems(), dao.exportSessions(), dao.exportSets())
         validate(data)
         gson.toJson(data).toByteArray(Charsets.UTF_8)
     }
     fun validate(data: BackupData) {
-        require(data.format == "EvoluPersonal" && data.version == 1 && data.databaseVersion == 5) { "Versão de backup incompatível." }
+        require(data.format == "EvoluPersonal" && data.version == 1 && data.databaseVersion == 6) { "Versão de backup incompatível." }
         val s = data.settings
         require(s.weightUnit in listOf("kg", "lb") && s.lengthUnit in listOf("cm", "in"))
         require(s.id == 1 && s.name.trim().length in 2..60 && s.initialized && s.restSeconds in 15..600)
@@ -72,6 +72,12 @@ class TrainerBackup(private val db: TrainerDatabase) {
         require(data.exercises.all { it.name.length in 2..80 && it.muscleGroup.length in 2..50 && it.origin in listOf("MANUAL", "LIBRARY") && it.equipment.length <= 100 && it.instructions.length <= 2000 })
         require(data.routines.all { it.title.length in 2..60 && it.dayOfWeek in 0..7 && it.divisionLabel.length <= 30 && it.notes.length <= 1000 && (!it.isTemplate || it.studentId == null) && (it.studentId == null || it.studentId in students) })
         require(data.items.all { it.routineId in routines && it.exerciseId in exercises && it.targetSets in 1..15 && it.targetReps in 1..1000 && it.sortOrder >= 0 })
+        data.items.forEach { it.prescription() }
+        data.sessions.forEach { session ->
+            val runtime = session.runtime()
+            require(runtime.pausedAt >= 0 && runtime.pausedMillis >= 0 && runtime.timerStart >= 0 && runtime.timerWork in 1..7200 && runtime.timerRest in 0..3600 && runtime.timerRounds in 1..100)
+            require(runtime.substitutions.all { (item, exercise) -> data.items.any { it.id == item && it.routineId == session.routineId } && exercise in exercises })
+        }
         require(data.items.map { it.routineId to it.exerciseId }.distinct().size == data.items.size)
         require(data.sessions.count { it.finishedAt == null } <= 1)
         require(data.sessions.filter { it.finishedAt == null }.all { session -> data.routines.any { it.id == session.routineId && !it.isTemplate && !it.archived } })
@@ -92,7 +98,7 @@ class TrainerBackup(private val db: TrainerDatabase) {
             require(value.isNumber)
             return value.asBigDecimal.intValueExact()
         }
-        require(version("version") == 1 && version("databaseVersion") in 3..5) { "Versão de backup incompatível." }
+        require(version("version") == 1 && version("databaseVersion") in 3..6) { "Versão de backup incompatível." }
         val sourceVersion = version("databaseVersion")
         // Upgrade only the known v3 schema; never silently repair malformed v4 files.
         if (sourceVersion == 3) {
@@ -114,7 +120,11 @@ class TrainerBackup(private val db: TrainerDatabase) {
                 routine.addProperty("archived", false)
             }
         }
-        json.addProperty("databaseVersion", 5)
+        if (sourceVersion <= 5) {
+            json.getAsJsonArray("items").forEach { require(!it.asJsonObject.has("prescriptionJson")); it.asJsonObject.addProperty("prescriptionJson", "") }
+            json.getAsJsonArray("sessions").forEach { require(!it.asJsonObject.has("runtimeJson")); it.asJsonObject.addProperty("runtimeJson", "") }
+        }
+        json.addProperty("databaseVersion", 6)
         fun fields(obj: com.google.gson.JsonObject, names: Set<String>) {
             require(obj.keySet() == names) { "Campos ausentes ou incompatíveis." }
             val nullable = setOf("externalId", "studentId", "finishedAt", "energy", "sleep", "fatigue", "rir", "rpe")
@@ -139,8 +149,8 @@ class TrainerBackup(private val db: TrainerDatabase) {
             "students" to setOf("id", "name", "goal", "equipment", "notes", "active", "availability"),
             "exercises" to setOf("id", "name", "muscleGroup", "origin", "externalId", "equipment", "instructions", "favorite"),
             "routines" to setOf("id", "title", "dayOfWeek", "studentId", "divisionLabel", "notes", "isTemplate", "archived"),
-            "items" to setOf("id", "routineId", "exerciseId", "sortOrder", "targetSets", "targetReps"),
-            "sessions" to setOf("id", "routineId", "startedAt", "finishedAt", "studentId", "energy", "sleep", "fatigue"),
+            "items" to setOf("id", "routineId", "exerciseId", "sortOrder", "targetSets", "targetReps", "prescriptionJson"),
+            "sessions" to setOf("id", "routineId", "startedAt", "finishedAt", "studentId", "energy", "sleep", "fatigue", "runtimeJson"),
             "sets" to setOf("id", "sessionId", "exerciseId", "setNumber", "repetitions", "loadKg", "rir", "performedAt", "setType", "rpe", "notes")
         )
         tables.forEach { (table, names) -> json.getAsJsonArray(table).forEach { fields(it.asJsonObject, names) } }

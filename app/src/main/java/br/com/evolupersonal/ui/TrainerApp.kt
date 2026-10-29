@@ -132,18 +132,7 @@ fun TrainerApp(viewModel: TrainerViewModel) {
                     1 -> {
                         val active = activeSession
                         if (active != null) {
-                            ActiveSessionScreen(
-                                routine = routines.firstOrNull { it.id == active.routineId },
-                                items = routineExercises.filter { it.routineId == active.routineId },
-                                exercises = exercises,
-                                sets = activeSets.filter { it.sessionId == active.id },
-                                previousSets = allSets.filter { previous ->
-                                    history.any { it.id == previous.sessionId && it.studentId == active.studentId }
-                                },
-                                onRecord = viewModel::recordSet,
-                                onFinish = viewModel::finishSession,
-                                defaultRestSeconds = viewModel.settings.restSeconds
-                            )
+                            SessionScreen(viewModel, active)
                         } else if (selectedRoutineId > 0L) {
                             RoutineDetailScreen(
                                 vm = viewModel, routineId = selectedRoutineId,

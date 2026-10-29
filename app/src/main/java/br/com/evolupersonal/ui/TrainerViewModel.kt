@@ -1,6 +1,7 @@
 package br.com.evolupersonal.ui
 
 import android.app.Application
+import br.com.evolupersonal.data.runtime
 import android.net.Uri
 import br.com.evolupersonal.data.AppSettingsEntity
 import br.com.evolupersonal.data.BackupCrypto
@@ -94,6 +95,13 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
     val activeSets = activeSession.flatMapLatest { session ->
         session?.let { dao.observeSessionSets(it.id) } ?: flowOf(emptyList())
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+
+    fun prescribe(id: Long, value: br.com.evolupersonal.core.Prescription, onSaved: () -> Unit) = perform {
+        br.com.evolupersonal.data.SessionController(database).prescribe(id, value); onSaved()
+    }
+    fun pauseWorkout(paused: Boolean) = perform { br.com.evolupersonal.data.SessionController(database).pause(paused) }
+    fun startTimer(work: Int, rest: Int, rounds: Int) = perform { br.com.evolupersonal.data.SessionController(database).timer(work, rest, rounds) }
+    fun substitute(item: Long, exercise: Long) = perform { br.com.evolupersonal.data.SessionController(database).substitute(item, exercise) }
 
     fun clearStatus() { statusMessage = null }
 
@@ -285,7 +293,9 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
 
         val session = dao.getActiveSession()
             ?: throw IllegalArgumentException("Não há treino aberto.")
-        require(dao.getRoutineExerciseCount(session.routineId, exerciseId) > 0) {
+        val runtime = session.runtime()
+        require(runtime.pausedAt == 0L) { "Retome o treino antes de registrar séries." }
+        require(dao.getRoutineExerciseList(session.routineId).any { (runtime.substitutions[it.id] ?: it.exerciseId) == exerciseId }) {
             "Exercício não pertence ao treino ativo."
         }
         val number = dao.lastSetNumber(session.id, exerciseId) + 1

@@ -15,8 +15,8 @@ android {
         applicationId = "br.com.evolupersonal"
         minSdk = 26
         targetSdk = 36
-        versionCode = 5
-        versionName = "0.4.1-dev"
+        versionCode = 6
+        versionName = "0.5.0-dev"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

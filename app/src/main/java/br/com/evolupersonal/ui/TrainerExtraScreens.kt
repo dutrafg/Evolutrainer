@@ -135,7 +135,7 @@ fun ActiveSessionScreen(
 }
 
 @Composable
-private fun ExerciseEntryCard(
+internal fun ExerciseEntryCard(
     exerciseId: Long,
     name: String,
     muscleGroup: String,
@@ -299,7 +299,7 @@ fun ProgressScreen(
             modifier = Modifier.fillMaxWidth()
         ) {
             Column(Modifier.padding(19.dp)) {
-                Text("Volume acumulado (até 30 sessões)", color = MaterialTheme.colorScheme.onSurfaceVariant)
+                Text("Volume acumulado", color = MaterialTheme.colorScheme.onSurfaceVariant)
                 Text(
                     formatKg(volume),
                     style = MaterialTheme.typography.headlineMedium,
