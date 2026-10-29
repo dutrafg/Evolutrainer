@@ -55,13 +55,13 @@ class RoutineBuilder(private val db: TrainerDatabase) {
         val items = dao.getRoutineExerciseList(id)
         require(items.none { it.exerciseId == exerciseId }) { "Esse exercício já está no treino." }
         items.forEachIndexed { index, item -> dao.updateSortOrder(item.id, index) }
-        dao.insertRoutineExercise(RoutineExerciseEntity(routineId = id, exerciseId = exerciseId, sortOrder = items.size))
+        dao.insertRoutineExercise(RoutineExerciseEntity(routineId = id, exerciseId = exerciseId, sortOrder = items.size, prescriptionJson = com.google.gson.Gson().toJson(br.com.evolupersonal.core.Prescription(restSeconds = dao.getSettings()?.restSeconds ?: 90))))
     }
     suspend fun targets(itemId: Long, sets: Int, reps: Int) = db.withTransaction {
         require(sets in 1..15 && reps in 1..1000) { "Informe 1–15 séries e 1–1000 repetições." }
         val item = requireNotNull(dao.getRoutineItem(itemId)) { "Item não encontrado." }
         editable(item.routineId)
-        require(dao.updateTargets(itemId, sets, reps) == 1)
+        require(dao.updateRoutineItem(item.copy(targetSets = sets, targetReps = reps, prescriptionJson = com.google.gson.Gson().toJson(item.prescription().copy(sets = sets, repsMin = reps, repsMax = reps)))) == 1)
     }
     suspend fun remove(itemId: Long) = db.withTransaction {
         val item = requireNotNull(dao.getRoutineItem(itemId)) { "Item não encontrado." }

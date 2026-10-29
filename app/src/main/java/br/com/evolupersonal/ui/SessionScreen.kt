@@ -66,7 +66,7 @@ fun SessionScreen(vm: TrainerViewModel, session: WorkoutSessionEntity) {
             if (state.pausedAt == 0L) {
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     OutlinedButton(onClick = { vm.startTimer(p.restSeconds.coerceAtLeast(1), 0, 1) }, enabled = !vm.busy) { Text("Descanso ${p.restSeconds}s") }
-                    OutlinedButton(onClick = { vm.startTimer(if (p.method == "AMRAP") p.durationSeconds.coerceAtLeast(1) else p.workSeconds, if (p.method == "AMRAP") 0 else p.intervalSeconds, if (p.method == "AMRAP") 1 else p.rounds) }, enabled = !vm.busy) { Text("Iniciar método") }
+                    OutlinedButton(onClick = { vm.startTimer(if (p.method == "AMRAP" || p.method == "NORMAL" && p.durationSeconds > 0) p.durationSeconds.coerceAtLeast(1) else p.workSeconds, if (p.method == "AMRAP") 0 else p.intervalSeconds, if (p.method == "AMRAP") 1 else p.rounds) }, enabled = !vm.busy) { Text("Iniciar método") }
                     OutlinedButton(onClick = { replacing = item.id }, enabled = !vm.busy) { Text("Substituir ${exercise?.name}") }
                 }
 
@@ -76,7 +76,7 @@ fun SessionScreen(vm: TrainerViewModel, session: WorkoutSessionEntity) {
         Text("${sets.size} série(s) salva(s). Substituições e séries anteriores permanecem no registro.")
         Button(onClick = { finish = true }, enabled = !vm.busy && sets.isNotEmpty()) { Text("Concluir treino") }
     }
-    if (finish) AlertDialog(onDismissRequest = { finish = false }, title = { Text("Concluir treino?") }, text = { Text("${sets.size} séries salvas. Confira os exercícios e as séries pendentes antes de encerrar. A sessão ficará no histórico.") }, confirmButton = { TextButton(onClick = { vm.finishSession(); finish = false }, enabled = !vm.busy) { Text("Confirmar conclusão") } }, dismissButton = { TextButton(onClick = { finish = false }) { Text("Continuar treinando") } })
+    if (finish) AlertDialog(onDismissRequest = { finish = false }, title = { Text("Concluir treino?") }, text = { Text("${sets.size} séries salvas. Pendências: ${items.mapNotNull { item -> val id = state.substitutions[item.id] ?: item.exerciseId; val missing = (item.prescription().sets - sets.count { it.exerciseId == id && it.setType != "AQUECIMENTO" }).coerceAtLeast(0); if (missing > 0) "${exercises.firstOrNull { it.id == id }?.name}: $missing série(s)" else null }.joinToString().ifBlank { "Nenhuma" }}. A sessão ficará no histórico.") }, confirmButton = { TextButton(onClick = { vm.finishSession(); finish = false }, enabled = !vm.busy) { Text("Confirmar conclusão") } }, dismissButton = { TextButton(onClick = { finish = false }) { Text("Continuar treinando") } })
     if (replacing > 0) AlertDialog(onDismissRequest = { replacing = 0 }, title = { Text("Substituir exercício") }, text = {
         Column(Modifier.heightIn(max = 400.dp).verticalScroll(rememberScrollState())) {
             OutlinedTextField(search, { search = it }, label = { Text("Buscar substituto") })

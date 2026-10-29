@@ -20,6 +20,8 @@ class DatabaseMigrationTest {
 
     @Test fun migratesV4ToV5PreservingExerciseMetadata() = checkMigration(4)
 
+    @Test fun migratesV5ToV6PreservingRoutine() = checkMigration(5)
+
     private fun checkMigration(startVersion: Int) = runBlocking {
         val context = ApplicationProvider.getApplicationContext<Context>()
         val name = "migration-test-$startVersion.db"
@@ -69,6 +71,12 @@ class DatabaseMigrationTest {
                 sql.execSQL("ALTER TABLE exercises ADD COLUMN favorite INTEGER NOT NULL DEFAULT 0")
                 sql.execSQL("UPDATE exercises SET equipment='Halteres', instructions='Controle', favorite=1")
             }
+            if (startVersion >= 5) {
+                sql.execSQL("ALTER TABLE routines ADD COLUMN divisionLabel TEXT NOT NULL DEFAULT ''")
+                sql.execSQL("ALTER TABLE routines ADD COLUMN notes TEXT NOT NULL DEFAULT ''")
+                sql.execSQL("ALTER TABLE routines ADD COLUMN isTemplate INTEGER NOT NULL DEFAULT 0")
+                sql.execSQL("ALTER TABLE routines ADD COLUMN archived INTEGER NOT NULL DEFAULT 0")
+            }
             sql.version = startVersion
         }
         fun open() = Room.databaseBuilder(context, TrainerDatabase::class.java, name)
@@ -79,9 +87,9 @@ class DatabaseMigrationTest {
                 val dao = db.trainerDao()
                 val exercise = dao.exportExercises().single()
                 assertEquals(12L, exercise.id)
-                assertEquals(if (startVersion == 4) "Halteres" else "", exercise.equipment)
-                assertEquals(if (startVersion == 4) "Controle" else "", exercise.instructions)
-                assertEquals(startVersion == 4, exercise.favorite)
+                assertEquals(if (startVersion >= 4) "Halteres" else "", exercise.equipment)
+                assertEquals(if (startVersion >= 4) "Controle" else "", exercise.instructions)
+                assertEquals(startVersion >= 4, exercise.favorite)
                 assertFalse(dao.getRoutine(7)!!.isTemplate)
                 assertFalse(dao.getRoutine(7)!!.archived)
                 assertEquals("", dao.getRoutine(7)!!.divisionLabel)
