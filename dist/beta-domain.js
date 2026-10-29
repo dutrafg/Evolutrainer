@@ -26,8 +26,8 @@ export function validateAdvanced(s){
  return s;
 }
 export function pauseSession(s,paused,now=Date.now()){const x=s.sessions.find(x=>!x.finishedAt);ok(x,'Não há sessão aberta.');if(paused&&!x.pausedAt){x.pausedAt=now;x.events.push(`${now} · Pausa`);}else if(!paused&&x.pausedAt){const gap=Math.max(0,now-x.pausedAt);x.pausedMs+=gap;x.restUntil+=x.restUntil?gap:0;if(x.timer)x.timer.start+=gap;x.pausedAt=0;x.events.push(`${now} · Retomada`);}}
-export function substitute(s,exerciseId,replacementId,now=Date.now()){const x=s.sessions.find(x=>!x.finishedAt);ok(x&&!x.pausedAt,'Retome a sessão primeiro.');ok(!x.items.some(i=>i.exerciseId===replacementId),'Exercício já está na sessão.');const replacement=s.exercises.find(e=>e.id===replacementId),item=x.items.find(i=>i.exerciseId===exerciseId);ok(replacement&&item);x.events.push(`${now} · ${item.name} substituído por ${replacement.name}`);const copy={...structuredClone(item),exerciseId:replacement.id,name:replacement.name,muscle:replacement.muscle,substituteOf:exerciseId};x.items.push(copy);item.replaced=true;}
-export function timerPhase(timer,now){if(!timer)return null;const elapsed=Math.max(0,Math.floor((now-timer.start)/1000)),cycle=timer.work+timer.rest,total=cycle*timer.rounds-timer.rest;if(elapsed>=total)return {label:'Concluído',remaining:0,round:timer.rounds};const part=elapsed%cycle;return {label:part<timer.work?'Execução':'Intervalo',remaining:part<timer.work?timer.work-part:cycle-part,round:Math.floor(elapsed/cycle)+1};}
+export function substitute(s,exerciseId,replacementId,now=Date.now()){const x=s.sessions.find(x=>!x.finishedAt);ok(x&&!x.pausedAt,'Retome a sessão primeiro.');ok(!x.items.some(i=>i.exerciseId===replacementId),'Exercício já está na sessão.');const replacement=s.exercises.find(e=>e.id===replacementId),item=x.items.find(i=>i.exerciseId===exerciseId);ok(replacement&&item&&!item.replaced,'Exercício já substituído.');x.events.push(`${now} · ${item.name} substituído por ${replacement.name}`);const copy={...structuredClone(item),exerciseId:replacement.id,name:replacement.name,muscle:replacement.muscle,secondary:[...(replacement.secondary||[])],replaced:false,substituteOf:exerciseId};x.items.push(copy);item.replaced=true;}
+export function timerPhase(timer,now){if(!timer)return null;const elapsed=Math.max(0,Math.floor((now-timer.start)/1000)),cycle=timer.work+timer.rest,total=cycle*timer.rounds-(timer.includeFinalRest?0:timer.rest);if(elapsed>=total)return {label:'Concluído',remaining:0,round:timer.rounds};const part=elapsed%cycle;return {label:part<timer.work?'Execução':'Intervalo',remaining:part<timer.work?timer.work-part:cycle-part,round:Math.floor(elapsed/cycle)+1};}
 export function createWeeks(ids,count,model){ok(int(count,1,52));return Array.from({length:count},(_,i)=>{const deload=i>0&&(i+1)%4===0;return {kind:deload?'DELOAD':'NORMAL',volume:deload?60:model==='LINEAR'?Math.min(200,100+i*5):model==='WAVE'?[100,110,90][i%3]:100,load:deload?90:model==='LINEAR'?Math.min(150,100+i*2):model==='WAVE'?[100,95,105][i%3]:100,routines:[...ids],applied:[]};});}
 export function applyWeek(s,planId,index){const plan=s.advanced.plans.find(x=>x.id===planId),w=plan?.weeks[index];ok(plan&&!plan.archived&&w&&!w.applied.length,'Semana indisponível ou já aplicada.');ok(!plan.studentId||s.students.some(x=>x.id===plan.studentId&&x.active),'Reative o aluno antes de aplicar.');w.applied=w.routines.map(rid=>{const r=s.routines.find(r=>r.id===rid);ok(r&&!r.archived&&r.items.length&&(!r.studentId||r.studentId===plan.studentId),'Ficha indisponível ou de outro aluno.');const copy={...structuredClone(r),id:id(),title:`${plan.title.slice(0,24)} S${index+1} · ${r.title}`.slice(0,60),studentId:plan.studentId,planId,planWeek:index,items:r.items.map(i=>{const p=prescription(i),load=p.load===null?null:p.load*w.load/100;ok(load===null||load<=1000,'A carga ultrapassaria 1000 kg.');return {...p,sets:Math.min(15,Math.max(1,Math.round(p.sets*w.volume/100))),load};})};s.routines.push(copy);return copy.id;});}
 export function performance(s,studentId,exerciseId){const sessions=s.sessions.filter(x=>x.finishedAt&&x.studentId===studentId&&x.items.some(i=>i.exerciseId===exerciseId)).sort((a,b)=>a.finishedAt-b.finishedAt);const points=sessions.map(x=>{const work=x.sets.filter(t=>t.exerciseId===exerciseId&&t.type!=='AQUECIMENTO');return {at:x.finishedAt,volume:work.reduce((n,t)=>n+t.load*t.reps,0),load:Math.max(0,...work.map(t=>t.load)),e1rm:Math.max(0,...work.filter(t=>t.reps<=10&&t.load>0).map(t=>t.load*(1+t.reps/30)))};});let action='Dados insuficientes',reason='Registre três sessões comparáveis com séries tradicionais completas e RIR.';let suggested=null;const recent=sessions.slice(-3);if(recent.length===3){const ps=recent.map(x=>prescription(x.items.find(i=>i.exerciseId===exerciseId))),groups=recent.map(x=>x.sets.filter(t=>t.exerciseId===exerciseId&&t.type!=='AQUECIMENTO'));if(ps.some(p=>p.method!=='NORMAL')||groups.some(g=>g.some(t=>(t.type||'NORMAL')!=='NORMAL'))||ps.some(p=>['sets','reps','repsMax','rest','cadence'].some(k=>p[k]!==ps[0][k]))){action='Revisar manualmente';reason='Há métodos especiais ou prescrições diferentes.';}else if(groups.every(g=>g.length===ps[0].sets&&g.every(t=>t.rir!==null))){const loads=[...new Set(groups.flat().map(t=>t.load))];if(loads.length===1&&loads[0]>0){const load=loads[0];if(groups.every(g=>g.every(t=>t.reps>=ps[0].repsMax&&t.rir>=2))){action='Considerar aumento';reason='Três sessões completas na mesma carga, no limite superior e RIR ≥2. Referência de +2%, sem alteração automática.';suggested=Math.min(1000,load*1.02);}else if(groups.slice(-2).every(g=>g.every(t=>t.reps<ps[0].reps||t.rir===0))){action='Considerar redução';reason='Duas sessões recentes abaixo da faixa ou sem reserva. Referência de −5%, sujeita à revisão.';suggested=load*.95;}else{action='Manter e observar';reason='Os critérios consistentes para aumento ou redução não foram atingidos.';suggested=load;}}else{action='Revisar manualmente';reason='As cargas variam entre as séries.';}}}return {points,action,reason,suggested};}
@@ -51,3 +51,36 @@ export function validateBlocks(items){
  }
  return planned;
 }
+
+export function sessionProgress(session){
+ const items=session.items.filter(i=>!i.replaced);
+ const planned=items.reduce((n,i)=>n+i.sets,0);
+ const completed=items.reduce((n,i)=>n+Math.min(i.sets,session.sets.filter(t=>t.exerciseId===i.exerciseId&&t.type!=='AQUECIMENTO').length),0);
+ return {planned,completed,missing:planned-completed};
+}
+export function startMethod(s,exerciseId,now=Date.now()){
+ const x=s.sessions.find(x=>!x.finishedAt);ok(x&&!x.pausedAt,'Retome o treino.');
+ const item=x.items.find(i=>i.exerciseId===exerciseId&&!i.replaced);ok(item,'Exercício indisponível.');const p=validatePrescription(item);
+ x.timer={start:now,exerciseId,work:p.method==='AMRAP'?p.seconds:p.method==='NORMAL'&&p.seconds?p.seconds:p.work,rest:p.method==='AMRAP'?0:p.interval,rounds:p.method==='AMRAP'?1:p.rounds,includeFinalRest:p.method==='EMOM'};
+}
+export function correctSet(s,index,draft,now=Date.now()){
+ const x=s.sessions.find(x=>!x.finishedAt);ok(x&&!x.pausedAt,'Retome o treino para corrigir.');
+ ok(Number.isInteger(index)&&index>=0&&index<x.sets.length,'Série não encontrada.');
+ const t=x.sets[index];const before=`${t.reps} rep. × ${t.load} kg · RIR ${t.rir??'—'} · RPE ${t.rpe??'—'} · ${t.type||'NORMAL'} · ${t.notes||''}`;
+ Object.assign(t,{reps:draft.reps,load:draft.load,rir:draft.rir,rpe:draft.rpe,type:draft.type,notes:draft.notes});
+ x.events.push(`${now} · Série ${index+1} corrigida. Antes: ${before}`);
+}
+
+export const methodGuides={
+ NORMAL:'Execute as séries prescritas e registre cada uma. Use a duração-alvo quando o exercício for por tempo.',
+ SUPER:'Alterne os dois exercícios do mesmo bloco; registre cada série no exercício correspondente.',
+ BI:'Execute os dois exercícios do mesmo bloco em sequência; registre cada um separadamente.',
+ TRI:'Execute os três exercícios do bloco em sequência; registre cada um separadamente.',
+ CIRCUIT:'Siga a ordem dos exercícios do bloco em cada rodada e registre cada estação.',
+ DROP:'Após reduzir a carga, registre cada etapa como série Drop com sua carga e repetições.',
+ REST_PAUSE:'Registre cada esforço e use execução/intervalo para guiar as pausas curtas prescritas.',
+ CLUSTER:'Registre cada minissérie; configure as rodadas e o intervalo entre esforços.',
+ HIIT:'Configure execução, intervalo e rodadas. O relógio guia as fases; registre o resultado manualmente.',
+ EMOM:'Execução e intervalo devem somar 60 segundos. O relógio completa todos os minutos prescritos.',
+ AMRAP:'Configure a duração total e registre manualmente os esforços realizados dentro desse tempo.'
+};

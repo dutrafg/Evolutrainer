@@ -1,0 +1,7 @@
+# Fase 2 — prescrição e execução (etapas 6–10)
+
+Beta 3. Catálogo existente e exercícios próprios com pesquisa, favoritos e IDs preservados. Construtor com edição, duplicação independente, ordenação, arquivamento e atribuição. Prescrição com faixa, carga, descanso, RIR/RPE, cadência, duração, notas, método e blocos. Execução persistente com pausa/retomada, correção auditada de séries, substituições preservando snapshots, progresso sem aquecimentos e conclusão confirmada. Métodos com orientações e temporizadores configuráveis; EMOM inclui o minuto final inteiro e AMRAP usa a duração total. Parada explícita do relógio. Registro de métodos é manual, sem detecção automática dos movimentos.
+
+25 testes passaram, além de sintaxe e build web. Cobertura nova: progresso após substituição/aquecimento, snapshot de músculos secundários, EMOM/AMRAP, correção de séries com valores anteriores, rejeição de dados inválidos e término durante pausa. Testes anteriores cobrem blocos, pesquisa, fichas, backups e isolamento do aluno.
+
+A validação visual desta rodada permanece pendente porque a prévia foi bloqueada pelo navegador de QA na rodada anterior. Não foi executada homologação física em smartphone/tablet, lembretes ou atualização instalada. A biblioteca de GIFs é validada em outro chat; nenhum arquivo, vínculo ou status de aprovação foi modificado neste lote. Não há aprovação integral das animações. A main permanece preservada.

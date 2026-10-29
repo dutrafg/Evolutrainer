@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
 import {emptyState,change,saveStudent,saveExercise,saveRoutine,startSession,recordSet,finishSession,validate,toKg,fromKg} from '../dist/domain.js';
-import {prescription,validatePrescription,pauseSession,substitute,timerPhase,createWeeks,applyWeek,performance,muscleVolume,studentBundle,mergeStudentFeedback,migrate,filterExercises,validateBlocks} from '../dist/beta-domain.js';
+import {prescription,validatePrescription,pauseSession,substitute,timerPhase,createWeeks,applyWeek,performance,muscleVolume,studentBundle,mergeStudentFeedback,migrate,filterExercises,validateBlocks,sessionProgress,startMethod,correctSet} from '../dist/beta-domain.js';
 import {exportBackup,importBackup} from '../dist/backup.js';
 function seed(){const s=emptyState();s.profile={name:'Personal Teste',theme:'light'};saveStudent(s,{id:'',name:'Maria',goal:'Força',equipment:'Halteres',availability:'Segundas',notes:''});saveStudent(s,{id:'',name:'José',goal:'Força',equipment:'Cabo',availability:'Quartas',notes:''});saveExercise(s,{id:'',name:'Remada',muscle:'Costas',equipment:'Cabo',instructions:'Controle',secondary:['Bíceps']});saveExercise(s,{id:'',name:'Puxada',muscle:'Costas',equipment:'Cabo',instructions:'Controle'});saveRoutine(s,{id:'',title:'Treino A',studentId:s.students[0].id,day:1,notes:''});s.routines[0].items=[{exerciseId:s.exercises[0].id,sets:1,reps:8,repsMax:10,rest:90,load:20}];return validate(s);}
 test('salvamento preserva o estado original e valida os limites',()=>{const s=seed();const next=change(s,x=>{x.students[0].name='Maria editada';});assert.equal(s.students[0].name,'Maria');assert.equal(next.rev,1);assert.throws(()=>change(s,x=>{x.students[0].name='A';}));});
@@ -37,4 +37,41 @@ test('blocos normalizam nomes e rejeitam mistura de métodos e participantes inc
  assert.throws(()=>validateBlocks([p,{...p,method:'BI'}]));
  assert.throws(()=>validateBlocks([p,{...p},{...p}]));
  assert.equal(validateBlocks([p,p,p].map(x=>({...x,method:'TRI'}))).length,3);
+});
+
+test('aquecimento e exercício substituído não inflam a conclusão planejada',()=>{
+ const s=seed();startSession(s,s.routines[0].id,1000);const x=s.sessions[0],e=s.exercises[0].id;
+ recordSet(s,x.id,e,{reps:5,load:10,rir:4,type:'AQUECIMENTO'},2000);
+ assert.equal(sessionProgress(x).missing,1);
+ substitute(s,e,s.exercises[1].id,3000);assert.equal(sessionProgress(x).planned,1);
+ assert.throws(()=>recordSet(s,x.id,e,{reps:10,load:20,rir:2},4000));
+ recordSet(s,x.id,s.exercises[1].id,{reps:10,load:20,rir:2},4000);assert.equal(sessionProgress(x).missing,0);
+});
+test('substituição preserva os músculos secundários corretos e rejeita repetição',()=>{
+ const s=seed();s.exercises[1].secondary=['Antebraços'];startSession(s,s.routines[0].id,1000);
+ substitute(s,s.exercises[0].id,s.exercises[1].id,2000);
+ assert.deepEqual(s.sessions[0].items.at(-1).secondary,['Antebraços']);
+ assert.deepEqual(s.sessions[0].items[0].secondary,['Bíceps']);
+});
+test('EMOM respeita o minuto inteiro da última rodada e AMRAP a duração total',()=>{
+ const s=seed();s.routines[0].items[0]={...s.routines[0].items[0],method:'EMOM',rounds:2,work:40,interval:20};
+ startSession(s,s.routines[0].id,1000);startMethod(s,s.exercises[0].id,1000);
+ assert.equal(timerPhase(s.sessions[0].timer,101000).label,'Intervalo');
+ assert.equal(timerPhase(s.sessions[0].timer,121000).label,'Concluído');
+ s.sessions[0].items[0].method='AMRAP';s.sessions[0].items[0].seconds=120;startMethod(s,s.exercises[0].id,1000);
+ assert.equal(timerPhase(s.sessions[0].timer,120000).remaining,1);
+ assert.equal(timerPhase(s.sessions[0].timer,121000).label,'Concluído');
+});
+test('correção registra valor anterior, valida limites e bloqueia sessão concluída',()=>{
+ let s=seed();startSession(s,s.routines[0].id,1000);recordSet(s,s.sessions[0].id,s.exercises[0].id,{reps:10,load:20,rir:3},2000);
+ s=change(s,x=>correctSet(x,0,{reps:8,load:22,rir:2,rpe:8,type:'NORMAL',notes:'Correção'},3000));
+ assert.equal(s.sessions[0].sets[0].load,22);assert.match(s.sessions[0].events[0],/20 kg/);
+ assert.throws(()=>change(s,x=>correctSet(x,0,{reps:0,load:22,rir:2,rpe:8,type:'NORMAL',notes:''})));
+ assert.equal(s.sessions[0].sets[0].reps,8);finishSession(s,s.sessions[0].id,4000);
+ assert.throws(()=>correctSet(s,0,{},5000));
+});
+test('conclusão durante pausa fecha relógios e contabiliza tempo pausado',()=>{
+ const s=seed();startSession(s,s.routines[0].id,1000);recordSet(s,s.sessions[0].id,s.exercises[0].id,{reps:8,load:20,rir:2},2000);
+ startMethod(s,s.exercises[0].id,2000);pauseSession(s,true,3000);finishSession(s,s.sessions[0].id,6000);
+ assert.equal(s.sessions[0].pausedMs,3000);assert.equal(s.sessions[0].pausedAt,0);assert.equal(s.sessions[0].timer,null);validate(s);
 });

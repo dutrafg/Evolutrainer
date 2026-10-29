@@ -1,5 +1,5 @@
 import {advancedEmpty,migrate,validateAdvanced,validatePrescription,prescription,enforceStudent,validateBlocks} from './beta-domain.js';
-export const VERSION = '0.1.0-beta.2';
+export const VERSION = '0.1.0-beta.3';
 export const goals = ['Hipertrofia', 'Emagrecimento', 'Manutenção', 'Definição muscular', 'Condicionamento', 'Força'];
 export const emptyState = () => ({schema:2,advanced:advancedEmpty(),rev:0,profile:null,students:[],exercises:[],routines:[],sessions:[]});
 export const id = () => {
@@ -67,11 +67,11 @@ export function startSession(s,routineId,now=Date.now()) {
 }
 export function recordSet(s,sessionId,exerciseId,draft,now=Date.now()) {
  const session=s.sessions.find(x=>x.id===sessionId && !x.finishedAt);assert(session,'A sessão já foi encerrada.');assert(!session.pausedAt,'Retome a sessão antes de registrar.');
- const item=session.items.find(x=>x.exerciseId===exerciseId);assert(item,'Exercício fora da sessão.');
+ const item=session.items.find(x=>x.exerciseId===exerciseId);assert(item&&!item.replaced,'Exercício fora da sessão ou substituído.');
  session.sets.push({exerciseId,...draft,at:now});session.restUntil=now+item.rest*1000;
 }
 export function finishSession(s,sessionId,now=Date.now()) {
- const session=s.sessions.find(x=>x.id===sessionId && !x.finishedAt);assert(session?.sets.length,'Registre uma série antes de concluir.');session.finishedAt=now;session.restUntil=0;
+ const session=s.sessions.find(x=>x.id===sessionId && !x.finishedAt);assert(session?.sets.length,'Registre uma série antes de concluir.');if(session.pausedAt){session.pausedMs+=Math.max(0,now-session.pausedAt);session.pausedAt=0;}session.finishedAt=now;session.restUntil=0;session.timer=null;
 }
 export const sessionVolume = session => session.sets.reduce((n,x)=>n+x.reps*x.load,0);
 export const initials = name => name.trim().split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase();

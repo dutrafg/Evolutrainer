@@ -1,4 +1,4 @@
-const CACHE='evolupersonal-pwa-shell-0.1.0-beta.2';
+const CACHE='evolupersonal-pwa-shell-0.1.0-beta.3';
 const FILES=['./','./index.html','./student.html','./beta.js','./beta-domain.js','./native.js','./catalog.json','./styles.css','./app.js','./domain.js','./storage.js','./backup.js','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(async cache=>{
  for(const path of FILES){const response=await fetch(new Request(path,{cache:'reload'}));if(!response.ok||response.redirected)throw new Error('Instalação offline incompleta');await cache.put(path,response);}
