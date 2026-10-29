@@ -139,6 +139,18 @@ interface TrainerDao {
     @Query("SELECT * FROM routines WHERE id = :id LIMIT 1")
     suspend fun getRoutine(id: Long): RoutineEntity?
 
+    @Query("SELECT * FROM routine_exercises WHERE routineId = :routineId ORDER BY sortOrder, id")
+    suspend fun getRoutineExerciseList(routineId: Long): List<RoutineExerciseEntity>
+
+    @Query("UPDATE routine_exercises SET targetSets = :sets, targetReps = :reps WHERE id = :id")
+    suspend fun updateTargets(id: Long, sets: Int, reps: Int): Int
+
+    @Query("UPDATE routine_exercises SET sortOrder = :newIndex WHERE id = :id")
+    suspend fun updateSortOrder(id: Long, newIndex: Int): Int
+
+    @Query("DELETE FROM routine_exercises WHERE id = :id")
+    suspend fun removeRoutineExercise(id: Long): Int
+
     @Query("UPDATE routines SET studentId = :studentId WHERE id = :routineId")
     suspend fun assignRoutine(routineId: Long, studentId: Long?): Int
 
