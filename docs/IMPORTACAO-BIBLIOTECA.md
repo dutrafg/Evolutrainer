@@ -35,3 +35,11 @@ Os exercícios e GIFs/3D seguem sendo criados em outro projeto. **Este repositó
 
 ## Critério para importar
 Antes do primeiro lote, confirmar repositório/branch/pasta da biblioteca publicada pelo outro chat, IDs canônicos e formato dos assets. Não presumir que já existem arquivos exportáveis.
+
+## Inventário real consultado em 28/10/2026
+- Fonte: `dutrafg/EvoluPersonal`, branch `codex/evolupersonal-media-350`.
+- 425 GIFs legados com IDs `e0`–`e424` em `dist/assets/exercises/`.
+- A documentação dessa branch registra 295/500 correspondências com a lista MD500 e 205 pendências, com revisão biomecânica ainda necessária.
+- Existe acervo adicional em `dist/assets/md500-3d/` e uma pasta `md500/` com 30 GIFs 2D reprovados; não associar itens reprovados.
+- Não presumir que 425 GIFs equivalem a 425 exercícios canônicos concluídos.
+- O manifesto de origem para a lista oficial é `docs/COMPARACAO_LISTA_500.json` e o inventário é `production/INVENTARIO_MD500.json`.

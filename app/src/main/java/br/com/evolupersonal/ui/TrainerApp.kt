@@ -1,4 +1,4 @@
-package br.com.evolutrainer.ui
+package br.com.evolupersonal.ui
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
@@ -22,10 +22,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import br.com.evolutrainer.data.ExerciseEntity
-import br.com.evolutrainer.data.RoutineEntity
-import br.com.evolutrainer.data.RoutineExerciseEntity
-import br.com.evolutrainer.data.WorkoutSetEntity
+import br.com.evolupersonal.data.ExerciseEntity
+import br.com.evolupersonal.data.RoutineEntity
+import br.com.evolupersonal.data.RoutineExerciseEntity
+import br.com.evolupersonal.data.WorkoutSetEntity
 import java.util.Calendar
 
 private data class TrainerTab(val title: String, val icon: ImageVector)
@@ -62,7 +62,7 @@ fun TrainerApp(viewModel: TrainerViewModel) {
         selectedRoutineId = -1L
     }
 
-    EvoluTrainerTheme(dark = viewModel.isDarkTheme) {
+    EvoluPersonalTheme(dark = viewModel.isDarkTheme) {
         Scaffold(
             containerColor = MaterialTheme.colorScheme.background,
             snackbarHost = { SnackbarHost(snackbar) },
@@ -155,7 +155,7 @@ private fun Header(tabIndex: Int, profileName: String) {
                 letterSpacing = 2.sp
             )
             Text(
-                "TRAINER",
+                "PERSONAL",
                 style = MaterialTheme.typography.labelSmall,
                 letterSpacing = 5.sp,
                 color = MaterialTheme.colorScheme.onSurfaceVariant

@@ -1,4 +1,4 @@
-# EvoluTrainer — Android nativo
+# EvoluPersonal — Android nativo
 
 Aplicativo de treinamento físico para Android desenvolvido **do zero** em Kotlin, Jetpack Compose, Material 3 e Room/SQLite. Não é WebView nem PWA.
 
@@ -20,7 +20,7 @@ Não foi possível realizar a compilação Android neste ambiente, que não disp
 
 ## Biblioteca 3D
 
-A biblioteca canônica de exercícios está sendo concluída **separadamente**, no repositório `dutrafg/EvoluFisico`. O EvoluTrainer mantém exercícios do usuário com `origin=MANUAL` e reserva `externalId` para sincronizar futuramente identificadores canônicos `origin=LIBRARY`, sem duplicação por nome. Não apagar nem modificar a biblioteca externa.
+A biblioteca canônica de exercícios está sendo concluída **separadamente**, no repositório `dutrafg/EvoluFisico`. O EvoluPersonal mantém exercícios do usuário com `origin=MANUAL` e reserva `externalId` para sincronizar futuramente identificadores canônicos `origin=LIBRARY`, sem duplicação por nome. Não apagar nem modificar a biblioteca externa.
 
 ## Branches
 
@@ -28,3 +28,8 @@ A biblioteca canônica de exercícios está sendo concluída **separadamente**, 
 - `feature/android-nativo-base`: implementação ativa.
 
 Ver `docs/ARQUITETURA.md` para decisões, limites e próximo lote.
+
+## Identidade do aplicativo
+O nome oficial a partir desta etapa é **EvoluPersonal**. O repositório técnico ainda mantém o nome antigo `dutrafg/Evolutrainer`; nenhum repositório existente foi renomeado ou apagado.
+
+Os mais de 400 GIFs legados e os dados da lista MD500 permanecem no repositório fonte `dutrafg/EvoluPersonal`, branch `codex/evolupersonal-media-350`. Não são importados automaticamente até passar pelo contrato de integridade.

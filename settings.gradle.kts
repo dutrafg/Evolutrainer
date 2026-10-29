@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "EvoluTrainer"
+rootProject.name = "EvoluPersonal"
 include(":app")

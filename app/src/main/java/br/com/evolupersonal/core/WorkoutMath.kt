@@ -1,4 +1,4 @@
-package br.com.evolutrainer.core
+package br.com.evolupersonal.core
 
 data class TrainingSetInput(
     val repetitions: Int,

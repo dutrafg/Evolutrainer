@@ -1,4 +1,4 @@
-package br.com.evolutrainer.ui
+package br.com.evolupersonal.ui
 
 import android.app.Application
 import androidx.compose.runtime.getValue
@@ -6,14 +6,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import br.com.evolutrainer.core.TrainingSetInput
-import br.com.evolutrainer.core.WorkoutMath
-import br.com.evolutrainer.data.ExerciseEntity
-import br.com.evolutrainer.data.RoutineEntity
-import br.com.evolutrainer.data.RoutineExerciseEntity
-import br.com.evolutrainer.data.TrainerDatabase
-import br.com.evolutrainer.data.WorkoutSessionEntity
-import br.com.evolutrainer.data.WorkoutSetEntity
+import br.com.evolupersonal.core.TrainingSetInput
+import br.com.evolupersonal.core.WorkoutMath
+import br.com.evolupersonal.data.ExerciseEntity
+import br.com.evolupersonal.data.RoutineEntity
+import br.com.evolupersonal.data.RoutineExerciseEntity
+import br.com.evolupersonal.data.TrainerDatabase
+import br.com.evolupersonal.data.WorkoutSessionEntity
+import br.com.evolupersonal.data.WorkoutSetEntity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted

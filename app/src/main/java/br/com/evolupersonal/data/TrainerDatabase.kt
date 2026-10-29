@@ -1,4 +1,4 @@
-package br.com.evolutrainer.data
+package br.com.evolupersonal.data
 
 import android.content.Context
 import androidx.room.Dao
@@ -186,7 +186,7 @@ abstract class TrainerDatabase : RoomDatabase() {
                 instance ?: Room.databaseBuilder(
                     context.applicationContext,
                     TrainerDatabase::class.java,
-                    "evolutrainer.db"
+                    "evolupersonal.db"
                 ).build().also { instance = it }
             }
     }

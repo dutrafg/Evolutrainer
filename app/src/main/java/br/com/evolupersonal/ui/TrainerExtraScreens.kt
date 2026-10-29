@@ -1,4 +1,4 @@
-package br.com.evolutrainer.ui
+package br.com.evolupersonal.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -14,12 +14,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import br.com.evolutrainer.core.WorkoutMath
-import br.com.evolutrainer.data.ExerciseEntity
-import br.com.evolutrainer.data.RoutineEntity
-import br.com.evolutrainer.data.RoutineExerciseEntity
-import br.com.evolutrainer.data.WorkoutSessionEntity
-import br.com.evolutrainer.data.WorkoutSetEntity
+import br.com.evolupersonal.core.WorkoutMath
+import br.com.evolupersonal.data.ExerciseEntity
+import br.com.evolupersonal.data.RoutineEntity
+import br.com.evolupersonal.data.RoutineExerciseEntity
+import br.com.evolupersonal.data.WorkoutSessionEntity
+import br.com.evolupersonal.data.WorkoutSetEntity
 import kotlinx.coroutines.delay
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
@@ -419,7 +419,7 @@ fun ProfileScreen(
             ) {
                 Column(Modifier.weight(1f)) {
                     Text("Modo escuro", fontWeight = FontWeight.SemiBold)
-                    Text("Alterar a aparência do EvoluTrainer", style = MaterialTheme.typography.bodySmall,
+                    Text("Alterar a aparência do EvoluPersonal", style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
                 Switch(checked = dark, onCheckedChange = onThemeChanged)
@@ -427,7 +427,7 @@ fun ProfileScreen(
         }
         Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
             Column(Modifier.padding(18.dp)) {
-                Text("EvoluTrainer 0.1.0-dev", fontWeight = FontWeight.SemiBold)
+                Text("EvoluPersonal 0.1.0-dev", fontWeight = FontWeight.SemiBold)
                 Spacer(Modifier.height(5.dp))
                 Text("Android nativo · Dados offline · Biblioteca 3D em integração futura",
                     style = MaterialTheme.typography.bodySmall,

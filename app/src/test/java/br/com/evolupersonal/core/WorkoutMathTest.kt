@@ -1,4 +1,4 @@
-package br.com.evolutrainer.core
+package br.com.evolupersonal.core
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse

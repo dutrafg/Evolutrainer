@@ -1,7 +1,7 @@
-# Arquitetura e plano — EvoluTrainer 0.1.0-dev
+# Arquitetura e plano — EvoluPersonal 0.1.0-dev
 
 ## Identidade
-Marca: EvoluTrainer. Produto Android nativo, sem copiar os aplicativos de referência. Design: superfícies grafite com cartões, destaque azul-cobalto, verde-menta para sucesso; modo claro/escuro. Navegação inferior com cinco destinos.
+Marca: EvoluPersonal. Produto Android nativo, sem copiar os aplicativos de referência. Design: superfícies grafite com cartões, destaque azul-cobalto, verde-menta para sucesso; modo claro/escuro. Navegação inferior com cinco destinos.
 
 ## Camadas
 - `MainActivity`: instancia o ViewModel com `Application`.

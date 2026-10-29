@@ -1,4 +1,4 @@
-package br.com.evolutrainer.ui
+package br.com.evolupersonal.ui
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -40,7 +40,7 @@ private val lightPalette = lightColorScheme(
 )
 
 @Composable
-fun EvoluTrainerTheme(
+fun EvoluPersonalTheme(
     dark: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
