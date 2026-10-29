@@ -4,3 +4,5 @@ node_modules/
 
 media-source/
 dist/media/
+
+native-dist/

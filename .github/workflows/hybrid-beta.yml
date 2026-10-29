@@ -1,10 +1,10 @@
-name: Híbrido beta — QA da aplicação
+name: Híbrido leve — QA e APK
 on:
   push:
     branches: [feature/pwa-hibrido-beta]
   workflow_dispatch:
 jobs:
-  qa:
+  qa-apk:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -14,12 +14,23 @@ jobs:
         with:
           node-version: '22'
           cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
       - run: npm ci
       - run: npm run check && npm test && npm run build
-      - name: Pacote Android com mídias privadas
-        run: echo 'O APK completo é compilado em dutrafg/EvoluPersonal, branch integration/evolupersonal-beta4-media, workflow export-app-beta4.yml, com a revisão do aplicativo fixada.'
-      - uses: actions/upload-artifact@v4
-        if: always()
+      - name: Verificar APK leve sem GIFs
+        run: test -z "$(find native-dist -name '*.gif' -print -quit)"
+      - run: npx cap sync android
+      - run: base64 -d scripts/beta-signing-key.base64 > android/beta.keystore
+      - uses: gradle/actions/setup-gradle@v4
         with:
-          name: EvoluPersonal-beta-QA
-          path: docs/
+          gradle-version: '8.14.3'
+      - name: Compilar APK
+        working-directory: android
+        run: gradle --no-daemon :app:assembleDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: EvoluPersonal-0.1.0-beta.5-APK-Leve
+          path: android/app/build/outputs/apk/debug/app-debug.apk

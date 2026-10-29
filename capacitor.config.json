@@ -1,7 +1,7 @@
 {
   "appId": "br.com.evolupersonal.hibrido",
   "appName": "EvoluPersonal",
-  "webDir": "dist",
+  "webDir": "native-dist",
   "server": {
     "androidScheme": "https"
   },
