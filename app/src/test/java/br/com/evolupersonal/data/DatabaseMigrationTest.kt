@@ -13,10 +13,12 @@ import org.robolectric.annotation.Config
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [34])
 class DatabaseMigrationTest {
-    @Test fun migratesV1ToV4AndReopensWithoutLosingSessionOrSets() = checkMigration(1)
-    @Test fun migratesV2ToV4AndPreservesExistingStudent() = checkMigration(2)
+    @Test fun migratesV1ToV5AndReopensWithoutLosingSessionOrSets() = checkMigration(1)
+    @Test fun migratesV2ToV5AndPreservesExistingStudent() = checkMigration(2)
 
-    @Test fun migratesV3ToV4WithSafeDefaults() = checkMigration(3)
+    @Test fun migratesV3ToV5WithSafeDefaults() = checkMigration(3)
+
+    @Test fun migratesV4ToV5PreservingExerciseMetadata() = checkMigration(4)
 
     private fun checkMigration(startVersion: Int) = runBlocking {
         val context = ApplicationProvider.getApplicationContext<Context>()
@@ -61,20 +63,30 @@ class DatabaseMigrationTest {
                 sql.execSQL("CREATE TABLE app_settings (id INTEGER NOT NULL PRIMARY KEY, name TEXT NOT NULL, dark INTEGER NOT NULL, initialized INTEGER NOT NULL, experience TEXT NOT NULL, equipment TEXT NOT NULL, goal TEXT NOT NULL, restSeconds INTEGER NOT NULL, weightUnit TEXT NOT NULL, lengthUnit TEXT NOT NULL)")
                 sql.execSQL("INSERT INTO app_settings VALUES(1,'Original',1,1,'Iniciante','','Força',90,'kg','cm')")
             }
+            if (startVersion >= 4) {
+                sql.execSQL("ALTER TABLE exercises ADD COLUMN equipment TEXT NOT NULL DEFAULT ''")
+                sql.execSQL("ALTER TABLE exercises ADD COLUMN instructions TEXT NOT NULL DEFAULT ''")
+                sql.execSQL("ALTER TABLE exercises ADD COLUMN favorite INTEGER NOT NULL DEFAULT 0")
+                sql.execSQL("UPDATE exercises SET equipment='Halteres', instructions='Controle', favorite=1")
+            }
             sql.version = startVersion
         }
         fun open() = Room.databaseBuilder(context, TrainerDatabase::class.java, name)
-            .addMigrations(TrainerDatabase.MIGRATION_1_2, TrainerDatabase.MIGRATION_2_3, TrainerDatabase.MIGRATION_3_4).allowMainThreadQueries().build()
+            .addMigrations(TrainerDatabase.MIGRATION_1_2, TrainerDatabase.MIGRATION_2_3, TrainerDatabase.MIGRATION_3_4, TrainerDatabase.MIGRATION_4_5).allowMainThreadQueries().build()
         try {
             val db = open()
             try {
                 val dao = db.trainerDao()
                 val exercise = dao.exportExercises().single()
                 assertEquals(12L, exercise.id)
-                assertEquals("", exercise.equipment)
-                assertEquals("", exercise.instructions)
-                assertFalse(exercise.favorite)
-                if (startVersion == 3) assertEquals("Original", dao.getSettings()?.name)
+                assertEquals(if (startVersion == 4) "Halteres" else "", exercise.equipment)
+                assertEquals(if (startVersion == 4) "Controle" else "", exercise.instructions)
+                assertEquals(startVersion == 4, exercise.favorite)
+                assertFalse(dao.getRoutine(7)!!.isTemplate)
+                assertFalse(dao.getRoutine(7)!!.archived)
+                assertEquals("", dao.getRoutine(7)!!.divisionLabel)
+                assertEquals("", dao.getRoutine(7)!!.notes)
+                if (startVersion >= 3) assertEquals("Original", dao.getSettings()?.name)
                 assertEquals(7L, dao.exportRoutines().single().id)
                 assertEquals(8L, dao.exportItems().single().id)
                 assertEquals(9L, dao.getActiveSession()?.id)

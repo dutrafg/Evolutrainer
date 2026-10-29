@@ -36,6 +36,7 @@ import kotlinx.coroutines.launch
 class TrainerViewModel(app: Application) : AndroidViewModel(app) {
     private val database = TrainerDatabase.get(app)
     private val dao = database.trainerDao()
+    private val builder = br.com.evolupersonal.data.RoutineBuilder(database)
     private val preferences = app.getSharedPreferences("trainer_settings", 0)
 
     var settings by mutableStateOf(AppSettingsEntity())
@@ -167,13 +168,7 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     fun assignRoutine(routineId: Long, studentId: Long?) = perform {
-        require(dao.getRoutine(routineId) != null) { "Treino não encontrado." }
-        require(studentId == null || dao.getStudent(studentId)?.active == true) { "Selecione um aluno ativo." }
-        val current = dao.getRoutine(routineId)!!
-        require(current.studentId == null || current.studentId == studentId || studentId == null) {
-            "Este treino pertence a outro aluno. Faça uma cópia antes de atribuir."
-        }
-        dao.assignRoutine(routineId, studentId)
+        builder.assign(routineId, studentId)
         statusMessage = if (studentId == null) "Treino desvinculado." else "Treino atribuído ao aluno."
     }
 
@@ -187,71 +182,50 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
         require(dao.setExerciseFavorite(id, favorite) == 1) { "Exercício não encontrado." }
     }
 
-    fun addRoutine(title: String, dayOfWeek: Int) = perform {
-        require(title.trim().length in 2..60) { "Informe o nome do treino." }
-        require(dayOfWeek in 0..7) { "Dia da semana inválido." }
-        dao.insertRoutine(RoutineEntity(title = title.trim(), dayOfWeek = dayOfWeek))
-        statusMessage = "Treino criado. Agora adicione exercícios."
+    fun saveRoutine(id: Long?, title: String, day: Int, division: String, notes: String, template: Boolean, onSaved: (Long) -> Unit) = perform {
+        val saved = builder.save(id, title, day, division, notes, template)
+        statusMessage = if (template) "Modelo salvo." else "Treino salvo."
+        onSaved(saved)
     }
 
-    fun addExerciseToRoutine(routineId: Long, exerciseId: Long) = perform {
-        require(dao.getRoutineExerciseCount(routineId, exerciseId) == 0) {
-            "Esse exercício já está no treino."
-        }
-        val count = dao.getRoutineExerciseCount(routineId)
-        dao.insertRoutineExercise(
-            RoutineExerciseEntity(
-                routineId = routineId,
-                exerciseId = exerciseId,
-                sortOrder = count
-            )
-        )
+    fun createDivision(title: String, labels: List<String>, days: List<Int>, onSaved: () -> Unit) = perform {
+        builder.createDivision(title, labels, days)
+        statusMessage = "Divisão criada. Adicione exercícios às fichas."
+        onSaved()
+    }
+
+    fun copyRoutine(id: Long, asTemplate: Boolean, onSaved: (Long) -> Unit) = perform {
+        val saved = builder.copy(id, asTemplate)
+        statusMessage = if (asTemplate) "Modelo independente salvo." else "Cópia independente criada."
+        onSaved(saved)
+    }
+
+    fun archiveRoutine(id: Long, archived: Boolean, onSaved: () -> Unit) = perform {
+        builder.archive(id, archived)
+        statusMessage = if (archived) "Ficha arquivada. Histórico preservado." else "Ficha restaurada."
+        onSaved()
+    }
+
+    fun addExerciseToRoutine(routineId: Long, exerciseId: Long, onSaved: () -> Unit) = perform {
+        builder.add(routineId, exerciseId)
         statusMessage = "Exercício incluído no treino."
+        onSaved()
     }
 
-    fun duplicateRoutine(routineId: Long) = perform {
-        val routine = dao.getRoutine(routineId)
-            ?: throw IllegalArgumentException("Treino não encontrado.")
-        database.withTransaction {
-            val newId = dao.insertRoutine(
-                routine.copy(id = 0, title = (routine.title + " (cópia)").take(60), studentId = null)
-            )
-            dao.getRoutineExerciseList(routineId).forEach { item ->
-                dao.insertRoutineExercise(item.copy(id = 0, routineId = newId))
-            }
-        }
-        statusMessage = "Cópia do treino criada, sem alterar o original."
-    }
-
-    fun changeTargets(itemId: Long, targetSets: Int, targetReps: Int) = perform {
-        require(targetSets in 1..15 && targetReps in 1..1000) {
-            "Informe 1 a 15 séries e 1 a 1000 repetições."
-        }
-        require(dao.updateTargets(itemId, targetSets, targetReps) > 0) {
-            "Exercício não encontrado na rotina."
-        }
+    fun changeTargets(itemId: Long, targetSets: Int, targetReps: Int, onSaved: () -> Unit) = perform {
+        builder.targets(itemId, targetSets, targetReps)
         statusMessage = "Prescrição atualizada."
+        onSaved()
     }
 
-    fun removeFromRoutine(itemId: Long) = perform {
-        require(dao.getActiveSession() == null) {
-            "Conclua a sessão em andamento antes de alterar a ficha."
-        }
-        require(dao.removeRoutineExercise(itemId) > 0) { "Item não encontrado." }
+    fun removeFromRoutine(itemId: Long, onSaved: () -> Unit) = perform {
+        builder.remove(itemId)
         statusMessage = "Exercício retirado da ficha. Histórico preservado."
+        onSaved()
     }
 
     fun reorderRoutineExercise(routineId: Long, itemId: Long, direction: Int) = perform {
-        require(direction == -1 || direction == 1) { "Direção inválida." }
-        require(dao.getActiveSession() == null) { "Conclua o treino aberto antes de reordenar." }
-        database.withTransaction {
-            val items = dao.getRoutineExerciseList(routineId)
-            val index = items.indexOfFirst { it.id == itemId }
-            require(index >= 0 && index + direction in items.indices) { "Posição inválida." }
-            val other = items[index + direction]
-            dao.updateSortOrder(itemId, other.sortOrder)
-            dao.updateSortOrder(other.id, items[index].sortOrder)
-        }
+        builder.move(routineId, itemId, direction)
         statusMessage = "Ordem do treino atualizada."
     }
 
@@ -267,6 +241,7 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
             "Adicione pelo menos um exercício para começar."
         }
         val routine = dao.getRoutine(routineId) ?: throw IllegalArgumentException("Treino não encontrado.")
+        require(!routine.archived && !routine.isTemplate) { "Use uma ficha ativa para iniciar o treino." }
         require(routine.studentId == null || dao.getStudent(routine.studentId)?.active == true) { "Reative o aluno antes de iniciar um novo treino." }
         dao.insertSession(
             WorkoutSessionEntity(

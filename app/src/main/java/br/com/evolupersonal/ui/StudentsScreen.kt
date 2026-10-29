@@ -57,7 +57,7 @@ fun StudentsScreen(vm: TrainerViewModel, onBack: () -> Unit) {
                         Text(student.name, fontWeight = FontWeight.Bold)
                         Text(student.goal)
                         Text(if (student.active) "Ativo" else "Inativo · histórico preservado", color = MaterialTheme.colorScheme.onSurfaceVariant)
-                        Text("${routines.count { it.studentId == student.id }} treino(s)")
+                        Text("${routines.count { it.studentId == student.id && !it.archived && !it.isTemplate }} treino(s)")
                     }
                 }
             }
@@ -81,7 +81,7 @@ fun StudentsScreen(vm: TrainerViewModel, onBack: () -> Unit) {
                     SectionHeader("Fichas do aluno", "A inativação preserva fichas e sessões anteriores.")
                 }
             }
-            items(routines, key = { it.id }) { routine ->
+            items(routines.filter { !it.archived && !it.isTemplate }, key = { it.id }) { routine ->
                 Card(Modifier.fillMaxWidth()) {
                     Column(Modifier.padding(16.dp)) {
                         Text(routine.title, fontWeight = FontWeight.Bold)

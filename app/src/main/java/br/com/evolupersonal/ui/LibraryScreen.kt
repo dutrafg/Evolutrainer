@@ -99,7 +99,7 @@ fun LibraryScreen(
 }
 
 @Composable
-private fun CatalogFilter(label: String, value: String, options: List<String>, onSelect: (String) -> Unit) {
+internal fun CatalogFilter(label: String, value: String, options: List<String>, onSelect: (String) -> Unit) {
     var open by remember { mutableStateOf(false) }
     Box {
         OutlinedButton(onClick = { open = true }) { Text(if (value.isBlank()) "$label: todos" else "$label: $value") }

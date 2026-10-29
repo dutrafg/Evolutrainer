@@ -48,7 +48,11 @@ data class RoutineEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val title: String,
     val dayOfWeek: Int = 0,
-    val studentId: Long? = null
+    val studentId: Long? = null,
+    @ColumnInfo(defaultValue = "''") val divisionLabel: String = "",
+    @ColumnInfo(defaultValue = "''") val notes: String = "",
+    @ColumnInfo(defaultValue = "0") val isTemplate: Boolean = false,
+    @ColumnInfo(defaultValue = "0") val archived: Boolean = false
 )
 
 @Entity(
@@ -149,6 +153,12 @@ data class AppSettingsEntity(
 
 @Dao
 interface TrainerDao {
+    @Update
+    suspend fun updateRoutine(routine: RoutineEntity): Int
+
+    @Query("SELECT * FROM routine_exercises WHERE id = :id")
+    suspend fun getRoutineItem(id: Long): RoutineExerciseEntity?
+
     @Query("SELECT * FROM exercises WHERE id = :id")
     suspend fun getExercise(id: Long): ExerciseEntity?
 
@@ -279,7 +289,7 @@ interface TrainerDao {
         WorkoutSessionEntity::class,
         WorkoutSetEntity::class
     ],
-    version = 4,
+    version = 5,
     exportSchema = true
 )
 abstract class TrainerDatabase : RoomDatabase() {
@@ -322,13 +332,22 @@ abstract class TrainerDatabase : RoomDatabase() {
             }
         }
 
+        val MIGRATION_4_5 = object : Migration(4, 5) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE routines ADD COLUMN divisionLabel TEXT NOT NULL DEFAULT ''")
+                db.execSQL("ALTER TABLE routines ADD COLUMN notes TEXT NOT NULL DEFAULT ''")
+                db.execSQL("ALTER TABLE routines ADD COLUMN isTemplate INTEGER NOT NULL DEFAULT 0")
+                db.execSQL("ALTER TABLE routines ADD COLUMN archived INTEGER NOT NULL DEFAULT 0")
+            }
+        }
+
         fun get(context: Context): TrainerDatabase =
             instance ?: synchronized(this) {
                 instance ?: Room.databaseBuilder(
                     context.applicationContext,
                     TrainerDatabase::class.java,
                     "evolupersonal.db"
-                ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4).build().also { instance = it }
+                ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5).build().also { instance = it }
             }
     }
 }
