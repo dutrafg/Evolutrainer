@@ -4,6 +4,12 @@ import br.com.evolupersonal.data.*
 
 object PerformanceAnalysis {
     data class Point(val sessionId: Long, val at: Long, val volume: Double, val bestLoad: Double, val reps: Int, val estimated1Rm: Double?)
+    data class WeeklySummary(val sessions: Int, val sets: Int, val volumeKg: Double)
+    fun weeklySummary(sessions: List<WorkoutSessionEntity>, sets: List<WorkoutSetEntity>, now: Long): WeeklySummary {
+        val ids = sessions.filter { it.finishedAt != null && it.finishedAt in (now - 7L * 24 * 60 * 60 * 1000)..now }.map { it.id }.toSet()
+        val work = sets.filter { it.sessionId in ids && it.setType != "AQUECIMENTO" }
+        return WeeklySummary(ids.size, work.size, work.sumOf { it.repetitions * it.loadKg })
+    }
     data class Suggestion(val action: String, val reason: String, val loadKg: Double? = null)
     fun points(sessions: List<WorkoutSessionEntity>, sets: List<WorkoutSetEntity>, exerciseId: Long): List<Point> = sessions.filter { it.finishedAt != null }.sortedBy { it.finishedAt }.mapNotNull { session ->
         val work = sets.filter { it.sessionId == session.id && it.exerciseId == exerciseId && it.setType != "AQUECIMENTO" }
@@ -16,7 +22,8 @@ object PerformanceAnalysis {
         val prescriptions = recent.map { it.snapshot()?.exercises?.firstOrNull { e -> e.exerciseId == exerciseId }?.prescription }
         if (prescriptions.any { it == null || it.method != "NORMAL" }) return Suggestion("Revisar manualmente", "Há sessão sem prescrição histórica ou com método diferente do tradicional.")
         val p = prescriptions.filterNotNull()
-        if (p.any { it.repsMin != p[0].repsMin || it.repsMax != p[0].repsMax || it.sets != p[0].sets }) return Suggestion("Revisar manualmente", "A faixa de repetições ou o número de séries mudou entre as sessões.")
+        if (p.any { it.repsMin != p[0].repsMin || it.repsMax != p[0].repsMax || it.sets != p[0].sets || it.restSeconds != p[0].restSeconds || it.cadence != p[0].cadence }) return Suggestion("Revisar manualmente", "A faixa, séries, descanso ou cadência mudou entre as sessões.")
+        if (sets.any { it.sessionId in recent.map { s -> s.id } && it.exerciseId == exerciseId && it.setType !in setOf("NORMAL", "AQUECIMENTO") }) return Suggestion("Revisar manualmente", "As sessões incluem séries especiais; não se recomenda progressão automática por comparação simples.")
         val groups = recent.map { session -> sets.filter { it.sessionId == session.id && it.exerciseId == exerciseId && it.setType == "NORMAL" } }
         if (groups.any { it.size != p[0].sets || it.any { s -> s.rir == null } }) return Suggestion("Dados insuficientes", "Complete as séries previstas e registre RIR em todas as séries tradicionais.")
         val loads = groups.flatten().map { it.loadKg }.distinct()

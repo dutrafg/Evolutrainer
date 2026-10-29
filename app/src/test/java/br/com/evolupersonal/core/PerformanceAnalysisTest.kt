@@ -21,6 +21,13 @@ class PerformanceAnalysisTest {
         assertEquals("Revisar manualmente", PerformanceAnalysis.progression(sessions.mapIndexed { i, s -> s.copy(studentId = i.toLong()) }, sets(), 1).action)
         assertEquals("Revisar manualmente", PerformanceAnalysis.progression(sessions, sets().mapIndexed { i, s -> s.copy(loadKg = 20.0 + i) }, 1).action)
     }
+    @Test fun weeklySummaryExcludesOpenFutureAndOldSessions() {
+        val summary = PerformanceAnalysis.weeklySummary(sessions + sessions[0].copy(id = 10, finishedAt = null) + sessions[0].copy(id = 11, finishedAt = 999999), sets(), 10000)
+        assertEquals(3, summary.sessions)
+        assertEquals(3, summary.sets)
+        assertEquals(720.0, summary.volumeKg, 0.0)
+        assertEquals(0, PerformanceAnalysis.weeklySummary(sessions, sets(), 10L * 24 * 60 * 60 * 1000).sessions)
+    }
     @Test fun analysisExcludesOpenSessionsWarmupAndOtherExercises() {
         val input = sets() + sets().map { it.copy(exerciseId = 2, loadKg = 100.0) } + sets().map { it.copy(setType = "AQUECIMENTO", loadKg = 100.0) }
         val points = PerformanceAnalysis.points(sessions + sessions.first().copy(id = 99, finishedAt = null), input, 1)

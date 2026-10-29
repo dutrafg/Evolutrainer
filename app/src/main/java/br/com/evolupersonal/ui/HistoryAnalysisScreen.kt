@@ -37,6 +37,9 @@ fun HistoryAnalysisScreen(vm: TrainerViewModel) {
             val snapshot = selectedSession.snapshot()
             TextButton(onClick = { selected = 0 }) { Text("Voltar ao histórico") }
             SectionHeader(snapshot?.title ?: "Sessão legada", DateFormat.getDateTimeInstance().format(Date(selectedSession.finishedAt!!)))
+            val runtime = selectedSession.runtime()
+            val end = if (runtime.pausedAt > 0) minOf(runtime.pausedAt, selectedSession.finishedAt!!) else selectedSession.finishedAt!!
+            Text("Duração ativa: ${((end - selectedSession.startedAt - runtime.pausedMillis).coerceAtLeast(0) / 60000)} min")
             Text(if (snapshot == null) "Sessão anterior à auditoria: a ficha original não pode ser reconstruída com certeza." else "Ficha preservada no início da sessão · ${snapshot.studentName.ifBlank { "Treino pessoal" }}")
             snapshot?.exercises?.forEach { e -> Text("Planejado: ${e.name} · ${e.prescription.sets} × ${e.prescription.repsMin}–${e.prescription.repsMax} · ${e.prescription.method} · ${e.prescription.restSeconds}s") }
             sets.filter { it.sessionId == selected }.forEach { s ->
@@ -52,6 +55,8 @@ fun HistoryAnalysisScreen(vm: TrainerViewModel) {
             OutlinedTextField(note, { note = it.take(1000) }, label = { Text("Adicionar observação ao histórico") }, modifier = Modifier.fillMaxWidth())
             Button(onClick = { vm.saveSessionObservations(selected, note) { note = "" } }, enabled = !vm.busy && note.isNotBlank()) { Text("Salvar observação") }
         } else {
+            val week = PerformanceAnalysis.weeklySummary(sessions, sets, System.currentTimeMillis())
+            Text("Últimos 7 dias: ${week.sessions} sessões · ${week.sets} séries de trabalho · volume ${weight(week.volumeKg)}")
             Text("${sessions.size} sessões concluídas · ${sets.count { s -> sessions.any { it.id == s.sessionId } }} séries")
             CatalogFilter("Exercício", exercises.firstOrNull { it.id == exerciseId }?.name.orEmpty(), exercises.filter { e -> sets.any { it.exerciseId == e.id && sessions.any { h -> h.id == it.sessionId } } }.map { "${it.name} (#${it.id})" }) { value -> exerciseId = exercises.firstOrNull { "${it.name} (#${it.id})" == value }?.id ?: 0 }
             if (exerciseId > 0) {
@@ -59,6 +64,7 @@ fun HistoryAnalysisScreen(vm: TrainerViewModel) {
                 val suggestion = PerformanceAnalysis.progression(sessions, sets, exerciseId)
                 SectionHeader("Desempenho por exercício")
                 Text("${points.size} sessões · melhor carga ${weight(points.maxOfOrNull { it.bestLoad } ?: 0.0)}")
+                Text("Melhor 1RM estimada: ${points.mapNotNull { it.estimated1Rm }.maxOrNull()?.let { weight(it) } ?: "Sem séries de 1–10 repetições com carga positiva"}")
                 val color = MaterialTheme.colorScheme.primary
                 Canvas(Modifier.fillMaxWidth().height(140.dp)) {
                     val shown = points.takeLast(12); val max = shown.maxOfOrNull { it.volume }?.coerceAtLeast(1.0) ?: 1.0
