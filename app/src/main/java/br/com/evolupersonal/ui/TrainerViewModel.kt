@@ -2,6 +2,7 @@ package br.com.evolupersonal.ui
 
 import android.app.Application
 import br.com.evolupersonal.data.runtime
+import br.com.evolupersonal.data.prescription
 import android.net.Uri
 import br.com.evolupersonal.data.AppSettingsEntity
 import br.com.evolupersonal.data.BackupCrypto
@@ -251,6 +252,14 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
         val routine = dao.getRoutine(routineId) ?: throw IllegalArgumentException("Treino não encontrado.")
         require(!routine.archived && !routine.isTemplate) { "Use uma ficha ativa para iniciar o treino." }
         require(routine.studentId == null || dao.getStudent(routine.studentId)?.active == true) { "Reative o aluno antes de iniciar um novo treino." }
+        val prescribed = dao.getRoutineExerciseList(routineId).map { it.prescription() }
+        prescribed.forEach { p ->
+            if (p.method in setOf("SUPER", "BI", "TRI", "CIRCUIT")) {
+                val group = prescribed.filter { it.block == p.block && it.method == p.method }
+                val valid = when (p.method) { "TRI" -> group.size == 3; "CIRCUIT" -> group.size >= 2; else -> group.size == 2 }
+                require(valid) { "Confira os participantes do bloco ${p.block}: bi-set/supersérie exigem 2, tri-set exige 3 e circuito pelo menos 2 exercícios." }
+            }
+        }
         dao.insertSession(
             WorkoutSessionEntity(
                 routineId = routineId,

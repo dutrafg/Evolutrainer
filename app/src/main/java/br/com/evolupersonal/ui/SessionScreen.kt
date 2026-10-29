@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import br.com.evolupersonal.core.IntervalClock
 import br.com.evolupersonal.core.Prescription
+import br.com.evolupersonal.core.WeightUnits
 import br.com.evolupersonal.data.*
 import kotlinx.coroutines.delay
 
@@ -40,8 +41,20 @@ fun SessionScreen(vm: TrainerViewModel, session: WorkoutSessionEntity) {
             val exercise = exercises.firstOrNull { it.id == actualId }
             val previous = allSets.filter { it.exerciseId == actualId && history.any { h -> h.id == it.sessionId && h.studentId == session.studentId } }.maxByOrNull { it.performedAt }
             Text("${Prescription.methods[p.method]} ${p.block} · ${p.sets} × ${p.repsMin}–${p.repsMax}")
-            Text("Carga-alvo: ${p.loadKg ?: "Livre"} kg · RIR ${p.rir ?: "—"} · RPE ${p.rpe ?: "—"} · descanso ${p.restSeconds}s")
+            Text("Carga-alvo: ${p.loadKg?.let { WeightUnits.fromKg(it, LocalWeightUnit.current) } ?: "Livre"} ${LocalWeightUnit.current} · RIR ${p.rir ?: "—"} · RPE ${p.rpe ?: "—"} · descanso ${p.restSeconds}s")
             if (p.cadence.isNotBlank() || p.notes.isNotBlank()) Text("Cadência: ${p.cadence}\n${p.notes}")
+            val recorded = sets.count { it.exerciseId == actualId }
+            Text("Etapa ${recorded + 1} · rodadas planejadas ${p.rounds} · duração-alvo ${p.durationSeconds}s")
+            Text(when (p.method) {
+                "SUPER", "BI", "TRI", "CIRCUIT" -> "Alterne os exercícios do bloco ${p.block} na ordem da ficha; descanse ao terminar a rodada."
+                "DROP" -> "Complete uma etapa, reduza a carga e registre a próxima etapa como Drop."
+                "REST_PAUSE" -> "Registre a série, use o intervalo curto e registre as minisséries seguintes."
+                "CLUSTER" -> "Distribua as repetições em ${p.rounds} blocos com ${p.intervalSeconds}s entre blocos."
+                "EMOM" -> "Inicie a cada minuto: ${p.workSeconds}s de execução e ${p.intervalSeconds}s para completar o minuto."
+                "AMRAP" -> "Complete tantas rodadas quanto possível em ${p.durationSeconds}s, registrando as séries."
+                "HIIT" -> "Alterne ${p.workSeconds}s de execução e ${p.intervalSeconds}s de recuperação por ${p.rounds} rodadas."
+                else -> "Registre cada série e respeite o descanso prescrito."
+            })
             if (actualId != item.exerciseId) Text("Substituição nesta sessão; ficha original preservada.")
             if (state.pausedAt == 0L) {
                 FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
