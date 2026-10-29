@@ -10,7 +10,7 @@ async function key(password,salt) {
 export async function exportBackup(state,password) {
  validate(state);const salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12));
  const encrypted=await crypto.subtle.encrypt({name:'AES-GCM',iv,additionalData:new TextEncoder().encode('EvoluPersonal-PWA:1')},await key(password,salt),new TextEncoder().encode(JSON.stringify(state)));
- return JSON.stringify({format:'EvoluPersonal-PWA',version:1,salt:encode(salt),iv:encode(iv),data:encode(new Uint8Array(encrypted))});
+ const result=JSON.stringify({format:'EvoluPersonal-PWA',version:1,salt:encode(salt),iv:encode(iv),data:encode(new Uint8Array(encrypted))});if(result.length>10*1024*1024)throw new Error('O backup excede 10 MB. Reduza fotos desnecessárias antes de exportar. Nenhum dado local foi alterado.');return result;
 }
 export async function importBackup(text,password) {
  if(text.length>10*1024*1024)throw new Error('O backup excede 10 MB.');

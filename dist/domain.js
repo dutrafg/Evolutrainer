@@ -16,9 +16,9 @@ export function validate(s) {
  assert(s && s.schema===2 && integer(s.rev,0,Number.MAX_SAFE_INTEGER),'Formato de dados incompatível.');
  for(const k of ['students','exercises','routines','sessions']) {
   assert(Array.isArray(s[k]) && s[k].length<=20000,'Quantidade de registros inválida.');
-  assert(s[k].every(x=>x && str(x.id,1,80)) && new Set(s[k].map(x=>x.id)).size===s[k].length,'IDs ausentes ou duplicados.');
+  assert(s[k].every(x=>x && str(x.id,1,80)&&/^[A-Za-z0-9_-]+$/.test(x.id)) && new Set(s[k].map(x=>x.id)).size===s[k].length,'IDs ausentes ou duplicados.');
  }
- if(s.profile) assert(str(s.profile.name,2,60) && ['light','dark'].includes(s.profile.theme),'Perfil inválido.');
+ if(s.profile) assert(str(s.profile.name,2,60) && ['light','dark'].includes(s.profile.theme) && ['kg','lb'].includes(s.profile.weightUnit||'kg') && ['cm','in'].includes(s.profile.lengthUnit||'cm') && ['Iniciante','Intermediário','Avançado'].includes(s.profile.experience||'Iniciante') && integer(s.profile.defaultRest??90,0,3600) && str(s.profile.equipment||'',0,200) && str(s.profile.goal||'',0,100),'Perfil inválido.');
  const students = new Set(s.students.map(x=>x.id)), exercises = new Set(s.exercises.map(x=>x.id));
  s.students.forEach(x=>assert(str(x.name,2,80) && str(x.goal,1,100) && str(x.equipment,0,200) && str(x.availability,0,200) && str(x.notes,0,1000) && typeof x.active==='boolean','Cadastro de aluno inválido.'));
  s.exercises.forEach(x=>assert(str(x.name,2,120) && str(x.muscle,2,50) && str(x.equipment,0,100) && str(x.instructions,0,2000) && typeof x.favorite==='boolean' && (x.secondary===undefined || Array.isArray(x.secondary)&&x.secondary.length<=10&&x.secondary.every(m=>str(m,2,50))),'Exercício inválido.'));
@@ -54,7 +54,7 @@ export function saveRoutine(s, draft) {
  const existing=s.routines.find(x=>x.id===draft.id);
  assert(!s.sessions.some(x=>!x.finishedAt && x.routineId===draft.id),'Conclua a sessão antes de alterar esta ficha.');
  assert(draft.studentId===null || s.students.some(x=>x.id===draft.studentId && x.active),'Selecione um aluno ativo.');
- const value={...draft,id:existing?.id || id(),archived:existing?.archived ?? false,items:existing?.items || []};
+ const value={...draft,id:existing?.id || draft.id || id(),archived:existing?.archived ?? false,items:existing?.items || []};
  if(existing) Object.assign(existing,value);else s.routines.push(value);
 }
 export function startSession(s,routineId,now=Date.now()) {
@@ -75,3 +75,6 @@ export function finishSession(s,sessionId,now=Date.now()) {
 }
 export const sessionVolume = session => session.sets.reduce((n,x)=>n+x.reps*x.load,0);
 export const initials = name => name.trim().split(/\s+/).slice(0,2).map(x=>x[0]).join('').toUpperCase();
+
+export const toKg=(value,unit='kg')=>unit==='lb'?value*.45359237:value;
+export const fromKg=(value,unit='kg')=>unit==='lb'?value/.45359237:value;
