@@ -33,6 +33,16 @@ fun SessionScreen(vm: TrainerViewModel, session: WorkoutSessionEntity) {
         handler.postDelayed(ticker, 1000)
         onDispose { handler.removeCallbacks(ticker) }
     }
+    androidx.activity.compose.BackHandler(replacing > 0) { if (!vm.busy) replacing = 0 }
+    if (replacing > 0) {
+        Column(Modifier.fillMaxSize().imePadding().verticalScroll(rememberScrollState()).padding(18.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            TextButton(onClick = { replacing = 0 }, enabled = !vm.busy) { Text("Voltar à sessão") }
+            SectionHeader("Substituir exercício")
+            OutlinedTextField(search, { search = it.take(160) }, label = { Text("Buscar substituto") }, modifier = Modifier.fillMaxWidth())
+            ExerciseSearch.filter(exercises, search).forEach { e -> TextButton(onClick = { vm.substitute(replacing, e.id) { replacing = 0 } }, enabled = !vm.busy) { Text(e.name) } }
+        }
+        return
+    }
     val clockNow = if (state.pausedAt > 0) state.pausedAt else now
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(18.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         SectionHeader(routines.firstOrNull { it.id == session.routineId }?.title ?: "Sessão")
@@ -77,10 +87,4 @@ fun SessionScreen(vm: TrainerViewModel, session: WorkoutSessionEntity) {
         Button(onClick = { finish = true }, enabled = !vm.busy && sets.isNotEmpty()) { Text("Concluir treino") }
     }
     if (finish) AlertDialog(onDismissRequest = { finish = false }, title = { Text("Concluir treino?") }, text = { Text("${sets.size} séries salvas. Pendências: ${items.mapNotNull { item -> val id = state.substitutions[item.id] ?: item.exerciseId; val missing = (item.prescription().sets - sets.count { it.exerciseId == id && it.setType != "AQUECIMENTO" }).coerceAtLeast(0); if (missing > 0) "${exercises.firstOrNull { it.id == id }?.name}: $missing série(s)" else null }.joinToString().ifBlank { "Nenhuma" }}. A sessão ficará no histórico.") }, confirmButton = { TextButton(onClick = { vm.finishSession(); finish = false }, enabled = !vm.busy) { Text("Confirmar conclusão") } }, dismissButton = { TextButton(onClick = { finish = false }) { Text("Continuar treinando") } })
-    if (replacing > 0) AlertDialog(onDismissRequest = { replacing = 0 }, title = { Text("Substituir exercício") }, text = {
-        Column(Modifier.heightIn(max = 400.dp).verticalScroll(rememberScrollState())) {
-            OutlinedTextField(search, { search = it }, label = { Text("Buscar substituto") })
-            ExerciseSearch.filter(exercises, search).forEach { e -> TextButton(onClick = { vm.substitute(replacing, e.id); replacing = 0 }, enabled = !vm.busy) { Text(e.name) } }
-        }
-    }, confirmButton = { TextButton(onClick = { replacing = 0 }) { Text("Cancelar") } })
 }

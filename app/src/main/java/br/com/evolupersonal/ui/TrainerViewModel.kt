@@ -102,7 +102,7 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
     }
     fun pauseWorkout(paused: Boolean) = perform { br.com.evolupersonal.data.SessionController(database).pause(paused) }
     fun startTimer(work: Int, rest: Int, rounds: Int) = perform { br.com.evolupersonal.data.SessionController(database).timer(work, rest, rounds) }
-    fun substitute(item: Long, exercise: Long) = perform { br.com.evolupersonal.data.SessionController(database).substitute(item, exercise) }
+    fun substitute(item: Long, exercise: Long, onSaved: () -> Unit) = perform { br.com.evolupersonal.data.SessionController(database).substitute(item, exercise); onSaved() }
 
     fun clearStatus() { statusMessage = null }
 
