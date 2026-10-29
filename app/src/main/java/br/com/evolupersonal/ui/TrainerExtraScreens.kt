@@ -43,7 +43,7 @@ fun LibraryScreen(
             .padding(horizontal = 18.dp, vertical = 12.dp),
         verticalArrangement = Arrangement.spacedBy(14.dp)
     ) {
-        SectionHeader("Biblioteca", "500 exercícios oficiais MD500, além dos seus exercícios. As animações ainda não estão incluídas no aplicativo.")
+        SectionHeader("Biblioteca", "Exercícios próprios. Biblioteca 3D será integrada em outra etapa.")
         OutlinedTextField(
             value = filter,
             onValueChange = { filter = it },
@@ -95,16 +95,6 @@ fun LibraryScreen(
                                 exercise.muscleGroup,
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
-                            )
-                            Text(
-                                if (exercise.origin == "LIBRARY") {
-                                    if (exercise.animationPath != null) "MD500 · mídia referenciada na origem"
-                                    else "MD500 · animação pendente"
-                                } else "Exercício pessoal",
-                                style = MaterialTheme.typography.labelSmall,
-                                color = if (exercise.origin == "LIBRARY" && exercise.animationPath != null)
-                                    MaterialTheme.colorScheme.secondary
-                                else MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
                     }

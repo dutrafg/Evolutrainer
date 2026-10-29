@@ -7,7 +7,6 @@ import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.Index
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.PrimaryKey
 import androidx.room.Query
 import androidx.room.Room
@@ -23,9 +22,7 @@ data class ExerciseEntity(
     val name: String,
     val muscleGroup: String,
     val origin: String = "MANUAL",
-    val externalId: String? = null,
-    val animationPath: String? = null,
-    val mediaReviewStatus: String = "SEM_MIDIA"
+    val externalId: String? = null
 )
 
 @Entity(tableName = "routines")
@@ -150,12 +147,6 @@ interface TrainerDao {
 
     @Query("UPDATE workout_sessions SET finishedAt = :finishedAt WHERE id = :sessionId AND finishedAt IS NULL")
     suspend fun finishSession(sessionId: Long, finishedAt: Long): Int
-
-    @Query("SELECT COUNT(*) FROM exercises WHERE origin = 'LIBRARY'")
-    suspend fun countLibraryExercises(): Int
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insertLibraryExercises(items: List<ExerciseEntity>): List<Long>
 
     @Insert
     suspend fun insertExercise(item: ExerciseEntity): Long
