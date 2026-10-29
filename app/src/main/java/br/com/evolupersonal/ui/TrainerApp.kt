@@ -230,9 +230,11 @@ private fun HomeScreen(
                        else if (planned.isNotEmpty()) "${planned.size} treino(s) programado(s) para hoje"
                        else "Construa seu plano e acompanhe sua evolução",
             action = if (activeSession) "Retomar treino" else if (planned.isNotEmpty()) "Ver treino" else "Criar treino",
-            onClick = if (activeSession) onResume
-                      else if (planned.isNotEmpty()) { onOpenRoutine(planned.first().id) }
-                      else onCreate
+            onClick = {
+                if (activeSession) onResume()
+                else if (planned.isNotEmpty()) onOpenRoutine(planned.first().id)
+                else onCreate()
+            }
         )
         OutlinedButton(onClick = onStudents, modifier = Modifier.fillMaxWidth()) {
             Icon(Icons.Outlined.People, null)
