@@ -212,7 +212,7 @@ private fun HomeScreen(
                        else "Construa seu plano e acompanhe sua evolução",
             action = if (activeSession) "Retomar treino" else if (planned.isNotEmpty()) "Ver treino" else "Criar treino",
             onClick = if (activeSession) onResume
-                      else if (planned.isNotEmpty()) {{ onOpenRoutine(planned.first().id) }}
+                      else if (planned.isNotEmpty()) { onOpenRoutine(planned.first().id) }
                       else onCreate
         )
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
