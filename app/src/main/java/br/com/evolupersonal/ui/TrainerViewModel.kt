@@ -164,21 +164,6 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
         } finally { password.fill('\u0000') }
     }
 
-    fun addStudent(name: String, goal: String, equipment: String, notes: String) = perform {
-        require(name.trim().length in 2..80 && goal.trim().length in 1..100) {
-            "Informe nome e objetivo do aluno."
-        }
-        dao.insertStudent(
-            StudentEntity(
-                name = name.trim(),
-                goal = goal.trim(),
-                equipment = equipment.trim().take(200),
-                notes = notes.trim().take(500)
-            )
-        )
-        statusMessage = "Aluno cadastrado com sucesso."
-    }
-
     fun assignRoutine(routineId: Long, studentId: Long?) = perform {
         require(dao.getRoutine(routineId) != null) { "Treino não encontrado." }
         require(studentId == null || dao.getStudent(studentId)?.active == true) { "Selecione um aluno ativo." }

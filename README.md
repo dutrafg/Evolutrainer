@@ -16,7 +16,7 @@ Aplicativo de treinamento físico para Android desenvolvido **do zero** em Kotli
 
 Abrir a pasta no Android Studio com JDK 17+ e SDK 36. Sincronizar Gradle; módulo `app`. Gradle recomendado: 8.13 (compatível com AGP 8.13.2). O wrapper binário não foi incluído nesta primeira base: usar Gradle instalado no Android Studio ou gerar o wrapper (`gradle wrapper --gradle-version 8.13`).
 
-Não foi possível realizar a compilação Android neste ambiente, que não dispõe do Android SDK nem do Gradle instalado. Esta versão é **código-fonte de desenvolvimento**, não APK homologado.
+A compilação Android e os testes são executados no GitHub Actions. O ambiente local não dispõe de SDK/Gradle. Esta versão é de desenvolvimento e exige homologação em aparelhos antes de ser tratada como estável.
 
 ## Biblioteca 3D
 

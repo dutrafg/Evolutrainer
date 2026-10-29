@@ -36,7 +36,7 @@ fun StudentsScreen(vm: TrainerViewModel, onBack: () -> Unit) {
             item(span = { GridItemSpan(maxLineSpan) }) { OutlinedTextField(query, { query = it }, label = { Text("Pesquisar aluno por nome") }, modifier = Modifier.fillMaxWidth(), singleLine = true) }
             item(span = { GridItemSpan(maxLineSpan) }) {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) { listOf("Todos", "Ativos", "Inativos").forEach { value -> FilterChip(selected = filter == value, onClick = { filter = value }, label = { Text(value) }) } }
+                    FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) { listOf("Todos", "Ativos", "Inativos").forEach { value -> FilterChip(selected = filter == value, onClick = { filter = value }, label = { Text(value) }) } }
                     Button(onClick = { editing = 0 }, enabled = !vm.busy) { Text("Cadastrar aluno") }
                 }
             }

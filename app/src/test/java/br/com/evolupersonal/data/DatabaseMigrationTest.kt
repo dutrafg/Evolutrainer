@@ -79,8 +79,11 @@ class DatabaseMigrationTest {
                 }
                 dao.saveSettings(AppSettingsEntity(name = "Profissional", initialized = true))
             } finally { db.close() }
-            val db = open()
-            try { assertEquals("Profissional", db.trainerDao().getSettings()?.name); assertEquals(1, db.trainerDao().exportSets().size) }
+            val reopened = open()
+            try {
+                assertEquals("Profissional", reopened.trainerDao().getSettings()?.name)
+                assertEquals(1, reopened.trainerDao().exportSets().size)
+            } finally { reopened.close() }
         } finally { context.deleteDatabase(name) }
     }
 }

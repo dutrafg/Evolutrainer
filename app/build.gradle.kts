@@ -70,3 +70,11 @@ kotlin {
 
 
 kapt { arguments { arg("room.schemaLocation", "$projectDir/schemas") } }
+
+tasks.withType<Test>().configureEach {
+    maxHeapSize = "2g"
+    testLogging {
+        events("failed", "skipped")
+        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+    }
+}
