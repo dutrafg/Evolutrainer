@@ -111,10 +111,10 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
         settings = updated
     }
 
-    fun saveStudent(id: Long?, name: String, goal: String, equipment: String, notes: String, onSaved: () -> Unit) = perform {
-        require(name.trim().length in 2..80 && goal.trim().length in 1..100 && equipment.length <= 200 && notes.length <= 500) { "Confira nome, objetivo e os limites dos campos." }
+    fun saveStudent(id: Long?, name: String, goal: String, equipment: String, notes: String, availability: String, onSaved: () -> Unit) = perform {
+        require(name.trim().length in 2..80 && goal.trim().length in 1..100 && equipment.length <= 200 && notes.length <= 500 && availability.length <= 200) { "Confira nome, objetivo e os limites dos campos." }
         val current = if (id != null) requireNotNull(dao.getStudent(id)) { "Aluno não encontrado." } else null
-        val student = (current ?: StudentEntity(name = "", goal = "", equipment = "", notes = "")).copy(name = name.trim(), goal = goal.trim(), equipment = equipment.trim(), notes = notes.trim())
+        val student = (current ?: StudentEntity(name = "", goal = "", equipment = "", notes = "")).copy(name = name.trim(), goal = goal.trim(), equipment = equipment.trim(), notes = notes.trim(), availability = availability.trim())
         if (current == null) dao.insertStudent(student) else require(dao.updateStudent(student) == 1)
         statusMessage = "Aluno salvo com sucesso."
         onSaved()

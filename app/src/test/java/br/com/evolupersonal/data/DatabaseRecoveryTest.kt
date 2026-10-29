@@ -22,7 +22,7 @@ class DatabaseRecoveryTest {
     private suspend fun seed() {
         val dao = db.trainerDao()
         dao.saveSettings(AppSettingsEntity(name = "Personal", initialized = true))
-        val student = dao.insertStudent(StudentEntity(name = "José", goal = "Força", equipment = "Halteres", notes = "Histórico"))
+        val student = dao.insertStudent(StudentEntity(name = "José", goal = "Força", equipment = "Halteres", notes = "Histórico", availability = "Segundas às 18h"))
         val exercise = dao.insertExercise(ExerciseEntity(name = "Agachamento", muscleGroup = "Pernas"))
         val routine = dao.insertRoutine(RoutineEntity(title = "Treino A", studentId = student))
         dao.insertRoutineExercise(RoutineExerciseEntity(routineId = routine, exerciseId = exercise))

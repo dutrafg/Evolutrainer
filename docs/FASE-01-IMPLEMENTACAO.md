@@ -10,7 +10,7 @@ Esta fase corresponde às etapas 1–5 da captura fornecida: arquitetura/valida�
 | 2. Dados e recuperação | Migrações v1→v2→v3 sem descarte; exportação completa; backup AES-256-GCM com chave derivada de senha por PBKDF2-HMAC-SHA256 (210.000 iterações e salt aleatório); restauração validada e transacional |
 | 3. Identidade e interface | Nome EvoluPersonal, ícone próprio, versão extraída do build, temas claro/escuro, navegação inferior em telas compactas e lateral a partir de 600 dp, grade adaptável de alunos |
 | 4. Primeiro acesso | Nome profissional, experiência, objetivo, equipamentos e descanso padrão; gravação confirmada no Room; migração do nome/tema previamente salvos; edição posterior no Perfil |
-| 5. Alunos | Cadastro com confirmação de gravação, pesquisa por nome sem distinção de acentos/caixa, filtros Todos/Ativos/Inativos, edição pelo mesmo ID, inativação/reativação e histórico individual |
+| 5. Alunos | Cadastro com confirmação de gravação, pesquisa por nome sem distinção de acentos/caixa, filtros Todos/Ativos/Inativos, edição pelo mesmo ID, disponibilidade de dias/horários, inativação/reativação e histórico individual |
 
 ## Regras de dados
 

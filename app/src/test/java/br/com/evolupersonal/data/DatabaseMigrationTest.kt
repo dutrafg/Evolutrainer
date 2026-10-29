@@ -72,6 +72,7 @@ class DatabaseMigrationTest {
                 if (startVersion == 1) assertTrue(dao.exportStudents().isEmpty())
                 else {
                     assertEquals("Maria", dao.getStudent(42)?.name)
+                    assertEquals("", dao.getStudent(42)?.availability)
                     assertEquals(false, dao.getStudent(42)?.active)
                     assertEquals(42L, dao.exportRoutines().single().studentId)
                     assertEquals(42L, dao.getActiveSession()?.studentId)

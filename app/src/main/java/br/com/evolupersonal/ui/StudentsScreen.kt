@@ -57,6 +57,7 @@ fun StudentsScreen(vm: TrainerViewModel, onBack: () -> Unit) {
                 Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
                     Text(if (target.active) "Aluno ativo" else "Aluno inativo · histórico preservado")
                     Text("Objetivo: ${target.goal}")
+                    Text("Disponibilidade: ${target.availability.ifBlank { "Não informada" }}")
                     Text("Equipamentos: ${target.equipment.ifBlank { "Não informado" }}")
                     if (target.notes.isNotBlank()) Text("Observações: ${target.notes}")
                     OutlinedButton(onClick = { editing = target.id }, enabled = !vm.busy) { Text("Editar aluno") }
@@ -87,22 +88,24 @@ fun StudentsScreen(vm: TrainerViewModel, onBack: () -> Unit) {
     if (confirmInactive && target != null) AlertDialog(onDismissRequest = { confirmInactive = false }, title = { Text("Inativar ${target.name}?") }, text = { Text("O histórico será preservado. Novos treinos ficam bloqueados até a reativação; um treino já aberto pode ser concluído.") }, confirmButton = { TextButton(onClick = { vm.setStudentActive(target.id, false); confirmInactive = false }) { Text("Inativar") } }, dismissButton = { TextButton(onClick = { confirmInactive = false }) { Text("Cancelar") } })
     if (editing >= 0) {
         val student = students.firstOrNull { it.id == editing }
-        StudentEditor(student, vm.busy, onDismiss = { editing = -1L }, onSave = { name, goal, equipment, notes -> vm.saveStudent(student?.id, name, goal, equipment, notes) { editing = -1L } })
+        if (editing == 0L || student != null) StudentEditor(student, vm.busy, onDismiss = { editing = -1L }, onSave = { name, goal, equipment, notes, availability -> vm.saveStudent(student?.id, name, goal, equipment, notes, availability) { editing = -1L } })
     }
 }
 
 @Composable
-private fun StudentEditor(student: StudentEntity?, busy: Boolean, onDismiss: () -> Unit, onSave: (String, String, String, String) -> Unit) {
+private fun StudentEditor(student: StudentEntity?, busy: Boolean, onDismiss: () -> Unit, onSave: (String, String, String, String, String) -> Unit) {
     var name by rememberSaveable(student?.id) { mutableStateOf(student?.name.orEmpty()) }
     var goal by rememberSaveable(student?.id) { mutableStateOf(student?.goal.orEmpty()) }
     var equipment by rememberSaveable(student?.id) { mutableStateOf(student?.equipment.orEmpty()) }
     var notes by rememberSaveable(student?.id) { mutableStateOf(student?.notes.orEmpty()) }
+    var availability by rememberSaveable(student?.id) { mutableStateOf(student?.availability.orEmpty()) }
     AlertDialog(onDismissRequest = { if (!busy) onDismiss() }, title = { Text(if (student == null) "Novo aluno" else "Editar aluno") }, text = {
         Column(Modifier.imePadding().verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             OutlinedTextField(name, { name = it.take(80) }, label = { Text("Nome") }, singleLine = true)
             OutlinedTextField(goal, { goal = it.take(100) }, label = { Text("Objetivo") })
             OutlinedTextField(equipment, { equipment = it.take(200) }, label = { Text("Equipamentos") })
+            OutlinedTextField(availability, { availability = it.take(200) }, label = { Text("Disponibilidade (dias e horários)") })
             OutlinedTextField(notes, { notes = it.take(500) }, label = { Text("Observações") })
         }
-    }, confirmButton = { TextButton(onClick = { onSave(name, goal, equipment, notes) }, enabled = !busy && name.trim().length >= 2 && goal.isNotBlank()) { Text(if (busy) "Salvando…" else "Salvar") } }, dismissButton = { TextButton(onClick = onDismiss, enabled = !busy) { Text("Cancelar") } })
+    }, confirmButton = { TextButton(onClick = { onSave(name, goal, equipment, notes, availability) }, enabled = !busy && name.trim().length >= 2 && goal.isNotBlank()) { Text(if (busy) "Salvando…" else "Salvar") } }, dismissButton = { TextButton(onClick = onDismiss, enabled = !busy) { Text("Cancelar") } })
 }

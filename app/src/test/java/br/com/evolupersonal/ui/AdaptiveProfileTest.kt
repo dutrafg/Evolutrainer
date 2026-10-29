@@ -23,15 +23,28 @@ class AdaptiveProfileTest {
         compose.setContent { TrainerApp(vm) }
         compose.waitUntil(15_000) { vm.ready }
         compose.onNodeWithText("Nome do profissional").performTextInput("Personal Teste")
-        compose.onNodeWithText("Salvar e começar").performScrollTo().assertIsDisplayed().performClick()
-        compose.waitUntil(15_000) { vm.settings.initialized && !vm.busy }
-        compose.onNodeWithText("Alunos (0) · gerenciar").performScrollTo().assertIsDisplayed().performClick()
+        compose.onNodeWithText("Nome do profissional").assertTextContains("Personal Teste")
+        compose.onNodeWithText("Salvar e começar").performScrollTo().assertIsDisplayed().assertIsEnabled().performClick()
+        try {
+            compose.waitUntil(15_000) {
+                org.robolectric.Shadows.shadowOf(android.os.Looper.getMainLooper()).idle()
+                vm.settings.initialized && !vm.busy
+            }
+        } catch (e: Throwable) {
+            println("Profile state: ready=${vm.ready}, busy=${vm.busy}, initialized=${vm.settings.initialized}, status=${vm.statusMessage}")
+            println(compose.onRoot().printToString())
+            throw e
+        }
+        compose.onNodeWithText("Alunos (0) · gerenciar").performScrollTo().assertIsDisplayed().assertIsEnabled().performClick()
         compose.onNodeWithText("Pesquisar aluno por nome").assertIsDisplayed()
         compose.onNodeWithText("Cadastrar aluno").performClick()
         compose.onNodeWithText("Nome").performTextInput("Aluna Tablet")
         compose.onNodeWithText("Objetivo").performTextInput("Força")
         compose.onNodeWithText("Salvar").assertIsDisplayed().performClick()
-        compose.waitUntil(15_000) { !vm.busy && vm.students.value.any { it.name == "Aluna Tablet" } }
+        compose.waitUntil(15_000) {
+            org.robolectric.Shadows.shadowOf(android.os.Looper.getMainLooper()).idle()
+            !vm.busy && vm.students.value.any { it.name == "Aluna Tablet" }
+        }
         compose.onNodeWithText("Aluna Tablet").assertIsDisplayed()
         compose.onNodeWithText("Pesquisar aluno por nome").performTextInput("não existe")
         compose.onNodeWithText("Nenhum aluno encontrado").assertExists()

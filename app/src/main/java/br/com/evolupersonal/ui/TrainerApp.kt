@@ -55,8 +55,8 @@ fun TrainerApp(viewModel: TrainerViewModel) {
     LaunchedEffect(viewModel.statusMessage) {
         val message = viewModel.statusMessage
         if (message != null) {
-            viewModel.clearStatus()
             snackbar.showSnackbar(message)
+            if (viewModel.statusMessage == message) viewModel.clearStatus()
         }
     }
 
@@ -77,6 +77,7 @@ fun TrainerApp(viewModel: TrainerViewModel) {
                     tabs.forEachIndexed { index, tab ->
                         NavigationBarItem(
                             selected = tabIndex == index,
+                            enabled = !viewModel.busy,
                             onClick = { tabIndex = index; showStudents = false },
                             icon = { Icon(tab.icon, contentDescription = null) },
                             label = { Text(tab.title, fontSize = 10.sp, maxLines = 1) },
@@ -101,6 +102,7 @@ fun TrainerApp(viewModel: TrainerViewModel) {
                     tabs.forEachIndexed { index, tab ->
                         NavigationRailItem(
                             selected = tabIndex == index,
+                            enabled = !viewModel.busy,
                             onClick = { tabIndex = index; showStudents = false },
                             icon = { Icon(tab.icon, contentDescription = null) },
                             label = { Text(tab.title) }

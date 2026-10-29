@@ -36,7 +36,8 @@ data class StudentEntity(
     val goal: String,
     val equipment: String,
     val notes: String,
-    val active: Boolean = true
+    val active: Boolean = true,
+    @ColumnInfo(defaultValue = "''") val availability: String = ""
 )
 
 @Entity(tableName = "routines")
@@ -294,6 +295,7 @@ abstract class TrainerDatabase : RoomDatabase() {
 
         val MIGRATION_2_3 = object : Migration(2, 3) {
             override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE students ADD COLUMN availability TEXT NOT NULL DEFAULT ''")
                 db.execSQL("CREATE TABLE IF NOT EXISTS app_settings (id INTEGER NOT NULL PRIMARY KEY, name TEXT NOT NULL, dark INTEGER NOT NULL, initialized INTEGER NOT NULL, experience TEXT NOT NULL, equipment TEXT NOT NULL, goal TEXT NOT NULL, restSeconds INTEGER NOT NULL)")
             }
         }

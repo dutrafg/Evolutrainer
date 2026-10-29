@@ -67,7 +67,7 @@ class TrainerBackup(private val db: TrainerDatabase) {
         val students = ids(data.students.map { it.id }); val exercises = ids(data.exercises.map { it.id })
         val routines = ids(data.routines.map { it.id }); val sessions = ids(data.sessions.map { it.id })
         ids(data.items.map { it.id }); ids(data.sets.map { it.id })
-        require(data.students.all { it.name.trim().length in 2..80 && it.goal.length in 1..100 && it.equipment.length <= 200 && it.notes.length <= 500 })
+        require(data.students.all { it.name.trim().length in 2..80 && it.goal.length in 1..100 && it.equipment.length <= 200 && it.notes.length <= 500 && it.availability.length <= 200 })
         require(data.exercises.all { it.name.length in 2..80 && it.muscleGroup.length in 2..50 && it.origin in listOf("MANUAL", "LIBRARY") })
         require(data.routines.all { it.title.length in 2..60 && it.dayOfWeek in 0..7 && (it.studentId == null || it.studentId in students) })
         require(data.items.all { it.routineId in routines && it.exerciseId in exercises && it.targetSets in 1..15 && it.targetReps in 1..1000 && it.sortOrder >= 0 })
@@ -105,7 +105,7 @@ class TrainerBackup(private val db: TrainerDatabase) {
         }
         fields(json.getAsJsonObject("settings"), setOf("id", "name", "dark", "initialized", "experience", "equipment", "goal", "restSeconds"))
         val tables = mapOf(
-            "students" to setOf("id", "name", "goal", "equipment", "notes", "active"),
+            "students" to setOf("id", "name", "goal", "equipment", "notes", "active", "availability"),
             "exercises" to setOf("id", "name", "muscleGroup", "origin", "externalId"),
             "routines" to setOf("id", "title", "dayOfWeek", "studentId"),
             "items" to setOf("id", "routineId", "exerciseId", "sortOrder", "targetSets", "targetReps"),
