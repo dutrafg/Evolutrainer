@@ -2,7 +2,7 @@
 
 Aplicativo de treinamento físico para Android desenvolvido **do zero** em Kotlin, Jetpack Compose, Material 3 e Room/SQLite. Não é WebView nem PWA.
 
-## Status: 0.5.0-dev — Fase 2 implementada; homologação física pendente
+## Status: 0.6.0-dev — Fase 3, lote 1 (etapas 11–13) validado
 
 - Início, Treinos, Biblioteca, Evolução e Perfil
 - Criação de exercícios manuais e rotinas, associação de exercícios a rotinas
@@ -72,4 +72,8 @@ Construtor: modelos e fichas independentes, divisões A/B/C/D ou personalizadas,
 
 Validação da etapa 7: **42 testes aprovados e APK 0.4.1-dev gerado** na [execução final](https://github.com/dutrafg/Evolutrainer/actions/runs/40841230528). Homologação física de smartphone e tablet ainda pendente.
 
-Fase 2: prescrição por exercício, métodos configuráveis com execução guiada e registro manual, temporizador persistente, pausa/retomada e substituição por sessão. Room v6 e backups v3–v6. **49 testes aprovados**, [build e APK](https://github.com/dutrafg/Evolutrainer/actions/runs/40844110365). A fase 3 permanece bloqueada até encerrar as pendências de homologação em aparelhos.
+Fase 2: prescrição por exercício, métodos configuráveis com execução guiada e registro manual, temporizador persistente, pausa/retomada e substituição por sessão. Room v6 e backups v3–v6. **49 testes aprovados**, [build e APK](https://github.com/dutrafg/Evolutrainer/actions/runs/40844110365). A homologação em aparelhos segue pendente e deve ser concluída antes de uma versão estável.
+
+## Fase 3 — lote 1
+
+Histórico com prescrição preservada, observações e eventos da sessão; análise por aluno/exercício com gráfico, recordes e resumo semanal; progressão explicável sem aplicação automática de cargas. Room v7. **63 testes aprovados e build Android concluído.** [Relatório do lote](docs/FASE-03-LOTE-01.md). As etapas 14 e 15 ficam para o próximo lote.
