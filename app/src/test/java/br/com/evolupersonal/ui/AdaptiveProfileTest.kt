@@ -21,7 +21,10 @@ class AdaptiveProfileTest {
         kotlinx.coroutines.runBlocking(kotlinx.coroutines.Dispatchers.IO) { TrainerDatabase.get(app).clearAllTables() }
         val vm = TrainerViewModel(app)
         compose.setContent { TrainerApp(vm) }
-        compose.waitUntil(15_000) { vm.ready }
+        compose.waitUntil(15_000) {
+            org.robolectric.Shadows.shadowOf(android.os.Looper.getMainLooper()).idle()
+            vm.ready && !vm.busy
+        }
         compose.onNodeWithText("Nome do profissional").performTextInput("Personal Teste")
         compose.onNodeWithText("Nome do profissional").assertTextContains("Personal Teste")
         compose.onNodeWithText("Salvar e começar").performScrollTo().assertIsDisplayed().assertIsEnabled().performSemanticsAction(androidx.compose.ui.semantics.SemanticsActions.OnClick) { it() }
