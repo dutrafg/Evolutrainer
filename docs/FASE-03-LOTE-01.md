@@ -1,6 +1,6 @@
 # Fase 3 — lote 1: etapas 11, 12 e 13
 
-Versão: 0.6.0-dev. Branch: feature/android-nativo-base. **63 testes aprovados e build Android concluído.**
+Versão atual: 0.6.1-dev (complementação do lote). Validação anterior: 0.6.0-dev. Branch: feature/android-nativo-base. **63 testes aprovados e build Android concluído.**
 
 A homologação física das fases anteriores continua pendente. Este lote abrange no máximo três etapas, conforme o limite definido para a fase 3. Etapas 14 e 15 não pertencem a esta entrega.
 
@@ -48,3 +48,24 @@ Resultado: **63 testes, zero falhas, zero erros e zero ignorados**. Regressão a
 Testes novos: regras de aumento/manutenção/redução, ausência de mutações, dados insuficientes e não comparáveis, isolamento por aluno, frequência/volume semanal, snapshot preservado após mudança do cadastro e backup, migração e uso da interface em quatro configurações de smartphone/tablet.
 
 Pendências físicas: teclado, TalkBack, fontes ampliadas, rotação real, arquivos/backup e recuperação completa do processo. Não foram realizados testes em aparelhos físicos nesta entrega.
+
+## Complementação das pendências — 0.6.1-dev
+
+- O motor considera as três sessões mais recentes relacionadas ao exercício, incluindo sessões com séries especiais, apenas aquecimento ou prescrição sem execução. Não busca sessões mais antigas para contornar dados não comparáveis. Sessões de outros exercícios continuam excluídas.
+- Novos registros distinguem planejamento original e substitutos e guardam o item da ficha de origem. Quando a origem não existe nos snapshots da primeira versão v7, a tela informa “Registro legado: origem não identificada”; não inventa essa classificação. Prescrições históricas ambíguas são encaminhadas para revisão manual.
+- O histórico mostra carga-alvo nas unidades selecionadas, RIR/RPE-alvo, cadência, duração, notas técnicas, método, bloco, rodadas e intervalos.
+- Eventos com timestamp numérico são apresentados como data/hora legível, mantendo o texto armazenado e os eventos antigos sem timestamp.
+- Gráficos separados de volume, carga máxima e 1RM estimada, com valores textuais acessíveis. Lacunas de estimativa não são tratadas como zero.
+- Testes adicionais para a seleção de sessões recentes, origem dos registros, apresentação de eventos, restauração de backups v6 e v7 antigos e exibição dos campos/gráficos em quatro configurações de smartphone/tablet.
+
+A alteração do snapshot é interna ao JSON; o banco permanece Room v7, sem alteração de tabelas. A versão 0.6.1-dev mantém a compatibilidade de restauração v3–v7. Resultado da complementação: **68 testes aprovados, zero falhas, erros ou ignorados; build Android aprovado e APK 0.6.1-dev gerado**.
+
+Código validado: `de606f61ab133d132ec463002e9d83b146e6e5a2`.
+
+Execução: https://github.com/dutrafg/Evolutrainer/actions/runs/40860054341
+
+Relatórios: https://github.com/dutrafg/Evolutrainer/actions/runs/40860054341/artifacts/12891451478
+
+APK: https://github.com/dutrafg/Evolutrainer/actions/runs/40860054341/artifacts/12890574486
+
+As pendências de implementação identificadas na revisão do lote 11–13 foram corrigidas. A regressão inclui os fluxos de histórico nas quatro configurações de smartphone/tablet, com verificação dos novos gráficos e campos. A homologação física e a inspeção visual por capturas continuam pendentes. Etapas 14 e 15 não foram iniciadas.
