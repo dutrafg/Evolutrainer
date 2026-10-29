@@ -130,6 +130,12 @@ fun TrainerApp(viewModel: TrainerViewModel) {
                                 exercises = exercises,
                                 onBack = { selectedRoutineId = -1L },
                                 onAddExercise = { viewModel.addExerciseToRoutine(selectedRoutineId, it) },
+                                onDuplicate = { viewModel.duplicateRoutine(selectedRoutineId) },
+                                onChangeTargets = viewModel::changeTargets,
+                                onRemove = viewModel::removeFromRoutine,
+                                onMove = { itemId, direction ->
+                                    viewModel.reorderRoutineExercise(selectedRoutineId, itemId, direction)
+                                },
                                 onStart = { energy, sleep, fatigue -> viewModel.startRoutine(selectedRoutineId, energy, sleep, fatigue) },
                                 onOpenLibrary = { tabIndex = 2 }
                             )
@@ -138,7 +144,8 @@ fun TrainerApp(viewModel: TrainerViewModel) {
                                 routines = routines,
                                 routineExercises = routineExercises,
                                 onOpen = { selectedRoutineId = it },
-                                onCreate = viewModel::addRoutine
+                                onCreate = viewModel::addRoutine,
+                                onDuplicate = viewModel::duplicateRoutine
                             )
                         }
                     }
@@ -342,7 +349,8 @@ private fun RoutinesScreen(
     routines: List<RoutineEntity>,
     routineExercises: List<RoutineExerciseEntity>,
     onOpen: (Long) -> Unit,
-    onCreate: (String, Int) -> Unit
+    onCreate: (String, Int) -> Unit,
+    onDuplicate: (Long) -> Unit
 ) {
     var creating by remember { mutableStateOf(false) }
     Column(
@@ -363,12 +371,18 @@ private fun RoutinesScreen(
                 Column {
                     RoutineCard(routine) { onOpen(routine.id) }
                     val count = routineExercises.count { it.routineId == routine.id }
-                    Text(
-                        "$count exercício(s) associado(s)",
-                        style = MaterialTheme.typography.labelSmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        modifier = Modifier.padding(start = 17.dp, top = 5.dp)
-                    )
+                    Row(
+                        Modifier.fillMaxWidth().padding(start = 17.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            "$count exercício(s) associado(s)",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        TextButton(onClick = { onDuplicate(routine.id) }) { Text("Duplicar") }
+                    }
                 }
             }
         }
@@ -420,11 +434,17 @@ private fun RoutineDetailScreen(
     exercises: List<ExerciseEntity>,
     onBack: () -> Unit,
     onAddExercise: (Long) -> Unit,
+    onDuplicate: () -> Unit,
+    onChangeTargets: (Long, Int, Int) -> Unit,
+    onRemove: (Long) -> Unit,
+    onMove: (Long, Int) -> Unit,
     onStart: (Int?, Int?, Int?) -> Unit,
     onOpenLibrary: () -> Unit
 ) {
     var choosing by remember { mutableStateOf(false) }
     var showCheckIn by remember { mutableStateOf(false) }
+    var editing by remember { mutableStateOf<RoutineExerciseEntity?>(null) }
+    var removing by remember { mutableStateOf<RoutineExerciseEntity?>(null) }
     Column(
         Modifier.fillMaxSize().verticalScroll(rememberScrollState())
             .padding(horizontal = 18.dp, vertical = 12.dp),
@@ -436,13 +456,18 @@ private fun RoutineDetailScreen(
             Text("Todos os treinos")
         }
         SectionHeader(routine?.title ?: "Treino", dayName(routine?.dayOfWeek ?: 0))
+        OutlinedButton(onClick = onDuplicate, modifier = Modifier.fillMaxWidth()) {
+            Icon(Icons.Outlined.ContentCopy, null)
+            Spacer(Modifier.width(7.dp))
+            Text("Duplicar esta ficha")
+        }
         if (items.isEmpty()) {
             EmptyState(
                 "Treino sem exercícios",
                 "Adicione exercícios da sua biblioteca para começar a registrar séries."
             )
         } else {
-            items.forEach { item ->
+            items.forEachIndexed { index, item ->
                 val exercise = exercises.firstOrNull { it.id == item.exerciseId }
                 Card(colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)) {
                     Column(Modifier.fillMaxWidth().padding(17.dp)) {
@@ -451,6 +476,19 @@ private fun RoutineDetailScreen(
                             "${exercise?.muscleGroup ?: "Grupo muscular"} · ${item.targetSets} × ${item.targetReps}",
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
+                        Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                            TextButton(onClick = { editing = item }) { Text("Editar séries") }
+                            TextButton(onClick = { removing = item }) { Text("Remover") }
+                            Spacer(Modifier.weight(1f))
+                            IconButton(
+                                onClick = { onMove(item.id, -1) },
+                                enabled = index > 0
+                            ) { Icon(Icons.Outlined.ArrowUpward, contentDescription = "Mover para cima") }
+                            IconButton(
+                                onClick = { onMove(item.id, 1) },
+                                enabled = index < items.lastIndex
+                            ) { Icon(Icons.Outlined.ArrowDownward, contentDescription = "Mover para baixo") }
+                        }
                     }
                 }
             }
@@ -466,6 +504,55 @@ private fun RoutineDetailScreen(
             Text("Iniciar treino")
         }
     }
+    val editItem = editing
+    if (editItem != null) {
+        var setsDraft by remember(editItem.id) { mutableStateOf(editItem.targetSets.toString()) }
+        var repsDraft by remember(editItem.id) { mutableStateOf(editItem.targetReps.toString()) }
+        val validSets = setsDraft.toIntOrNull()
+        val validReps = repsDraft.toIntOrNull()
+        AlertDialog(
+            onDismissRequest = { editing = null },
+            title = { Text("Editar prescrição") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    OutlinedTextField(
+                        setsDraft, { setsDraft = it.take(2) },
+                        label = { Text("Número de séries (1–15)") }, singleLine = true
+                    )
+                    OutlinedTextField(
+                        repsDraft, { repsDraft = it.take(4) },
+                        label = { Text("Repetições-alvo") }, singleLine = true
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(
+                    enabled = validSets != null && validSets in 1..15 &&
+                        validReps != null && validReps in 1..1000,
+                    onClick = {
+                        if (validSets != null && validReps != null) {
+                            onChangeTargets(editItem.id, validSets, validReps)
+                            editing = null
+                        }
+                    }
+                ) { Text("Salvar") }
+            },
+            dismissButton = { TextButton(onClick = { editing = null }) { Text("Cancelar") } }
+        )
+    }
+    val removeItem = removing
+    if (removeItem != null) {
+        AlertDialog(
+            onDismissRequest = { removing = null },
+            title = { Text("Remover exercício da ficha?") },
+            text = { Text("O exercício sai desta ficha, mas os treinos já realizados permanecem no histórico.") },
+            confirmButton = {
+                TextButton(onClick = { onRemove(removeItem.id); removing = null }) { Text("Remover") }
+            },
+            dismissButton = { TextButton(onClick = { removing = null }) { Text("Cancelar") } }
+        )
+    }
+
     if (showCheckIn) {
         var energy by remember { mutableFloatStateOf(3f) }
         var sleep by remember { mutableFloatStateOf(3f) }
