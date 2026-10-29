@@ -48,13 +48,25 @@ class DatabaseRecoveryTest {
         val before = backup.snapshot()
         val data = Gson().fromJson(String(before), BackupData::class.java)
         try {
-            backup.restore(Gson().toJson(data.copy(routines = data.routines.map { it.copy(studentId = 999) })).toByteArray())
+            backup.restore(com.google.gson.GsonBuilder().serializeNulls().create().toJson(data.copy(routines = data.routines.map { it.copy(studentId = 999) })).toByteArray())
             fail("Dangling student must be rejected")
         } catch (_: IllegalArgumentException) { }
         assertArrayEquals(before, backup.snapshot())
         try { backup.restore("{}".toByteArray()); fail("Missing fields must be rejected") } catch (_: Exception) { }
         assertArrayEquals(before, backup.snapshot())
     }
+    @Test fun sqlFailureDuringRestoreRollsBackAllTables() = runBlocking {
+        seed()
+        val backup = TrainerBackup(db)
+        val before = backup.snapshot()
+        val json = com.google.gson.JsonParser.parseString(String(before)).asJsonObject
+        json.getAsJsonArray("students")[0].asJsonObject.addProperty("name", "Bloqueado")
+        db.openHelper.writableDatabase.execSQL("CREATE TRIGGER reject_restore BEFORE INSERT ON students WHEN NEW.name = 'Bloqueado' BEGIN SELECT RAISE(ABORT, 'simulated write failure'); END")
+        try { backup.restore(json.toString().toByteArray()); fail("Simulated SQL failure must abort") } catch (_: android.database.SQLException) { }
+        assertArrayEquals(before, backup.snapshot())
+        assertEquals(35, db.trainerDao().exportSessions().size)
+    }
+
     @Test fun editAndInactivatePreserveLinksAndHistory() = runBlocking {
         seed()
         val dao = db.trainerDao(); val old = dao.exportStudents().single()

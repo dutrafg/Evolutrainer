@@ -23,12 +23,13 @@ fun ProfileSetupScreen(vm: TrainerViewModel) {
     var equipment by rememberSaveable(s.equipment) { mutableStateOf(s.equipment) }
     var experience by rememberSaveable(s.experience) { mutableStateOf(s.experience) }
     var rest by rememberSaveable(s.restSeconds) { mutableStateOf(s.restSeconds.toString()) }
-    var backupDialog by remember { mutableStateOf(false) }
-    var restoreUri by remember { mutableStateOf<Uri?>(null) }
+    var backupDialog by rememberSaveable { mutableStateOf(false) }
+    var restorePath by rememberSaveable { mutableStateOf<String?>(null) }
+    val restoreUri = restorePath?.let(Uri::parse)
     var password by remember { mutableStateOf("") }
     var repeatedPassword by remember { mutableStateOf("") }
     val export = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("application/octet-stream")) { vm.writeBackup(it) }
-    val restore = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { restoreUri = it }
+    val restore = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { restorePath = it?.toString() }
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.TopCenter) {
         Column(Modifier.widthIn(max = 680.dp).fillMaxSize().imePadding().verticalScroll(rememberScrollState()).padding(20.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
             SectionHeader(if (s.initialized) "Perfil e configurações" else "Bem-vindo ao EvoluPersonal", "Seu perfil profissional e as preferências ficam neste aparelho.")
@@ -65,7 +66,7 @@ fun ProfileSetupScreen(vm: TrainerViewModel) {
     }
     if (backupDialog || restoreUri != null) {
         val restoring = restoreUri != null
-        fun dismiss() { backupDialog = false; restoreUri = null; password = ""; repeatedPassword = "" }
+        fun dismiss() { backupDialog = false; restorePath = null; password = ""; repeatedPassword = "" }
         AlertDialog(
             onDismissRequest = { if (!vm.busy) dismiss() },
             title = { Text(if (restoring) "Restaurar dados?" else "Proteger backup") },

@@ -186,7 +186,7 @@ private fun Header(tabIndex: Int, profileName: String) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Column {
+        Column(Modifier.weight(1f)) {
             Text(
                 "EVOLU",
                 style = MaterialTheme.typography.titleLarge,
@@ -208,7 +208,8 @@ private fun Header(tabIndex: Int, profileName: String) {
             Text(
                 if (tabIndex == 0) "OLÁ, " + (profileName.ifBlank { "ATLETA" }).take(14).uppercase()
                 else tabs[tabIndex].title.uppercase(),
-                modifier = Modifier.padding(horizontal = 13.dp, vertical = 10.dp),
+                modifier = Modifier.widthIn(max = 160.dp).padding(horizontal = 13.dp, vertical = 10.dp),
+                maxLines = 1, overflow = TextOverflow.Ellipsis,
                 style = MaterialTheme.typography.labelSmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )

@@ -13,9 +13,12 @@ import org.robolectric.annotation.Config
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [34])
 class DatabaseMigrationTest {
-    @Test fun migratesV1ToV3AndReopensWithoutLosingSessionOrSets() = runBlocking {
+    @Test fun migratesV1ToV3AndReopensWithoutLosingSessionOrSets() = checkMigration(1)
+    @Test fun migratesV2ToV3AndPreservesExistingStudent() = checkMigration(2)
+
+    private fun checkMigration(startVersion: Int) = runBlocking {
         val context = ApplicationProvider.getApplicationContext<Context>()
-        val name = "migration-test.db"
+        val name = "migration-test-$startVersion.db"
         context.deleteDatabase(name)
         context.openOrCreateDatabase(name, 0, null).use { sql ->
             sql.execSQL("PRAGMA foreign_keys=ON")
@@ -37,12 +40,27 @@ class DatabaseMigrationTest {
             sql.execSQL("INSERT INTO routine_exercises VALUES(8,7,12,0,3,10)")
             sql.execSQL("INSERT INTO workout_sessions VALUES(9,7,1000,NULL)")
             sql.execSQL("INSERT INTO workout_sets VALUES(10,9,12,1,10,25.5,2,1100)")
-            sql.version = 1
+            if (startVersion == 2) {
+                sql.execSQL("CREATE TABLE students (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT NOT NULL, goal TEXT NOT NULL, equipment TEXT NOT NULL, notes TEXT NOT NULL, active INTEGER NOT NULL)")
+                sql.execSQL("ALTER TABLE routines ADD COLUMN studentId INTEGER")
+                sql.execSQL("ALTER TABLE workout_sessions ADD COLUMN studentId INTEGER")
+                sql.execSQL("ALTER TABLE workout_sessions ADD COLUMN energy INTEGER")
+                sql.execSQL("ALTER TABLE workout_sessions ADD COLUMN sleep INTEGER")
+                sql.execSQL("ALTER TABLE workout_sessions ADD COLUMN fatigue INTEGER")
+                sql.execSQL("ALTER TABLE workout_sets ADD COLUMN setType TEXT NOT NULL DEFAULT 'NORMAL'")
+                sql.execSQL("ALTER TABLE workout_sets ADD COLUMN rpe INTEGER")
+                sql.execSQL("ALTER TABLE workout_sets ADD COLUMN notes TEXT NOT NULL DEFAULT ''")
+                sql.execSQL("INSERT INTO students VALUES(42, 'Maria', 'Força', 'Halteres', 'Preservar', 0)")
+                sql.execSQL("UPDATE routines SET studentId = 42")
+                sql.execSQL("UPDATE workout_sessions SET studentId = 42, energy = 3")
+            }
+            sql.version = startVersion
         }
         fun open() = Room.databaseBuilder(context, TrainerDatabase::class.java, name)
             .addMigrations(TrainerDatabase.MIGRATION_1_2, TrainerDatabase.MIGRATION_2_3).allowMainThreadQueries().build()
         try {
-            open().use { db ->
+            val db = open()
+            try {
                 val dao = db.trainerDao()
                 assertEquals(12L, dao.exportExercises().single().id)
                 assertEquals(7L, dao.exportRoutines().single().id)
@@ -51,10 +69,18 @@ class DatabaseMigrationTest {
                 val set = dao.exportSets().single()
                 assertEquals(10L, set.id); assertEquals(25.5, set.loadKg, 0.0)
                 assertEquals("NORMAL", set.setType); assertEquals("", set.notes); assertNull(set.rpe)
-                assertTrue(dao.exportStudents().isEmpty())
+                if (startVersion == 1) assertTrue(dao.exportStudents().isEmpty())
+                else {
+                    assertEquals("Maria", dao.getStudent(42)?.name)
+                    assertEquals(false, dao.getStudent(42)?.active)
+                    assertEquals(42L, dao.exportRoutines().single().studentId)
+                    assertEquals(42L, dao.getActiveSession()?.studentId)
+                    assertEquals(3, dao.getActiveSession()?.energy)
+                }
                 dao.saveSettings(AppSettingsEntity(name = "Profissional", initialized = true))
-            }
-            open().use { db -> assertEquals("Profissional", db.trainerDao().getSettings()?.name); assertEquals(1, db.trainerDao().exportSets().size) }
+            } finally { db.close() }
+            val db = open()
+            try { assertEquals("Profissional", db.trainerDao().getSettings()?.name); assertEquals(1, db.trainerDao().exportSets().size) }
         } finally { context.deleteDatabase(name) }
     }
 }

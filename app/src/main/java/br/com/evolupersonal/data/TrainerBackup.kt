@@ -84,7 +84,25 @@ class TrainerBackup(private val db: TrainerDatabase) {
         val json = com.google.gson.JsonParser.parseString(String(plain, Charsets.UTF_8)).asJsonObject
         val required = setOf("format", "version", "databaseVersion", "settings", "students", "exercises", "routines", "items", "sessions", "sets")
         require(json.keySet() == required) { "Estrutura de backup inválida." }
-        fun fields(obj: com.google.gson.JsonObject, names: Set<String>) { require(obj.keySet() == names) { "Campos ausentes ou incompatíveis." } }
+        fun fields(obj: com.google.gson.JsonObject, names: Set<String>) {
+            require(obj.keySet() == names) { "Campos ausentes ou incompatíveis." }
+            val nullable = setOf("externalId", "studentId", "finishedAt", "energy", "sleep", "fatigue", "rir", "rpe")
+            val integers = setOf("id", "restSeconds", "dayOfWeek", "routineId", "exerciseId", "sortOrder", "targetSets", "targetReps", "startedAt", "finishedAt", "studentId", "energy", "sleep", "fatigue", "sessionId", "setNumber", "repetitions", "rir", "performedAt", "rpe")
+            names.forEach { name ->
+                val value = obj.get(name)
+                if (value.isJsonNull) require(name in nullable) { "Campo obrigatório vazio." }
+                else {
+                    require(value.isJsonPrimitive)
+                    val primitive = value.asJsonPrimitive
+                    when {
+                        name in setOf("dark", "initialized", "active") -> require(primitive.isBoolean)
+                        name in integers -> { require(primitive.isNumber); primitive.asBigDecimal.toBigIntegerExact().longValueExact() }
+                        name == "loadKg" -> require(primitive.isNumber && primitive.asDouble.isFinite())
+                        else -> require(primitive.isString)
+                    }
+                }
+            }
+        }
         fields(json.getAsJsonObject("settings"), setOf("id", "name", "dark", "initialized", "experience", "equipment", "goal", "restSeconds"))
         val tables = mapOf(
             "students" to setOf("id", "name", "goal", "equipment", "notes", "active"),
