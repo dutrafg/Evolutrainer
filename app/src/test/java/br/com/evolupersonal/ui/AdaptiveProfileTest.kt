@@ -51,7 +51,8 @@ class AdaptiveProfileTest {
         compose.onNodeWithText("Aluna Tablet").assertIsDisplayed()
         compose.onNodeWithTag("students-grid").performScrollToNode(hasText("Pesquisar aluno por nome"))
         compose.onNodeWithText("Pesquisar aluno por nome").performTextInput("não existe")
-        compose.onNodeWithText("Nenhum aluno encontrado").assertExists()
+        compose.onNodeWithTag("students-grid").performScrollToNode(hasText("Nenhum aluno encontrado"))
+        compose.onNodeWithText("Nenhum aluno encontrado").assertIsDisplayed()
     }
 
     @Test @Config(qualifiers = "w360dp-h800dp-port") fun smartphonePortrait() = saveProfile()
