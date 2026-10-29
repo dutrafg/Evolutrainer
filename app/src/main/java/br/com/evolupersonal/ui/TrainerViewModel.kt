@@ -104,6 +104,19 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
     fun startTimer(work: Int, rest: Int, rounds: Int) = perform { br.com.evolupersonal.data.SessionController(database).timer(work, rest, rounds) }
     fun substitute(item: Long, exercise: Long, onSaved: () -> Unit) = perform { br.com.evolupersonal.data.SessionController(database).substitute(item, exercise); onSaved() }
 
+    fun saveSessionObservations(id: Long, observations: String, onSaved: () -> Unit) = perform {
+        require(observations.length <= 2000)
+        database.withTransaction {
+            val session = requireNotNull(dao.exportSessions().firstOrNull { it.id == id })
+            val entry = java.text.DateFormat.getDateTimeInstance().format(java.util.Date()) + " · " + observations.trim()
+            val updated = listOf(session.observations, entry).filter { it.isNotBlank() }.joinToString("\n")
+            require(updated.length <= 2000) { "O histórico de observações atingiu o limite de 2000 caracteres." }
+            dao.updateSession(session.copy(observations = updated))
+        }
+        statusMessage = "Observações salvas."
+        onSaved()
+    }
+
     fun clearStatus() { statusMessage = null }
 
     fun saveProfile(name: String, experience: String, equipment: String, goal: String, restSeconds: Int, weightUnit: String, lengthUnit: String) = perform {
@@ -267,7 +280,14 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
                 studentId = routine.studentId,
                 energy = energy,
                 sleep = sleep,
-                fatigue = fatigue
+                fatigue = fatigue,
+                snapshotJson = com.google.gson.Gson().toJson(br.com.evolupersonal.data.SessionSnapshot(
+                    routine.title, routine.studentId?.let { dao.getStudent(it)?.name }.orEmpty(),
+                    dao.getRoutineExerciseList(routineId).map { item ->
+                        val exercise = requireNotNull(dao.getExercise(item.exerciseId))
+                        br.com.evolupersonal.data.SnapshotExercise(exercise.id, exercise.name, exercise.muscleGroup, item.prescription())
+                    }
+                ))
             )
         )
         statusMessage = "Treino iniciado."

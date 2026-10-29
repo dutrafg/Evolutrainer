@@ -145,7 +145,7 @@ fun TrainerApp(viewModel: TrainerViewModel) {
                         }
                     }
                     2 -> LibraryScreen(exercises, viewModel.busy, viewModel::saveExercise, viewModel::setExerciseFavorite)
-                    3 -> ProgressScreen(routines, history, allSets, students)
+                    3 -> HistoryAnalysisScreen(viewModel)
                     4 -> ProfileSetupScreen(viewModel)
                 }
             }

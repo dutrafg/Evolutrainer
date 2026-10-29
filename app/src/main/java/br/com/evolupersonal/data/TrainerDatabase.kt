@@ -104,7 +104,9 @@ data class WorkoutSessionEntity(
     val energy: Int? = null,
     val sleep: Int? = null,
     val fatigue: Int? = null,
-    @ColumnInfo(defaultValue = "''") val runtimeJson: String = ""
+    @ColumnInfo(defaultValue = "''") val runtimeJson: String = "",
+    @ColumnInfo(defaultValue = "''") val snapshotJson: String = "",
+    @ColumnInfo(defaultValue = "''") val observations: String = ""
 )
 
 @Entity(
@@ -294,7 +296,7 @@ interface TrainerDao {
         WorkoutSessionEntity::class,
         WorkoutSetEntity::class
     ],
-    version = 6,
+    version = 7,
     exportSchema = true
 )
 abstract class TrainerDatabase : RoomDatabase() {
@@ -353,13 +355,20 @@ abstract class TrainerDatabase : RoomDatabase() {
             }
         }
 
+        val MIGRATION_6_7 = object : Migration(6, 7) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE workout_sessions ADD COLUMN snapshotJson TEXT NOT NULL DEFAULT ''")
+                db.execSQL("ALTER TABLE workout_sessions ADD COLUMN observations TEXT NOT NULL DEFAULT ''")
+            }
+        }
+
         fun get(context: Context): TrainerDatabase =
             instance ?: synchronized(this) {
                 instance ?: Room.databaseBuilder(
                     context.applicationContext,
                     TrainerDatabase::class.java,
                     "evolupersonal.db"
-                ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6).build().also { instance = it }
+                ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6, MIGRATION_6_7).build().also { instance = it }
             }
     }
 }

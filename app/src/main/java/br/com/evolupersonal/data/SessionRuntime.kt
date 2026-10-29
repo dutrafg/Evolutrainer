@@ -7,7 +7,8 @@ import com.google.gson.Gson
 data class SessionRuntime(
     val pausedAt: Long = 0, val pausedMillis: Long = 0,
     val timerStart: Long = 0, val timerWork: Int = 30, val timerRest: Int = 15, val timerRounds: Int = 1,
-    val substitutions: Map<Long, Long> = emptyMap()
+    val substitutions: Map<Long, Long> = emptyMap(),
+    val events: List<String> = emptyList()
 )
 fun RoutineExerciseEntity.prescription(): Prescription = if (prescriptionJson.isBlank()) Prescription(sets = targetSets, repsMin = targetReps, repsMax = targetReps) else Gson().fromJson(prescriptionJson, Prescription::class.java).also { it.validate() }
 fun WorkoutSessionEntity.runtime(): SessionRuntime = if (runtimeJson.isBlank()) SessionRuntime() else Gson().fromJson(runtimeJson, SessionRuntime::class.java)
@@ -28,7 +29,7 @@ class SessionController(private val db: TrainerDatabase) {
             val duration = (now - state.pausedAt).coerceAtLeast(0)
             state.copy(pausedAt = 0, pausedMillis = state.pausedMillis + duration, timerStart = if (state.timerStart > 0) state.timerStart + duration else 0)
         } else state
-        dao.updateSession(session.copy(runtimeJson = Gson().toJson(updated)))
+        dao.updateSession(session.copy(runtimeJson = Gson().toJson(updated.copy(events = updated.events + "$now · ${if (paused) "Pausa" else "Retomada"}"))))
     }
     suspend fun timer(work: Int, rest: Int, rounds: Int, now: Long = System.currentTimeMillis()) = db.withTransaction {
         require(work in 1..7200 && rest in 0..3600 && rounds in 1..100)
@@ -44,6 +45,9 @@ class SessionController(private val db: TrainerDatabase) {
         val items = dao.getRoutineExerciseList(session.routineId)
         require(items.none { it.id != itemId && (state.substitutions[it.id] ?: it.exerciseId) == exerciseId }) { "Exercício já está na sessão." }
         val changed = state.substitutions.toMutableMap().also { if (exerciseId == item.exerciseId) it.remove(itemId) else it[itemId] = exerciseId }
-        dao.updateSession(session.copy(runtimeJson = Gson().toJson(state.copy(substitutions = changed))))
+        val snapshot = session.snapshot()
+        val exercise = requireNotNull(dao.getExercise(exerciseId))
+        val updatedSnapshot = snapshot?.let { if (it.exercises.any { e -> e.exerciseId == exerciseId }) it else it.copy(exercises = it.exercises + SnapshotExercise(exercise.id, exercise.name, exercise.muscleGroup, item.prescription())) }
+        dao.updateSession(session.copy(runtimeJson = Gson().toJson(state.copy(substitutions = changed, events = state.events + "${System.currentTimeMillis()} · Substituição do item $itemId por ${exercise.name} (#$exerciseId)")), snapshotJson = updatedSnapshot?.let { Gson().toJson(it) } ?: session.snapshotJson))
     }
 }

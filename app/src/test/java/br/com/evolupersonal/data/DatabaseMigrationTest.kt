@@ -22,6 +22,8 @@ class DatabaseMigrationTest {
 
     @Test fun migratesV5ToV6PreservingRoutine() = checkMigration(5)
 
+    @Test fun migratesV6ToV7PreservingSession() = checkMigration(6)
+
     private fun checkMigration(startVersion: Int) = runBlocking {
         val context = ApplicationProvider.getApplicationContext<Context>()
         val name = "migration-test-$startVersion.db"
@@ -77,10 +79,14 @@ class DatabaseMigrationTest {
                 sql.execSQL("ALTER TABLE routines ADD COLUMN isTemplate INTEGER NOT NULL DEFAULT 0")
                 sql.execSQL("ALTER TABLE routines ADD COLUMN archived INTEGER NOT NULL DEFAULT 0")
             }
+            if (startVersion >= 6) {
+                sql.execSQL("ALTER TABLE routine_exercises ADD COLUMN prescriptionJson TEXT NOT NULL DEFAULT ''")
+                sql.execSQL("ALTER TABLE workout_sessions ADD COLUMN runtimeJson TEXT NOT NULL DEFAULT ''")
+            }
             sql.version = startVersion
         }
         fun open() = Room.databaseBuilder(context, TrainerDatabase::class.java, name)
-            .addMigrations(TrainerDatabase.MIGRATION_1_2, TrainerDatabase.MIGRATION_2_3, TrainerDatabase.MIGRATION_3_4, TrainerDatabase.MIGRATION_4_5, TrainerDatabase.MIGRATION_5_6).allowMainThreadQueries().build()
+            .addMigrations(TrainerDatabase.MIGRATION_1_2, TrainerDatabase.MIGRATION_2_3, TrainerDatabase.MIGRATION_3_4, TrainerDatabase.MIGRATION_4_5, TrainerDatabase.MIGRATION_5_6, TrainerDatabase.MIGRATION_6_7).allowMainThreadQueries().build()
         try {
             val db = open()
             try {
