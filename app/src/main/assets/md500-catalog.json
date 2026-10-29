@@ -1,0 +1,4009 @@
+{
+  "formatVersion": 1,
+  "sourceRepository": "dutrafg/EvoluPersonal",
+  "sourceBranch": "codex/evolupersonal-media-350",
+  "sourceFile": "docs/COMPARACAO_LISTA_500.json",
+  "exerciseCount": 500,
+  "exercises": [
+    {
+      "externalId": "md500-001",
+      "name": "Supino Reto com Barra",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e4.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 1
+    },
+    {
+      "externalId": "md500-002",
+      "name": "Supino Inclinado com Barra",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e121.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 2
+    },
+    {
+      "externalId": "md500-003",
+      "name": "Supino Reto com Halteres",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e120.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 3
+    },
+    {
+      "externalId": "md500-004",
+      "name": "Supino Inclinado com Halteres",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e5.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 4
+    },
+    {
+      "externalId": "md500-005",
+      "name": "Supino Declinado com Barra",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e125.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 5
+    },
+    {
+      "externalId": "md500-006",
+      "name": "Paralelas (Mergulho nas Barras Paralelas com foco em Peitoral)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e292.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 6
+    },
+    {
+      "externalId": "md500-007",
+      "name": "Flexão de Braços Tradicional (Push-up)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e21.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 7
+    },
+    {
+      "externalId": "md500-008",
+      "name": "Supino Declinado com Halteres",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e50.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 8
+    },
+    {
+      "externalId": "md500-009",
+      "name": "Supino Reto no Smith",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e169.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 9
+    },
+    {
+      "externalId": "md500-010",
+      "name": "Supino Inclinado no Smith",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e106.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 10
+    },
+    {
+      "externalId": "md500-011",
+      "name": "Supino Declinado no Smith",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e170.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 11
+    },
+    {
+      "externalId": "md500-012",
+      "name": "Supino Reto na Máquina (Sentado / Vertical)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e400.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 12
+    },
+    {
+      "externalId": "md500-013",
+      "name": "Supino Reto Articulado (Convergente)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e250.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 13
+    },
+    {
+      "externalId": "md500-014",
+      "name": "Supino Inclinado Articulado (Convergente)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e100.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 14
+    },
+    {
+      "externalId": "md500-015",
+      "name": "Supino Declinado Articulado (Convergente)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e401.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 15
+    },
+    {
+      "externalId": "md500-016",
+      "name": "Supino Reto na Máquina (Deitado / Horizontal)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e402.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 16
+    },
+    {
+      "externalId": "md500-017",
+      "name": "Supino com Pegada Neutra (Barra Suíça / Football Bar)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e403.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 17
+    },
+    {
+      "externalId": "md500-018",
+      "name": "Supino Reto com Halteres e Pegada Neutra",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e225.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 18
+    },
+    {
+      "externalId": "md500-019",
+      "name": "Supino Inclinado com Halteres e Pegada Neutra",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e404.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 19
+    },
+    {
+      "externalId": "md500-020",
+      "name": "Supino Reto com Rotação de Punho (Pronação no topo)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e405.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 20
+    },
+    {
+      "externalId": "md500-021",
+      "name": "Supino Inclinado a 30 Graus com Halteres",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e406.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 21
+    },
+    {
+      "externalId": "md500-022",
+      "name": "Supino Inclinado a 15 Graus (Baixa Inclinação) com Halteres",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e407.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 22
+    },
+    {
+      "externalId": "md500-023",
+      "name": "Supino Guilhotina (Neck Press) com Barra",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/md500-3d/md23.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 23
+    },
+    {
+      "externalId": "md500-024",
+      "name": "Supino no Chão com Barra (Floor Press)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e277.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 24
+    },
+    {
+      "externalId": "md500-025",
+      "name": "Supino no Chão com Halteres (Dumbbell Floor Press)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e278.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 25
+    },
+    {
+      "externalId": "md500-026",
+      "name": "Supino Pegada Inversa (Supinada) com Barra",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e279.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 26
+    },
+    {
+      "externalId": "md500-027",
+      "name": "Supino Reto Unilateral com Halter",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e408.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 27
+    },
+    {
+      "externalId": "md500-028",
+      "name": "Supino Inclinado Unilateral com Halter",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e280.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 28
+    },
+    {
+      "externalId": "md500-029",
+      "name": "Supino Alternado com Halteres (Banco Reto)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e281.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 29
+    },
+    {
+      "externalId": "md500-030",
+      "name": "Supino Alternado com Halteres (Banco Inclinado)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e282.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 30
+    },
+    {
+      "externalId": "md500-031",
+      "name": "Supino na Polia Baixa (Deitado no Banco Reto)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e283.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 31
+    },
+    {
+      "externalId": "md500-032",
+      "name": "Supino na Polia Baixa (Deitado no Banco Inclinado)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e284.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 32
+    },
+    {
+      "externalId": "md500-033",
+      "name": "Supino em Pé na Polia (Chest Press no Cabo)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e285.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 33
+    },
+    {
+      "externalId": "md500-034",
+      "name": "Supino Unilateral em Pé na Polia",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e286.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 34
+    },
+    {
+      "externalId": "md500-035",
+      "name": "Supino com Pausa no Peito (Paused Bench Press)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e303.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 35
+    },
+    {
+      "externalId": "md500-036",
+      "name": "Supino Spoto (Pausa a 2-3 cm do peito)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e275.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 36
+    },
+    {
+      "externalId": "md500-037",
+      "name": "Supino Larsen (Pernas estendidas no ar)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e276.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 37
+    },
+    {
+      "externalId": "md500-038",
+      "name": "Landmine Press (Empurrada unilateral ou bilateral na barra T)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/md500-3d/md38.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 38
+    },
+    {
+      "externalId": "md500-039",
+      "name": "Landmine Press Ajoelhado",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e287.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 39
+    },
+    {
+      "externalId": "md500-040",
+      "name": "Svend Press (Prensa de anilhas em pé)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e288.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 40
+    },
+    {
+      "externalId": "md500-041",
+      "name": "Hex Press (Supino com halteres colados em pegada neutra)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e289.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 41
+    },
+    {
+      "externalId": "md500-042",
+      "name": "Crucifixo Reto com Halteres",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e22.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 42
+    },
+    {
+      "externalId": "md500-043",
+      "name": "Crucifixo Inclinado com Halteres",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e51.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 43
+    },
+    {
+      "externalId": "md500-044",
+      "name": "Crucifixo Declinado com Halteres",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e174.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 44
+    },
+    {
+      "externalId": "md500-045",
+      "name": "Voador Peitoral / Peck Deck (Com antebraços apoiados)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e304.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 45
+    },
+    {
+      "externalId": "md500-046",
+      "name": "Crucifixo na Máquina (Braços estendidos)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e102.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 46
+    },
+    {
+      "externalId": "md500-047",
+      "name": "Crossover na Polia Alta (Foco inferior/geral)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e175.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 47
+    },
+    {
+      "externalId": "md500-048",
+      "name": "Crossover na Polia Média (Altura dos ombros)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e176.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 48
+    },
+    {
+      "externalId": "md500-049",
+      "name": "Crossover na Polia Baixa (De baixo para cima - foco superior)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e251.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 49
+    },
+    {
+      "externalId": "md500-050",
+      "name": "Crucifixo Reto deitado na Polia Baixa",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e101.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 50
+    },
+    {
+      "externalId": "md500-051",
+      "name": "Crucifixo Inclinado deitado na Polia Baixa",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e409.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 51
+    },
+    {
+      "externalId": "md500-052",
+      "name": "Crucifixo Unilateral na Polia Média",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e410.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 52
+    },
+    {
+      "externalId": "md500-053",
+      "name": "Pullover no Banco com Halter (Foco em expansão torácica/peitoral)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e38.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 53
+    },
+    {
+      "externalId": "md500-054",
+      "name": "Pullover no Banco com Barra W",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e411.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 54
+    },
+    {
+      "externalId": "md500-055",
+      "name": "Flexão de Braços Inclinada (Mãos no banco)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e25.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 55
+    },
+    {
+      "externalId": "md500-056",
+      "name": "Flexão de Braços Declinada (Pés no banco)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e164.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 56
+    },
+    {
+      "externalId": "md500-057",
+      "name": "Flexão de Braços com Sobrecarga (Anilha ou colete)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e290.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 57
+    },
+    {
+      "externalId": "md500-058",
+      "name": "Flexão de Braços nas Argolas (Ring Push-up)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e291.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 58
+    },
+    {
+      "externalId": "md500-059",
+      "name": "Flexão Arqueiro (Archer Push-up)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e252.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 59
+    },
+    {
+      "externalId": "md500-060",
+      "name": "Flexão Pliométrica (Com palma)",
+      "muscleGroup": "Peitoral",
+      "animationPath": "assets/exercises/e412.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 60
+    },
+    {
+      "externalId": "md500-061",
+      "name": "Levantamento Terra Convencional (Deadlift)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e119.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 61
+    },
+    {
+      "externalId": "md500-062",
+      "name": "Barra Fixa Pegada Pronada (Pull-up)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e122.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 62
+    },
+    {
+      "externalId": "md500-063",
+      "name": "Barra Fixa Pegada Supinada (Chin-up)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e123.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 63
+    },
+    {
+      "externalId": "md500-064",
+      "name": "Barra Fixa Pegada Neutra",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e127.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 64
+    },
+    {
+      "externalId": "md500-065",
+      "name": "Remada Curvada com Barra (Pegada Pronada)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e34.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 65
+    },
+    {
+      "externalId": "md500-066",
+      "name": "Remada Curvada com Barra (Pegada Supinada / Yates Row)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e34.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 66
+    },
+    {
+      "externalId": "md500-067",
+      "name": "Remada Pendlay (Saída do solo a cada repetição)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e129.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 67
+    },
+    {
+      "externalId": "md500-068",
+      "name": "Remada Cavalinho (T-Bar Row) Livre",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e56.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 68
+    },
+    {
+      "externalId": "md500-069",
+      "name": "Remada Unilateral com Halter (Remada Serrote / Kroc Row)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e23.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 69
+    },
+    {
+      "externalId": "md500-070",
+      "name": "Puxada Alta na Polia pela Frente (Pulldown Pegada Aberta)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e54.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 70
+    },
+    {
+      "externalId": "md500-071",
+      "name": "Puxada Alta com Triângulo (Pegada Neutra Fechada)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e107.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 71
+    },
+    {
+      "externalId": "md500-072",
+      "name": "Puxada Alta com Pegada Supinada (Fechada ou Média)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e113.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 72
+    },
+    {
+      "externalId": "md500-073",
+      "name": "Puxada Alta com Barra Romana (Pegada Neutra Média)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e413.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 73
+    },
+    {
+      "externalId": "md500-074",
+      "name": "Puxada Alta Articulada na Máquina (Convergente)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e414.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 74
+    },
+    {
+      "externalId": "md500-075",
+      "name": "Puxada Alta Unilateral na Polia",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e91.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 75
+    },
+    {
+      "externalId": "md500-076",
+      "name": "Puxada Alta Ajoelhado na Polia",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/md500-3d/md76.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 76
+    },
+    {
+      "externalId": "md500-077",
+      "name": "Puxada Alta por Trás da Nuca (Uso específico/mobilidade)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 77
+    },
+    {
+      "externalId": "md500-078",
+      "name": "Barra Fixa no Graviton (Máquina Assistida)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e154.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 78
+    },
+    {
+      "externalId": "md500-079",
+      "name": "Barra Fixa com Elástico de Assistência",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e415.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 79
+    },
+    {
+      "externalId": "md500-080",
+      "name": "Barra Fixa com Carga Adicional (Cinto de Lastro)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e307.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 80
+    },
+    {
+      "externalId": "md500-081",
+      "name": "Barra Fixa no Triângulo (Sternum Chin-up)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e416.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 81
+    },
+    {
+      "externalId": "md500-082",
+      "name": "Puxada Ilíaca Unilateral na Polia (Foco na divisão inferior da dorsal)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e305.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 82
+    },
+    {
+      "externalId": "md500-083",
+      "name": "Remada Cavalinho na Máquina (Com apoio no peito)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e202.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 83
+    },
+    {
+      "externalId": "md500-084",
+      "name": "Remada Baixa Sentado na Polia com Triângulo",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e7.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 84
+    },
+    {
+      "externalId": "md500-085",
+      "name": "Remada Baixa Sentado na Polia com Barra Reta (Pegada Aberta)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e165.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 85
+    },
+    {
+      "externalId": "md500-086",
+      "name": "Remada Baixa Sentado na Polia com Barra Romana",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e417.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 86
+    },
+    {
+      "externalId": "md500-087",
+      "name": "Remada Baixa Sentado na Polia com Pegada Supinada",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e418.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 87
+    },
+    {
+      "externalId": "md500-088",
+      "name": "Remada Baixa Unilateral na Polia Sentado",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/md500-3d/md88.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 88
+    },
+    {
+      "externalId": "md500-089",
+      "name": "Remada Sentado na Máquina (Pegada Neutra)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e109.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 89
+    },
+    {
+      "externalId": "md500-090",
+      "name": "Remada Sentado na Máquina (Pegada Pronada Aberta - Foco Upper Back)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e419.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 90
+    },
+    {
+      "externalId": "md500-091",
+      "name": "Remada Articulada Unilateral na Máquina",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e166.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 91
+    },
+    {
+      "externalId": "md500-092",
+      "name": "Remada Curvada no Smith",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e420.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 92
+    },
+    {
+      "externalId": "md500-093",
+      "name": "Remada Curvada com Halteres (Bilateral)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e253.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 93
+    },
+    {
+      "externalId": "md500-094",
+      "name": "Remada no Banco Inclinado com Halteres (Peito apoiado / Chest-Supported Row)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e159.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 94
+    },
+    {
+      "externalId": "md500-095",
+      "name": "Remada no Banco Inclinado com Barra",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e421.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 95
+    },
+    {
+      "externalId": "md500-096",
+      "name": "Seal Row (Remada deitado totalmente na horizontal no banco alto)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e306.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 96
+    },
+    {
+      "externalId": "md500-097",
+      "name": "Meadows Row (Remada unilateral transversal na barra Landmine)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e205.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 97
+    },
+    {
+      "externalId": "md500-098",
+      "name": "Remada Unilateral no Landmine (Posição paralela)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e422.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 98
+    },
+    {
+      "externalId": "md500-099",
+      "name": "Remada Serrote na Polia Baixa",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e254.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 99
+    },
+    {
+      "externalId": "md500-100",
+      "name": "Remada Serrote no Smith",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e423.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 100
+    },
+    {
+      "externalId": "md500-101",
+      "name": "Remada Alta na Polia Sentado com Corda (Puxando em direção ao peito/pescoço)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/md500-3d/md101.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 101
+    },
+    {
+      "externalId": "md500-102",
+      "name": "Remada Invertida na Barra (Australian Pull-up)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e229.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 102
+    },
+    {
+      "externalId": "md500-103",
+      "name": "Remada Invertida no TRX / Argolas",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e36.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 103
+    },
+    {
+      "externalId": "md500-104",
+      "name": "Helms Row (Remada apoiada na ponta do banco com halteres)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/md500-3d/md104.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 104
+    },
+    {
+      "externalId": "md500-105",
+      "name": "Remada Gorila com Kettlebells (Gorilla Row)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e424.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 105
+    },
+    {
+      "externalId": "md500-106",
+      "name": "Remada Renegada (Renegade Row em posição de prancha)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e92.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 106
+    },
+    {
+      "externalId": "md500-107",
+      "name": "Pulldown na Polia Alta com Barra Reta (Braços estendidos)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e57.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 107
+    },
+    {
+      "externalId": "md500-108",
+      "name": "Pulldown na Polia Alta com Corda",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e172.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 108
+    },
+    {
+      "externalId": "md500-109",
+      "name": "Pulldown Unilateral na Polia Alta",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/md500-3d/md109.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 109
+    },
+    {
+      "externalId": "md500-110",
+      "name": "Pullover na Máquina (Nautilus Pullover)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e173.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 110
+    },
+    {
+      "externalId": "md500-111",
+      "name": "Pullover no Cabo Declinado ou no Banco Reto",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/md500-3d/md111.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 111
+    },
+    {
+      "externalId": "md500-112",
+      "name": "Oração na Polia (Kneeling Lat Prayer)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e294.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 112
+    },
+    {
+      "externalId": "md500-113",
+      "name": "Meio Levantamento Terra no Rack (Rack Pull)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e295.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 113
+    },
+    {
+      "externalId": "md500-114",
+      "name": "Levantamento Terra com Barra Hexagonal (Trap Bar Deadlift)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e261.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 114
+    },
+    {
+      "externalId": "md500-115",
+      "name": "Levantamento Terra com Déficit (Em cima de anilha/caixote)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/md500-3d/md115.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 115
+    },
+    {
+      "externalId": "md500-116",
+      "name": "Levantamento Terra Snatch Grip (Pegada muito aberta)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/md500-3d/md116.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 116
+    },
+    {
+      "externalId": "md500-117",
+      "name": "Encolhimento de Ombros com Barra pela Frente",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e231.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 117
+    },
+    {
+      "externalId": "md500-118",
+      "name": "Encolhimento de Ombros com Barra por Trás",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/md500-3d/md118.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 118
+    },
+    {
+      "externalId": "md500-119",
+      "name": "Encolhimento de Ombros com Halteres em Pé",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e85.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 119
+    },
+    {
+      "externalId": "md500-120",
+      "name": "Encolhimento de Ombros com Halteres Sentado",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/md500-3d/md120.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 120
+    },
+    {
+      "externalId": "md500-121",
+      "name": "Encolhimento de Ombros no Banco Inclinado (Foco no trapézio médio/superior)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/md500-3d/md121.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 121
+    },
+    {
+      "externalId": "md500-122",
+      "name": "Encolhimento de Ombros no Smith",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/md500-3d/md122.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 122
+    },
+    {
+      "externalId": "md500-123",
+      "name": "Encolhimento de Ombros na Polia Baixa",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/md500-3d/md123.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 123
+    },
+    {
+      "externalId": "md500-124",
+      "name": "Encolhimento de Ombros na Máquina (Ou no aparelho de Supino em pé)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e308.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 124
+    },
+    {
+      "externalId": "md500-125",
+      "name": "Encolhimento com Barra Hexagonal (Trap Bar Shrug)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/md500-3d/md125.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 125
+    },
+    {
+      "externalId": "md500-126",
+      "name": "Encolhimento Kelso (Kelso Shrug - retração escapular no banco inclinado)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e298.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 126
+    },
+    {
+      "externalId": "md500-127",
+      "name": "Encolhimento Acima da Cabeça (Overhead Shrug com Barra)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e297.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 127
+    },
+    {
+      "externalId": "md500-128",
+      "name": "Remada Alta Pegada Fechada (Foco em Trapézio)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/md500-3d/md128.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 128
+    },
+    {
+      "externalId": "md500-129",
+      "name": "Face Pull na Polia com Corda (Foco em Trapézio Médio/Inferior e Romboides)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e204.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 129
+    },
+    {
+      "externalId": "md500-130",
+      "name": "Elevação em Y no Banco Inclinado com Halteres (Foco em Trapézio Inferior)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e86.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 130
+    },
+    {
+      "externalId": "md500-131",
+      "name": "Elevação em T no Banco Inclinado com Halteres (Foco em Romboides)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e299.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 131
+    },
+    {
+      "externalId": "md500-132",
+      "name": "Elevação em W no Banco Inclinado com Halteres",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e300.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 132
+    },
+    {
+      "externalId": "md500-133",
+      "name": "Retração Escapular na Barra Fixa (Scapular Pull-up)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e293.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 133
+    },
+    {
+      "externalId": "md500-134",
+      "name": "Retração Escapular na Puxada Alta",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/md500-3d/md134.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 134
+    },
+    {
+      "externalId": "md500-135",
+      "name": "Crucifixo Inverso no Cabo (Foco em Upper Back/Romboides)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e171.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 135
+    },
+    {
+      "externalId": "md500-136",
+      "name": "Remada com Elástico Sentado",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e35.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 136
+    },
+    {
+      "externalId": "md500-137",
+      "name": "Puxada de Trenó com Corda (Sled Pull)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/md500-3d/md137.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 137
+    },
+    {
+      "externalId": "md500-138",
+      "name": "Caminhada do Fazendeiro (Farmer's Walk - Foco em Trapézio e Estabilizadores)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e84.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 138
+    },
+    {
+      "externalId": "md500-139",
+      "name": "Levantamento Reeves (Reeves Deadlift - pegada na aba das anilhas)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e296.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 139
+    },
+    {
+      "externalId": "md500-140",
+      "name": "Crucifixo Inverso na Máquina (Peck Deck Inverso com escápulas móveis)",
+      "muscleGroup": "Costas: Dorsais, Romboides e Trapézio",
+      "animationPath": "assets/exercises/e110.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 140
+    },
+    {
+      "externalId": "md500-141",
+      "name": "Agachamento Livre com Barra (Back Squat - Barra Alta)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e130.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 141
+    },
+    {
+      "externalId": "md500-142",
+      "name": "Agachamento Livre com Barra Baixa (Low Bar Squat)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e131.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 142
+    },
+    {
+      "externalId": "md500-143",
+      "name": "Agachamento Frontal com Barra (Front Squat)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e118.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 143
+    },
+    {
+      "externalId": "md500-144",
+      "name": "Leg Press 45 Graus",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e1.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 144
+    },
+    {
+      "externalId": "md500-145",
+      "name": "Agachamento Hack na Máquina (Hack Squat)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e104.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 145
+    },
+    {
+      "externalId": "md500-146",
+      "name": "Agachamento Búlgaro com Halteres (Tronco ereto - foco em Quadríceps)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e355.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 146
+    },
+    {
+      "externalId": "md500-147",
+      "name": "Passada / Avanço Caminhando com Halteres (Walking Lunges)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e133.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 147
+    },
+    {
+      "externalId": "md500-148",
+      "name": "Agachamento no Smith (Pés alinhados ou levemente à frente)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e117.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 148
+    },
+    {
+      "externalId": "md500-149",
+      "name": "Agachamento Frontal no Smith",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e258.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 149
+    },
+    {
+      "externalId": "md500-150",
+      "name": "Agachamento Goblet (Com Halter ou Kettlebell no peito)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e26.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 150
+    },
+    {
+      "externalId": "md500-151",
+      "name": "Agachamento Zercher (Barra apoiada na dobra dos cotovelos)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e309.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 151
+    },
+    {
+      "externalId": "md500-152",
+      "name": "Agachamento com Barra de Segurança (Safety Bar Squat - SSB)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/md500-3d/md152.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 152
+    },
+    {
+      "externalId": "md500-153",
+      "name": "Agachamento Pêndulo na Máquina (Pendulum Squat)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 153
+    },
+    {
+      "externalId": "md500-154",
+      "name": "Agachamento no Cinto (Belt Squat)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e191.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 154
+    },
+    {
+      "externalId": "md500-155",
+      "name": "Agachamento V-Squat na Máquina",
+      "muscleGroup": "Quadríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 155
+    },
+    {
+      "externalId": "md500-156",
+      "name": "Agachamento Ciclista (Calcanhares elevados em rampa/anilhas)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e310.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 156
+    },
+    {
+      "externalId": "md500-157",
+      "name": "Agachamento na Caixa (Box Squat)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e167.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 157
+    },
+    {
+      "externalId": "md500-158",
+      "name": "Agachamento com Pausa no Fundo (Paused Squat)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e353.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 158
+    },
+    {
+      "externalId": "md500-159",
+      "name": "Agachamento Anderson (Saída dos pinos de segurança do fundo)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e311.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 159
+    },
+    {
+      "externalId": "md500-160",
+      "name": "Agachamento com Halteres nas Laterais do Corpo",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/md500-3d/md160.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 160
+    },
+    {
+      "externalId": "md500-161",
+      "name": "Agachamento com Dois Kettlebells no Peito (Double Kettlebell Front Squat)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e312.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 161
+    },
+    {
+      "externalId": "md500-162",
+      "name": "Agachamento Acima da Cabeça (Overhead Squat)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/md500-3d/md162.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 162
+    },
+    {
+      "externalId": "md500-163",
+      "name": "Agachamento Jefferson (Barra entre as pernas)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/md500-3d/md163.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 163
+    },
+    {
+      "externalId": "md500-164",
+      "name": "Agachamento Sumô com Barra (Tronco vertical)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e350.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 164
+    },
+    {
+      "externalId": "md500-165",
+      "name": "Agachamento Sumô com Halter / Kettlebell",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e27.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 165
+    },
+    {
+      "externalId": "md500-166",
+      "name": "Agachamento Sumô no Smith",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/md500-3d/md166.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 166
+    },
+    {
+      "externalId": "md500-167",
+      "name": "Agachamento na Parede Isométrico (Wall Sit)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e98.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 167
+    },
+    {
+      "externalId": "md500-168",
+      "name": "Agachamento Hack com Barra Livre (Barra por trás das pernas)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/md500-3d/md168.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 168
+    },
+    {
+      "externalId": "md500-169",
+      "name": "Leg Press Horizontal na Máquina",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e156.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 169
+    },
+    {
+      "externalId": "md500-170",
+      "name": "Leg Press Vertical (90 Graus)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/md500-3d/md170.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 170
+    },
+    {
+      "externalId": "md500-171",
+      "name": "Leg Press Articulado (Iso-Lateral)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 171
+    },
+    {
+      "externalId": "md500-172",
+      "name": "Leg Press 45° Unilateral",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e259.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 172
+    },
+    {
+      "externalId": "md500-173",
+      "name": "Leg Press Horizontal Unilateral",
+      "muscleGroup": "Quadríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 173
+    },
+    {
+      "externalId": "md500-174",
+      "name": "Leg Press 45° com Pés Baixos e Juntos (Ênfase máxima em Quadríceps)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e313.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 174
+    },
+    {
+      "externalId": "md500-175",
+      "name": "Agachamento Hack Unilateral",
+      "muscleGroup": "Quadríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 175
+    },
+    {
+      "externalId": "md500-176",
+      "name": "Afundo Estático com Barra Livre (Split Squat)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/md500-3d/md176.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 176
+    },
+    {
+      "externalId": "md500-177",
+      "name": "Afundo Estático com Halteres",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/md500-3d/md177.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 177
+    },
+    {
+      "externalId": "md500-178",
+      "name": "Afundo Estático no Smith",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/md500-3d/md178.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 178
+    },
+    {
+      "externalId": "md500-179",
+      "name": "Afundo com Pé da Frente Elevado (Front Foot Elevated Split Squat)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e314.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 179
+    },
+    {
+      "externalId": "md500-180",
+      "name": "Passada / Avanço Caminhando com Barra nas Costas",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e356.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 180
+    },
+    {
+      "externalId": "md500-181",
+      "name": "Avanço Reverso (Passo para trás) com Barra",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e235.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 181
+    },
+    {
+      "externalId": "md500-182",
+      "name": "Avanço Reverso com Halteres",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e76.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 182
+    },
+    {
+      "externalId": "md500-183",
+      "name": "Avanço Reverso no Smith",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e359.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 183
+    },
+    {
+      "externalId": "md500-184",
+      "name": "Agachamento Búlgaro com Barra Livre",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/md500-3d/md184.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 184
+    },
+    {
+      "externalId": "md500-185",
+      "name": "Agachamento Búlgaro no Smith",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e192.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 185
+    },
+    {
+      "externalId": "md500-186",
+      "name": "Subida no Banco / Caixa com Halteres (Step-up)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e210.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 186
+    },
+    {
+      "externalId": "md500-187",
+      "name": "Subida no Banco com Barra",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/md500-3d/md187.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 187
+    },
+    {
+      "externalId": "md500-188",
+      "name": "Step-up Lateral na Caixa",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/md500-3d/md188.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 188
+    },
+    {
+      "externalId": "md500-189",
+      "name": "Step-down (Descida controlada da caixa - foco no vasto medial)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e315.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 189
+    },
+    {
+      "externalId": "md500-190",
+      "name": "Poliquin Step-up (Com calcanhar elevado na rampa)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e316.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 190
+    },
+    {
+      "externalId": "md500-191",
+      "name": "Agachamento Pistol (Unilateral com peso do corpo)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/md500-3d/md191.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 191
+    },
+    {
+      "externalId": "md500-192",
+      "name": "Agachamento Skater (Unilateral tocando o joelho de trás no chão)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e317.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 192
+    },
+    {
+      "externalId": "md500-193",
+      "name": "Cadeira Extensora (Bilateral)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e2.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 193
+    },
+    {
+      "externalId": "md500-194",
+      "name": "Cadeira Extensora Unilateral",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e237.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 194
+    },
+    {
+      "externalId": "md500-195",
+      "name": "Cadeira Extensora com Tronco Reclinado (Maior estiramento do reto femoral)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e318.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 195
+    },
+    {
+      "externalId": "md500-196",
+      "name": "Sissy Squat Livre (Peso do corpo ou segurando anilha)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e319.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 196
+    },
+    {
+      "externalId": "md500-197",
+      "name": "Sissy Squat no Aparelho / Suporte de Pés",
+      "muscleGroup": "Quadríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 197
+    },
+    {
+      "externalId": "md500-198",
+      "name": "Extensão de Joelho Reversa Nórdica (Reverse Nordic Curl)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e214.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 198
+    },
+    {
+      "externalId": "md500-199",
+      "name": "Extensão de Joelho na Polia Baixa com Tornozelo Preso",
+      "muscleGroup": "Quadríceps",
+      "animationPath": "assets/exercises/e320.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 199
+    },
+    {
+      "externalId": "md500-200",
+      "name": "Empurrada de Trenó (Sled Push) / Puxada de Trenó de Costas (Backward Sled Drag)",
+      "muscleGroup": "Quadríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 200
+    },
+    {
+      "externalId": "md500-201",
+      "name": "Levantamento Terra Romeno com Barra (RDL - Romanian Deadlift)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/exercises/e134.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 201
+    },
+    {
+      "externalId": "md500-202",
+      "name": "Stiff com Barra (Pernas semirrígidas)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/exercises/e135.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 202
+    },
+    {
+      "externalId": "md500-203",
+      "name": "Levantamento Terra Romeno com Halteres",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/exercises/e16.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 203
+    },
+    {
+      "externalId": "md500-204",
+      "name": "Mesa Flexora (Deitado)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/exercises/e3.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 204
+    },
+    {
+      "externalId": "md500-205",
+      "name": "Cadeira Flexora (Sentado)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/exercises/e105.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 205
+    },
+    {
+      "externalId": "md500-206",
+      "name": "Bom Dia com Barra (Good Morning)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/exercises/e136.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 206
+    },
+    {
+      "externalId": "md500-207",
+      "name": "Stiff com Halteres",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/md500-3d/md207.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 207
+    },
+    {
+      "externalId": "md500-208",
+      "name": "RDL no Smith",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/md500-3d/md208.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 208
+    },
+    {
+      "externalId": "md500-209",
+      "name": "Stiff no Smith",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/md500-3d/md209.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 209
+    },
+    {
+      "externalId": "md500-210",
+      "name": "RDL Unilateral com Halteres (Livre - Single Leg RDL)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/exercises/e81.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 210
+    },
+    {
+      "externalId": "md500-211",
+      "name": "RDL em Base Assimétrica (B-Stance RDL com Barra ou Halteres)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/md500-3d/md211.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 211
+    },
+    {
+      "externalId": "md500-212",
+      "name": "RDL no Landmine (Bilateral ou Unilateral)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/md500-3d/md212.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 212
+    },
+    {
+      "externalId": "md500-213",
+      "name": "RDL na Polia Baixa",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/md500-3d/md213.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 213
+    },
+    {
+      "externalId": "md500-214",
+      "name": "RDL na Máquina de Hack / V-Squat Invertido",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 214
+    },
+    {
+      "externalId": "md500-215",
+      "name": "Stiff com Pés Elevados na Rampa (Maior alongamento dos isquiotibiais)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/md500-3d/md215.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 215
+    },
+    {
+      "externalId": "md500-216",
+      "name": "Bom Dia Sentado com Barra (Seated Good Morning)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/exercises/e323.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 216
+    },
+    {
+      "externalId": "md500-217",
+      "name": "Bom Dia no Smith",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/md500-3d/md217.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 217
+    },
+    {
+      "externalId": "md500-218",
+      "name": "Bom Dia com Barra de Segurança (SSB Good Morning)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/md500-3d/md218.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 218
+    },
+    {
+      "externalId": "md500-219",
+      "name": "Bom Dia na Máquina (Hack Squat ou Pendulum)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 219
+    },
+    {
+      "externalId": "md500-220",
+      "name": "Hiperextensão no Banco 45° (Foco em Posterior - coluna neutra, rotação no quadril)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/exercises/e153.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 220
+    },
+    {
+      "externalId": "md500-221",
+      "name": "Hiperextensão Unilateral no Banco 45°",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/md500-3d/md221.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 221
+    },
+    {
+      "externalId": "md500-222",
+      "name": "Glute-Ham Raise (GHR) no Aparelho Específico",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/exercises/e324.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 222
+    },
+    {
+      "externalId": "md500-223",
+      "name": "Pull-Through na Polia Baixa com Corda",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/exercises/e373.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 223
+    },
+    {
+      "externalId": "md500-224",
+      "name": "Swing Russo com Kettlebell (Kettlebell Swing)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/md500-3d/md224.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 224
+    },
+    {
+      "externalId": "md500-225",
+      "name": "Mesa Flexora Unilateral",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/exercises/e158.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 225
+    },
+    {
+      "externalId": "md500-226",
+      "name": "Cadeira Flexora Unilateral",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 226
+    },
+    {
+      "externalId": "md500-227",
+      "name": "Flexora em Pé Unilateral na Máquina (Standing Leg Curl)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/exercises/e370.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 227
+    },
+    {
+      "externalId": "md500-228",
+      "name": "Flexora Ajoelhada na Máquina (Kneeling Leg Curl)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 228
+    },
+    {
+      "externalId": "md500-229",
+      "name": "Flexão Nórdica (Nordic Hamstring Curl)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 229
+    },
+    {
+      "externalId": "md500-230",
+      "name": "Flexão Nórdica Assistida com Elástico ou Polia Alta",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/exercises/e197.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 230
+    },
+    {
+      "externalId": "md500-231",
+      "name": "Flexão de Joelho Deitado com Halter entre os Pés",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/md500-3d/md231.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 231
+    },
+    {
+      "externalId": "md500-232",
+      "name": "Flexão de Joelho em Pé na Polia Baixa",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/md500-3d/md232.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 232
+    },
+    {
+      "externalId": "md500-233",
+      "name": "Flexão de Joelho Deitado na Polia Baixa",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/md500-3d/md233.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 233
+    },
+    {
+      "externalId": "md500-234",
+      "name": "Flexão de Joelho em Pé com Caneleira",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/md500-3d/md234.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 234
+    },
+    {
+      "externalId": "md500-235",
+      "name": "Flexão de Joelho na Bola Suíça (Swiss Ball Hamstring Curl)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/exercises/e371.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 235
+    },
+    {
+      "externalId": "md500-236",
+      "name": "Flexão de Joelho Unilateral na Bola Suíça",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/md500-3d/md236.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 236
+    },
+    {
+      "externalId": "md500-237",
+      "name": "Flexão de Joelho Deslizante no Solo (Slider Leg Curl)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/exercises/e372.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 237
+    },
+    {
+      "externalId": "md500-238",
+      "name": "Flexão de Joelho no TRX / Fita de Suspensão",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/md500-3d/md238.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 238
+    },
+    {
+      "externalId": "md500-239",
+      "name": "Ponte de Isquiotibiais com Pernas Semi-estendidas (Long-Lever Glute Bridge)",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": "assets/md500-3d/md239.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 239
+    },
+    {
+      "externalId": "md500-240",
+      "name": "Razor Curl no Aparelho de GHR",
+      "muscleGroup": "Posteriores de Coxa / Isquiotibiais",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 240
+    },
+    {
+      "externalId": "md500-241",
+      "name": "Elevação Pélvica com Barra (Barbell Hip Thrust)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e30.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 241
+    },
+    {
+      "externalId": "md500-242",
+      "name": "Levantamento Terra Sumô com Barra",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e137.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 242
+    },
+    {
+      "externalId": "md500-243",
+      "name": "Agachamento Profundo com Barra (Full Squat)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e138.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 243
+    },
+    {
+      "externalId": "md500-244",
+      "name": "Agachamento Búlgaro com Tronco Inclinado à Frente (Foco em Glúteos)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e150.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 244
+    },
+    {
+      "externalId": "md500-245",
+      "name": "Passada Longa (Long-Stride Lunge)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e151.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 245
+    },
+    {
+      "externalId": "md500-246",
+      "name": "Cadeira Abdutora",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e19.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 246
+    },
+    {
+      "externalId": "md500-247",
+      "name": "Cadeira Adutora",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e20.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 247
+    },
+    {
+      "externalId": "md500-248",
+      "name": "Elevação Pélvica na Máquina Específica",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e157.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 248
+    },
+    {
+      "externalId": "md500-249",
+      "name": "Elevação Pélvica no Smith",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/md500-3d/md249.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 249
+    },
+    {
+      "externalId": "md500-250",
+      "name": "Elevação Pélvica na Cadeira Extensora / Mesa Flexora (Adaptação)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 250
+    },
+    {
+      "externalId": "md500-251",
+      "name": "Elevação Pélvica com Halter ou Kettlebell",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/md500-3d/md251.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 251
+    },
+    {
+      "externalId": "md500-252",
+      "name": "Elevação Pélvica Unilateral com Peso do Corpo ou Halter",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e375.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 252
+    },
+    {
+      "externalId": "md500-253",
+      "name": "Elevação Pélvica em Base Assimétrica (B-Stance Hip Thrust)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e377.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 253
+    },
+    {
+      "externalId": "md500-254",
+      "name": "Kas Glute Bridge (Elevação Pélvica com amplitude curta no topo)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/md500-3d/md254.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 254
+    },
+    {
+      "externalId": "md500-255",
+      "name": "Ponte de Glúteo no Solo com Barra (Barbell Glute Bridge)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e376.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 255
+    },
+    {
+      "externalId": "md500-256",
+      "name": "Ponte de Glúteo Unilateral no Solo (Single-Leg Glute Bridge)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e31.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 256
+    },
+    {
+      "externalId": "md500-257",
+      "name": "Frog Pump (Ponte de glúteo com solas dos pés unidas)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/md500-3d/md257.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 257
+    },
+    {
+      "externalId": "md500-258",
+      "name": "Elevação Pélvica com Pés Elevados no Banco",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/md500-3d/md258.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 258
+    },
+    {
+      "externalId": "md500-259",
+      "name": "Hiperextensão no Banco 45° com Foco em Glúteo (Costas arredondadas, pés abduzidos)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e378.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 259
+    },
+    {
+      "externalId": "md500-260",
+      "name": "Extensão de Quadril Reversa na Máquina (Reverse Hyperextension)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 260
+    },
+    {
+      "externalId": "md500-261",
+      "name": "Agachamento Reverência / Cruzado (Curtsy Lunge) com Halteres ou Barra",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e360.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 261
+    },
+    {
+      "externalId": "md500-262",
+      "name": "Agachamento Reverência no Smith",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 262
+    },
+    {
+      "externalId": "md500-263",
+      "name": "Step-up Alto na Caixa (Tronco inclinado à frente)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/md500-3d/md263.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 263
+    },
+    {
+      "externalId": "md500-264",
+      "name": "Step-up Cruzado (Cross-over Step-up)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/md500-3d/md264.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 264
+    },
+    {
+      "externalId": "md500-265",
+      "name": "Afundo no Smith com Pé de Trás Apoiado no Step e Tronco Inclinado",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 265
+    },
+    {
+      "externalId": "md500-266",
+      "name": "Coice na Polia Baixa (Cable Glute Kickback)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e78.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 266
+    },
+    {
+      "externalId": "md500-267",
+      "name": "Coice na Polia Baixa com Perna Semi-flexionada",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e79.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 267
+    },
+    {
+      "externalId": "md500-268",
+      "name": "Coice na Máquina (Glute Kickback Machine - em pé ou 4 apoios)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e382.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 268
+    },
+    {
+      "externalId": "md500-269",
+      "name": "Coice no Smith (Empurrando a barra com a sola do pé em 4 apoios)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 269
+    },
+    {
+      "externalId": "md500-270",
+      "name": "Extensão de Quadril em 4 Apoios com Caneleira (Perna estendida)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/md500-3d/md270.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 270
+    },
+    {
+      "externalId": "md500-271",
+      "name": "Extensão de Quadril em 4 Apoios com Caneleira (Joelho flexionado a 90° - Donkey Kick)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e383.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 271
+    },
+    {
+      "externalId": "md500-272",
+      "name": "Levantamento Terra Sumô com Halter ou Kettlebell (Em cima de dois steps)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/md500-3d/md272.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 272
+    },
+    {
+      "externalId": "md500-273",
+      "name": "Agachamento Ajoelhado no Smith ou com Barra (Kneeling Squat)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/md500-3d/md273.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 273
+    },
+    {
+      "externalId": "md500-274",
+      "name": "Cadeira Abdutora com Tronco Inclinado à Frente",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 274
+    },
+    {
+      "externalId": "md500-275",
+      "name": "Cadeira Abdutora em Pé (Sem sentar no banco)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 275
+    },
+    {
+      "externalId": "md500-276",
+      "name": "Abdução de Quadril em Pé na Polia Baixa (Pelo lado ou por trás da perna de apoio)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e379.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 276
+    },
+    {
+      "externalId": "md500-277",
+      "name": "Abdução de Quadril Deitado de Lado no Solo com Caneleira",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e380.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 277
+    },
+    {
+      "externalId": "md500-278",
+      "name": "Abdução de Quadril Deitado de Lado na Polia Baixa",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 278
+    },
+    {
+      "externalId": "md500-279",
+      "name": "Exercício Ostra (Clamshell) com Mini Band",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e381.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 279
+    },
+    {
+      "externalId": "md500-280",
+      "name": "Prancha Lateral com Abdução de Quadril",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e395.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 280
+    },
+    {
+      "externalId": "md500-281",
+      "name": "Caminhada Lateral com Mini Band (Monster Walk / Lateral Band Walk)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e73.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 281
+    },
+    {
+      "externalId": "md500-282",
+      "name": "Hidrante (Fire Hydrant - Abdução em 4 apoios com caneleira ou elástico)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/md500-3d/md282.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 282
+    },
+    {
+      "externalId": "md500-283",
+      "name": "Queda Pélvica Lateral no Step (Hip Drop / Pelvic Drop)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/md500-3d/md283.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 283
+    },
+    {
+      "externalId": "md500-284",
+      "name": "Adução de Quadril em Pé na Polia Baixa",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e391.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 284
+    },
+    {
+      "externalId": "md500-285",
+      "name": "Adução de Quadril Deitado no Solo com Caneleira",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e392.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 285
+    },
+    {
+      "externalId": "md500-286",
+      "name": "Prancha Copenhague (Copenhagen Adductor Plank - Isométrica ou Dinâmica)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e393.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 286
+    },
+    {
+      "externalId": "md500-287",
+      "name": "Afundo Lateral (Cossack Squat / Side Lunge) com Halter ou Barra",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e394.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 287
+    },
+    {
+      "externalId": "md500-288",
+      "name": "Deslizamento Lateral de Adutores no Solo (Slider Lateral Lunge)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/md500-3d/md288.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 288
+    },
+    {
+      "externalId": "md500-289",
+      "name": "Adução Isométrica com Bola Suíça entre os Joelhos",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": "assets/exercises/e396.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 289
+    },
+    {
+      "externalId": "md500-290",
+      "name": "Máquina Multiquadril (4-Way Hip Machine - Extensão, Flexão, Abdução, Adução)",
+      "muscleGroup": "Glúteos, Adutores e Abdutores",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 290
+    },
+    {
+      "externalId": "md500-291",
+      "name": "Desenvolvimento Militar em Pé com Barra (Overhead Press - OHP)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e58.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 291
+    },
+    {
+      "externalId": "md500-292",
+      "name": "Desenvolvimento Sentado com Halteres",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md292.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 292
+    },
+    {
+      "externalId": "md500-293",
+      "name": "Desenvolvimento Sentado com Barra pela Frente",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e124.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 293
+    },
+    {
+      "externalId": "md500-294",
+      "name": "Desenvolvimento Arnold (Arnold Press)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e41.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 294
+    },
+    {
+      "externalId": "md500-295",
+      "name": "Elevação Lateral com Halteres em Pé",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e9.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 295
+    },
+    {
+      "externalId": "md500-296",
+      "name": "Crucifixo Inverso com Halteres (Deltoide Posterior)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e60.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 296
+    },
+    {
+      "externalId": "md500-297",
+      "name": "Desenvolvimento em Pé com Halteres",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e265.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 297
+    },
+    {
+      "externalId": "md500-298",
+      "name": "Desenvolvimento no Smith (Pela Frente)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md298.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 298
+    },
+    {
+      "externalId": "md500-299",
+      "name": "Desenvolvimento por Trás da Nuca com Barra (Behind-the-Neck Press)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md299.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 299
+    },
+    {
+      "externalId": "md500-300",
+      "name": "Desenvolvimento por Trás da Nuca no Smith",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 300
+    },
+    {
+      "externalId": "md500-301",
+      "name": "Desenvolvimento na Máquina (Pegada Pronada Aberta)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e112.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 301
+    },
+    {
+      "externalId": "md500-302",
+      "name": "Desenvolvimento na Máquina (Pegada Neutra Fechada)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e112.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 302
+    },
+    {
+      "externalId": "md500-303",
+      "name": "Desenvolvimento Articulado Convergente",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md303.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 303
+    },
+    {
+      "externalId": "md500-304",
+      "name": "Desenvolvimento Unilateral em Pé com Halter ou Kettlebell",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e161.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 304
+    },
+    {
+      "externalId": "md500-305",
+      "name": "Desenvolvimento Alternado Sentado com Halteres",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md305.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 305
+    },
+    {
+      "externalId": "md500-306",
+      "name": "Push Press com Barra (Desenvolvimento com impulso das pernas)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md306.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 306
+    },
+    {
+      "externalId": "md500-307",
+      "name": "Z-Press (Desenvolvimento sentado no chão com pernas estendidas à frente)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md307.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 307
+    },
+    {
+      "externalId": "md500-308",
+      "name": "Viking Press (No acessório específico ou Landmine)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 308
+    },
+    {
+      "externalId": "md500-309",
+      "name": "Desenvolvimento Unilateral no Landmine (Em pé ou ajoelhado)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e162.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 309
+    },
+    {
+      "externalId": "md500-310",
+      "name": "Desenvolvimento com Barra Suíça (Pegada Neutra)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 310
+    },
+    {
+      "externalId": "md500-311",
+      "name": "Bradford Press (Passando a barra da frente para trás da cabeça sem trancar os cotovelos)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 311
+    },
+    {
+      "externalId": "md500-312",
+      "name": "Desenvolvimento Invertido na Parede (Handstand Push-up / Pike Push-up)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e88.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 312
+    },
+    {
+      "externalId": "md500-313",
+      "name": "Desenvolvimento com Kettlebell de Cabeça para Baixo (Bottoms-up KB Press)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md313.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 313
+    },
+    {
+      "externalId": "md500-314",
+      "name": "Elevação Lateral Sentado com Halteres",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e59.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 314
+    },
+    {
+      "externalId": "md500-315",
+      "name": "Elevação Lateral na Polia Baixa (Cabo passando pela frente do corpo)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 315
+    },
+    {
+      "externalId": "md500-316",
+      "name": "Elevação Lateral na Polia Baixa (Cabo passando por trás do corpo)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 316
+    },
+    {
+      "externalId": "md500-317",
+      "name": "Elevação Lateral na Polia na Altura do Quadril/Punho (Maior tensão no início)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 317
+    },
+    {
+      "externalId": "md500-318",
+      "name": "Elevação Lateral Dupla Cruzada nos Cabos (Bilateral no Crossover)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 318
+    },
+    {
+      "externalId": "md500-319",
+      "name": "Elevação Lateral Unilateral Inclinado (Segurando na coluna do aparelho)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e208.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 319
+    },
+    {
+      "externalId": "md500-320",
+      "name": "Elevação Lateral Deitado de Lado no Banco Inclinado",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md320.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 320
+    },
+    {
+      "externalId": "md500-321",
+      "name": "Elevação Lateral com Peito Apoiado no Banco Inclinado",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 321
+    },
+    {
+      "externalId": "md500-322",
+      "name": "Elevação Lateral na Máquina Específica",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e180.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 322
+    },
+    {
+      "externalId": "md500-323",
+      "name": "Elevação Lateral Completa (Lu Raise - subindo até acima da cabeça)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md323.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 323
+    },
+    {
+      "externalId": "md500-324",
+      "name": "Elevação Lateral Parcial Pesada (Heavy Partial Lateral Raise)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md324.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 324
+    },
+    {
+      "externalId": "md500-325",
+      "name": "Remada Alta com Barra Reta ou W (Pegada Média/Aberta - foco em Deltoide Lateral)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md325.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 325
+    },
+    {
+      "externalId": "md500-326",
+      "name": "Remada Alta com Halteres",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e89.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 326
+    },
+    {
+      "externalId": "md500-327",
+      "name": "Remada Alta na Polia Baixa (Com Barra ou Corda)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e233.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 327
+    },
+    {
+      "externalId": "md500-328",
+      "name": "Remada Alta no Smith",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md328.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 328
+    },
+    {
+      "externalId": "md500-329",
+      "name": "Remada Alta Unilateral com Halter ou na Polia (Monkey Row)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md329.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 329
+    },
+    {
+      "externalId": "md500-330",
+      "name": "Elevação Frontal com Halteres (Alternada ou Simultânea - Pegada Pronada)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e114.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 330
+    },
+    {
+      "externalId": "md500-331",
+      "name": "Elevação Frontal com Halteres em Pegada Neutra (Martelo)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md331.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 331
+    },
+    {
+      "externalId": "md500-332",
+      "name": "Elevação Frontal com Barra Reta ou W",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e181.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 332
+    },
+    {
+      "externalId": "md500-333",
+      "name": "Elevação Frontal na Polia Baixa com Corda (Puxando por entre as pernas)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md333.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 333
+    },
+    {
+      "externalId": "md500-334",
+      "name": "Elevação Frontal na Polia Baixa com Barra",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md334.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 334
+    },
+    {
+      "externalId": "md500-335",
+      "name": "Elevação Frontal com Anilha (Plate Front Raise - com ou sem giro de volante)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e182.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 335
+    },
+    {
+      "externalId": "md500-336",
+      "name": "Elevação Frontal Deitado de Costas no Banco Inclinado",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md336.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 336
+    },
+    {
+      "externalId": "md500-337",
+      "name": "Elevação Frontal com Peito Apoiado no Banco Inclinado",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md337.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 337
+    },
+    {
+      "externalId": "md500-338",
+      "name": "Crucifixo Inverso Sentado com Halteres (Tronco sobre os joelhos)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e183.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 338
+    },
+    {
+      "externalId": "md500-339",
+      "name": "Crucifixo Inverso no Banco Inclinado com Halteres",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md339.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 339
+    },
+    {
+      "externalId": "md500-340",
+      "name": "Crucifixo Inverso no Peck Deck / Voador Inverso (Pegada Pronada ou Neutra)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e110.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 340
+    },
+    {
+      "externalId": "md500-341",
+      "name": "Crucifixo Inverso Cruzado na Polia Alta / Média (Sem puxador, segurando nas bolinhas do cabo)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e171.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 341
+    },
+    {
+      "externalId": "md500-342",
+      "name": "Crucifixo Inverso Unilateral na Polia",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md342.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 342
+    },
+    {
+      "externalId": "md500-343",
+      "name": "Remada para Deltoide Posterior com Halteres (Cotovelos abertos a 90°)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md343.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 343
+    },
+    {
+      "externalId": "md500-344",
+      "name": "Remada para Deltoide Posterior na Polia ou Smith (Rear Delt Row)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 344
+    },
+    {
+      "externalId": "md500-345",
+      "name": "Extensão de Ombro para Trás na Polia ou com Halteres (Skiers / Rear Delt Kickback)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md345.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 345
+    },
+    {
+      "externalId": "md500-346",
+      "name": "Powell Raise (Crucifixo inverso unilateral deitado de lado no banco)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 346
+    },
+    {
+      "externalId": "md500-347",
+      "name": "Face Pull com Rotação Externa na Polia Alta",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 347
+    },
+    {
+      "externalId": "md500-348",
+      "name": "Rotação Externa de Ombro na Polia (Cotovelo a 90° colado ao tronco)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/exercises/e184.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 348
+    },
+    {
+      "externalId": "md500-349",
+      "name": "Rotação Externa de Ombro com Halter (Deitado de lado ou apoiado no joelho)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": "assets/md500-3d/md349.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 349
+    },
+    {
+      "externalId": "md500-350",
+      "name": "Cuban Press (Remada alta + rotação externa + desenvolvimento)",
+      "muscleGroup": "Ombros: Deltoide Anterior, Lateral e Posterior",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 350
+    },
+    {
+      "externalId": "md500-351",
+      "name": "Rosca Direta com Barra Reta",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e10.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 351
+    },
+    {
+      "externalId": "md500-352",
+      "name": "Rosca Direta com Barra W (EZ Bar)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e139.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 352
+    },
+    {
+      "externalId": "md500-353",
+      "name": "Rosca Alternada em Pé com Halteres (Com supinação)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e44.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 353
+    },
+    {
+      "externalId": "md500-354",
+      "name": "Rosca Simultânea em Pé com Halteres",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e140.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 354
+    },
+    {
+      "externalId": "md500-355",
+      "name": "Rosca Martelo com Halteres (Foco em Braquial e Braquiorradial)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e43.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 355
+    },
+    {
+      "externalId": "md500-356",
+      "name": "Rosca Scott com Barra W (Preacher Curl)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e335.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 356
+    },
+    {
+      "externalId": "md500-357",
+      "name": "Rosca no Banco Inclinado 45° com Halteres (Braços alongados atrás do tronco)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e141.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 357
+    },
+    {
+      "externalId": "md500-358",
+      "name": "Rosca Scott Unilateral com Halter",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e187.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 358
+    },
+    {
+      "externalId": "md500-359",
+      "name": "Rosca Scott na Máquina",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e160.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 359
+    },
+    {
+      "externalId": "md500-360",
+      "name": "Rosca Scott na Polia Baixa",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/md500-3d/md360.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 360
+    },
+    {
+      "externalId": "md500-361",
+      "name": "Rosca Concentrada Sentado com Halter",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e63.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 361
+    },
+    {
+      "externalId": "md500-362",
+      "name": "Rosca Spider (Peito apoiado no banco inclinado) com Barra W ou Reta",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e337.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 362
+    },
+    {
+      "externalId": "md500-363",
+      "name": "Rosca Spider com Halteres",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e186.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 363
+    },
+    {
+      "externalId": "md500-364",
+      "name": "Rosca Direta na Polia Baixa com Barra Reta ou W",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e111.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 364
+    },
+    {
+      "externalId": "md500-365",
+      "name": "Rosca Martelo na Polia Baixa com Corda",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e188.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 365
+    },
+    {
+      "externalId": "md500-366",
+      "name": "Rosca Bayesiana na Polia Baixa (De costas para o aparelho, braço atrás do tronco)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e218.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 366
+    },
+    {
+      "externalId": "md500-367",
+      "name": "Rosca Unilateral na Polia Baixa (De frente)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/md500-3d/md367.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 367
+    },
+    {
+      "externalId": "md500-368",
+      "name": "Rosca Duplo Bíceps na Polia Alta (High Cable Curl / Posição de pose)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/md500-3d/md368.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 368
+    },
+    {
+      "externalId": "md500-369",
+      "name": "Rosca Hércules Unilateral na Polia Alta",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/md500-3d/md369.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 369
+    },
+    {
+      "externalId": "md500-370",
+      "name": "Rosca Deitado no Chão na Polia Baixa (Lying Cable Curl)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 370
+    },
+    {
+      "externalId": "md500-371",
+      "name": "Rosca na Polia Alta Deitado no Banco (Puxando em direção à testa)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 371
+    },
+    {
+      "externalId": "md500-372",
+      "name": "Rosca na Máquina (Sentado, braços na horizontal)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 372
+    },
+    {
+      "externalId": "md500-373",
+      "name": "Rosca 21 (7 repetições metade inferior + 7 metade superior + 7 completas)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/md500-3d/md373.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 373
+    },
+    {
+      "externalId": "md500-374",
+      "name": "Rosca Arrasto com Barra ou no Smith (Drag Curl - cotovelos vão para trás)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/md500-3d/md374.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 374
+    },
+    {
+      "externalId": "md500-375",
+      "name": "Rosca Arrasto com Halteres",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/md500-3d/md375.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 375
+    },
+    {
+      "externalId": "md500-376",
+      "name": "Rosca Cruzada no Peito (Cross-Body Hammer Curl / Pinwheel Curl)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e269.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 376
+    },
+    {
+      "externalId": "md500-377",
+      "name": "Rosca Zottman (Subida supinada, descida pronada)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e217.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 377
+    },
+    {
+      "externalId": "md500-378",
+      "name": "Rosca com Barra H / Romana (Pegada Neutra)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/md500-3d/md378.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 378
+    },
+    {
+      "externalId": "md500-379",
+      "name": "Rosca Garçom (Waiter's Curl - segurando a cabeça de um único halter com as duas mãos)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/md500-3d/md379.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 379
+    },
+    {
+      "externalId": "md500-380",
+      "name": "Rosca com Anilha (Plate Curl)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/md500-3d/md380.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 380
+    },
+    {
+      "externalId": "md500-381",
+      "name": "Rosca Inclinada na Polia Baixa (Banco a 45° posicionado no crossover)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 381
+    },
+    {
+      "externalId": "md500-382",
+      "name": "Rosca Estrita na Parede (Strict Curl - costas e glúteos colados na parede)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/md500-3d/md382.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 382
+    },
+    {
+      "externalId": "md500-383",
+      "name": "Rosca Bíceps no TRX / Argolas",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 383
+    },
+    {
+      "externalId": "md500-384",
+      "name": "Rosca Inversa (Pegada Pronada) com Barra Reta",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e115.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 384
+    },
+    {
+      "externalId": "md500-385",
+      "name": "Rosca Inversa com Barra W",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e340.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 385
+    },
+    {
+      "externalId": "md500-386",
+      "name": "Rosca Inversa na Polia Baixa",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/md500-3d/md386.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 386
+    },
+    {
+      "externalId": "md500-387",
+      "name": "Rosca Inversa com Halteres",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/md500-3d/md387.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 387
+    },
+    {
+      "externalId": "md500-388",
+      "name": "Flexão de Punho Sentado com Barra (Antebraços nos joelhos ou no banco - Palma para cima)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e244.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 388
+    },
+    {
+      "externalId": "md500-389",
+      "name": "Flexão de Punho Sentado com Halteres",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/md500-3d/md389.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 389
+    },
+    {
+      "externalId": "md500-390",
+      "name": "Flexão de Punho na Polia Baixa",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 390
+    },
+    {
+      "externalId": "md500-391",
+      "name": "Flexão de Punho em Pé por Trás das Costas com Barra ou no Smith",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e341.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 391
+    },
+    {
+      "externalId": "md500-392",
+      "name": "Extensão de Punho Sentado com Barra (Palma para baixo)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/md500-3d/md392.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 392
+    },
+    {
+      "externalId": "md500-393",
+      "name": "Extensão de Punho Sentado com Halteres",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e67.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 393
+    },
+    {
+      "externalId": "md500-394",
+      "name": "Extensão de Punho na Polia Baixa",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/md500-3d/md394.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 394
+    },
+    {
+      "externalId": "md500-395",
+      "name": "Rolo de Punho (Wrist Roller - enrolar a corda com anilha)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/exercises/e301.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 395
+    },
+    {
+      "externalId": "md500-396",
+      "name": "Pronação e Supinação de Antebraço com Halter ou Barra unilateral",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 396
+    },
+    {
+      "externalId": "md500-397",
+      "name": "Flexão Radial e Ulnar de Punho (Movimento de martelada em pé com halter)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 397
+    },
+    {
+      "externalId": "md500-398",
+      "name": "Suspensão Isométrica na Barra Fixa (Dead Hang - Bilateral ou Unilateral)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 398
+    },
+    {
+      "externalId": "md500-399",
+      "name": "Pinça de Anilhas (Plate Pinch Hold)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 399
+    },
+    {
+      "externalId": "md500-400",
+      "name": "Fechamento de Gripper (Hand Grip / Capitains of Crush)",
+      "muscleGroup": "Bíceps, Braquial e Antebraço",
+      "animationPath": "assets/md500-3d/md400.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 400
+    },
+    {
+      "externalId": "md500-401",
+      "name": "Supino Reto com Pegada Fechada (Close-Grip Bench Press)",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/exercises/e87.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 401
+    },
+    {
+      "externalId": "md500-402",
+      "name": "Paralelas com Tronco Vertical (Foco em Tríceps)",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/exercises/e142.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 402
+    },
+    {
+      "externalId": "md500-403",
+      "name": "Tríceps Testa Deitado com Barra W (Skullcrusher)",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/exercises/e143.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 403
+    },
+    {
+      "externalId": "md500-404",
+      "name": "Tríceps Francês Sentado com Halter (Bilateral - Overhead Extension)",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/exercises/e144.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 404
+    },
+    {
+      "externalId": "md500-405",
+      "name": "Tríceps Pulley na Polia Alta com Barra Reta ou W (Pushdown)",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/exercises/e11.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 405
+    },
+    {
+      "externalId": "md500-406",
+      "name": "Tríceps Pulley na Polia Alta com Corda",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/exercises/e103.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 406
+    },
+    {
+      "externalId": "md500-407",
+      "name": "Tríceps Testa com Barra Reta",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/md500-3d/md407.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 407
+    },
+    {
+      "externalId": "md500-408",
+      "name": "Tríceps Testa com Halteres (Pegada Neutra)",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/exercises/e45.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 408
+    },
+    {
+      "externalId": "md500-409",
+      "name": "Tríceps Testa no Banco Inclinado com Barra W",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/md500-3d/md409.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 409
+    },
+    {
+      "externalId": "md500-410",
+      "name": "Tríceps Testa no Banco Declinado com Barra W",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/md500-3d/md410.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 410
+    },
+    {
+      "externalId": "md500-411",
+      "name": "Tríceps Testa Deitado na Polia Baixa",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/exercises/e190.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 411
+    },
+    {
+      "externalId": "md500-412",
+      "name": "Extensão de Tríceps Passando da Cabeça ( pullover + testa / Rolling Triceps Extension)",
+      "muscleGroup": "Tríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 412
+    },
+    {
+      "externalId": "md500-413",
+      "name": "JM Press com Barra ou no Smith (Híbrido entre Supino Fechado e Testa)",
+      "muscleGroup": "Tríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 413
+    },
+    {
+      "externalId": "md500-414",
+      "name": "California Press",
+      "muscleGroup": "Tríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 414
+    },
+    {
+      "externalId": "md500-415",
+      "name": "Tate Press (Extensão com halteres apontando os cotovelos para fora no peito)",
+      "muscleGroup": "Tríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 415
+    },
+    {
+      "externalId": "md500-416",
+      "name": "Supino Pegada Fechada no Smith",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/md500-3d/md416.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 416
+    },
+    {
+      "externalId": "md500-417",
+      "name": "Flexão de Braços Diamante (Diamond Push-up - mãos unidas)",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/exercises/e40.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 417
+    },
+    {
+      "externalId": "md500-418",
+      "name": "Flexão Esfinge / Extensão de Tríceps no Solo ou Banco (Bodyweight Triceps Extension)",
+      "muscleGroup": "Tríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 418
+    },
+    {
+      "externalId": "md500-419",
+      "name": "Mergulho no Banco (Bench Dips - com ou sem anilha no colo)",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/exercises/e163.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 419
+    },
+    {
+      "externalId": "md500-420",
+      "name": "Mergulho Sentado na Máquina (Triceps Dip Machine)",
+      "muscleGroup": "Tríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 420
+    },
+    {
+      "externalId": "md500-421",
+      "name": "Paralelas no Graviton (Foco em Tríceps)",
+      "muscleGroup": "Tríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 421
+    },
+    {
+      "externalId": "md500-422",
+      "name": "Tríceps Francês Unilateral Sentado ou em Pé com Halter",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/exercises/e65.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 422
+    },
+    {
+      "externalId": "md500-423",
+      "name": "Tríceps Francês Sentado com Barra W",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/exercises/e346.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 423
+    },
+    {
+      "externalId": "md500-424",
+      "name": "Tríceps Francês na Polia Alta com Corda (Inclinado à frente, de costas para o aparelho)",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/md500-3d/md424.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 424
+    },
+    {
+      "externalId": "md500-425",
+      "name": "Tríceps Francês na Polia Baixa com Corda ou Barra (Em pé, de costas para o aparelho)",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/exercises/e108.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 425
+    },
+    {
+      "externalId": "md500-426",
+      "name": "Tríceps Francês Unilateral na Polia (Katana Extension)",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/exercises/e189.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 426
+    },
+    {
+      "externalId": "md500-427",
+      "name": "Tríceps Francês Sentado na Máquina Específica",
+      "muscleGroup": "Tríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 427
+    },
+    {
+      "externalId": "md500-428",
+      "name": "PJR Pullover (Híbrido de Pullover com Francês usando Halter pesado)",
+      "muscleGroup": "Tríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 428
+    },
+    {
+      "externalId": "md500-429",
+      "name": "Tríceps Pulley com Barra V",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/exercises/e66.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 429
+    },
+    {
+      "externalId": "md500-430",
+      "name": "Tríceps Pulley com Pegada Supinada / Inversa (Barra reta ou W)",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/exercises/e270.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 430
+    },
+    {
+      "externalId": "md500-431",
+      "name": "Tríceps Pulley Unilateral (Pegada Pronada, Supinada ou Neutra sem puxador)",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/md500-3d/md431.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 431
+    },
+    {
+      "externalId": "md500-432",
+      "name": "Tríceps Cruzado no Cabo (Cross-body Cable Triceps Extension - Bilateral ou Unilateral)",
+      "muscleGroup": "Tríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 432
+    },
+    {
+      "externalId": "md500-433",
+      "name": "Tríceps Coice Unilateral com Halter (Triceps Kickback)",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/exercises/e46.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 433
+    },
+    {
+      "externalId": "md500-434",
+      "name": "Tríceps Coice Bilateral no Banco Inclinado com Halteres",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/md500-3d/md434.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 434
+    },
+    {
+      "externalId": "md500-435",
+      "name": "Tríceps Coice na Polia Baixa (Inclinado à frente)",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/exercises/e116.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 435
+    },
+    {
+      "externalId": "md500-436",
+      "name": "Tríceps Coice em Pé na Polia (Tronco a 45°)",
+      "muscleGroup": "Tríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 436
+    },
+    {
+      "externalId": "md500-437",
+      "name": "Extensão de Tríceps Sentado na Máquina (Apoio tipo Rosca Scott invertida)",
+      "muscleGroup": "Tríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 437
+    },
+    {
+      "externalId": "md500-438",
+      "name": "Extensão de Tríceps no TRX / Fita de Suspensão",
+      "muscleGroup": "Tríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 438
+    },
+    {
+      "externalId": "md500-439",
+      "name": "Extensão de Tríceps com Elástico (Band Pushdown)",
+      "muscleGroup": "Tríceps",
+      "animationPath": "assets/md500-3d/md439.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 439
+    },
+    {
+      "externalId": "md500-440",
+      "name": "Pin Press Fechado (Empurrada final do supino saindo dos pinos de segurança)",
+      "muscleGroup": "Tríceps",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 440
+    },
+    {
+      "externalId": "md500-441",
+      "name": "Elevação de Panturrilha em Pé na Máquina (Standing Calf Raise - Foco no Gastrocnêmio)",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": "assets/exercises/e145.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 441
+    },
+    {
+      "externalId": "md500-442",
+      "name": "Elevação de Panturrilha Sentado na Máquina (Seated Calf Raise - Foco no Sóleo)",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": "assets/exercises/e146.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 442
+    },
+    {
+      "externalId": "md500-443",
+      "name": "Panturrilha no Leg Press 45°",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": "assets/exercises/e83.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 443
+    },
+    {
+      "externalId": "md500-444",
+      "name": "Panturrilha Burro (Donkey Calf Raise - Tronco a 90°, maior estiramento do gastrocnêmio)",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": "assets/exercises/e147.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 444
+    },
+    {
+      "externalId": "md500-445",
+      "name": "Elevação de Panturrilha em Pé no Smith (Em cima do step)",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": "assets/exercises/e384.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 445
+    },
+    {
+      "externalId": "md500-446",
+      "name": "Elevação de Panturrilha em Pé com Barra Livre",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": "assets/md500-3d/md446.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 446
+    },
+    {
+      "externalId": "md500-447",
+      "name": "Elevação de Panturrilha Unilateral em Pé com Halter (No step/degrau)",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": "assets/exercises/e387.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 447
+    },
+    {
+      "externalId": "md500-448",
+      "name": "Panturrilha no Hack Squat",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": "assets/exercises/e388.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 448
+    },
+    {
+      "externalId": "md500-449",
+      "name": "Panturrilha no Leg Press Horizontal",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 449
+    },
+    {
+      "externalId": "md500-450",
+      "name": "Panturrilha no Leg Press Vertical (90°)",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": "assets/exercises/e386.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 450
+    },
+    {
+      "externalId": "md500-451",
+      "name": "Panturrilha no V-Squat / Pêndulo",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 451
+    },
+    {
+      "externalId": "md500-452",
+      "name": "Panturrilha Sentado Livre (Com Barra ou Halteres apoiados sobre os joelhos)",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": "assets/exercises/e82.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 452
+    },
+    {
+      "externalId": "md500-453",
+      "name": "Panturrilha em Pé com Pés Abduzidos (Pontas para fora - ênfase na cabeça medial)",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": "assets/md500-3d/md453.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 453
+    },
+    {
+      "externalId": "md500-454",
+      "name": "Panturrilha em Pé com Pés Aduzidos (Pontas para dentro - ênfase na cabeça lateral)",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": "assets/md500-3d/md454.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 454
+    },
+    {
+      "externalId": "md500-455",
+      "name": "Panturrilha Unilateral no Leg Press",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": "assets/exercises/e385.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 455
+    },
+    {
+      "externalId": "md500-456",
+      "name": "Panturrilha Agachado (Squat Calf Raise / Iso-Hold)",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 456
+    },
+    {
+      "externalId": "md500-457",
+      "name": "Caminhada na Ponta dos Pés com Halteres (Farmer's Walk on Toes)",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 457
+    },
+    {
+      "externalId": "md500-458",
+      "name": "Elevação Tibial na Parede (Bodyweight Tibialis Raise)",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": "assets/exercises/e215.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 458
+    },
+    {
+      "externalId": "md500-459",
+      "name": "Elevação Tibial com Barra Tibial ou Kettlebell (Weighted Tib Raise)",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 459
+    },
+    {
+      "externalId": "md500-460",
+      "name": "Elevação Tibial Sentado na Polia Baixa ou Máquina Específica",
+      "muscleGroup": "Panturrilhas: Gastrocnêmio, Sóleo e Tibial",
+      "animationPath": "assets/exercises/e389.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 460
+    },
+    {
+      "externalId": "md500-461",
+      "name": "Abdominal Ajoelhado na Polia Alta com Corda (Cable Crunch)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/exercises/e148.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 461
+    },
+    {
+      "externalId": "md500-462",
+      "name": "Elevação de Pernas Pendurado na Barra Fixa (Hanging Leg Raise / Toes to Bar)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/exercises/e399.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 462
+    },
+    {
+      "externalId": "md500-463",
+      "name": "Prancha Abdominal Isométrica no Solo (Plank)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/exercises/e12.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 463
+    },
+    {
+      "externalId": "md500-464",
+      "name": "Roda Abdominal (Ab Wheel Rollout)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/exercises/e397.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 464
+    },
+    {
+      "externalId": "md500-465",
+      "name": "Hiperextensão Lombar no Banco Romano (45° ou 90°)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/exercises/e398.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 465
+    },
+    {
+      "externalId": "md500-466",
+      "name": "Abdominal Supra Tradicional no Solo (Crunch)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/exercises/e13.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 466
+    },
+    {
+      "externalId": "md500-467",
+      "name": "Abdominal Supra com Peso no Peito (Anilha ou Halter)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/md500-3d/md467.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 467
+    },
+    {
+      "externalId": "md500-468",
+      "name": "Abdominal no Banco Declinado (Sit-up Declinado)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 468
+    },
+    {
+      "externalId": "md500-469",
+      "name": "Abdominal na Máquina Sentado (Ab Crunch Machine)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/exercises/e198.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 469
+    },
+    {
+      "externalId": "md500-470",
+      "name": "Abdominal na Bola Suíça (Swiss Ball Crunch - Maior amplitude de extensão)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/md500-3d/md470.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 470
+    },
+    {
+      "externalId": "md500-471",
+      "name": "Elevação de Joelhos Pendurado na Barra Fixa (Hanging Knee Raise)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/exercises/e69.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 471
+    },
+    {
+      "externalId": "md500-472",
+      "name": "Elevação de Pernas / Joelhos na Cadeira Romana (Captain's Chair)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 472
+    },
+    {
+      "externalId": "md500-473",
+      "name": "Abdominal Infra no Solo ou Banco (Elevação de pernas deitado)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/md500-3d/md473.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 473
+    },
+    {
+      "externalId": "md500-474",
+      "name": "Abdominal Infra no Banco Inclinado (Reverse Crunch / Encolhimento reverso da pelve)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 474
+    },
+    {
+      "externalId": "md500-475",
+      "name": "Abdominal Canivete (V-Up)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/exercises/e72.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 475
+    },
+    {
+      "externalId": "md500-476",
+      "name": "Abdominal Remador",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/md500-3d/md476.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 476
+    },
+    {
+      "externalId": "md500-477",
+      "name": "Abdominal GHD (Glute-Ham Developer Sit-up)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 477
+    },
+    {
+      "externalId": "md500-478",
+      "name": "Abdominal Janda (Janda Sit-up - contraindo posteriores para anular o psoas)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 478
+    },
+    {
+      "externalId": "md500-479",
+      "name": "Dragon Flag (Bandeira do Dragão no banco)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 479
+    },
+    {
+      "externalId": "md500-480",
+      "name": "L-Sit (Sustentação isométrica em L nas paralelas ou argolas)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 480
+    },
+    {
+      "externalId": "md500-481",
+      "name": "Canoinha Isométrica (Hollow Body Hold)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/exercises/e96.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 481
+    },
+    {
+      "externalId": "md500-482",
+      "name": "Prancha Lateral Isométrica (Side Plank)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/exercises/e47.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 482
+    },
+    {
+      "externalId": "md500-483",
+      "name": "Giro Russo Sentado com Peso ou Medicine Ball (Russian Twist)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/md500-3d/md483.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 483
+    },
+    {
+      "externalId": "md500-484",
+      "name": "Abdominal Bicicleta no Solo (Bicycle Crunch)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/exercises/e68.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 484
+    },
+    {
+      "externalId": "md500-485",
+      "name": "Lenhador na Polia Alta para Baixo (High-to-Low Cable Woodchopper)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/exercises/e246.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 485
+    },
+    {
+      "externalId": "md500-486",
+      "name": "Lenhador na Polia Baixa para o Alto (Low-to-High Cable Woodchopper)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 486
+    },
+    {
+      "externalId": "md500-487",
+      "name": "Lenhador Horizontal na Polia Média",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 487
+    },
+    {
+      "externalId": "md500-488",
+      "name": "Pallof Press na Polia Média (Exercício de Anti-Rotação)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/exercises/e222.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 488
+    },
+    {
+      "externalId": "md500-489",
+      "name": "Rotação de Tronco no Landmine em Pé (Landmine 180s / Rainbow)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 489
+    },
+    {
+      "externalId": "md500-490",
+      "name": "Elevação de Pernas Oblíqua na Barra Fixa (Windshield Wipers / Para-brisa)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 490
+    },
+    {
+      "externalId": "md500-491",
+      "name": "Flexão Lateral de Tronco em Pé com Halter ou na Polia (Side Bend)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/md500-3d/md491.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 491
+    },
+    {
+      "externalId": "md500-492",
+      "name": "Flexão Lateral de Tronco no Banco Romano (45°)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 492
+    },
+    {
+      "externalId": "md500-493",
+      "name": "Toque nos Calcanhares Deitado (Heel Touches)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/md500-3d/md493.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 493
+    },
+    {
+      "externalId": "md500-494",
+      "name": "Prancha Dinâmica na Bola Suíça (Stir the Pot)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 494
+    },
+    {
+      "externalId": "md500-495",
+      "name": "Prancha RKC (Contração máxima de glúteos, quadríceps e dorsais)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 495
+    },
+    {
+      "externalId": "md500-496",
+      "name": "Dead Bug (Inseto Morto - estabilização lombar contralateral)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/exercises/e48.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 496
+    },
+    {
+      "externalId": "md500-497",
+      "name": "Perdigueiro em 4 Apoios (Bird Dog)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/exercises/e94.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 497
+    },
+    {
+      "externalId": "md500-498",
+      "name": "Superman no Solo (Extensão lombar deitado de bruços)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/md500-3d/md498.gif",
+      "mediaReviewStatus": "REVISAO_PENDENTE",
+      "sourceItemId": 498
+    },
+    {
+      "externalId": "md500-499",
+      "name": "Caminhada da Mala Unilateral (Suitcase Carry - Anti-flexão lateral)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": "assets/exercises/e199.gif",
+      "mediaReviewStatus": "LEGADO_NAO_AUDITADO",
+      "sourceItemId": 499
+    },
+    {
+      "externalId": "md500-500",
+      "name": "Vacuum Abdominal (Contração isométrica do Transverso do Abdômen)",
+      "muscleGroup": "Abdômen, Core e Lombar",
+      "animationPath": null,
+      "mediaReviewStatus": "PENDENTE",
+      "sourceItemId": 500
+    }
+  ]
+}

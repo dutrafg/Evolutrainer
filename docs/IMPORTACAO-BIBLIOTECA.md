@@ -43,3 +43,6 @@ Antes do primeiro lote, confirmar repositório/branch/pasta da biblioteca public
 - Existe acervo adicional em `dist/assets/md500-3d/` e uma pasta `md500/` com 30 GIFs 2D reprovados; não associar itens reprovados.
 - Não presumir que 425 GIFs equivalem a 425 exercícios canônicos concluídos.
 - O manifesto de origem para a lista oficial é `docs/COMPARACAO_LISTA_500.json` e o inventário é `production/INVENTARIO_MD500.json`.
+
+## Fase de integração 0.1.0-dev
+Foi incorporada uma **cópia local apenas dos metadados** da lista MD500 (500 exercícios) como `app/src/main/assets/md500-catalog.json`. A importação Room é idempotente por `externalId` e não altera registros manuais. O arquivo do catálogo diferencia correspondência legada (295), revisão pendente (125) e animação ausente (80). **GIFs reais ainda não foram empacotados nem foram validados biomecanicamente.** Nada é alterado no repositório fonte.

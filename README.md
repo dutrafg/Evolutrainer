@@ -5,7 +5,7 @@ Aplicativo de treinamento físico para Android desenvolvido **do zero** em Kotli
 ## Status: 0.1.0-dev — primeira base funcional
 
 - Início, Treinos, Biblioteca, Evolução e Perfil
-- Criação de exercícios manuais e rotinas, associação de exercícios a rotinas
+- Importação inicial offline dos metadados de 500 exercícios oficiais MD500, além de criação de exercícios manuais e rotinas, associação de exercícios a rotinas
 - Início/retomada/conclusão de sessão e registro de séries (repetições, carga e RIR)
 - Histórico e volume movimentado por sessão
 - Descanso cronometrado durante o treino
@@ -32,4 +32,4 @@ Ver `docs/ARQUITETURA.md` para decisões, limites e próximo lote.
 ## Identidade do aplicativo
 O nome oficial a partir desta etapa é **EvoluPersonal**. O repositório técnico ainda mantém o nome antigo `dutrafg/Evolutrainer`; nenhum repositório existente foi renomeado ou apagado.
 
-Os mais de 400 GIFs legados e os dados da lista MD500 permanecem no repositório fonte `dutrafg/EvoluPersonal`, branch `codex/evolupersonal-media-350`. Não são importados automaticamente até passar pelo contrato de integridade.
+Os mais de 400 GIFs legados e os dados da lista MD500 permanecem no repositório fonte `dutrafg/EvoluPersonal`, branch `codex/evolupersonal-media-350`. Somente os metadados oficiais foram importados para uso offline; GIFs e vídeos exigem auditoria, verificação e estratégia separada de distribuição.

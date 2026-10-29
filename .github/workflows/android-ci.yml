@@ -32,6 +32,17 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.13'
+      - name: Validate bundled MD500 catalog
+        run: |
+          python3 - <<'PY'
+          import json
+          p='app/src/main/assets/md500-catalog.json'
+          d=json.load(open(p, encoding='utf-8'))
+          ids=[x['externalId'] for x in d['exercises']]
+          assert d['exerciseCount']==500 and len(ids)==500 and len(set(ids))==500
+          assert sum(bool(x['animationPath']) for x in d['exercises'])==420
+          print("500 IDs canônicos; 420 referências de mídia, não necessariamente aprovadas")
+          PY
       - name: Unit tests and debug build
         run: gradle --no-daemon :app:testDebugUnitTest :app:assembleDebug
       - name: Upload debug APK

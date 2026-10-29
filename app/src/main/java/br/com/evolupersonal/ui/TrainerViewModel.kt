@@ -9,11 +9,13 @@ import androidx.lifecycle.viewModelScope
 import br.com.evolupersonal.core.TrainingSetInput
 import br.com.evolupersonal.core.WorkoutMath
 import br.com.evolupersonal.data.ExerciseEntity
+import br.com.evolupersonal.data.LibrarySeeder
 import br.com.evolupersonal.data.RoutineEntity
 import br.com.evolupersonal.data.RoutineExerciseEntity
 import br.com.evolupersonal.data.TrainerDatabase
 import br.com.evolupersonal.data.WorkoutSessionEntity
 import br.com.evolupersonal.data.WorkoutSetEntity
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -55,6 +57,16 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
     val activeSets = activeSession.flatMapLatest { session ->
         session?.let { dao.observeSessionSets(it.id) } ?: flowOf(emptyList())
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+
+    init {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                LibrarySeeder.seed(app.applicationContext, TrainerDatabase.get(app))
+            } catch (e: Exception) {
+                statusMessage = "Não foi possível carregar a biblioteca inicial."
+            }
+        }
+    }
 
     fun clearStatus() { statusMessage = null }
 
