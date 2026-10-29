@@ -29,6 +29,14 @@ fun StudentsScreen(vm: TrainerViewModel, onBack: () -> Unit) {
     var confirmInactive by remember { mutableStateOf(false) }
     val target = students.firstOrNull { it.id == selected }
     androidx.activity.compose.BackHandler(enabled = target != null) { selected = -1L }
+    if (editing >= 0) {
+        val student = students.firstOrNull { it.id == editing }
+        androidx.activity.compose.BackHandler(enabled = !vm.busy) { editing = -1L }
+        if (editing == 0L || student != null) StudentEditor(student, vm.busy, onDismiss = { editing = -1L }, onSave = { name, goal, equipment, notes, availability ->
+            vm.saveStudent(student?.id, name, goal, equipment, notes, availability) { editing = -1L }
+        })
+        return
+    }
     LazyVerticalGrid(columns = GridCells.Adaptive(300.dp), modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(18.dp), horizontalArrangement = Arrangement.spacedBy(12.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item(span = { GridItemSpan(maxLineSpan) }) { TextButton(onClick = { if (target == null) onBack() else selected = -1L }) { Text(if (target == null) "Voltar ao início" else "Todos os alunos") } }
         item(span = { GridItemSpan(maxLineSpan) }) { SectionHeader(target?.name ?: "Alunos", "Cadastro e acompanhamento individual") }
@@ -86,10 +94,7 @@ fun StudentsScreen(vm: TrainerViewModel, onBack: () -> Unit) {
         }
     }
     if (confirmInactive && target != null) AlertDialog(onDismissRequest = { confirmInactive = false }, title = { Text("Inativar ${target.name}?") }, text = { Text("O histórico será preservado. Novos treinos ficam bloqueados até a reativação; um treino já aberto pode ser concluído.") }, confirmButton = { TextButton(onClick = { vm.setStudentActive(target.id, false); confirmInactive = false }) { Text("Inativar") } }, dismissButton = { TextButton(onClick = { confirmInactive = false }) { Text("Cancelar") } })
-    if (editing >= 0) {
-        val student = students.firstOrNull { it.id == editing }
-        if (editing == 0L || student != null) StudentEditor(student, vm.busy, onDismiss = { editing = -1L }, onSave = { name, goal, equipment, notes, availability -> vm.saveStudent(student?.id, name, goal, equipment, notes, availability) { editing = -1L } })
-    }
+
 }
 
 @Composable
@@ -99,13 +104,17 @@ private fun StudentEditor(student: StudentEntity?, busy: Boolean, onDismiss: () 
     var equipment by rememberSaveable(student?.id) { mutableStateOf(student?.equipment.orEmpty()) }
     var notes by rememberSaveable(student?.id) { mutableStateOf(student?.notes.orEmpty()) }
     var availability by rememberSaveable(student?.id) { mutableStateOf(student?.availability.orEmpty()) }
-    AlertDialog(onDismissRequest = { if (!busy) onDismiss() }, title = { Text(if (student == null) "Novo aluno" else "Editar aluno") }, text = {
-        Column(Modifier.imePadding().verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-            OutlinedTextField(name, { name = it.take(80) }, label = { Text("Nome") }, singleLine = true)
-            OutlinedTextField(goal, { goal = it.take(100) }, label = { Text("Objetivo") })
-            OutlinedTextField(equipment, { equipment = it.take(200) }, label = { Text("Equipamentos") })
-            OutlinedTextField(availability, { availability = it.take(200) }, label = { Text("Disponibilidade (dias e horários)") })
-            OutlinedTextField(notes, { notes = it.take(500) }, label = { Text("Observações") })
+    Box(Modifier.fillMaxSize(), contentAlignment = androidx.compose.ui.Alignment.TopCenter) {
+        Column(Modifier.widthIn(max = 680.dp).fillMaxSize().imePadding().verticalScroll(rememberScrollState()).padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            TextButton(onClick = onDismiss, enabled = !busy) { Text("Voltar aos alunos") }
+            SectionHeader(if (student == null) "Novo aluno" else "Editar aluno", "Os dados só são confirmados após salvar.")
+            OutlinedTextField(name, { name = it.take(80) }, label = { Text("Nome") }, modifier = Modifier.fillMaxWidth(), singleLine = true)
+            OutlinedTextField(goal, { goal = it.take(100) }, label = { Text("Objetivo") }, modifier = Modifier.fillMaxWidth())
+            OutlinedTextField(equipment, { equipment = it.take(200) }, label = { Text("Equipamentos") }, modifier = Modifier.fillMaxWidth())
+            OutlinedTextField(availability, { availability = it.take(200) }, label = { Text("Disponibilidade (dias e horários)") }, modifier = Modifier.fillMaxWidth())
+            OutlinedTextField(notes, { notes = it.take(500) }, label = { Text("Observações") }, modifier = Modifier.fillMaxWidth())
+            Button(onClick = { onSave(name, goal, equipment, notes, availability) }, enabled = !busy && name.trim().length >= 2 && goal.isNotBlank(), modifier = Modifier.fillMaxWidth()) { Text(if (busy) "Salvando…" else "Salvar") }
+            OutlinedButton(onClick = onDismiss, enabled = !busy, modifier = Modifier.fillMaxWidth()) { Text("Cancelar") }
         }
-    }, confirmButton = { TextButton(onClick = { onSave(name, goal, equipment, notes, availability) }, enabled = !busy && name.trim().length >= 2 && goal.isNotBlank()) { Text(if (busy) "Salvando…" else "Salvar") } }, dismissButton = { TextButton(onClick = onDismiss, enabled = !busy) { Text("Cancelar") } })
+    }
 }
