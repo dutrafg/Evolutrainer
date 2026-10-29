@@ -2,7 +2,7 @@
 
 Aplicativo de treinamento físico para Android desenvolvido **do zero** em Kotlin, Jetpack Compose, Material 3 e Room/SQLite. Não é WebView nem PWA.
 
-## Status: 0.3.0-dev — Fase 1 em validação
+## Status: 0.3.0-dev — Fase 1 implementada; QA automatizado aprovado
 
 - Início, Treinos, Biblioteca, Evolução e Perfil
 - Criação de exercícios manuais e rotinas, associação de exercícios a rotinas
@@ -57,3 +57,5 @@ Os mais de 400 GIFs legados e os dados da lista MD500 permanecem no repositório
 Testes novos cobrem migração, integridade de backup, autenticação, recuperação de mais de 30 sessões e cenários de interface em smartphone/tablet. Os resultados e limites da validação ficam em docs/FASE-01-IMPLEMENTACAO.md.
 
 A biblioteca 3D permanece fora desta entrega. A main não deve receber alterações sem autorização.
+
+Validação da Fase 1: 22 testes aprovados, zero falhas/erros/ignorados; build Android aprovado na execução https://github.com/dutrafg/Evolutrainer/actions/runs/40806493717 . Homologação em smartphone e tablet físicos permanece pendente.

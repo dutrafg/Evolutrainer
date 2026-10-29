@@ -43,7 +43,15 @@ Esta fase corresponde às etapas 1–5 da captura fornecida: arquitetura/valida�
 - Interface Compose (ações semânticas e visibilidade) em smartphone retrato/paisagem e tablet retrato/paisagem: primeiro acesso, cadastro e pesquisa.
 - Testes preexistentes de cálculo e sugestões preservados.
 
-Resultados da execução final devem ser consultados no GitHub Actions da branch feature/android-nativo-base. Esta documentação não substitui a evidência do CI.
+Execução final aprovada: https://github.com/dutrafg/Evolutrainer/actions/runs/40806493717
+
+Código validado: 09820c49f06ed0dd29e4ff87d3f2a83ddd5dcef4, versão 0.3.0-dev (versionCode 3).
+
+Resultado: **22 testes, zero falhas, zero erros e zero testes ignorados**. As quatro combinações de interface foram aprovadas: smartphone retrato/paisagem e tablet retrato/paisagem. Compilação assembleDebug concluída e APK de desenvolvimento gerado.
+
+Artefatos da execução: EvoluPersonal-0.3.0-dev-debug e EvoluPersonal-phase1-validation (XML/HTML de testes e esquema Room). O esquema salvo no repositório foi comparado com o esquema gerado na execução aprovada e corresponde integralmente.
+
+Estado: **etapas 1–5 implementadas e QA automatizado aprovado; homologação física pendente**.
 
 ## Homologação em aparelho
 
