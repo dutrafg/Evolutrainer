@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import br.com.evolupersonal.core.TrainingSetInput
 import br.com.evolupersonal.core.WorkoutMath
 import br.com.evolupersonal.data.ExerciseEntity
+import br.com.evolupersonal.data.StudentEntity
 import br.com.evolupersonal.data.RoutineEntity
 import br.com.evolupersonal.data.RoutineExerciseEntity
 import br.com.evolupersonal.data.TrainerDatabase
@@ -34,6 +35,9 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
     var statusMessage by mutableStateOf<String?>(null)
         private set
 
+    val students = dao.observeStudents().stateIn(
+        viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList()
+    )
     val exercises = dao.observeExercises().stateIn(
         viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList()
     )
@@ -68,6 +72,28 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
         preferences.edit().putBoolean("dark", isDark).apply()
     }
 
+    fun addStudent(name: String, goal: String, equipment: String, notes: String) = perform {
+        require(name.trim().length in 2..80 && goal.trim().length in 1..100) {
+            "Informe nome e objetivo do aluno."
+        }
+        dao.insertStudent(
+            StudentEntity(
+                name = name.trim(),
+                goal = goal.trim(),
+                equipment = equipment.trim().take(200),
+                notes = notes.trim().take(500)
+            )
+        )
+        statusMessage = "Aluno cadastrado com sucesso."
+    }
+
+    fun assignRoutine(routineId: Long, studentId: Long?) = perform {
+        require(dao.getRoutine(routineId) != null) { "Treino não encontrado." }
+        require(studentId == null || students.value.any { it.id == studentId }) { "Aluno não encontrado." }
+        dao.assignRoutine(routineId, studentId)
+        statusMessage = if (studentId == null) "Treino desvinculado." else "Treino atribuído ao aluno."
+    }
+
     fun addExercise(name: String, muscleGroup: String) = perform {
         val title = name.trim()
         val group = muscleGroup.trim()
@@ -100,7 +126,10 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
         statusMessage = "Exercício incluído no treino."
     }
 
-    fun startRoutine(routineId: Long) = perform {
+    fun startRoutine(routineId: Long, energy: Int?, sleep: Int?, fatigue: Int?) = perform {
+        require(listOf(energy, sleep, fatigue).all { it == null || it in 1..5 }) {
+            "Valores do check-in devem estar entre 1 e 5."
+        }
         if (dao.getActiveSession() != null) {
             statusMessage = "Já existe um treino aberto. Retome-o antes de iniciar outro."
             return@perform
@@ -108,10 +137,15 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
         require(dao.getRoutineExerciseCount(routineId) > 0) {
             "Adicione pelo menos um exercício para começar."
         }
+        val routine = dao.getRoutine(routineId) ?: throw IllegalArgumentException("Treino não encontrado.")
         dao.insertSession(
             WorkoutSessionEntity(
                 routineId = routineId,
-                startedAt = System.currentTimeMillis()
+                startedAt = System.currentTimeMillis(),
+                studentId = routine.studentId,
+                energy = energy,
+                sleep = sleep,
+                fatigue = fatigue
             )
         )
         statusMessage = "Treino iniciado."
@@ -121,7 +155,10 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
         exerciseId: Long,
         repetitions: String,
         weightKg: String,
-        rir: String
+        rir: String,
+        setType: String,
+        rpe: String,
+        notes: String
     ) = perform {
         val repetitionsValue = repetitions.trim().toIntOrNull()
         val weightValue = weightKg.trim().replace(',', '.').toDoubleOrNull()
@@ -130,6 +167,12 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
             "Informe repetições e carga válidas."
         }
         require(rir.isBlank() || rirValue != null) { "RIR deve ser um número de 0 a 10." }
+        val rpeValue = rpe.trim().takeIf { it.isNotEmpty() }?.toIntOrNull()
+        require(rpe.isBlank() || (rpeValue != null && rpeValue in 1..10)) { "RPE deve ser um número de 1 a 10." }
+        require(setType in setOf("AQUECIMENTO", "NORMAL", "BACKOFF", "DROP", "FALHA")) {
+            "Tipo de série inválido."
+        }
+        require(notes.length <= 180) { "Observação deve ter até 180 caracteres." }
         val input = TrainingSetInput(repetitionsValue, weightValue, rirValue)
         require(WorkoutMath.isValid(input)) {
             "Valores permitidos: 1–1000 repetições, 0–1000 kg e RIR 0–10."
@@ -149,7 +192,10 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
                 repetitions = input.repetitions,
                 loadKg = input.loadKg,
                 rir = input.rir,
-                performedAt = System.currentTimeMillis()
+                performedAt = System.currentTimeMillis(),
+                setType = setType,
+                rpe = rpeValue,
+                notes = notes.trim()
             )
         )
         statusMessage = "Série $number registrada."

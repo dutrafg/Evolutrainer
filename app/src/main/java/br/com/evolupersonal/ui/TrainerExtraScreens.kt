@@ -1,6 +1,7 @@
 package br.com.evolupersonal.ui
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -15,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import br.com.evolupersonal.core.WorkoutMath
+import br.com.evolupersonal.core.TrainingInsights
 import br.com.evolupersonal.data.ExerciseEntity
 import br.com.evolupersonal.data.RoutineEntity
 import br.com.evolupersonal.data.RoutineExerciseEntity
@@ -137,18 +139,20 @@ fun ActiveSessionScreen(
     items: List<RoutineExerciseEntity>,
     exercises: List<ExerciseEntity>,
     sets: List<WorkoutSetEntity>,
-    onRecord: (Long, String, String, String) -> Unit,
+    previousSets: List<WorkoutSetEntity>,
+    onRecord: (Long, String, String, String, String, String, String) -> Unit,
     onFinish: () -> Unit
 ) {
     var showConfirmation by remember { mutableStateOf(false) }
-    var restSeconds by rememberSaveable { mutableIntStateOf(0) }
-    var timerSequence by rememberSaveable { mutableIntStateOf(0) }
+    var restUntil by rememberSaveable { mutableLongStateOf(0L) }
+    var restSeconds by remember { mutableIntStateOf(0) }
 
-    LaunchedEffect(timerSequence) {
-        while (restSeconds > 0) {
-            delay(1000)
-            restSeconds -= 1
+    LaunchedEffect(restUntil) {
+        while (restUntil > System.currentTimeMillis()) {
+            restSeconds = ((restUntil - System.currentTimeMillis() + 999) / 1000).toInt()
+            delay(250)
         }
+        restSeconds = 0
     }
     Column(
         Modifier.fillMaxSize().verticalScroll(rememberScrollState())
@@ -179,10 +183,13 @@ fun ActiveSessionScreen(
                         fontWeight = FontWeight.Bold
                     )
                 }
-                FilledTonalButton(onClick = { restSeconds = 90; timerSequence += 1 }) {
-                    Icon(Icons.Outlined.Timer, null)
-                    Spacer(Modifier.width(6.dp))
-                    Text("90 segundos")
+                Row(Modifier.horizontalScroll(rememberScrollState())) {
+                    listOf(60, 90, 120).forEach { seconds ->
+                        TextButton(onClick = { restUntil = System.currentTimeMillis() + seconds * 1000L }) {
+                            Text("${seconds}s")
+                        }
+                    }
+                    TextButton(onClick = { restUntil = 0L }) { Text("Parar") }
                 }
             }
         }
@@ -190,11 +197,17 @@ fun ActiveSessionScreen(
             val exercise = exercises.firstOrNull { it.id == item.exerciseId }
             val exerciseSets = sets.filter { it.exerciseId == item.exerciseId }
             ExerciseEntryCard(
+                exerciseId = item.exerciseId,
                 name = exercise?.name ?: "Exercício",
                 muscleGroup = exercise?.muscleGroup ?: "",
                 target = "${item.targetSets} séries × ${item.targetReps} repetições",
                 sets = exerciseSets,
-                onRecord = { reps, weight, rir -> onRecord(item.exerciseId, reps, weight, rir) }
+                previous = previousSets.filter { it.exerciseId == item.exerciseId }
+                    .maxByOrNull { it.performedAt },
+                targetReps = item.targetReps,
+                onRecord = { reps, weight, rir, setType, rpe, note ->
+                    onRecord(item.exerciseId, reps, weight, rir, setType, rpe, note)
+                }
             )
         }
         Button(onClick = { showConfirmation = true }, modifier = Modifier.fillMaxWidth()) {
@@ -226,16 +239,25 @@ fun ActiveSessionScreen(
 
 @Composable
 private fun ExerciseEntryCard(
+    exerciseId: Long,
     name: String,
     muscleGroup: String,
     target: String,
+    targetReps: Int,
     sets: List<WorkoutSetEntity>,
-    onRecord: (String, String, String) -> Unit
+    previous: WorkoutSetEntity?,
+    onRecord: (String, String, String, String, String, String) -> Unit
 ) {
-    var reps by rememberSaveable(name) { mutableStateOf("10") }
-    var load by rememberSaveable(name) { mutableStateOf("0") }
-    var rir by rememberSaveable(name) { mutableStateOf("") }
-
+    var reps by rememberSaveable(exerciseId) { mutableStateOf(targetReps.toString()) }
+    var load by rememberSaveable(exerciseId) { mutableStateOf("0") }
+    var rir by rememberSaveable(exerciseId) { mutableStateOf("") }
+    var rpe by rememberSaveable(exerciseId) { mutableStateOf("") }
+    var notes by rememberSaveable(exerciseId) { mutableStateOf("") }
+    var selectedType by rememberSaveable(exerciseId) { mutableStateOf("NORMAL") }
+    val typeNames = listOf(
+        "AQUECIMENTO" to "Aquec.", "NORMAL" to "Trabalho",
+        "BACKOFF" to "Back-off", "DROP" to "Drop", "FALHA" to "Falha"
+    )
     Card(
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         modifier = Modifier.fillMaxWidth()
@@ -250,41 +272,74 @@ private fun ExerciseEntryCard(
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 style = MaterialTheme.typography.bodySmall
             )
+            if (previous != null) {
+                Text(
+                    "Última sessão: ${previous.repetitions} rep. × ${formatKg(previous.loadKg)}" +
+                        " · RIR ${previous.rir ?: "—"}",
+                    color = MaterialTheme.colorScheme.secondary,
+                    style = MaterialTheme.typography.bodySmall
+                )
+                Text(
+                    TrainingInsights.progressionSuggestion(
+                        previous.loadKg, previous.repetitions, targetReps, previous.rir
+                    ),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
             if (sets.isNotEmpty()) {
                 sets.forEach { recorded ->
-                    Row(
-                        Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        Text("Série ${recorded.setNumber}", color = MaterialTheme.colorScheme.secondary)
-                        Text("${recorded.repetitions} rep. · ${formatKg(recorded.loadKg)}")
-                        Text("RIR ${recorded.rir?.toString() ?: "—"}")
+                    Column {
+                        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                            Text("#${recorded.setNumber} · ${recorded.setType}", color = MaterialTheme.colorScheme.secondary)
+                            Text("${recorded.repetitions} × ${formatKg(recorded.loadKg)}")
+                        }
+                        if (recorded.rpe != null || recorded.rir != null) {
+                            Text(
+                                "RIR ${recorded.rir ?: "—"} · RPE ${recorded.rpe ?: "—"}",
+                                style = MaterialTheme.typography.labelSmall
+                            )
+                        }
                     }
                 }
                 HorizontalDivider()
+            }
+            Text("Tipo de série", style = MaterialTheme.typography.labelMedium)
+            Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(7.dp)) {
+                typeNames.forEach { (id, label) ->
+                    FilterChip(selected = selectedType == id, onClick = { selectedType = id }, label = { Text(label) })
+                }
             }
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 OutlinedTextField(
                     reps, onValueChange = { reps = it.take(4) },
                     label = { Text("Reps") },
-                    modifier = Modifier.weight(1f),
-                    singleLine = true
+                    modifier = Modifier.weight(1f), singleLine = true
                 )
                 OutlinedTextField(
                     load, onValueChange = { load = it.take(8) },
                     label = { Text("Kg") },
-                    modifier = Modifier.weight(1f),
-                    singleLine = true
+                    modifier = Modifier.weight(1f), singleLine = true
                 )
                 OutlinedTextField(
                     rir, onValueChange = { rir = it.take(2) },
                     label = { Text("RIR") },
-                    modifier = Modifier.weight(1f),
-                    singleLine = true
+                    modifier = Modifier.weight(1f), singleLine = true
+                )
+                OutlinedTextField(
+                    rpe, onValueChange = { rpe = it.take(2) },
+                    label = { Text("RPE") },
+                    modifier = Modifier.weight(1f), singleLine = true
                 )
             }
+            OutlinedTextField(
+                notes, onValueChange = { notes = it.take(180) },
+                modifier = Modifier.fillMaxWidth(),
+                label = { Text("Observação da série (opcional)") },
+                maxLines = 2
+            )
             FilledTonalButton(
-                onClick = { onRecord(reps, load, rir) },
+                onClick = { onRecord(reps, load, rir, selectedType, rpe, notes) },
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Icon(Icons.Outlined.Add, null)
@@ -304,6 +359,10 @@ fun ProgressScreen(
     val completedIds = history.map { it.id }.toSet()
     val completedSets = allSets.filter { it.sessionId in completedIds }
     val volume = completedSets.sumOf { WorkoutMath.volumeKg(it.repetitions, it.loadKg) }
+    val workingSets = TrainingInsights.workSetCount(completedSets.map { it.setType })
+    val topEstimated1Rm = completedSets.mapNotNull {
+        TrainingInsights.estimatedOneRepMax(it.loadKg, it.repetitions)
+    }.maxOrNull()
 
     Column(
         Modifier.fillMaxSize().verticalScroll(rememberScrollState())
@@ -331,6 +390,24 @@ fun ProgressScreen(
                     "Soma de carga × repetições de séries registradas; não é gasto calórico.",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+        }
+        Card(
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Column(Modifier.padding(19.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                Text("Séries de trabalho registradas: $workingSets")
+                Text(
+                    "Maior 1RM estimada (até 10 repetições): " +
+                        (topEstimated1Rm?.let { formatKg(it) } ?: "Ainda sem estimativa"),
+                    color = MaterialTheme.colorScheme.primary
+                )
+                Text(
+                    "Estimativa indireta (Epley), não teste máximo. Séries por grupo muscular serão detalhadas depois.",
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    style = MaterialTheme.typography.bodySmall
                 )
             }
         }

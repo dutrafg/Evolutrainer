@@ -2,7 +2,7 @@
 
 Aplicativo de treinamento físico para Android desenvolvido **do zero** em Kotlin, Jetpack Compose, Material 3 e Room/SQLite. Não é WebView nem PWA.
 
-## Status: 0.1.0-dev — primeira base funcional
+## Status: 0.2.0-dev — primeira base funcional
 
 - Início, Treinos, Biblioteca, Evolução e Perfil
 - Criação de exercícios manuais e rotinas, associação de exercícios a rotinas
@@ -33,3 +33,13 @@ Ver `docs/ARQUITETURA.md` para decisões, limites e próximo lote.
 O nome oficial a partir desta etapa é **EvoluPersonal**. O repositório técnico ainda mantém o nome antigo `dutrafg/Evolutrainer`; nenhum repositório existente foi renomeado ou apagado.
 
 Os mais de 400 GIFs legados e os dados da lista MD500 permanecem no repositório fonte `dutrafg/EvoluPersonal`, branch `codex/evolupersonal-media-350`. Não são importados automaticamente até passar pelo contrato de integridade.
+
+## Etapa atual — funcionalidades selecionadas
+- Gestão offline de alunos (nome, objetivo, equipamentos, notas) e atribuição de fichas.
+- Check-in opcional de energia/sono/fadiga ao iniciar sessão.
+- Registro ampliado de séries: aquecimento, trabalho, back-off, drop e falha, RIR, RPE e observações.
+- Descanso configurável durante a sessão e histórico anterior por exercício/aluno.
+- Sugestões explicáveis de progressão, sem aplicar cargas automaticamente, e melhor 1RM estimada.
+- Migração Room v1→v2, sem descarte de dados.
+
+**Ainda não implementados:** editor completo de métodos e mesociclos, chat personal-aluno, integração com serviços externos, controle financeiro, sincronização online, biblioteca 3D e auditoria clínica/biomecânica. Consulte `docs/ROADMAP-FUNCOES.md`.

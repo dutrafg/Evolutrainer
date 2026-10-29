@@ -39,6 +39,7 @@ private val tabs = listOf(
 
 @Composable
 fun TrainerApp(viewModel: TrainerViewModel) {
+    val students by viewModel.students.collectAsStateWithLifecycle()
     val exercises by viewModel.exercises.collectAsStateWithLifecycle()
     val routines by viewModel.routines.collectAsStateWithLifecycle()
     val routineExercises by viewModel.routineExercises.collectAsStateWithLifecycle()
@@ -47,6 +48,7 @@ fun TrainerApp(viewModel: TrainerViewModel) {
     val history by viewModel.history.collectAsStateWithLifecycle()
     val allSets by viewModel.allSets.collectAsStateWithLifecycle()
     var tabIndex by rememberSaveable { mutableIntStateOf(0) }
+    var showStudents by rememberSaveable { mutableStateOf(false) }
     var selectedRoutineId by rememberSaveable { mutableLongStateOf(-1L) }
     val snackbar = remember { SnackbarHostState() }
 
@@ -58,7 +60,9 @@ fun TrainerApp(viewModel: TrainerViewModel) {
         }
     }
 
-    BackHandler(enabled = tabIndex == 1 && selectedRoutineId > 0L && activeSession == null) {
+    BackHandler(enabled = showStudents) { showStudents = false }
+
+    BackHandler(enabled = !showStudents && tabIndex == 1 && selectedRoutineId > 0L && activeSession == null) {
         selectedRoutineId = -1L
     }
 
@@ -71,7 +75,7 @@ fun TrainerApp(viewModel: TrainerViewModel) {
                     tabs.forEachIndexed { index, tab ->
                         NavigationBarItem(
                             selected = tabIndex == index,
-                            onClick = { tabIndex = index },
+                            onClick = { tabIndex = index; showStudents = false },
                             icon = { Icon(tab.icon, contentDescription = null) },
                             label = { Text(tab.title, fontSize = 10.sp, maxLines = 1) },
                             alwaysShowLabel = true
@@ -83,8 +87,18 @@ fun TrainerApp(viewModel: TrainerViewModel) {
             Column(Modifier.fillMaxSize().padding(inner)) {
                 Header(tabIndex, viewModel.profileName)
                 when (tabIndex) {
-                    0 -> HomeScreen(
+                    0 -> if (showStudents) {
+                        StudentsScreen(
+                            students = students,
+                            routines = routines,
+                            onCreate = viewModel::addStudent,
+                            onAssign = viewModel::assignRoutine,
+                            onBack = { showStudents = false }
+                        )
+                    } else HomeScreen(
                         profileName = viewModel.profileName,
+                        studentCount = students.size,
+                        onStudents = { showStudents = true },
                         routines = routines,
                         activeSession = activeSession != null,
                         completedSessions = history.size,
@@ -103,6 +117,9 @@ fun TrainerApp(viewModel: TrainerViewModel) {
                                 items = routineExercises.filter { it.routineId == active.routineId },
                                 exercises = exercises,
                                 sets = activeSets.filter { it.sessionId == active.id },
+                                previousSets = allSets.filter { previous ->
+                                    history.any { it.id == previous.sessionId && it.studentId == active.studentId }
+                                },
                                 onRecord = viewModel::recordSet,
                                 onFinish = viewModel::finishSession
                             )
@@ -113,7 +130,7 @@ fun TrainerApp(viewModel: TrainerViewModel) {
                                 exercises = exercises,
                                 onBack = { selectedRoutineId = -1L },
                                 onAddExercise = { viewModel.addExerciseToRoutine(selectedRoutineId, it) },
-                                onStart = { viewModel.startRoutine(selectedRoutineId) },
+                                onStart = { energy, sleep, fatigue -> viewModel.startRoutine(selectedRoutineId, energy, sleep, fatigue) },
                                 onOpenLibrary = { tabIndex = 2 }
                             )
                         } else {
@@ -179,6 +196,8 @@ private fun Header(tabIndex: Int, profileName: String) {
 @Composable
 private fun HomeScreen(
     profileName: String,
+    studentCount: Int,
+    onStudents: () -> Unit,
     routines: List<RoutineEntity>,
     activeSession: Boolean,
     completedSessions: Int,
@@ -215,6 +234,11 @@ private fun HomeScreen(
                       else if (planned.isNotEmpty()) { onOpenRoutine(planned.first().id) }
                       else onCreate
         )
+        OutlinedButton(onClick = onStudents, modifier = Modifier.fillMaxWidth()) {
+            Icon(Icons.Outlined.People, null)
+            Spacer(Modifier.width(8.dp))
+            Text("Alunos ($studentCount) · gerenciar")
+        }
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
             MetricCard("Treinos salvos", routines.size.toString(), Modifier.weight(1f))
             MetricCard("Concluídos", completedSessions.toString(), Modifier.weight(1f))
@@ -394,10 +418,11 @@ private fun RoutineDetailScreen(
     exercises: List<ExerciseEntity>,
     onBack: () -> Unit,
     onAddExercise: (Long) -> Unit,
-    onStart: () -> Unit,
+    onStart: (Int?, Int?, Int?) -> Unit,
     onOpenLibrary: () -> Unit
 ) {
     var choosing by remember { mutableStateOf(false) }
+    var showCheckIn by remember { mutableStateOf(false) }
     Column(
         Modifier.fillMaxSize().verticalScroll(rememberScrollState())
             .padding(horizontal = 18.dp, vertical = 12.dp),
@@ -433,11 +458,40 @@ private fun RoutineDetailScreen(
             Spacer(Modifier.width(8.dp))
             Text("Adicionar exercício")
         }
-        Button(onClick = onStart, enabled = items.isNotEmpty(), modifier = Modifier.fillMaxWidth()) {
+        Button(onClick = { showCheckIn = true }, enabled = items.isNotEmpty(), modifier = Modifier.fillMaxWidth()) {
             Icon(Icons.Outlined.PlayArrow, null)
             Spacer(Modifier.width(8.dp))
             Text("Iniciar treino")
         }
+    }
+    if (showCheckIn) {
+        var energy by remember { mutableFloatStateOf(3f) }
+        var sleep by remember { mutableFloatStateOf(3f) }
+        var fatigue by remember { mutableFloatStateOf(3f) }
+        AlertDialog(
+            onDismissRequest = { showCheckIn = false },
+            title = { Text("Check-in antes do treino") },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+                    Text("Opcional: registre como você está se sentindo. Não é uma avaliação clínica.")
+                    Text("Energia: ${energy.toInt()}/5")
+                    Slider(value = energy, onValueChange = { energy = it }, valueRange = 1f..5f, steps = 3)
+                    Text("Qualidade do sono: ${sleep.toInt()}/5")
+                    Slider(value = sleep, onValueChange = { sleep = it }, valueRange = 1f..5f, steps = 3)
+                    Text("Fadiga percebida: ${fatigue.toInt()}/5 (5 = maior fadiga)")
+                    Slider(value = fatigue, onValueChange = { fatigue = it }, valueRange = 1f..5f, steps = 3)
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    onStart(energy.toInt(), sleep.toInt(), fatigue.toInt())
+                    showCheckIn = false
+                }) { Text("Registrar e iniciar") }
+            },
+            dismissButton = {
+                TextButton(onClick = { onStart(null, null, null); showCheckIn = false }) { Text("Pular") }
+            }
+        )
     }
     if (choosing) {
         AlertDialog(

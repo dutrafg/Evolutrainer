@@ -23,3 +23,14 @@ Importação incremental será exclusivamente por IDs externos canônicos, sem c
 
 ## Publicação
 Não mesclar na `main` sem autorização. Não publicar APK como estável sem QA real.
+
+## Módulo profissional 0.2.0-dev
+12. Atualizar instalação com banco Room v1 e verificar que exercícios, rotinas, séries e sessões persistiram.
+13. Cadastrar aluno, fechar/reabrir e conferir dados.
+14. Associar/desassociar ficha, iniciar sessão e verificar que a sessão guarda ID do aluno sem transferir histórico alheio.
+15. Iniciar sessão com check-in opcional; iniciar sem check-in; conferir persistência de notas.
+16. Registrar aquecimento, trabalho, back-off, drop e falha com RIR/RPE válidos.
+17. Rejeitar RPE fora 1–10; impedir atualização de carga sem confirmação.
+18. Conferir histórico anterior segregado por aluno, inclusive alunos com ficha compartilhada.
+19. Cronômetro de 60/90/120 s: pausar app, voltar e verificar tempo real transcorrido.
+20. Conferir indicador de 1RM somente para repetições 1–10, excluindo peso corporal sem carga externa.
