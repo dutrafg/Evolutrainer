@@ -1,15 +1,11 @@
-name: Híbrido beta — QA e APK
+name: Híbrido beta — QA da aplicação
 on:
   push:
     branches: [feature/pwa-hibrido-beta]
   workflow_dispatch:
-concurrency:
-  group: hybrid-beta-${{ github.ref }}
-  cancel-in-progress: true
 jobs:
-  qa-apk:
+  qa:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     permissions:
       contents: read
     steps:
@@ -18,43 +14,12 @@ jobs:
         with:
           node-version: '22'
           cache: npm
-      - uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: '21'
       - run: npm ci
       - run: npm run check && npm test && npm run build
-      - uses: actions/checkout@v4
-        with:
-          repository: dutrafg/EvoluPersonal
-          ref: 106e53d564999eed86bf6f8c68cb3cf37f9cd836
-          path: media-source
-          sparse-checkout: |
-            dist/assets
-            production
-      - run: python scripts/sync-media.py media-source
-      - uses: actions/upload-artifact@v4
-        with:
-          name: EvoluPersonal-GIFs-445
-          path: dist/media/
-          compression-level: 0
-      - run: npx cap sync android
-      - name: Assinatura fixa de desenvolvimento para atualização do beta
-        run: base64 -d scripts/beta-signing-key.base64 > android/beta.keystore
-      - uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '8.14.3'
-      - name: Compilar APK beta
-        working-directory: android
-        run: gradle --no-daemon :app:assembleDebug
-      - uses: actions/upload-artifact@v4
-        with:
-          name: EvoluPersonal-0.1.0-beta.4-APK
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+      - name: Pacote Android com mídias privadas
+        run: echo 'O APK completo é compilado em dutrafg/EvoluPersonal, branch integration/evolupersonal-beta4-media, workflow export-app-beta4.yml, com a revisão do aplicativo fixada.'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: EvoluPersonal-beta-QA
-          path: |
-            docs/
-            test-results/
+          path: docs/
