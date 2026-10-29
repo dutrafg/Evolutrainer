@@ -14,6 +14,8 @@ import androidx.compose.ui.unit.dp
 import br.com.evolupersonal.data.*
 import br.com.evolupersonal.core.PerformanceAnalysis
 import br.com.evolupersonal.core.WeightUnits
+import br.com.evolupersonal.core.AuditPresentation
+import br.com.evolupersonal.core.Prescription
 import java.text.DateFormat
 import java.util.Date
 
@@ -41,7 +43,17 @@ fun HistoryAnalysisScreen(vm: TrainerViewModel) {
             val end = if (runtime.pausedAt > 0) minOf(runtime.pausedAt, selectedSession.finishedAt!!) else selectedSession.finishedAt!!
             Text("Duração ativa: ${((end - selectedSession.startedAt - runtime.pausedMillis).coerceAtLeast(0) / 60000)} min")
             Text(if (snapshot == null) "Sessão anterior à auditoria: a ficha original não pode ser reconstruída com certeza." else "Ficha preservada no início da sessão · ${snapshot.studentName.ifBlank { "Treino pessoal" }}")
-            snapshot?.exercises?.forEach { e -> Text("Planejado: ${e.name} · ${e.prescription.sets} × ${e.prescription.repsMin}–${e.prescription.repsMax} · ${e.prescription.method} · ${e.prescription.restSeconds}s") }
+            snapshot?.exercises?.forEach { e ->
+                val p = e.prescription
+                Card(Modifier.fillMaxWidth()) { Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text("${AuditPresentation.origin(e)}: ${e.name}", style = MaterialTheme.typography.titleMedium)
+                    Text("${p.sets} séries × ${p.repsMin}–${p.repsMax} repetições · ${Prescription.methods[p.method] ?: p.method}")
+                    Text("Carga-alvo: ${p.loadKg?.let { weight(it) } ?: "Livre"} · RIR-alvo ${p.rir ?: "—"} · RPE-alvo ${p.rpe ?: "—"}")
+                    Text("Descanso: ${p.restSeconds}s · Cadência: ${p.cadence.ifBlank { "Livre" }} · Duração-alvo: ${p.durationSeconds}s")
+                    Text("Bloco: ${p.block.ifBlank { "—" }} · ${p.rounds} rodada(s) · Execução ${p.workSeconds}s / intervalo ${p.intervalSeconds}s")
+                    if (p.notes.isNotBlank()) Text("Notas técnicas: ${p.notes}")
+                } }
+            }
             sets.filter { it.sessionId == selected }.forEach { s ->
                 Card(Modifier.fillMaxWidth()) { Column(Modifier.padding(12.dp)) {
                     Text(snapshot?.exercises?.firstOrNull { it.exerciseId == s.exerciseId }?.name ?: exercises.firstOrNull { it.id == s.exerciseId }?.name ?: "Exercício #${s.exerciseId}")
@@ -50,7 +62,7 @@ fun HistoryAnalysisScreen(vm: TrainerViewModel) {
                     if (s.notes.isNotBlank()) Text(s.notes)
                 } }
             }
-            selectedSession.runtime().events.forEach { Text(it) }
+            selectedSession.runtime().events.forEach { Text(AuditPresentation.event(it)) }
             if (selectedSession.observations.isNotBlank()) Text(selectedSession.observations)
             OutlinedTextField(note, { note = it.take(1000) }, label = { Text("Adicionar observação ao histórico") }, modifier = Modifier.fillMaxWidth())
             Button(onClick = { vm.saveSessionObservations(selected, note) { note = "" } }, enabled = !vm.busy && note.isNotBlank()) { Text("Salvar observação") }
@@ -65,12 +77,10 @@ fun HistoryAnalysisScreen(vm: TrainerViewModel) {
                 SectionHeader("Desempenho por exercício")
                 Text("${points.size} sessões · melhor carga ${weight(points.maxOfOrNull { it.bestLoad } ?: 0.0)}")
                 Text("Melhor 1RM estimada: ${points.mapNotNull { it.estimated1Rm }.maxOrNull()?.let { weight(it) } ?: "Sem séries de 1–10 repetições com carga positiva"}")
-                val color = MaterialTheme.colorScheme.primary
-                Canvas(Modifier.fillMaxWidth().height(140.dp)) {
-                    val shown = points.takeLast(12); val max = shown.maxOfOrNull { it.volume }?.coerceAtLeast(1.0) ?: 1.0
-                    shown.forEachIndexed { i, point -> val width = size.width / shown.size; val height = (size.height * point.volume / max).toFloat(); drawRect(color, Offset(i * width, size.height - height), Size(width * .75f, height)) }
-                }
-                Text("Volume por sessão (últimas 12, em ordem cronológica). Carga externa × repetições, sem aquecimento.")
+                HistoryMetricChart("Volume por sessão", points.map { it.at to it.volume }, ::weight)
+                HistoryMetricChart("Carga máxima por sessão", points.map { it.at to it.bestLoad }, ::weight)
+                HistoryMetricChart("1RM estimada por sessão", points.map { it.at to it.estimated1Rm }, ::weight)
+                Text("Últimas 12 sessões, em ordem cronológica. Volume = carga externa × repetições, sem aquecimento. Lacunas de 1RM indicam ausência de séries elegíveis, não valor zero.")
                 points.takeLast(12).forEach { p -> Text("${DateFormat.getDateInstance().format(Date(p.at))} · volume ${weight(p.volume)} · ${p.reps} rep. · 1RM estimada ${p.estimated1Rm?.let { weight(it) } ?: "—"}") }
                 SectionHeader("Progressão explicável", suggestion.action)
                 Text(suggestion.reason)
@@ -81,4 +91,24 @@ fun HistoryAnalysisScreen(vm: TrainerViewModel) {
             sessions.forEach { session -> Card(onClick = { selected = session.id }, modifier = Modifier.fillMaxWidth()) { Column(Modifier.padding(16.dp)) { Text(session.snapshot()?.title ?: "Sessão legada #${session.id}"); Text(DateFormat.getDateTimeInstance().format(Date(session.finishedAt!!))); Text("Abrir séries e prescrição") } } }
         }
     }
+}
+
+@Composable
+private fun HistoryMetricChart(title: String, values: List<Pair<Long, Double?>>, format: (Double) -> String) {
+    val shown = values.takeLast(12)
+    val color = MaterialTheme.colorScheme.primary
+    Text(title, style = MaterialTheme.typography.titleMedium)
+    if (shown.none { it.second != null }) {
+        Text("Sem dados elegíveis para este gráfico.")
+        return
+    }
+    Canvas(Modifier.fillMaxWidth().height(120.dp)) {
+        val max = shown.mapNotNull { it.second }.maxOrNull()?.coerceAtLeast(1.0) ?: 1.0
+        shown.forEachIndexed { index, point -> point.second?.let { value ->
+            val width = size.width / shown.size
+            val height = (size.height * value / max).toFloat()
+            drawRect(color, Offset(index * width, size.height - height), Size(width * .75f, height))
+        } }
+    }
+    shown.forEach { (at, value) -> Text("${DateFormat.getDateInstance().format(Date(at))}: ${value?.let(format) ?: "Sem estimativa"}", style = MaterialTheme.typography.bodySmall) }
 }

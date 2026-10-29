@@ -285,7 +285,7 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
                     routine.title, routine.studentId?.let { dao.getStudent(it)?.name }.orEmpty(),
                     dao.getRoutineExerciseList(routineId).map { item ->
                         val exercise = requireNotNull(dao.getExercise(item.exerciseId))
-                        br.com.evolupersonal.data.SnapshotExercise(exercise.id, exercise.name, exercise.muscleGroup, item.prescription())
+                        br.com.evolupersonal.data.SnapshotExercise(exercise.id, exercise.name, exercise.muscleGroup, item.prescription(), itemId = item.id)
                     }
                 ))
             )

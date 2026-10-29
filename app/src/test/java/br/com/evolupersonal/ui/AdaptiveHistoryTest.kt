@@ -29,9 +29,9 @@ class AdaptiveHistoryTest {
             exercise = dao.insertExercise(ExerciseEntity(name = "Remada", muscleGroup = "Costas"))
             val routine = dao.insertRoutine(RoutineEntity(title = "Ficha atual"))
             for (i in 1..3) {
-                val snapshot = SessionSnapshot("Treino $i", "", listOf(SnapshotExercise(exercise, "Remada", "Costas", Prescription(sets = 1, repsMin = 8, repsMax = 12))))
+                val snapshot = SessionSnapshot("Treino $i", "", listOf(SnapshotExercise(exercise, "Remada", "Costas", Prescription(sets = 1, repsMin = 8, repsMax = 10, loadKg = 20.0, rir = 2, rpe = 8, cadence = "3-1-1-0", durationSeconds = 40, notes = "Controle técnico"))))
                 val session = dao.insertSession(WorkoutSessionEntity(routineId = routine, startedAt = i * 1000L, finishedAt = i * 1000L + 500, snapshotJson = Gson().toJson(snapshot)))
-                dao.insertSet(WorkoutSetEntity(sessionId = session, exerciseId = exercise, setNumber = 1, repetitions = 12, loadKg = 20.0, rir = 3, performedAt = i * 1000L + 100))
+                dao.insertSet(WorkoutSetEntity(sessionId = session, exerciseId = exercise, setNumber = 1, repetitions = 10, loadKg = 20.0, rir = 3, performedAt = i * 1000L + 100))
             }
         }
         val vm = TrainerViewModel(app); compose.setContent { TrainerApp(vm) }
@@ -40,7 +40,12 @@ class AdaptiveHistoryTest {
         click("Exercício: todos")
         compose.onNodeWithText("Remada (#$exercise)").performSemanticsAction(SemanticsActions.OnClick) { it() }
         compose.onNodeWithText("Considerar aumento").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("Carga máxima por sessão").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("1RM estimada por sessão").performScrollTo().assertIsDisplayed()
         click("Treino 3")
+        compose.onNodeWithText("Planejado: Remada").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("Notas técnicas: Controle técnico").performScrollTo().assertIsDisplayed()
+        compose.onNodeWithText("Descanso: 90s · Cadência: 3-1-1-0 · Duração-alvo: 40s").performScrollTo().assertIsDisplayed()
         compose.onNodeWithText("RIR 3 · RPE —").performScrollTo().assertIsDisplayed()
         compose.onNodeWithText("Adicionar observação ao histórico").performScrollTo().performTextInput("Técnica revisada")
         click("Salvar observação")

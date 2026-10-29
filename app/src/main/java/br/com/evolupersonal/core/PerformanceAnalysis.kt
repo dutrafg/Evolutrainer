@@ -16,9 +16,10 @@ object PerformanceAnalysis {
         if (work.isEmpty()) null else Point(session.id, session.finishedAt!!, work.sumOf { it.repetitions * it.loadKg }, work.maxOf { it.loadKg }, work.sumOf { it.repetitions }, work.mapNotNull { TrainingInsights.estimatedOneRepMax(it.loadKg, it.repetitions) }.maxOrNull())
     }
     fun progression(sessions: List<WorkoutSessionEntity>, sets: List<WorkoutSetEntity>, exerciseId: Long): Suggestion {
-        val recent = sessions.filter { it.finishedAt != null && sets.any { s -> s.sessionId == it.id && s.exerciseId == exerciseId && s.setType == "NORMAL" } }.sortedByDescending { it.finishedAt }.take(3)
+        val recent = sessions.filter { it.finishedAt != null && (sets.any { s -> s.sessionId == it.id && s.exerciseId == exerciseId } || it.snapshot()?.exercises?.any { e -> e.exerciseId == exerciseId } == true) }.sortedByDescending { it.finishedAt }.take(3)
         if (recent.size < 3) return Suggestion("Dados insuficientes", "São necessárias três sessões concluídas comparáveis com séries tradicionais e prescrição registrada.")
         if (recent.map { it.studentId }.distinct().size != 1) return Suggestion("Revisar manualmente", "Selecione apenas um aluno para avaliar a progressão.")
+        if (recent.any { session -> session.snapshot()?.exercises?.count { it.exerciseId == exerciseId }?.let { it > 1 } == true }) return Suggestion("Revisar manualmente", "O exercício aparece em mais de um item histórico; não é possível comparar as prescrições com segurança.")
         val prescriptions = recent.map { it.snapshot()?.exercises?.firstOrNull { e -> e.exerciseId == exerciseId }?.prescription }
         if (prescriptions.any { it == null || it.method != "NORMAL" }) return Suggestion("Revisar manualmente", "Há sessão sem prescrição histórica ou com método diferente do tradicional.")
         val p = prescriptions.filterNotNull()

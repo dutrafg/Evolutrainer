@@ -47,7 +47,7 @@ class SessionController(private val db: TrainerDatabase) {
         val changed = state.substitutions.toMutableMap().also { if (exerciseId == item.exerciseId) it.remove(itemId) else it[itemId] = exerciseId }
         val snapshot = session.snapshot()
         val exercise = requireNotNull(dao.getExercise(exerciseId))
-        val updatedSnapshot = snapshot?.let { if (it.exercises.any { e -> e.exerciseId == exerciseId }) it else it.copy(exercises = it.exercises + SnapshotExercise(exercise.id, exercise.name, exercise.muscleGroup, item.prescription())) }
+        val updatedSnapshot = snapshot?.let { if (it.exercises.any { e -> e.exerciseId == exerciseId && e.itemId == item.id }) it else it.copy(exercises = it.exercises + SnapshotExercise(exercise.id, exercise.name, exercise.muscleGroup, item.prescription(), source = "SUBSTITUTE", itemId = item.id)) }
         dao.updateSession(session.copy(runtimeJson = Gson().toJson(state.copy(substitutions = changed, events = state.events + "${System.currentTimeMillis()} · Substituição do item $itemId por ${exercise.name} (#$exerciseId)")), snapshotJson = updatedSnapshot?.let { Gson().toJson(it) } ?: session.snapshotJson))
     }
 }

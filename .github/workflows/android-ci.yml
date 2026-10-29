@@ -44,7 +44,7 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: EvoluPersonal-0.6.0-dev-debug
+          name: EvoluPersonal-0.6.1-dev-debug
           path: app/build/outputs/apk/debug/app-debug.apk
 
 
@@ -52,7 +52,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: EvoluPersonal-phase2-validation
+          name: EvoluPersonal-validation
           path: |
             app/build/reports/tests/
             app/build/test-results/

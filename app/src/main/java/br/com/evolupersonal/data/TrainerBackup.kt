@@ -78,7 +78,7 @@ class TrainerBackup(private val db: TrainerDatabase) {
             session.snapshot()?.let { snapshot ->
                 require(snapshot.title.length in 2..60 && snapshot.studentName.length <= 80)
                 require(snapshot.exercises.size <= 10000)
-                snapshot.exercises.forEach { require(it.exerciseId in exercises && it.name.length in 2..80 && it.muscle.length in 2..50); it.prescription.validate() }
+                snapshot.exercises.forEach { require(it.source == null || it.source in setOf("PLANNED", "SUBSTITUTE")); require(it.itemId == null || it.itemId > 0); require(it.exerciseId in exercises && it.name.length in 2..80 && it.muscle.length in 2..50); it.prescription.validate() }
             }
             val runtime = session.runtime()
             require(runtime.events.size <= 10000 && runtime.events.all { it.length <= 500 })

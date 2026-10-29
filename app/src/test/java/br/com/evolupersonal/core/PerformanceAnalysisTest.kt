@@ -21,6 +21,18 @@ class PerformanceAnalysisTest {
         assertEquals("Revisar manualmente", PerformanceAnalysis.progression(sessions.mapIndexed { i, s -> s.copy(studentId = i.toLong()) }, sets(), 1).action)
         assertEquals("Revisar manualmente", PerformanceAnalysis.progression(sessions, sets().mapIndexed { i, s -> s.copy(loadKg = 20.0 + i) }, 1).action)
     }
+    @Test fun newestSpecialWarmupOrUnperformedSessionCannotBeSkipped() {
+        val newest = sessions.last().copy(id = 4, startedAt = 4000, finishedAt = 4500)
+        val special = sets().last().copy(id = 4, sessionId = 4, setType = "DROP")
+        assertEquals("Revisar manualmente", PerformanceAnalysis.progression(sessions + newest, sets() + special, 1).action)
+        assertEquals("Dados insuficientes", PerformanceAnalysis.progression(sessions + newest, sets() + special.copy(setType = "AQUECIMENTO"), 1).action)
+        assertEquals("Dados insuficientes", PerformanceAnalysis.progression(sessions + newest, sets(), 1).action)
+    }
+    @Test fun unrelatedSessionDoesNotHideComparableHistory() {
+        val unrelatedSnapshot = Gson().toJson(SessionSnapshot("Outro", "Maria", listOf(SnapshotExercise(2, "Supino", "Peito", Prescription(sets = 1)))))
+        val newest = sessions.last().copy(id = 4, startedAt = 4000, finishedAt = 4500, snapshotJson = unrelatedSnapshot)
+        assertEquals("Considerar aumento", PerformanceAnalysis.progression(sessions + newest, sets(), 1).action)
+    }
     @Test fun weeklySummaryExcludesOpenFutureAndOldSessions() {
         val summary = PerformanceAnalysis.weeklySummary(sessions + sessions[0].copy(id = 10, finishedAt = null) + sessions[0].copy(id = 11, finishedAt = 999999), sets(), 10000)
         assertEquals(3, summary.sessions)
