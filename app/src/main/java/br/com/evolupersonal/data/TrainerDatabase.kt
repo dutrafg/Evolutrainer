@@ -1,6 +1,7 @@
 package br.com.evolupersonal.data
 
 import android.content.Context
+import androidx.room.ColumnInfo
 import androidx.room.Dao
 import androidx.room.Database
 import androidx.room.Entity
@@ -11,6 +12,8 @@ import androidx.room.PrimaryKey
 import androidx.room.Query
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.flow.Flow
 
 @Entity(
@@ -25,11 +28,22 @@ data class ExerciseEntity(
     val externalId: String? = null
 )
 
+@Entity(tableName = "students")
+data class StudentEntity(
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
+    val name: String,
+    val goal: String,
+    val equipment: String,
+    val notes: String,
+    val active: Boolean = true
+)
+
 @Entity(tableName = "routines")
 data class RoutineEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val title: String,
-    val dayOfWeek: Int = 0
+    val dayOfWeek: Int = 0,
+    val studentId: Long? = null
 )
 
 @Entity(
@@ -75,7 +89,11 @@ data class WorkoutSessionEntity(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val routineId: Long,
     val startedAt: Long,
-    val finishedAt: Long? = null
+    val finishedAt: Long? = null,
+    val studentId: Long? = null,
+    val energy: Int? = null,
+    val sleep: Int? = null,
+    val fatigue: Int? = null
 )
 
 @Entity(
@@ -104,11 +122,26 @@ data class WorkoutSetEntity(
     val repetitions: Int,
     val loadKg: Double,
     val rir: Int?,
-    val performedAt: Long
+    val performedAt: Long,
+    @ColumnInfo(defaultValue = "'NORMAL'") val setType: String = "NORMAL",
+    val rpe: Int? = null,
+    @ColumnInfo(defaultValue = "''") val notes: String = ""
 )
 
 @Dao
 interface TrainerDao {
+    @Query("SELECT * FROM students ORDER BY name COLLATE NOCASE")
+    fun observeStudents(): Flow<List<StudentEntity>>
+
+    @Insert
+    suspend fun insertStudent(item: StudentEntity): Long
+
+    @Query("SELECT * FROM routines WHERE id = :id LIMIT 1")
+    suspend fun getRoutine(id: Long): RoutineEntity?
+
+    @Query("UPDATE routines SET studentId = :studentId WHERE id = :routineId")
+    suspend fun assignRoutine(routineId: Long, studentId: Long?): Int
+
     @Query("SELECT * FROM exercises ORDER BY name COLLATE NOCASE ASC")
     fun observeExercises(): Flow<List<ExerciseEntity>>
 
@@ -167,12 +200,13 @@ interface TrainerDao {
 @Database(
     entities = [
         ExerciseEntity::class,
+        StudentEntity::class,
         RoutineEntity::class,
         RoutineExerciseEntity::class,
         WorkoutSessionEntity::class,
         WorkoutSetEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class TrainerDatabase : RoomDatabase() {
@@ -181,13 +215,32 @@ abstract class TrainerDatabase : RoomDatabase() {
     companion object {
         @Volatile private var instance: TrainerDatabase? = null
 
+        val MIGRATION_1_2 = object : Migration(1, 2) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    "CREATE TABLE IF NOT EXISTS students (" +
+                        "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                        "name TEXT NOT NULL, goal TEXT NOT NULL," +
+                        "equipment TEXT NOT NULL, notes TEXT NOT NULL, active INTEGER NOT NULL)"
+                )
+                db.execSQL("ALTER TABLE routines ADD COLUMN studentId INTEGER")
+                db.execSQL("ALTER TABLE workout_sessions ADD COLUMN studentId INTEGER")
+                db.execSQL("ALTER TABLE workout_sessions ADD COLUMN energy INTEGER")
+                db.execSQL("ALTER TABLE workout_sessions ADD COLUMN sleep INTEGER")
+                db.execSQL("ALTER TABLE workout_sessions ADD COLUMN fatigue INTEGER")
+                db.execSQL("ALTER TABLE workout_sets ADD COLUMN setType TEXT NOT NULL DEFAULT 'NORMAL'")
+                db.execSQL("ALTER TABLE workout_sets ADD COLUMN rpe INTEGER")
+                db.execSQL("ALTER TABLE workout_sets ADD COLUMN notes TEXT NOT NULL DEFAULT ''")
+            }
+        }
+
         fun get(context: Context): TrainerDatabase =
             instance ?: synchronized(this) {
                 instance ?: Room.databaseBuilder(
                     context.applicationContext,
                     TrainerDatabase::class.java,
                     "evolupersonal.db"
-                ).build().also { instance = it }
+                ).addMigrations(MIGRATION_1_2).build().also { instance = it }
             }
     }
 }
