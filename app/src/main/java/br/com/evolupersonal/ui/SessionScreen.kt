@@ -25,7 +25,14 @@ fun SessionScreen(vm: TrainerViewModel, session: WorkoutSessionEntity) {
     var finish by rememberSaveable { mutableStateOf(false) }
     var replacing by rememberSaveable { mutableLongStateOf(0) }
     var search by rememberSaveable { mutableStateOf("") }
-    LaunchedEffect(Unit) { while (true) { now = System.currentTimeMillis(); delay(250) } }
+    DisposableEffect(session.id) {
+        val handler = android.os.Handler(android.os.Looper.getMainLooper())
+        val ticker = object : Runnable {
+            override fun run() { now = System.currentTimeMillis(); handler.postDelayed(this, 1000) }
+        }
+        handler.postDelayed(ticker, 1000)
+        onDispose { handler.removeCallbacks(ticker) }
+    }
     val clockNow = if (state.pausedAt > 0) state.pausedAt else now
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(18.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         SectionHeader(routines.firstOrNull { it.id == session.routineId }?.title ?: "Sessão")
