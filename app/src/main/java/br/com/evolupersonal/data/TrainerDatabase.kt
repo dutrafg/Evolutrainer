@@ -139,7 +139,9 @@ data class AppSettingsEntity(
     val experience: String = "Iniciante",
     val equipment: String = "",
     val goal: String = "Condicionamento",
-    val restSeconds: Int = 90
+    val restSeconds: Int = 90,
+    val weightUnit: String = "kg",
+    val lengthUnit: String = "cm"
 )
 
 @Dao
@@ -296,7 +298,7 @@ abstract class TrainerDatabase : RoomDatabase() {
         val MIGRATION_2_3 = object : Migration(2, 3) {
             override fun migrate(db: SupportSQLiteDatabase) {
                 db.execSQL("ALTER TABLE students ADD COLUMN availability TEXT NOT NULL DEFAULT ''")
-                db.execSQL("CREATE TABLE IF NOT EXISTS app_settings (id INTEGER NOT NULL PRIMARY KEY, name TEXT NOT NULL, dark INTEGER NOT NULL, initialized INTEGER NOT NULL, experience TEXT NOT NULL, equipment TEXT NOT NULL, goal TEXT NOT NULL, restSeconds INTEGER NOT NULL)")
+                db.execSQL("CREATE TABLE IF NOT EXISTS app_settings (id INTEGER NOT NULL PRIMARY KEY, name TEXT NOT NULL, dark INTEGER NOT NULL, initialized INTEGER NOT NULL, experience TEXT NOT NULL, equipment TEXT NOT NULL, goal TEXT NOT NULL, restSeconds INTEGER NOT NULL, weightUnit TEXT NOT NULL, lengthUnit TEXT NOT NULL)")
             }
         }
 

@@ -11,6 +11,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Shapes
 import androidx.compose.ui.unit.dp
 
+val LocalWeightUnit = androidx.compose.runtime.staticCompositionLocalOf { "kg" }
+
 private val darkPalette = darkColorScheme(
     primary = Color(0xFF67A2FF),
     onPrimary = Color(0xFF061C38),
@@ -42,6 +44,7 @@ private val lightPalette = lightColorScheme(
 @Composable
 fun EvoluPersonalTheme(
     dark: Boolean = isSystemInDarkTheme(),
+    weightUnit: String = "kg",
     content: @Composable () -> Unit
 ) {
     MaterialTheme(
@@ -52,6 +55,7 @@ fun EvoluPersonalTheme(
             medium = RoundedCornerShape(20.dp),
             large = RoundedCornerShape(28.dp)
         ),
-        content = content
+        content = { androidx.compose.runtime.CompositionLocalProvider(LocalWeightUnit provides weightUnit, content = content) }
     )
 }
+

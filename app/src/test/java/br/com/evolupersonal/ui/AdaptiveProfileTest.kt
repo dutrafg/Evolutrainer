@@ -24,7 +24,7 @@ class AdaptiveProfileTest {
         compose.waitUntil(15_000) { vm.ready }
         compose.onNodeWithText("Nome do profissional").performTextInput("Personal Teste")
         compose.onNodeWithText("Nome do profissional").assertTextContains("Personal Teste")
-        compose.onNodeWithText("Salvar e começar").performScrollTo().assertIsDisplayed().assertIsEnabled().performClick()
+        compose.onNodeWithText("Salvar e começar").performScrollTo().assertIsDisplayed().assertIsEnabled().performSemanticsAction(androidx.compose.ui.semantics.SemanticsActions.OnClick) { it() }
         try {
             compose.waitUntil(15_000) {
                 org.robolectric.Shadows.shadowOf(android.os.Looper.getMainLooper()).idle()
@@ -35,14 +35,14 @@ class AdaptiveProfileTest {
             println(compose.onRoot().printToString())
             throw e
         }
-        compose.onNodeWithText("Alunos (0) · gerenciar").performScrollTo().assertIsDisplayed().assertIsEnabled().performClick()
+        compose.onNodeWithText("Alunos (0) · gerenciar").performScrollTo().assertIsDisplayed().assertIsEnabled().performSemanticsAction(androidx.compose.ui.semantics.SemanticsActions.OnClick) { it() }
         compose.onNodeWithTag("students-grid").performScrollToNode(hasText("Pesquisar aluno por nome"))
         compose.onNodeWithText("Pesquisar aluno por nome").assertIsDisplayed()
         compose.onNodeWithTag("students-grid").performScrollToNode(hasText("Cadastrar aluno"))
-        compose.onNodeWithText("Cadastrar aluno").assertIsDisplayed().performClick()
+        compose.onNodeWithText("Cadastrar aluno").assertIsDisplayed().performSemanticsAction(androidx.compose.ui.semantics.SemanticsActions.OnClick) { it() }
         compose.onNodeWithText("Nome").performTextInput("Aluna Tablet")
         compose.onNodeWithText("Objetivo").performTextInput("Força")
-        compose.onNodeWithText("Salvar").performScrollTo().assertIsDisplayed().performClick()
+        compose.onNodeWithText("Salvar").performScrollTo().assertIsDisplayed().assertIsEnabled().performSemanticsAction(androidx.compose.ui.semantics.SemanticsActions.OnClick) { it() }
         compose.waitUntil(15_000) {
             org.robolectric.Shadows.shadowOf(android.os.Looper.getMainLooper()).idle()
             !vm.busy && vm.students.value.any { it.name == "Aluna Tablet" }

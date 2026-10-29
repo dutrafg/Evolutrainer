@@ -16,6 +16,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.evolupersonal.core.TrainingSetInput
 import br.com.evolupersonal.core.WorkoutMath
+import br.com.evolupersonal.core.WeightUnits
 import br.com.evolupersonal.data.ExerciseEntity
 import br.com.evolupersonal.data.StudentEntity
 import br.com.evolupersonal.data.RoutineEntity
@@ -95,11 +96,12 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
 
     fun clearStatus() { statusMessage = null }
 
-    fun saveProfile(name: String, experience: String, equipment: String, goal: String, restSeconds: Int) = perform {
+    fun saveProfile(name: String, experience: String, equipment: String, goal: String, restSeconds: Int, weightUnit: String, lengthUnit: String) = perform {
+        require(weightUnit in listOf("kg", "lb") && lengthUnit in listOf("cm", "in"))
         require(name.trim().length in 2..60) { "Informe um nome de 2 a 60 caracteres." }
         require(goal.trim().length in 1..100 && equipment.length <= 200 && restSeconds in 15..600) { "Confira objetivo, equipamentos e descanso (15–600 s)." }
         require(experience in listOf("Iniciante", "Intermediário", "Avançado"))
-        val updated = settings.copy(name = name.trim(), experience = experience, equipment = equipment.trim(), goal = goal.trim(), restSeconds = restSeconds, initialized = true)
+        val updated = settings.copy(name = name.trim(), experience = experience, equipment = equipment.trim(), goal = goal.trim(), restSeconds = restSeconds, weightUnit = weightUnit, lengthUnit = lengthUnit, initialized = true)
         dao.saveSettings(updated)
         settings = updated
         statusMessage = "Perfil salvo com sucesso."
@@ -289,7 +291,7 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
         notes: String
     ) = perform {
         val repetitionsValue = repetitions.trim().toIntOrNull()
-        val weightValue = weightKg.trim().replace(',', '.').toDoubleOrNull()
+        val weightValue = weightKg.trim().replace(',', '.').toDoubleOrNull()?.let { WeightUnits.toKg(it, settings.weightUnit) }
         val rirValue = rir.trim().takeIf { it.isNotEmpty() }?.toIntOrNull()
         require(repetitionsValue != null && weightValue != null) {
             "Informe repetições e carga válidas."

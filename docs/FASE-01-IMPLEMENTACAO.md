@@ -9,11 +9,12 @@ Esta fase corresponde às etapas 1–5 da captura fornecida: arquitetura/valida�
 | 1. Arquitetura Android | Kotlin/Compose/Material 3, Room v3, aplicação offline, CI com build e testes, esquema exportado e versionado |
 | 2. Dados e recuperação | Migrações v1→v2→v3 sem descarte; exportação completa; backup AES-256-GCM com chave derivada de senha por PBKDF2-HMAC-SHA256 (210.000 iterações e salt aleatório); restauração validada e transacional |
 | 3. Identidade e interface | Nome EvoluPersonal, ícone próprio, versão extraída do build, temas claro/escuro, navegação inferior em telas compactas e lateral a partir de 600 dp, grade adaptável de alunos |
-| 4. Primeiro acesso | Nome profissional, experiência, objetivo, equipamentos e descanso padrão; gravação confirmada no Room; migração do nome/tema previamente salvos; edição posterior no Perfil |
+| 4. Primeiro acesso | Nome profissional, experiência, objetivo, equipamentos, unidades de carga/comprimento e descanso padrão; gravação confirmada no Room; migração do nome/tema previamente salvos; edição posterior no Perfil |
 | 5. Alunos | Cadastro com confirmação de gravação, pesquisa por nome sem distinção de acentos/caixa, filtros Todos/Ativos/Inativos, edição pelo mesmo ID, disponibilidade de dias/horários, inativação/reativação e histórico individual |
 
 ## Regras de dados
 
+- Cargas podem ser informadas/exibidas em kg ou lb; o banco e os cálculos continuam em kg. A preferência de comprimento (cm/polegadas) fica preparada para os registros corporais das fases seguintes.
 - O backup contém perfil/preferências, alunos, exercícios manuais, fichas, itens, sessões abertas/concluídas e séries, mantendo os IDs.
 - Exportação lê todas as sessões, independentemente da quantidade. A consulta do histórico deixou de cortar em 30 sessões.
 - O arquivo deve ter até 20 MB; senhas de pelo menos oito caracteres. A senha não é salva no banco nem no arquivo.
@@ -39,7 +40,7 @@ Esta fase corresponde às etapas 1–5 da captura fornecida: arquitetura/valida�
 - Recuperação: todas as tabelas, 35 sessões, sessão aberta, rejeição de referências inválidas e arquivo sem campos.
 - Falha SQL simulada durante a restauração para comprovar rollback integral.
 - Edição/inativação/reativação sem perda de sessões, séries ou vínculo da ficha.
-- Interface Compose em smartphone retrato/paisagem e tablet retrato/paisagem: primeiro acesso, cadastro e pesquisa.
+- Interface Compose (ações semânticas e visibilidade) em smartphone retrato/paisagem e tablet retrato/paisagem: primeiro acesso, cadastro e pesquisa.
 - Testes preexistentes de cálculo e sugestões preservados.
 
 Resultados da execução final devem ser consultados no GitHub Actions da branch feature/android-nativo-base. Esta documentação não substitui a evidência do CI.

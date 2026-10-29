@@ -251,7 +251,8 @@ private fun ExerciseEntryCard(
     onRecord: (String, String, String, String, String, String) -> Unit
 ) {
     var reps by rememberSaveable(exerciseId) { mutableStateOf(targetReps.toString()) }
-    var load by rememberSaveable(exerciseId) { mutableStateOf("0") }
+    val weightUnit = LocalWeightUnit.current
+    var load by rememberSaveable(exerciseId, weightUnit) { mutableStateOf("0") }
     var rir by rememberSaveable(exerciseId) { mutableStateOf("") }
     var rpe by rememberSaveable(exerciseId) { mutableStateOf("") }
     var notes by rememberSaveable(exerciseId) { mutableStateOf("") }
@@ -320,7 +321,7 @@ private fun ExerciseEntryCard(
                 )
                 OutlinedTextField(
                     load, onValueChange = { load = it.take(8) },
-                    label = { Text("Kg") },
+                    label = { Text(weightUnit) },
                     modifier = Modifier.weight(1f), singleLine = true
                 )
                 OutlinedTextField(
@@ -498,8 +499,12 @@ private fun SummaryCard(label: String, value: String, modifier: Modifier) {
 
 private val ptBr = Locale.forLanguageTag("pt-BR")
 
-private fun formatKg(value: Double): String =
-    NumberFormat.getNumberInstance(ptBr).apply { maximumFractionDigits = 2 }.format(value) + " kg"
+@Composable
+private fun formatKg(value: Double): String {
+    val unit = LocalWeightUnit.current
+    val converted = br.com.evolupersonal.core.WeightUnits.fromKg(value, unit)
+    return NumberFormat.getNumberInstance(ptBr).apply { maximumFractionDigits = 2 }.format(converted) + " " + unit
+}
 
 private fun formatDate(timestamp: Long): String =
     SimpleDateFormat("dd/MM/yyyy 'às' HH:mm", ptBr).format(Date(timestamp))

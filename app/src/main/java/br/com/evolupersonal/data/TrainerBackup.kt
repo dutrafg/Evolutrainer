@@ -58,6 +58,7 @@ class TrainerBackup(private val db: TrainerDatabase) {
     fun validate(data: BackupData) {
         require(data.format == "EvoluPersonal" && data.version == 1 && data.databaseVersion == 3) { "Versão de backup incompatível." }
         val s = data.settings
+        require(s.weightUnit in listOf("kg", "lb") && s.lengthUnit in listOf("cm", "in"))
         require(s.id == 1 && s.name.trim().length in 2..60 && s.initialized && s.restSeconds in 15..600)
         require(s.experience in listOf("Iniciante", "Intermediário", "Avançado") && s.goal.length in 1..100 && s.equipment.length <= 200)
         fun ids(values: List<Long>): Set<Long> {
@@ -103,7 +104,7 @@ class TrainerBackup(private val db: TrainerDatabase) {
                 }
             }
         }
-        fields(json.getAsJsonObject("settings"), setOf("id", "name", "dark", "initialized", "experience", "equipment", "goal", "restSeconds"))
+        fields(json.getAsJsonObject("settings"), setOf("id", "name", "dark", "initialized", "experience", "equipment", "goal", "restSeconds", "weightUnit", "lengthUnit"))
         val tables = mapOf(
             "students" to setOf("id", "name", "goal", "equipment", "notes", "active", "availability"),
             "exercises" to setOf("id", "name", "muscleGroup", "origin", "externalId"),

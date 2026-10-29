@@ -17,12 +17,15 @@ import br.com.evolupersonal.BuildConfig
 
 @Composable
 fun ProfileSetupScreen(vm: TrainerViewModel) {
+    val keyboard = androidx.compose.ui.platform.LocalSoftwareKeyboardController.current
     val s = vm.settings
     var name by rememberSaveable(s.name) { mutableStateOf(s.name) }
     var goal by rememberSaveable(s.goal) { mutableStateOf(s.goal) }
     var equipment by rememberSaveable(s.equipment) { mutableStateOf(s.equipment) }
     var experience by rememberSaveable(s.experience) { mutableStateOf(s.experience) }
     var rest by rememberSaveable(s.restSeconds) { mutableStateOf(s.restSeconds.toString()) }
+    var weightUnit by rememberSaveable(s.weightUnit) { mutableStateOf(s.weightUnit) }
+    var lengthUnit by rememberSaveable(s.lengthUnit) { mutableStateOf(s.lengthUnit) }
     var backupDialog by rememberSaveable { mutableStateOf(false) }
     var restorePath by rememberSaveable { mutableStateOf<String?>(null) }
     val restoreUri = restorePath?.let(Uri::parse)
@@ -45,7 +48,15 @@ fun ProfileSetupScreen(vm: TrainerViewModel) {
             OutlinedTextField(equipment, { equipment = it.take(200) }, label = { Text("Equipamentos disponíveis (opcional)") }, modifier = Modifier.fillMaxWidth())
             OutlinedTextField(rest, { rest = it.take(3) }, label = { Text("Descanso padrão em segundos (15–600)") }, modifier = Modifier.fillMaxWidth(), singleLine = true,
                 keyboardOptions = androidx.compose.foundation.text.KeyboardOptions(keyboardType = androidx.compose.ui.text.input.KeyboardType.Number))
-            Button(onClick = { vm.saveProfile(name, experience, equipment, goal, rest.toIntOrNull() ?: 0) }, enabled = !vm.busy && name.trim().length >= 2 && goal.isNotBlank() && (rest.toIntOrNull() ?: 0) in 15..600, modifier = Modifier.fillMaxWidth()) {
+            Text("Unidade de carga")
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                listOf("kg", "lb").forEach { unit -> FilterChip(selected = weightUnit == unit, onClick = { weightUnit = unit }, label = { Text(unit) }) }
+            }
+            Text("Unidade de comprimento")
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                listOf("cm", "in").forEach { unit -> FilterChip(selected = lengthUnit == unit, onClick = { lengthUnit = unit }, label = { Text(if (unit == "in") "Polegadas" else "Centímetros") }) }
+            }
+            Button(onClick = { keyboard?.hide(); vm.saveProfile(name, experience, equipment, goal, rest.toIntOrNull() ?: 0, weightUnit, lengthUnit) }, enabled = !vm.busy && name.trim().length >= 2 && goal.isNotBlank() && (rest.toIntOrNull() ?: 0) in 15..600, modifier = Modifier.fillMaxWidth()) {
                 Text(if (vm.busy) "Salvando…" else if (s.initialized) "Salvar perfil" else "Salvar e começar")
             }
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {

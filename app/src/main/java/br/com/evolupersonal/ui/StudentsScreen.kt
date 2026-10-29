@@ -100,6 +100,7 @@ fun StudentsScreen(vm: TrainerViewModel, onBack: () -> Unit) {
 
 @Composable
 private fun StudentEditor(student: StudentEntity?, busy: Boolean, onDismiss: () -> Unit, onSave: (String, String, String, String, String) -> Unit) {
+    val keyboard = androidx.compose.ui.platform.LocalSoftwareKeyboardController.current
     var name by rememberSaveable(student?.id) { mutableStateOf(student?.name.orEmpty()) }
     var goal by rememberSaveable(student?.id) { mutableStateOf(student?.goal.orEmpty()) }
     var equipment by rememberSaveable(student?.id) { mutableStateOf(student?.equipment.orEmpty()) }
@@ -114,7 +115,7 @@ private fun StudentEditor(student: StudentEntity?, busy: Boolean, onDismiss: () 
             OutlinedTextField(equipment, { equipment = it.take(200) }, label = { Text("Equipamentos") }, modifier = Modifier.fillMaxWidth())
             OutlinedTextField(availability, { availability = it.take(200) }, label = { Text("Disponibilidade (dias e horários)") }, modifier = Modifier.fillMaxWidth())
             OutlinedTextField(notes, { notes = it.take(500) }, label = { Text("Observações") }, modifier = Modifier.fillMaxWidth())
-            Button(onClick = { onSave(name, goal, equipment, notes, availability) }, enabled = !busy && name.trim().length >= 2 && goal.isNotBlank(), modifier = Modifier.fillMaxWidth()) { Text(if (busy) "Salvando…" else "Salvar") }
+            Button(onClick = { keyboard?.hide(); onSave(name, goal, equipment, notes, availability) }, enabled = !busy && name.trim().length >= 2 && goal.isNotBlank(), modifier = Modifier.fillMaxWidth()) { Text(if (busy) "Salvando…" else "Salvar") }
             OutlinedButton(onClick = onDismiss, enabled = !busy, modifier = Modifier.fillMaxWidth()) { Text("Cancelar") }
         }
     }

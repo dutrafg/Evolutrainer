@@ -66,7 +66,7 @@ fun TrainerApp(viewModel: TrainerViewModel) {
         selectedRoutineId = -1L
     }
 
-    EvoluPersonalTheme(dark = viewModel.isDarkTheme) {
+    EvoluPersonalTheme(dark = viewModel.isDarkTheme, weightUnit = viewModel.settings.weightUnit) {
         BoxWithConstraints(Modifier.fillMaxSize()) {
         val wide = maxWidth >= 600.dp
         Scaffold(
