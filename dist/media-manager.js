@@ -38,6 +38,6 @@ function createIndexedMediaStorage(){
 }
 
 export function createMediaFetcher(bridge){
- if(!bridge?.isNative||!bridge.mediaFetch)return (...args)=>globalThis.fetch(...args);
+ if(!bridge?.isNative||!bridge.mediaFetch)return (url,options)=>{const match=new URL(url).pathname.match(/\/media\/([a-f0-9]{40}\.gif)$/);const local=match&&globalThis.location?new URL('./media/'+match[1],globalThis.location.href).href:url;return globalThis.fetch(local,options);};
  return async(url,{signal}={})=>{if(signal?.aborted)throw new DOMException('Pausado','AbortError');const r=await bridge.mediaFetch(url);if(signal?.aborted)throw new DOMException('Pausado','AbortError');return {status:r.status,ok:r.status>=200&&r.status<300,arrayBuffer:async()=>{const raw=atob(r.data||'');return Uint8Array.from(raw,c=>c.charCodeAt(0)).buffer;}};};
 }

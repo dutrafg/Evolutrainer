@@ -24,3 +24,9 @@ test('transporte nativo preserva status HTTP e respeita pausa antes de salvar',a
  const c=new AbortController(),f=createMediaFetcher({isNative:true,mediaFetch:async()=>({status:403,data:null})});
  const r=await f('https://example.test/a.gif');assert.equal(r.ok,false);assert.equal(r.status,403);c.abort();await assert.rejects(()=>f('https://example.test/a.gif',{signal:c.signal}),{name:'AbortError'});
 });
+
+test('transporte web usa mídia na mesma origem e evita dependência de CORS externo',async()=>{
+ const oldFetch=globalThis.fetch,oldLocation=globalThis.location;
+ globalThis.location={href:'https://app.example/'};globalThis.fetch=async function(url){assert.equal(this,globalThis);assert.equal(url,'https://app.example/media/'+sha+'.gif');return new Response(bytes);};
+ try{const r=await createMediaFetcher()('https://media.example/media/'+sha+'.gif');assert.equal(r.ok,true);}finally{globalThis.fetch=oldFetch;if(oldLocation===undefined)delete globalThis.location;else globalThis.location=oldLocation;}
+});
