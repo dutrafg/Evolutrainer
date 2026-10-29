@@ -12,7 +12,7 @@ class TrainingInsightsTest {
 
     @Test fun suggestionsNeverApplyChanges() {
         assertTrue(TrainingInsights.progressionSuggestion(50.0, 10, 10, 3).contains("2–5%"))
-        assertTrue(TrainingInsights.progressionSuggestion(50.0, 8, 10, 1).contains("mantenha"))
+        assertTrue(TrainingInsights.progressionSuggestion(50.0, 8, 10, 1).contains("manter"))
         assertTrue(TrainingInsights.progressionSuggestion(50.0, 10, 10, null).contains("mais dados"))
     }
 
