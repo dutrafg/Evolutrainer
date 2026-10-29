@@ -1,0 +1,46 @@
+name: Híbrido beta — QA e APK
+on:
+  push:
+    branches: [feature/pwa-hibrido-beta]
+  workflow_dispatch:
+concurrency:
+  group: hybrid-beta-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  qa-apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - run: npm ci
+      - run: npm run check && npm test && npm run build
+      - run: npx cap sync android
+      - name: Assinatura fixa de desenvolvimento para atualização do beta
+        run: base64 -d scripts/beta-signing-key.base64 > android/beta.keystore
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.14.3'
+      - name: Compilar APK beta
+        working-directory: android
+        run: gradle --no-daemon :app:assembleDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: EvoluPersonal-0.1.0-beta.1-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: EvoluPersonal-beta-QA
+          path: |
+            docs/
+            test-results/

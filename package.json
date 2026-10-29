@@ -1,0 +1,22 @@
+{
+  "name": "evolupersonal-pwa",
+  "version": "0.1.0-beta.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check dist/app.js && node --check dist/domain.js && node --check dist/storage.js && node --check dist/backup.js && node --check dist/sw.js && node --check dist/beta.js && node --check dist/beta-domain.js",
+    "build": "node scripts/build-native.mjs"
+  },
+  "dependencies": {
+    "@capacitor/core": "8.0.0",
+    "@capacitor/android": "8.0.0",
+    "@capacitor/local-notifications": "8.0.0",
+    "@capacitor/share": "8.0.0",
+    "@capacitor/filesystem": "8.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.0.0",
+    "esbuild": "0.25.12"
+  }
+}
