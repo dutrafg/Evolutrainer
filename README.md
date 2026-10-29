@@ -2,7 +2,7 @@
 
 Aplicativo de treinamento físico para Android desenvolvido **do zero** em Kotlin, Jetpack Compose, Material 3 e Room/SQLite. Não é WebView nem PWA.
 
-## Status: 0.4.1-dev — Fase 2: biblioteca e construtor de treinos
+## Status: 0.5.0-dev — Fase 2 implementada; homologação física pendente
 
 - Início, Treinos, Biblioteca, Evolução e Perfil
 - Criação de exercícios manuais e rotinas, associação de exercícios a rotinas
@@ -64,10 +64,12 @@ Validação da Fase 1: 22 testes aprovados, zero falhas/erros/ignorados; build A
 
 Cadastro e edição de exercícios próprios, equipamento, instruções, busca sem acentos, filtros e favoritos persistentes. Room v4, migração preservando dados e restauração compatível com backups da fase 1. Grade e formulários adaptados a smartphone e tablet.
 
-A etapa 7 amplia o construtor com edição de fichas, divisões, modelos reutilizáveis e arquivamento. As etapas 8–10 continuam pendentes. Consulte [o andamento da fase 2](docs/FASE-02-IMPLEMENTACAO.md).
+A etapa 7 amplia o construtor com edição de fichas, divisões, modelos reutilizáveis e arquivamento. As etapas 8–10 foram implementadas na versão 0.5.0-dev. Consulte [o andamento da fase 2](docs/FASE-02-IMPLEMENTACAO.md).
 
 Validação da etapa 6: **31 testes aprovados e build Android concluído** na [execução de validação](https://github.com/dutrafg/Evolutrainer/actions/runs/40808084941). Homologação física ainda pendente.
 
 Construtor: modelos e fichas independentes, divisões A/B/C/D ou personalizadas, busca/filtros, reordenação consistente e arquivamento sem perder histórico. Room v5 com restauração de backups v3/v4/v5.
 
 Validação da etapa 7: **42 testes aprovados e APK 0.4.1-dev gerado** na [execução final](https://github.com/dutrafg/Evolutrainer/actions/runs/40841230528). Homologação física de smartphone e tablet ainda pendente.
+
+Fase 2: prescrição por exercício, métodos configuráveis com execução guiada e registro manual, temporizador persistente, pausa/retomada e substituição por sessão. Room v6 e backups v3–v6. **49 testes aprovados**, [build e APK](https://github.com/dutrafg/Evolutrainer/actions/runs/40844110365). A fase 3 permanece bloqueada até encerrar as pendências de homologação em aparelhos.

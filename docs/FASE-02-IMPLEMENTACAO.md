@@ -2,19 +2,19 @@
 
 ## Escopo e andamento
 
-Versão de desenvolvimento: **0.4.1-dev**. Branch: `feature/android-nativo-base`.
+Versão de desenvolvimento: **0.5.0-dev**. Branch: `feature/android-nativo-base`.
 
-A fase 2 avança pelas **etapas 6 (biblioteca) e 7 (construtor de treinos)**. As etapas 8 a 10 ainda não estão concluídas.
+As etapas **6–10 estão implementadas e a validação automatizada foi aprovada**. Homologação física pendente; a fase 3 permanece bloqueada até o encerramento das pendências.
 
 | Etapa | Situação |
 | --- | --- |
 | 6. Biblioteca e estrutura de exercícios | Implementada; 31 testes e build aprovados |
 | 7. Construtor de treinos | Implementado; 42 testes e build aprovados |
-| 8. Prescrição personalizada | Pendente: carga-alvo, RIR/RPE-alvo, cadência, tempo e observações técnicas por item |
-| 9. Execução de treinos | Pendente: pausa persistente, substituição de exercício e revisão da conclusão segura |
-| 10. Métodos avançados e temporizadores | Pendente: superséries, bi/trisets, dropsets, rest-pause, cluster, circuitos, HIIT, EMOM e AMRAP |
+| 8. Prescrição personalizada | Implementada: carga-alvo, RIR/RPE, faixa de repetições, descanso, cadência, duração e observações |
+| 9. Execução de treinos | Implementada: pausa persistente, substituição, registros e revisão antes da conclusão |
+| 10. Métodos avançados e temporizadores | Implementados com configuração, execução guiada e registro manual de etapas; temporizador persistente |
 
-A base já tinha criação e duplicação de rotinas, séries/repetições, registro de cargas, tipos de séries e descanso simples. A etapa 7 amplia o construtor; esses recursos ainda não equivalem à conclusão das etapas 8 a 10.
+A base já tinha criação e duplicação de rotinas, séries/repetições, registro de cargas, tipos de séries e descanso simples. A etapa 7 amplia o construtor; as etapas 8–10 foram complementadas na versão 0.5.0-dev.
 
 ## Etapa 6
 
@@ -85,3 +85,27 @@ Schema versionado: `app/schemas/br.com.evolupersonal.data.TrainerDatabase/5.json
 Novos testes cobrem cópias independentes/modelos, divisões e rollback, arquivamento e preservação de histórico, bloqueio das mutações durante sessão, ordenação com lacunas/empates legados, migrações até v5 e restauração de backups v3/v4. O fluxo de criação, edição, inclusão, reordenação e reutilização de modelo é exercitado em quatro configurações de smartphone/tablet, incluindo restauração de rascunho via estado salvável.
 
 Também foi corrigido e testado o retorno ao construtor por “Criar treino” na tela inicial, que podia reabrir a última ficha selecionada. A `main` permanece no commit `55f8e9f791841e836ac643e4c8b296c9b128a518`.
+
+## Complementação das etapas 8–10 — 0.5.0-dev
+
+Implementação validada automaticamente: **49 testes aprovados, zero falhas/erros/ignorados e build Android concluído**. Homologação física ainda pendente.
+
+- Prescrição por exercício: séries, faixa de repetições, carga em kg/lb, RIR/RPE, descanso, cadência, duração e observações.
+- Métodos configuráveis: tradicional, supersérie, bi-set, tri-set, dropset, rest-pause, cluster, circuito, HIIT, EMOM e AMRAP. Blocos identificam exercícios associados; a abertura da sessão valida a quantidade de participantes. A execução é guiada e os registros de cada etapa são manuais; não se altera a carga automaticamente.
+- Rodadas, tempo de execução e intervalo configuráveis. EMOM exige ciclo de 60 segundos e AMRAP exige duração. Temporizador calcula fase/rodada a partir do início persistido.
+- Pausa/retomada salva no banco; o intervalo pausado é descontado do tempo ativo e desloca o temporizador.
+- Substituições por sessão preservam a ficha original. Séries já registradas permanecem associadas ao exercício efetivamente executado.
+- Confirmação de conclusão e bloqueio de encerramento sem séries; todas as séries salvas permanecem no histórico.
+- Room v6 com migração v5→v6 e restauração de backups v3–v6, incluindo prescrição e estado da sessão.
+
+Validação automatizada inclui migrações v1–v5 para v6, prescrição, limites dos métodos, transições do temporizador, persistência de pausa/substituições em backup e os fluxos de sessão em smartphone/tablet retrato/paisagem. A substituição usa tela completa; a pausa mantém o rascunho da série. O descanso padrão vem do perfil e a confirmação de conclusão lista séries pendentes.
+
+Execução aprovada: https://github.com/dutrafg/Evolutrainer/actions/runs/40844110365
+
+Código validado: `4dd83d21e209baf8135294fdfba0d17208b2a83e`. O commit seguinte acrescenta documentação e o schema v6 gerado nessa execução.
+
+APK: https://github.com/dutrafg/Evolutrainer/actions/runs/40844110365/artifacts/12884775233
+
+Relatórios e schemas: https://github.com/dutrafg/Evolutrainer/actions/runs/40844110365/artifacts/12883928034
+
+Pendências para encerramento da homologação: revisão visual e uso real dos formulários, métodos em sequência, teclado, acessibilidade, fontes ampliadas, seletor de backup e recuperação após encerramento do processo em smartphone/tablet físicos. A fase 3 não será iniciada enquanto houver pendências. Os testes semânticos em Robolectric não substituem a execução em aparelhos.
