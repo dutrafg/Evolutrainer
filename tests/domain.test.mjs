@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
 import {emptyState,change,saveStudent,saveExercise,saveRoutine,startSession,recordSet,finishSession,validate,toKg,fromKg} from '../dist/domain.js';
-import {prescription,validatePrescription,pauseSession,substitute,timerPhase,createWeeks,applyWeek,performance,muscleVolume,studentBundle,mergeStudentFeedback,migrate,filterExercises,validateBlocks,sessionProgress,startMethod,correctSet} from '../dist/beta-domain.js';
+import {prescription,validatePrescription,pauseSession,substitute,timerPhase,createWeeks,applyWeek,performance,muscleVolume,studentBundle,mergeStudentFeedback,migrate,filterExercises,validateBlocks,sessionProgress,startMethod,correctSet,mergeLinkedCatalog} from '../dist/beta-domain.js';
 import {exportBackup,importBackup} from '../dist/backup.js';
 function seed(){const s=emptyState();s.profile={name:'Personal Teste',theme:'light'};saveStudent(s,{id:'',name:'Maria',goal:'Força',equipment:'Halteres',availability:'Segundas',notes:''});saveStudent(s,{id:'',name:'José',goal:'Força',equipment:'Cabo',availability:'Quartas',notes:''});saveExercise(s,{id:'',name:'Remada',muscle:'Costas',equipment:'Cabo',instructions:'Controle',secondary:['Bíceps']});saveExercise(s,{id:'',name:'Puxada',muscle:'Costas',equipment:'Cabo',instructions:'Controle'});saveRoutine(s,{id:'',title:'Treino A',studentId:s.students[0].id,day:1,notes:''});s.routines[0].items=[{exerciseId:s.exercises[0].id,sets:1,reps:8,repsMax:10,rest:90,load:20}];return validate(s);}
 test('salvamento preserva o estado original e valida os limites',()=>{const s=seed();const next=change(s,x=>{x.students[0].name='Maria editada';});assert.equal(s.students[0].name,'Maria');assert.equal(next.rev,1);assert.throws(()=>change(s,x=>{x.students[0].name='A';}));});
@@ -74,4 +74,19 @@ test('conclusão durante pausa fecha relógios e contabiliza tempo pausado',()=>
  const s=seed();startSession(s,s.routines[0].id,1000);recordSet(s,s.sessions[0].id,s.exercises[0].id,{reps:8,load:20,rir:2},2000);
  startMethod(s,s.exercises[0].id,2000);pauseSession(s,true,3000);finishSession(s,s.sessions[0].id,6000);
  assert.equal(s.sessions[0].pausedMs,3000);assert.equal(s.sessions[0].pausedAt,0);assert.equal(s.sessions[0].timer,null);validate(s);
+});
+
+test('445 vínculos importam uma vez e preservam cadastro e favoritos existentes',()=>{
+ const c=JSON.parse(fs.readFileSync(new URL('../dist/catalog.json',import.meta.url)));const s=emptyState();
+ assert.equal(mergeLinkedCatalog(s,c),445);assert.equal(s.exercises.length,445);assert.equal(mergeLinkedCatalog(s,c),0);
+ s.exercises[0].favorite=true;s.exercises[0].instructions='Notas próprias';mergeLinkedCatalog(s,c);
+ assert.equal(s.exercises[0].favorite,true);assert.equal(s.exercises[0].instructions,'Notas próprias');validate(s);
+ const m=JSON.parse(fs.readFileSync(new URL('../dist/media-manifest.json',import.meta.url)));
+ assert.equal(m.items.length,445);assert.equal(new Set(m.items.map(x=>x.sha)).size,442);
+ assert.ok(m.items.every(x=>/^[a-f0-9]{40}$/.test(x.sha)&&x.path==='media/'+x.sha+'.gif'));
+});
+test('importação de GIFs não amplia a biblioteca privada do aluno',()=>{
+ const s=seed(),packet=studentBundle(s,s.students[0].id);const before=JSON.stringify(packet);
+ assert.equal(mergeLinkedCatalog(packet,JSON.parse(fs.readFileSync(new URL('../dist/catalog.json',import.meta.url)))),0);
+ assert.equal(JSON.stringify(packet),before);
 });

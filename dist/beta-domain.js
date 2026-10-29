@@ -84,3 +84,14 @@ export const methodGuides={
  EMOM:'Execução e intervalo devem somar 60 segundos. O relógio completa todos os minutos prescritos.',
  AMRAP:'Configure a duração total e registre manualmente os esforços realizados dentro desse tempo.'
 };
+
+export function mergeLinkedCatalog(s,catalog){
+ if(s.profile?.role==='student')return 0;
+ let changed=0;
+ for(const source of catalog.exercises.filter(e=>e.media?.sha)){
+  let e=s.exercises.find(x=>x.id===source.id)||s.exercises.find(x=>x.externalId===source.externalId&&x.origin==='MD500')||s.exercises.find(x=>normalize(x.name)===normalize(source.name)&&normalize(x.muscle)===normalize(source.muscle));
+  if(!e){s.exercises.push(structuredClone(source));changed++;continue;}
+  if(JSON.stringify(e.media)!==JSON.stringify(source.media)||e.externalId!==source.externalId){e.media=structuredClone(source.media);e.externalId=source.externalId;e.origin='MD500';changed++;}
+ }
+ return changed;
+}

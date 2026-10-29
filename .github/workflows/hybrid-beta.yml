@@ -24,6 +24,20 @@ jobs:
           java-version: '21'
       - run: npm ci
       - run: npm run check && npm test && npm run build
+      - uses: actions/checkout@v4
+        with:
+          repository: dutrafg/EvoluPersonal
+          ref: 106e53d564999eed86bf6f8c68cb3cf37f9cd836
+          path: media-source
+          sparse-checkout: |
+            dist/assets
+            production
+      - run: python scripts/sync-media.py media-source
+      - uses: actions/upload-artifact@v4
+        with:
+          name: EvoluPersonal-GIFs-445
+          path: dist/media/
+          compression-level: 0
       - run: npx cap sync android
       - name: Assinatura fixa de desenvolvimento para atualização do beta
         run: base64 -d scripts/beta-signing-key.base64 > android/beta.keystore
@@ -35,7 +49,7 @@ jobs:
         run: gradle --no-daemon :app:assembleDebug
       - uses: actions/upload-artifact@v4
         with:
-          name: EvoluPersonal-0.1.0-beta.3-APK
+          name: EvoluPersonal-0.1.0-beta.4-APK
           path: android/app/build/outputs/apk/debug/app-debug.apk
       - uses: actions/upload-artifact@v4
         if: always()
