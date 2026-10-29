@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import br.com.evolupersonal.core.WorkoutMath
 import br.com.evolupersonal.core.TrainingInsights
 import br.com.evolupersonal.data.ExerciseEntity
+import br.com.evolupersonal.data.StudentEntity
 import br.com.evolupersonal.data.RoutineEntity
 import br.com.evolupersonal.data.RoutineExerciseEntity
 import br.com.evolupersonal.data.WorkoutSessionEntity
@@ -354,9 +355,16 @@ private fun ExerciseEntryCard(
 fun ProgressScreen(
     routines: List<RoutineEntity>,
     history: List<WorkoutSessionEntity>,
-    allSets: List<WorkoutSetEntity>
+    allSets: List<WorkoutSetEntity>,
+    students: List<StudentEntity>
 ) {
-    val completedIds = history.map { it.id }.toSet()
+    var studentFilter by rememberSaveable { mutableLongStateOf(-2L) }
+    val visibleHistory = when (studentFilter) {
+        -2L -> history
+        -1L -> history.filter { it.studentId == null }
+        else -> history.filter { it.studentId == studentFilter }
+    }
+    val completedIds = visibleHistory.map { it.id }.toSet()
     val completedSets = allSets.filter { it.sessionId in completedIds }
     val volume = completedSets.sumOf { WorkoutMath.volumeKg(it.repetitions, it.loadKg) }
     val workingSets = TrainingInsights.workSetCount(completedSets.map { it.setType })
@@ -370,8 +378,23 @@ fun ProgressScreen(
         verticalArrangement = Arrangement.spacedBy(15.dp)
     ) {
         SectionHeader("Sua evolução", "Histórico de treinos registrados no dispositivo.")
+        if (students.isNotEmpty()) {
+            Row(
+                Modifier.horizontalScroll(rememberScrollState()),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                listOf(-2L to "Todos", -1L to "Pessoal").plus(students.map { it.id to it.name })
+                    .forEach { (id, label) ->
+                        FilterChip(
+                            selected = studentFilter == id,
+                            onClick = { studentFilter = id },
+                            label = { Text(label) }
+                        )
+                    }
+            }
+        }
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-            SummaryCard("Concluídos", history.size.toString(), Modifier.weight(1f))
+            SummaryCard("Concluídos", visibleHistory.size.toString(), Modifier.weight(1f))
             SummaryCard("Séries", completedSets.size.toString(), Modifier.weight(1f))
         }
         Card(
@@ -412,13 +435,13 @@ fun ProgressScreen(
             }
         }
         SectionHeader("Histórico", "Sessões concluídas recentemente")
-        if (history.isEmpty()) {
+        if (visibleHistory.isEmpty()) {
             EmptyState(
                 "Nenhuma sessão concluída",
                 "Quando concluir um treino com séries registradas, os dados aparecerão aqui."
             )
         } else {
-            history.forEach { session ->
+            visibleHistory.forEach { session ->
                 val sessionSets = completedSets.filter { it.sessionId == session.id }
                 Card(
                     colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
@@ -435,6 +458,18 @@ fun ProgressScreen(
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
+                        Text(
+                            students.firstOrNull { it.id == session.studentId }?.name ?: "Treino pessoal",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                        if (session.energy != null || session.sleep != null || session.fatigue != null) {
+                            Text(
+                                "Check-in · energia ${session.energy ?: "—"}/5 · sono ${session.sleep ?: "—"}/5 · fadiga ${session.fatigue ?: "—"}/5",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.secondary
+                            )
+                        }
                         Text(
                             "${sessionSets.size} séries · ${formatKg(sessionSets.sumOf { WorkoutMath.volumeKg(it.repetitions, it.loadKg) })}",
                             color = MaterialTheme.colorScheme.secondary
