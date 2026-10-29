@@ -13,8 +13,10 @@ import org.robolectric.annotation.Config
 @RunWith(RobolectricTestRunner::class)
 @Config(sdk = [34])
 class DatabaseMigrationTest {
-    @Test fun migratesV1ToV3AndReopensWithoutLosingSessionOrSets() = checkMigration(1)
-    @Test fun migratesV2ToV3AndPreservesExistingStudent() = checkMigration(2)
+    @Test fun migratesV1ToV4AndReopensWithoutLosingSessionOrSets() = checkMigration(1)
+    @Test fun migratesV2ToV4AndPreservesExistingStudent() = checkMigration(2)
+
+    @Test fun migratesV3ToV4WithSafeDefaults() = checkMigration(3)
 
     private fun checkMigration(startVersion: Int) = runBlocking {
         val context = ApplicationProvider.getApplicationContext<Context>()
@@ -40,7 +42,7 @@ class DatabaseMigrationTest {
             sql.execSQL("INSERT INTO routine_exercises VALUES(8,7,12,0,3,10)")
             sql.execSQL("INSERT INTO workout_sessions VALUES(9,7,1000,NULL)")
             sql.execSQL("INSERT INTO workout_sets VALUES(10,9,12,1,10,25.5,2,1100)")
-            if (startVersion == 2) {
+            if (startVersion >= 2) {
                 sql.execSQL("CREATE TABLE students (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT NOT NULL, goal TEXT NOT NULL, equipment TEXT NOT NULL, notes TEXT NOT NULL, active INTEGER NOT NULL)")
                 sql.execSQL("ALTER TABLE routines ADD COLUMN studentId INTEGER")
                 sql.execSQL("ALTER TABLE workout_sessions ADD COLUMN studentId INTEGER")
@@ -54,15 +56,25 @@ class DatabaseMigrationTest {
                 sql.execSQL("UPDATE routines SET studentId = 42")
                 sql.execSQL("UPDATE workout_sessions SET studentId = 42, energy = 3")
             }
+            if (startVersion >= 3) {
+                sql.execSQL("ALTER TABLE students ADD COLUMN availability TEXT NOT NULL DEFAULT ''")
+                sql.execSQL("CREATE TABLE app_settings (id INTEGER NOT NULL PRIMARY KEY, name TEXT NOT NULL, dark INTEGER NOT NULL, initialized INTEGER NOT NULL, experience TEXT NOT NULL, equipment TEXT NOT NULL, goal TEXT NOT NULL, restSeconds INTEGER NOT NULL, weightUnit TEXT NOT NULL, lengthUnit TEXT NOT NULL)")
+                sql.execSQL("INSERT INTO app_settings VALUES(1,'Original',1,1,'Iniciante','','Força',90,'kg','cm')")
+            }
             sql.version = startVersion
         }
         fun open() = Room.databaseBuilder(context, TrainerDatabase::class.java, name)
-            .addMigrations(TrainerDatabase.MIGRATION_1_2, TrainerDatabase.MIGRATION_2_3).allowMainThreadQueries().build()
+            .addMigrations(TrainerDatabase.MIGRATION_1_2, TrainerDatabase.MIGRATION_2_3, TrainerDatabase.MIGRATION_3_4).allowMainThreadQueries().build()
         try {
             val db = open()
             try {
                 val dao = db.trainerDao()
-                assertEquals(12L, dao.exportExercises().single().id)
+                val exercise = dao.exportExercises().single()
+                assertEquals(12L, exercise.id)
+                assertEquals("", exercise.equipment)
+                assertEquals("", exercise.instructions)
+                assertFalse(exercise.favorite)
+                if (startVersion == 3) assertEquals("Original", dao.getSettings()?.name)
                 assertEquals(7L, dao.exportRoutines().single().id)
                 assertEquals(8L, dao.exportItems().single().id)
                 assertEquals(9L, dao.getActiveSession()?.id)

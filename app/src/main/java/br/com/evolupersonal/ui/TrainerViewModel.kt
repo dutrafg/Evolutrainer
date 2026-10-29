@@ -177,14 +177,14 @@ class TrainerViewModel(app: Application) : AndroidViewModel(app) {
         statusMessage = if (studentId == null) "Treino desvinculado." else "Treino atribuído ao aluno."
     }
 
-    fun addExercise(name: String, muscleGroup: String) = perform {
-        val title = name.trim()
-        val group = muscleGroup.trim()
-        require(title.length in 2..80 && group.length in 2..50) {
-            "Informe um nome e um grupo muscular válidos."
-        }
-        dao.insertExercise(ExerciseEntity(name = title, muscleGroup = group))
-        statusMessage = "Exercício cadastrado."
+    fun saveExercise(id: Long?, name: String, muscleGroup: String, equipment: String, instructions: String, onSaved: () -> Unit) = perform {
+        br.com.evolupersonal.data.ExerciseCatalog(database).save(id, name, muscleGroup, equipment, instructions)
+        statusMessage = "Exercício salvo."
+        onSaved()
+    }
+
+    fun setExerciseFavorite(id: Long, favorite: Boolean) = perform {
+        require(dao.setExerciseFavorite(id, favorite) == 1) { "Exercício não encontrado." }
     }
 
     fun addRoutine(title: String, dayOfWeek: Int) = perform {

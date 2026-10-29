@@ -26,7 +26,10 @@ data class ExerciseEntity(
     val name: String,
     val muscleGroup: String,
     val origin: String = "MANUAL",
-    val externalId: String? = null
+    val externalId: String? = null,
+    @ColumnInfo(defaultValue = "''") val equipment: String = "",
+    @ColumnInfo(defaultValue = "''") val instructions: String = "",
+    @ColumnInfo(defaultValue = "0") val favorite: Boolean = false
 )
 
 @Entity(tableName = "students")
@@ -146,6 +149,15 @@ data class AppSettingsEntity(
 
 @Dao
 interface TrainerDao {
+    @Query("SELECT * FROM exercises WHERE id = :id")
+    suspend fun getExercise(id: Long): ExerciseEntity?
+
+    @Update
+    suspend fun updateExercise(exercise: ExerciseEntity): Int
+
+    @Query("UPDATE exercises SET favorite = :favorite WHERE id = :id")
+    suspend fun setExerciseFavorite(id: Long, favorite: Boolean): Int
+
     @Query("SELECT * FROM app_settings WHERE id = 1")
     suspend fun getSettings(): AppSettingsEntity?
 
@@ -267,7 +279,7 @@ interface TrainerDao {
         WorkoutSessionEntity::class,
         WorkoutSetEntity::class
     ],
-    version = 3,
+    version = 4,
     exportSchema = true
 )
 abstract class TrainerDatabase : RoomDatabase() {
@@ -302,13 +314,21 @@ abstract class TrainerDatabase : RoomDatabase() {
             }
         }
 
+        val MIGRATION_3_4 = object : Migration(3, 4) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE exercises ADD COLUMN equipment TEXT NOT NULL DEFAULT ''")
+                db.execSQL("ALTER TABLE exercises ADD COLUMN instructions TEXT NOT NULL DEFAULT ''")
+                db.execSQL("ALTER TABLE exercises ADD COLUMN favorite INTEGER NOT NULL DEFAULT 0")
+            }
+        }
+
         fun get(context: Context): TrainerDatabase =
             instance ?: synchronized(this) {
                 instance ?: Room.databaseBuilder(
                     context.applicationContext,
                     TrainerDatabase::class.java,
                     "evolupersonal.db"
-                ).addMigrations(MIGRATION_1_2, MIGRATION_2_3).build().also { instance = it }
+                ).addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4).build().also { instance = it }
             }
     }
 }
