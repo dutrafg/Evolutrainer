@@ -1,4 +1,5 @@
 import {MediaDownloads,createMediaStorage,packageItems,createMediaFetcher} from './media-manager.js';
+import {renderGymTools,estimatedOneRM,plateBreakdown,createStarterRoutines,exportWorkoutsCSV,importOpenGymText} from './gym-tools.js';
 import {initBeta,betaViews,betaClick,betaSubmit,modules} from './beta.js';
 import {methods,prescription,validatePrescription,pauseSession,substitute,timerPhase,filterExercises,validateBlocks,sessionProgress,startMethod,correctSet,methodGuides,mergeLinkedCatalog} from './beta-domain.js';
 import {VERSION,goals,emptyState,validate,change,id,normalize,initials,saveStudent,saveExercise,saveRoutine,startSession,recordSet,finishSession,sessionVolume,toKg,fromKg} from './domain.js';
@@ -34,13 +35,13 @@ function theme(){document.documentElement.dataset.theme=state?.profile?.theme||'
 function closeDialog(force=false){if(busy&&!force)return;if(!force&&dirty&&!confirm('Descartar as alterações ainda não salvas?'))return;dirty=false;dialog.close();dialog.innerHTML='';pendingRestore=null;}
 function modal(title,body){dialog.innerHTML=`<div class="dialog-inner"><div class="dialog-head"><h2 id="dialog-title">${title}</h2><button class="icon-button" type="button" data-cmd="close" aria-label="Fechar">${icon('close')}</button></div>${body}</div>`;dirty=false;if(!dialog.open)dialog.showModal();}
 function form(title,kind,fields,entityId='',submit='Salvar'){modal(title,`<form data-kind="${kind}" data-id="${esc(entityId)}">${fields}<div class="dialog-footer">${button('Cancelar','close')}<button class="primary" type="submit">${icon('check')}${submit}</button></div></form>`);}
-function navigate(next){if(busy)return;if(dirty&&!confirm('Descartar o rascunho ainda não salvo?'))return;dirty=false;drafts.clear();view=state.profile?.role==='student'&&!['routine','session','settings','history','portal'].includes(next)?'portal':next;query='';filter='all';render();window.scrollTo({top:0});}
+function navigate(next){if(busy)return;if(dirty&&!confirm('Descartar o rascunho ainda não salvo?'))return;dirty=false;drafts.clear();view=state.profile?.role==='student'&&!['routine','session','settings','history','portal','tools'].includes(next)?'portal':next;query='';filter='all';render();window.scrollTo({top:0});}
 const empty=(title,description,action='')=>`<div class="empty"><div class="empty-icon">${icon('train')}</div><h3>${title}</h3><p>${description}</p>${action}</div>`;
 const heading=(title,description,action='')=>`<div class="page-head"><div><h1>${title}</h1><p>${description}</p></div>${action}</div>`;
 function render(){theme();if(!state.profile){renderOnboard();return;}
- const tabs=[['home','Dashboard','home'],['students','Alunos','users'],['routines','Treinos','train'],['library','Biblioteca','library'],['history','Evolução','chart']];
- const nav=(state.profile.role==='student'?[['portal','Minha ficha','home'],['history','Histórico','chart']]:tabs).map(([key,label,image])=>`<button data-cmd="nav" data-view="${key}" ${view===key||(key==='routines'&&['routine','session'].includes(view))?'aria-current="page"':''}>${icon(image)}<span>${label}</span></button>`).join('');
- root.innerHTML=`<div class="shell"><aside class="sidebar"><div class="brand"><div class="brand-mark">E</div><div><strong>EvoluPersonal</strong><small>TREINAMENTO & EVOLUÇÃO</small></div></div><nav class="nav" aria-label="Navegação principal">${nav}</nav><div class="sidebar-bottom"><nav class="nav"><button data-cmd="nav" data-view="settings" ${view==='settings'?'aria-current="page"':''}>${icon('settings')}Configurações</button></nav><div class="sidebar-note">Seu trabalho. Sua evolução.<br>Híbrido ${VERSION}</div></div></aside><div><header class="topbar"><span class="eyebrow">SEU ESPAÇO DE TREINAMENTO</span><div class="mobile-brand"><div class="brand-mark">E</div>EvoluPersonal</div><div class="top-actions"><span class="connection"><span class="dot"></span><span id="connection-label">${navigator.onLine?'Conectado':'Sem conexão'}</span></span>${state.profile.role==='student'?'':'<button class="icon-button" data-cmd="b:modules" aria-label="Módulos">'+icon('library')+'</button>'}<button class="icon-button" data-cmd="nav" data-view="settings" aria-label="Configurações">${icon('settings')}</button><span class="avatar" aria-label="${esc(state.profile.name)}">${esc(initials(state.profile.name))}</span></div></header><main id="main" tabindex="-1">${active()&&view!=='session'?`<div class="active-banner"><div><strong>Seu treino está em andamento</strong><p>${esc(active().title)} · registros salvos neste dispositivo</p></div>${button('Retomar','resume','primary')}</div>`:''}${({home:home,students:students,routines:routines,library:library,history:history,settings:settings,routine:routineDetail,session:sessionView}[view]||betaViews[view]||home)()}<p class="footer-note">EvoluPersonal · ${VERSION} · Dados salvos neste navegador</p></main></div></div>`;
+ const tabs=[['home','Dashboard','home'],['students','Alunos','users'],['routines','Treinos','train'],['library','Biblioteca','library'],['history','Evolução','chart'],['tools','Ferramentas','chart']];
+ const nav=(state.profile.role==='student'?[['portal','Minha ficha','home'],['history','Histórico','chart'],['tools','Ferramentas','chart']]:tabs).map(([key,label,image])=>`<button data-cmd="nav" data-view="${key}" ${view===key||(key==='routines'&&['routine','session'].includes(view))?'aria-current="page"':''}>${icon(image)}<span>${label}</span></button>`).join('');
+ root.innerHTML=`<div class="shell"><aside class="sidebar"><div class="brand"><div class="brand-mark">E</div><div><strong>EvoluPersonal</strong><small>TREINAMENTO & EVOLUÇÃO</small></div></div><nav class="nav" aria-label="Navegação principal">${nav}</nav><div class="sidebar-bottom"><nav class="nav"><button data-cmd="nav" data-view="settings" ${view==='settings'?'aria-current="page"':''}>${icon('settings')}Configurações</button></nav><div class="sidebar-note">Seu trabalho. Sua evolução.<br>Híbrido ${VERSION}</div></div></aside><div><header class="topbar"><span class="eyebrow">SEU ESPAÇO DE TREINAMENTO</span><div class="mobile-brand"><div class="brand-mark">E</div>EvoluPersonal</div><div class="top-actions"><span class="connection"><span class="dot"></span><span id="connection-label">${navigator.onLine?'Conectado':'Sem conexão'}</span></span>${state.profile.role==='student'?'':'<button class="icon-button" data-cmd="b:modules" aria-label="Módulos">'+icon('library')+'</button>'}<button class="icon-button" data-cmd="nav" data-view="settings" aria-label="Configurações">${icon('settings')}</button><span class="avatar" aria-label="${esc(state.profile.name)}">${esc(initials(state.profile.name))}</span></div></header><main id="main" tabindex="-1">${active()&&view!=='session'?`<div class="active-banner"><div><strong>Seu treino está em andamento</strong><p>${esc(active().title)} · registros salvos neste dispositivo</p></div>${button('Retomar','resume','primary')}</div>`:''}${({home:home,students:students,routines:routines,library:library,history:history,settings:settings,tools:()=>renderGymTools(state),routine:routineDetail,session:sessionView}[view]||betaViews[view]||home)()}<p class="footer-note">EvoluPersonal · ${VERSION} · Dados salvos neste navegador</p></main></div></div>`;
  updateTimer();
 }
 function renderOnboard(){if(location.pathname.endsWith('/student.html')){root.innerHTML='<main class="loading"><div class="brand-mark">E</div><h1>Espaço do aluno</h1><p>Importe o pacote criptografado enviado pelo seu profissional.</p>'+button('Importar pacote do aluno','restore','primary')+'<p><a href="./index.html">Espaço profissional</a></p></main>';return;}root.innerHTML=`<div class="onboard"><section class="welcome"><div class="brand"><div class="brand-mark">E</div><div><strong>EvoluPersonal</strong><small>TREINAMENTO & EVOLUÇÃO</small></div></div><span class="eyebrow" style="color:#b7d4b8">UM NOVO COMEÇO</span><h1>Planeje com cuidado.<br>Evolua com propósito.</h1><p>Alunos, fichas e cada série do treino em um espaço feito para acompanhar sua rotina.</p><small>SMARTPHONE · TABLET · COMPUTADOR</small></section><main id="main" class="onboard-form"><span class="eyebrow">BEM-VINDO AO SEU ESPAÇO</span><h2 style="margin-top:10px">Vamos começar?</h2><p>Primeiro, conte como podemos chamar você.<br>Seu perfil será salvo neste navegador.</p><form data-kind="onboard">${input('name','Nome do profissional','','text','required minlength="2" maxlength="60" autocomplete="name"')}${select('theme','Aparência',[['light','Clara'],['dark','Escura']],'light')}<button class="primary" type="submit">Salvar e começar ${icon('arrow')}</button></form><p style="font-size:11px">O salvamento é local. Faça backups nas configurações para transferir seus dados entre dispositivos.</p><p><a href="./student.html">Sou aluno: importar meu pacote</a></p></main></div>`;}
@@ -77,6 +78,21 @@ document.addEventListener('submit',async event=>{
  const f=event.target;if(!f.matches('form[data-kind]'))return;event.preventDefault();if(busy)return;busy=true;
  const submit=f.querySelector('[type=submit]');if(submit)submit.disabled=true;const d=Object.fromEntries(new FormData(f)),kind=f.dataset.kind;
  try {
+
+  if(kind.startsWith('og:')){
+   if(kind==='og:starter'){
+    if(state.profile?.role==='student')throw new Error('Modelos de treino são gerenciados pelo profissional.');
+    let names=[];await commit(s=>{names=createStarterRoutines(s,d.model,d.studentId||'');});
+    dirty=false;render();toast(names.length+' fichas criadas para personalização.');
+   }else if(kind==='og:one-rm'){
+    const e=estimatedOneRM(Number(d.load),Number(d.reps)),b=estimatedOneRM(Number(d.load),Number(d.reps),'brzycki');
+    if(e===null||b===null)throw new Error('Informe uma carga positiva e entre 1 e 12 repetições.');
+    dirty=false;modal('Estimativa de uma repetição máxima','<p><strong>Epley:</strong> '+number(e)+' kg</p><p><strong>Brzycki:</strong> '+number(b)+' kg</p><p class="note">A estimativa não substitui avaliação individual nem orienta tentativa de carga máxima.</p>');
+   }else if(kind==='og:plates'){
+    const p=plateBreakdown(Number(d.target),Number(d.bar));dirty=false;
+    modal('Distribuição de anilhas','<p><strong>Cada lado da barra:</strong></p><p>'+(p.sides.map(x=>x.quantity+' × '+number(x.weight)+' kg').join(' + ')||'Sem anilhas')+'</p><p>Resultado: '+number(p.actual)+' kg'+(p.unmatched?' · faltam '+number(p.unmatched)+' kg para a carga solicitada.':'.')+'</p><p class="note">Confirme o peso real da barra, a disponibilidade das anilhas e a montagem simétrica.</p>');
+   }return;
+  }
   if(kind.startsWith('b:')){await betaSubmit(f,d);return;}
   if(kind==='onboard'||kind==='profile'){await commit(s=>{s.profile={...s.profile,name:d.name.trim(),theme:d.theme,...(kind==='profile'?{experience:d.experience,equipment:d.equipment.trim(),goal:d.goal,weightUnit:d.weightUnit,lengthUnit:d.lengthUnit,defaultRest:Number(d.defaultRest)}:{experience:'Iniciante',equipment:'',goal:'Condicionamento',weightUnit:'kg',lengthUnit:'cm',defaultRest:90})};});dirty=false;view='home';render();toast('Perfil salvo neste dispositivo.');navigator.storage?.persist?.().catch(()=>{});}
   if(kind==='fatigue'){await commit(s=>{s.sessions.find(x=>!x.finishedAt).fatigue=Number(d.fatigue);});dirty=false;closeDialog(true);render();}
@@ -98,6 +114,21 @@ document.addEventListener('submit',async event=>{
 document.addEventListener('click',async event=>{
  const target=event.target.closest('[data-cmd]');if(!target||busy)return;const cmd=target.dataset.cmd,entityId=target.dataset.id,index=Number(target.dataset.index);
  try {
+
+  if(cmd.startsWith('og:')){
+   busy=true;try{
+    if(cmd==='og:export-csv'){
+     const csv=exportWorkoutsCSV(state);await download('EvoluTrainer-treinos-'+new Date().toISOString().slice(0,10)+'.csv',csv,'text/csv;charset=utf-8');toast('Arquivo CSV preparado.');
+    }else if(cmd==='og:import-text'){
+     if(state.profile?.role==='student')throw new Error('Somente o profissional pode importar o catálogo.');
+     const response=await fetch('./catalog-open-gym.json');
+     if(!response.ok)throw new Error('Catálogo openGym ainda não preparado. Consulte docs/INTEGRACAO-OPENGYM.md.');
+     const rows=await response.json();let result;
+     if(!confirm('Importar o catálogo textual preparado? Exercícios existentes serão preservados e nomes repetidos serão ignorados.'))return;
+     await commit(s=>{result=importOpenGymText(s,rows);});render();toast(result.added+' exercícios importados; '+result.ignored+' existentes ou ignorados.');
+    }
+   }finally{busy=false;}return;
+  }
   if(cmd.startsWith('b:')){if(state.profile?.role==='student'&&!['b:message'].includes(cmd))throw new Error('Use o espaço profissional para acessar este módulo.');busy=true;try{await betaClick(target.dataset);}finally{busy=false;}return;}
   if(state.profile?.role==='student'&& !['nav','close','open-routine','resume','session-detail','export','restore','install','check-update','apply-update','persist','start-session','finish-session','pause-session','method-timer','stop-method','edit-set','view-media','cache-media','download-package','pause-package','remove-package','confirm-restore','fatigue'].includes(cmd))throw new Error('Esta edição pertence ao espaço profissional.');
   if(cmd==='nav'){if(dialog.open)closeDialog();if(!dialog.open)navigate(target.dataset.view);return;}
