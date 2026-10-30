@@ -7,3 +7,12 @@
 .calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}.calendar-day{background:var(--surface);border:1px solid var(--line);border-radius:9px;min-height:70px;padding:10px}.calendar-day small{display:block;font-size:10px}.check-label{display:flex;align-items:center;gap:10px}.check-label input{width:20px;min-height:20px}.assessment-photo{width:100%;max-height:260px;object-fit:contain;border-radius:10px}.bar-chart{display:flex;align-items:flex-end;height:145px;gap:8px;padding:12px 0}.bar-chart>div{flex:1;text-align:center;min-width:0}.bar-chart span{display:block;background:var(--accent);border-radius:5px 5px 0 0}.bar-chart small{font-size:10px;display:block}fieldset{border:1px solid var(--line);border-radius:10px;padding:14px}fieldset label{margin-bottom:8px}@media print{.sidebar,.topbar,.toolbar,.actions,button,.footer-note,#toast{display:none!important}.shell{display:block}main{padding:0}.card,.panel{break-inside:avoid;box-shadow:none}.cards{display:block}.card{margin-bottom:15px}body{background:white;color:black}}
 
 .exercise-gif{display:block;width:100%;height:auto;max-height:60vh;object-fit:contain;border-radius:16px;background:#f5f5f2;margin:16px auto;}
+
+/* Ferramentas de treinamento — componentes isolados da identidade do EvoluPersonal */
+.og-heat{display:grid;grid-template-columns:repeat(14,minmax(9px,1fr));gap:6px;margin:18px 0}
+.og-day{height:18px;border-radius:5px;background:var(--surface,#dae2e2);border:1px solid color-mix(in srgb,currentColor 12%,transparent)}
+.og-day.og-trained{background:var(--green,#2c8a67);border-color:transparent}
+.og-tool-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;align-items:end}
+.og-tool-form label{min-width:0}
+.og-tool-form .primary{height:min-content;min-height:44px}
+@media(max-width:520px){.og-heat{grid-template-columns:repeat(7,minmax(10px,1fr))}.og-tool-form{grid-template-columns:1fr}}
