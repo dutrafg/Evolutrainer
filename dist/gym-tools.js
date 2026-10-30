@@ -3,7 +3,7 @@
 // Treinos e histórico existentes são preservados. Cargas internas sempre em kg.
 import {id, normalize} from './domain.js';
 
-const safe = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;':'&quot;',"'":'&#39;'}[char]));
+const safe = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 const num = value => Number.isFinite(Number(value)) ? Number(value) : 0;
 const workSet = set => set && set.type !== 'AQUECIMENTO' && num(set.reps) > 0 && num(set.load) >= 0;
 const fmt = n => new Intl.NumberFormat('pt-BR', {maximumFractionDigits: 1}).format(n);
