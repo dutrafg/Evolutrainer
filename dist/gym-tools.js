@@ -122,12 +122,12 @@ export function createStarterRoutines(s,which,studentId=''){
 const mapMuscle = x => {
   const word=normalize(x);
   if(/chest|pector/.test(word))return 'Peito';
-  if(/back|latiss|trapez|rhomboid/.test(word))return 'Costas';
-  if(/quad|hamstring|thigh|glute|calf|leg|hip|soleus/.test(word))return 'Pernas';
-  if(/shoulder|deltoid/.test(word))return 'Ombros';
+  if(/back|latiss|lats|trapez|traps|rhomboid/.test(word))return 'Costas';
+  if(/quad|hamstring|thigh|glute|calf|leg|hip|soleus|adductor|abductor/.test(word))return 'Pernas';
+  if(/shoulder|deltoid|delts/.test(word))return 'Ombros';
   if(/biceps|brachialis/.test(word))return 'Bíceps';
   if(/triceps/.test(word))return 'Tríceps';
-  if(/abs|waist|core|oblique/.test(word))return 'Abdômen';
+  if(/abs|waist|core|oblique|serratus/.test(word))return 'Abdômen';
   return 'Outros';
 };
 
